@@ -59,15 +59,15 @@
 
         :root {
             --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fb;
+            --bg-secondary: #f5f3ef;
             --bg-card: #ffffff;
-            --accent: #3d5a80;
-            --accent-light: #5b7da6;
-            --accent-vivid: #2ec4b2;
-            --accent-vivid-hover: #28b0a0;
-            --text-primary: #1a1a2e;
+            --accent: #1e3a8a;
+            --accent-light: #3b6dd4;
+            --accent-vivid: #d4a017;
+            --accent-vivid-hover: #b8860b;
+            --text-primary: #0f172a;
             --text-secondary: #6b7280;
-            --border: #e5e7eb;
+            --border: #e2ddd3;
             --shadow: rgba(0,0,0,0.06);
             --shadow-lg: rgba(0,0,0,0.1);
             --radius: 12px;
@@ -77,37 +77,37 @@
 
         /* ========== DARK MODE ========== */
         [data-theme="dark"] {
-            --bg-primary: #0f1117;
-            --bg-secondary: #1a1c25;
-            --bg-card: #1e2029;
-            --accent: #7ba3c9;
-            --accent-light: #9bbdda;
-            --accent-vivid: #2ec4b2;
-            --accent-vivid-hover: #3dd4c2;
-            --text-primary: #e8e8f0;
+            --bg-primary: #0c1120;
+            --bg-secondary: #131b2e;
+            --bg-card: #172035;
+            --accent: #6b9ef7;
+            --accent-light: #93b8fc;
+            --accent-vivid: #f5c542;
+            --accent-vivid-hover: #ffd666;
+            --text-primary: #e8e4dc;
             --text-secondary: #9ca3b0;
-            --border: #2a2d3a;
+            --border: #263354;
             --shadow: rgba(0,0,0,0.2);
             --shadow-lg: rgba(0,0,0,0.35);
         }
         [data-theme="dark"] .navbar.scrolled {
-            background: rgba(15, 17, 23, 0.88);
+            background: rgba(12, 17, 32, 0.88);
         }
         [data-theme="dark"] .mobile-menu {
-            background: rgba(26, 28, 37, 0.98);
+            background: rgba(19, 27, 46, 0.98);
         }
         [data-theme="dark"] .hero {
-            background: linear-gradient(135deg, #0f1117 0%, #1a1c25 50%, #151720 100%);
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
         }
         [data-theme="dark"] .portfolio-badge {
-            background: rgba(30, 32, 41, 0.92);
+            background: rgba(23, 32, 53, 0.92);
             color: var(--accent-vivid);
         }
         [data-theme="dark"] .footer {
-            background: #0a0b0f;
+            background: #080d1a;
         }
         [data-theme="dark"] .cookie-banner {
-            background: #0a0b0f;
+            background: #080d1a;
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
@@ -178,6 +178,228 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Stagger utility classes */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+        .stagger-7 { transition-delay: 0.7s; }
+        .stagger-8 { transition-delay: 0.8s; }
+        .stagger-9 { transition-delay: 0.9s; }
+        .stagger-10 { transition-delay: 1.0s; }
+
+        /* ========== KEYFRAME ANIMATIONS ========== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes emojiFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 8px rgba(212, 160, 23, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(212, 160, 23, 0.4); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes typingCursor {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes gradientLine {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes counterBounce {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* ========== HERO PARTICLES ========== */
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 160, 23, 0.08);
+            animation: float linear infinite;
+        }
+        .hero-particle:nth-child(1) { width: 80px; height: 80px; top: 15%; left: 70%; animation-duration: 8s; }
+        .hero-particle:nth-child(2) { width: 50px; height: 50px; top: 60%; left: 80%; animation-duration: 10s; animation-delay: -2s; }
+        .hero-particle:nth-child(3) { width: 120px; height: 120px; top: 30%; left: 85%; animation-duration: 12s; animation-delay: -4s; border-radius: 20%; background: rgba(30, 58, 138, 0.05); }
+        .hero-particle:nth-child(4) { width: 40px; height: 40px; top: 70%; left: 65%; animation-duration: 7s; animation-delay: -1s; }
+        .hero-particle:nth-child(5) { width: 90px; height: 90px; top: 10%; left: 90%; animation-duration: 11s; animation-delay: -3s; border-radius: 20%; }
+        .hero-particle:nth-child(6) { width: 60px; height: 60px; top: 50%; left: 75%; animation-duration: 9s; animation-delay: -5s; background: rgba(30, 58, 138, 0.06); }
+        .hero-particle:nth-child(7) { width: 35px; height: 35px; top: 80%; left: 90%; animation-duration: 6s; animation-delay: -2s; }
+        .hero-particle:nth-child(8) { width: 70px; height: 70px; top: 25%; left: 60%; animation-duration: 13s; animation-delay: -6s; border-radius: 20%; background: rgba(212, 160, 23, 0.05); }
+
+        /* ========== TYPING CURSOR ========== */
+        .typing-cursor {
+            display: inline-block;
+            color: var(--accent-vivid);
+            font-weight: 300;
+            animation: typingCursor 1s step-end infinite;
+            margin-left: 2px;
+        }
+
+        /* ========== HERO LABEL ANIMATION ========== */
+        .hero-label {
+            animation: slideInLeft 0.8s ease-out both;
+        }
+
+        /* ========== CTA SHIMMER ========== */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        /* ========== SERVICE CARD GLOW ========== */
+        .service-card:hover {
+            box-shadow: 0 12px 40px var(--shadow-lg), 0 0 20px rgba(212, 160, 23, 0.15);
+            border-color: rgba(212, 160, 23, 0.3);
+        }
+
+        .service-icon {
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .service-icon {
+            transform: rotate(8deg) scale(1.1);
+        }
+
+        /* ========== PORTFOLIO CARD SHINE ========== */
+        .portfolio-card-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            z-index: 1;
+        }
+        .portfolio-card:hover .portfolio-card-img::after {
+            transform: translateX(100%);
+        }
+
+        /* ========== TECH BADGE GLOW ========== */
+        .tech-badge:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            box-shadow: 0 0 12px rgba(30, 58, 138, 0.3);
+        }
+
+        /* ========== GAME CARD GLOW ========== */
+        .game-card:hover {
+            box-shadow: 0 12px 40px var(--shadow-lg), 0 0 24px rgba(212, 160, 23, 0.2);
+        }
+
+        .game-preview .game-emoji {
+            animation: emojiFloat 3s ease-in-out infinite;
+        }
+
+        .game-play-btn:hover svg {
+            animation: none;
+            transform: translateX(3px);
+            transition: transform 0.2s;
+        }
+
+        /* ========== SECTION DIVIDER ========== */
+        .section-divider {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            overflow: hidden;
+        }
+        .section-divider::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 0;
+            max-width: 120px;
+            background: linear-gradient(90deg, transparent, var(--accent-vivid), transparent);
+            border-radius: 2px;
+            transition: width 1s ease;
+        }
+        .section-divider.visible::after {
+            width: 120px;
+        }
+
+        /* ========== LOGO SHIMMER ========== */
+        .nav-logo {
+            position: relative;
+        }
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 30%, rgba(212, 160, 23, 0.08) 50%, transparent 70%);
+            background-size: 200% 100%;
+            animation: shimmer 4s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        /* ========== VALUE CARD HOVER ========== */
+        .value-card:hover {
+            box-shadow: 0 8px 24px var(--shadow), 0 0 16px rgba(212, 160, 23, 0.1);
         }
 
         /* ========== NAVBAR ========== */
@@ -352,7 +574,7 @@
             display: flex;
             align-items: center;
             position: relative;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #eef2f7 100%);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #f0ece4 100%);
             overflow: hidden;
             padding-top: var(--nav-height);
         }
@@ -364,7 +586,7 @@
             right: -20%;
             width: 80%;
             height: 150%;
-            background: radial-gradient(circle, rgba(46, 196, 178, 0.06) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(212, 160, 23, 0.06) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -375,7 +597,7 @@
             left: -10%;
             width: 60%;
             height: 100%;
-            background: radial-gradient(circle, rgba(61, 90, 128, 0.04) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(30, 58, 138, 0.04) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -395,7 +617,7 @@
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--accent-vivid);
-            background: rgba(46, 196, 178, 0.08);
+            background: rgba(212, 160, 23, 0.08);
             padding: 8px 16px;
             border-radius: 24px;
             margin-bottom: 24px;
@@ -453,13 +675,13 @@
             font-size: 0.95rem;
             border-radius: 10px;
             transition: all 0.2s;
-            box-shadow: 0 4px 16px rgba(46, 196, 178, 0.3);
+            box-shadow: 0 4px 16px rgba(212, 160, 23, 0.3);
         }
 
         .btn-primary:hover {
             background: var(--accent-vivid-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(46, 196, 178, 0.4);
+            box-shadow: 0 6px 24px rgba(212, 160, 23, 0.4);
         }
 
         .btn-outline {
@@ -536,7 +758,7 @@
         .service-icon {
             width: 52px;
             height: 52px;
-            background: rgba(46, 196, 178, 0.08);
+            background: rgba(212, 160, 23, 0.08);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -749,7 +971,7 @@
             width: 48px;
             height: 48px;
             margin: 0 auto 14px;
-            background: rgba(61, 90, 128, 0.06);
+            background: rgba(30, 58, 138, 0.06);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -842,7 +1064,7 @@
         .contact-detail-icon {
             width: 44px;
             height: 44px;
-            background: rgba(46, 196, 178, 0.08);
+            background: rgba(212, 160, 23, 0.08);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -1110,21 +1332,21 @@
             inset: 0;
             opacity: 0.7;
         }
-        .game-card:nth-child(1) .game-preview::before { background: linear-gradient(135deg, #0a1628, #1a0a2e, #00f5d4); }
+        .game-card:nth-child(1) .game-preview::before { background: linear-gradient(135deg, #0a1628, #1a0a2e, #fbbf24); }
         .game-card:nth-child(2) .game-preview::before { background: linear-gradient(135deg, #1a0a2e, #2a0a1e, #f700ff); }
         .game-card:nth-child(3) .game-preview::before { background: linear-gradient(135deg, #0a1628, #0a2818, #39ff14); }
         .game-card:nth-child(4) .game-preview::before { background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #7b00ff); }
         .game-card:nth-child(5) .game-preview::before { background: linear-gradient(135deg, #1a0a2e, #2a0a1e, #ff00aa); }
-        .game-card:nth-child(6) .game-preview::before { background: linear-gradient(135deg, #0a1a0a, #1a2e0a, #00f5d4); }
+        .game-card:nth-child(6) .game-preview::before { background: linear-gradient(135deg, #0a1a0a, #1a2e0a, #fbbf24); }
         .game-card:nth-child(7) .game-preview::before { background: linear-gradient(135deg, #1a0800, #2a1000, #ff6d00); }
-        .game-card:nth-child(8) .game-preview::before { background: linear-gradient(135deg, #0a1628, #0a2828, #00e5ff); }
+        .game-card:nth-child(8) .game-preview::before { background: linear-gradient(135deg, #0a1628, #0a2828, #fbbf24); }
         .game-card:nth-child(9) .game-preview::before { background: linear-gradient(135deg, #1a0a2e, #0a1a2e, #f700ff); }
-        .game-card:nth-child(10) .game-preview::before { background: linear-gradient(135deg, #0a0a1a, #1a1a0a, #00f5d4); }
+        .game-card:nth-child(10) .game-preview::before { background: linear-gradient(135deg, #0a0a1a, #1a1a0a, #fbbf24); }
         .game-preview .game-emoji {
             font-size: 2.8rem;
             position: relative;
             z-index: 1;
-            filter: drop-shadow(0 0 16px rgba(46, 196, 178, 0.4));
+            filter: drop-shadow(0 0 16px rgba(212, 160, 23, 0.4));
         }
         .game-body {
             padding: 16px;
@@ -1281,13 +1503,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="36">
                     <defs>
                         <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#3d5a80"/>
-                            <stop offset="100%" stop-color="#2ec4b2"/>
+                            <stop offset="0%" stop-color="#1e3a8a"/>
+                            <stop offset="100%" stop-color="#d4a017"/>
                         </linearGradient>
                         <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#3d5a80"/>
-                            <stop offset="45%" stop-color="#5b7da6"/>
-                            <stop offset="100%" stop-color="#1a1a2e"/>
+                            <stop offset="0%" stop-color="#1e3a8a"/>
+                            <stop offset="45%" stop-color="#3b6dd4"/>
+                            <stop offset="100%" stop-color="#0f172a"/>
                         </linearGradient>
                     </defs>
                     <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
@@ -1341,10 +1563,20 @@
 
     <!-- ========== HERO ========== -->
     <section class="hero" id="hero">
+        <div class="hero-particles">
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-label" data-i18n="hero.label">Software House — Sicilia, Italia</div>
-                <h1 data-i18n-html="hero.title"><span class="accent">Soluzioni Digitali</span><br>su Misura</h1>
+                <h1 data-i18n-html="hero.title"><span class="accent">Soluzioni Digitali</span><br>su Misura<span class="typing-cursor">|</span></h1>
                 <p data-i18n="hero.subtitle">Sviluppo software, IoT industriale e strategie digitali per far crescere il tuo business.</p>
                 <div class="hero-cta">
                     <a href="#servizi" class="btn-primary" data-i18n="hero.cta1">Scopri i Servizi</a>
@@ -1379,7 +1611,7 @@
             <div class="services-grid">
 
                 <!-- Web -->
-                <div class="service-card fade-in">
+                <div class="service-card fade-in stagger-1">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                     </div>
@@ -1388,7 +1620,7 @@
                 </div>
 
                 <!-- IoT -->
-                <div class="service-card fade-in">
+                <div class="service-card fade-in stagger-2">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
                     </div>
@@ -1397,7 +1629,7 @@
                 </div>
 
                 <!-- SaaS -->
-                <div class="service-card fade-in">
+                <div class="service-card fade-in stagger-3">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
                     </div>
@@ -1406,7 +1638,7 @@
                 </div>
 
                 <!-- Social -->
-                <div class="service-card fade-in">
+                <div class="service-card fade-in stagger-4">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     </div>
@@ -1415,7 +1647,7 @@
                 </div>
 
                 <!-- Games -->
-                <div class="service-card fade-in">
+                <div class="service-card fade-in stagger-5">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </div>
@@ -1426,6 +1658,8 @@
             </div>
         </div>
     </section>
+
+    <div class="section-divider fade-in"></div>
 
     <!-- ========== PORTFOLIO ========== -->
     <section class="portfolio" id="portfolio">
@@ -1448,7 +1682,7 @@
             <div class="portfolio-grid">
 
                 <!-- StockflowERP -->
-                <div class="portfolio-card fade-in" data-category="saas">
+                <div class="portfolio-card fade-in stagger-1" data-category="saas">
                     <div class="portfolio-card-img">
                         <img src="images/stockflow-erp.png" alt="StockflowERP" loading="lazy">
                         <span class="portfolio-badge">SaaS</span>
@@ -1467,7 +1701,7 @@
                 </div>
 
                 <!-- Grandi Firme -->
-                <div class="portfolio-card fade-in" data-category="web">
+                <div class="portfolio-card fade-in stagger-2" data-category="web">
                     <div class="portfolio-card-img">
                         <img src="images/grandifirme.png" alt="Grandi Firme di Fuc&agrave;" loading="lazy">
                         <span class="portfolio-badge">Web</span>
@@ -1485,7 +1719,7 @@
                 </div>
 
                 <!-- Prenoty -->
-                <div class="portfolio-card fade-in" data-category="web saas">
+                <div class="portfolio-card fade-in stagger-3" data-category="web saas">
                     <div class="portfolio-card-img">
                         <img src="images/prenoty.png" alt="Prenoty" loading="lazy">
                         <span class="portfolio-badge">Web / SaaS</span>
@@ -1503,7 +1737,7 @@
                 </div>
 
                 <!-- Klein Baby -->
-                <div class="portfolio-card fade-in" data-category="web">
+                <div class="portfolio-card fade-in stagger-4" data-category="web">
                     <div class="portfolio-card-img">
                         <img src="images/kleinbaby.png" alt="Klein Baby" loading="lazy">
                         <span class="portfolio-badge">Web</span>
@@ -1521,7 +1755,7 @@
                 </div>
 
                 <!-- Herbora -->
-                <div class="portfolio-card fade-in" data-category="web">
+                <div class="portfolio-card fade-in stagger-5" data-category="web">
                     <div class="portfolio-card-img">
                         <img src="images/herbora.png" alt="Herbora" loading="lazy">
                         <span class="portfolio-badge">Web</span>
@@ -1539,7 +1773,7 @@
                 </div>
 
                 <!-- Studio Schembri -->
-                <div class="portfolio-card fade-in" data-category="web">
+                <div class="portfolio-card fade-in stagger-6" data-category="web">
                     <div class="portfolio-card-img">
                         <img src="images/studioschembri.png" alt="Studio Schembri" loading="lazy">
                         <span class="portfolio-badge">Web</span>
@@ -1557,7 +1791,7 @@
                 </div>
 
                 <!-- HTML5 Games -->
-                <div class="portfolio-card fade-in" data-category="games">
+                <div class="portfolio-card fade-in stagger-7" data-category="games">
                     <div class="portfolio-card-img">
                         <img src="images/stack-tower.png" alt="HTML5 Games Collection" loading="lazy">
                         <span class="portfolio-badge">Games</span>
@@ -1574,8 +1808,8 @@
                 </div>
 
                 <!-- Social Media Automation -->
-                <div class="portfolio-card fade-in" data-category="social">
-                    <div class="portfolio-card-img" style="background: linear-gradient(135deg, #3d5a80 0%, #2ec4b2 100%); display: flex; align-items: center; justify-content: center;">
+                <div class="portfolio-card fade-in stagger-8" data-category="social">
+                    <div class="portfolio-card-img" style="background: linear-gradient(135deg, #1e3a8a 0%, #d4a017 100%); display: flex; align-items: center; justify-content: center;">
                         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         <span class="portfolio-badge">Social</span>
                     </div>
@@ -1594,18 +1828,20 @@
         </div>
     </section>
 
+    <div class="section-divider fade-in"></div>
+
     <!-- ========== CHI SIAMO ========== -->
     <section class="about" id="chi-siamo">
         <div class="container">
             <div class="about-content">
-                <div class="about-text fade-in">
+                <div class="about-text fade-in-left">
                     <div class="section-label" data-i18n="about.label">Chi siamo</div>
                     <h2 class="section-title" data-i18n="about.title">Il Nostro Approccio</h2>
                     <p data-i18n="about.p1">EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, IoT industriale e soluzioni digitali.</p>
                     <p data-i18n="about.p2">Operiamo per clienti nazionali ed internazionali, con un approccio professionale e personalizzato sulle esigenze del cliente, che mette al centro la tecnologia allo stato dell'arte, la qualità del codice e la soddisfazione del cliente.</p>
                     <p data-i18n="about.p3">Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l'architettura e sviluppiamo con le tecnologie più adatte.</p>
                 </div>
-                <div class="values-grid fade-in">
+                <div class="values-grid fade-in-right">
                     <div class="value-card">
                         <div class="value-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
@@ -1634,6 +1870,8 @@
             </div>
         </div>
     </section>
+
+    <div class="section-divider fade-in"></div>
 
     <!-- ========== TECHNOLOGIES ========== -->
     <section class="technologies" id="tecnologie">
@@ -1694,6 +1932,8 @@
         </div>
     </section>
 
+    <div class="section-divider fade-in"></div>
+
     <!-- ========== GAMES ========== -->
     <section class="games" id="games" style="background:var(--bg-secondary)">
         <div class="container">
@@ -1705,7 +1945,7 @@
             <div class="games-grid">
 
                 <!-- Stack Tower -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-1">
                     <div class="game-preview"><span class="game-emoji">&#127959;</span></div>
                     <div class="game-body">
                         <h3>Stack Tower</h3>
@@ -1715,7 +1955,7 @@
                 </div>
 
                 <!-- Color Switch -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-2">
                     <div class="game-preview"><span class="game-emoji">&#127912;</span></div>
                     <div class="game-body">
                         <h3>Color Switch</h3>
@@ -1725,7 +1965,7 @@
                 </div>
 
                 <!-- Neon Invaders -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-3">
                     <div class="game-preview"><span class="game-emoji">&#128126;</span></div>
                     <div class="game-body">
                         <h3>Neon Invaders</h3>
@@ -1735,7 +1975,7 @@
                 </div>
 
                 <!-- Void Drift -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-4">
                     <div class="game-preview"><span class="game-emoji">&#9732;</span></div>
                     <div class="game-body">
                         <h3>Void Drift</h3>
@@ -1745,7 +1985,7 @@
                 </div>
 
                 <!-- Neon Breaker -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-5">
                     <div class="game-preview"><span class="game-emoji">&#127790;</span></div>
                     <div class="game-body">
                         <h3>Neon Breaker</h3>
@@ -1755,7 +1995,7 @@
                 </div>
 
                 <!-- Neon Snake -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-6">
                     <div class="game-preview"><span class="game-emoji">&#128013;</span></div>
                     <div class="game-body">
                         <h3>Neon Snake</h3>
@@ -1765,7 +2005,7 @@
                 </div>
 
                 <!-- Neon Runner -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-7">
                     <div class="game-preview"><span class="game-emoji">&#127939;</span></div>
                     <div class="game-body">
                         <h3>Neon Runner</h3>
@@ -1775,7 +2015,7 @@
                 </div>
 
                 <!-- Neon Blocks -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-8">
                     <div class="game-preview"><span class="game-emoji">&#129513;</span></div>
                     <div class="game-body">
                         <h3>Neon Blocks</h3>
@@ -1785,7 +2025,7 @@
                 </div>
 
                 <!-- Neon 2048 -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-9">
                     <div class="game-preview"><span class="game-emoji">&#128290;</span></div>
                     <div class="game-body">
                         <h3>Neon 2048</h3>
@@ -1795,7 +2035,7 @@
                 </div>
 
                 <!-- Neon Pong -->
-                <div class="game-card fade-in">
+                <div class="game-card fade-in stagger-10">
                     <div class="game-preview"><span class="game-emoji">&#127955;</span></div>
                     <div class="game-body">
                         <h3>Neon Pong</h3>
@@ -1807,6 +2047,8 @@
             </div>
         </div>
     </section>
+
+    <div class="section-divider fade-in"></div>
 
     <!-- ========== CONTACT ========== -->
     <section class="contact" id="contatti">
@@ -1872,12 +2114,12 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
                             <defs>
                                 <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#5b7da6"/>
-                                    <stop offset="100%" stop-color="#2ec4b2"/>
+                                    <stop offset="0%" stop-color="#3b6dd4"/>
+                                    <stop offset="100%" stop-color="#d4a017"/>
                                 </linearGradient>
                                 <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#5b7da6"/>
-                                    <stop offset="45%" stop-color="#9bbdda"/>
+                                    <stop offset="0%" stop-color="#6b9ef7"/>
+                                    <stop offset="45%" stop-color="#93b8fc"/>
                                     <stop offset="100%" stop-color="#ffffff"/>
                                 </linearGradient>
                             </defs>
@@ -1935,7 +2177,7 @@
                 'nav.about': 'Chi Siamo',
                 'nav.contact': 'Contatti',
                 'hero.label': 'Software House — Sicilia, Italia',
-                'hero.title': '<span class="accent">Soluzioni Digitali</span><br>su Misura',
+                'hero.title': '<span class="accent">Soluzioni Digitali</span><br>su Misura<span class="typing-cursor">|</span>',
                 'hero.subtitle': 'Sviluppo software, IoT industriale e strategie digitali per far crescere il tuo business.',
                 'hero.cta1': 'Scopri i Servizi',
                 'hero.cta2': 'Contattaci',
@@ -2027,7 +2269,7 @@
                 'nav.about': 'About Us',
                 'nav.contact': 'Contact',
                 'hero.label': 'Software House — Sicily, Italy',
-                'hero.title': '<span class="accent">Tailored Digital</span><br>Solutions',
+                'hero.title': '<span class="accent">Tailored Digital</span><br>Solutions<span class="typing-cursor">|</span>',
                 'hero.subtitle': 'Software development, industrial IoT, and digital strategies to grow your business.',
                 'hero.cta1': 'Explore Services',
                 'hero.cta2': 'Contact Us',
@@ -2214,6 +2456,7 @@
                         if (current >= target) {
                             counter.textContent = target;
                             clearInterval(timer);
+                            counter.style.animation = 'counterBounce 0.4s ease';
                         } else {
                             counter.textContent = Math.floor(current);
                         }
@@ -2226,7 +2469,7 @@
         animateCounters(); // Check on load
 
         /* ==================== FADE-IN (IntersectionObserver) ==================== */
-        var fadeElements = document.querySelectorAll('.fade-in');
+        var fadeElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .section-divider');
         if ('IntersectionObserver' in window) {
             var fadeObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
