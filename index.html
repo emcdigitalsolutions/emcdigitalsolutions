@@ -47,8 +47,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
-        // Apply dark theme immediately to prevent flash
-        if (localStorage.getItem('emc-theme') === 'dark') {
+        // Apply theme immediately to prevent flash (dark is default)
+        if (localStorage.getItem('emc-theme') !== 'light') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
@@ -438,8 +438,8 @@
         }
 
         .nav-logo svg {
-            width: 48px;
-            height: 48px;
+            width: 64px;
+            height: 64px;
         }
 
         .nav-logo span {
@@ -1500,7 +1500,7 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="nav-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="48">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="64">
                     <defs>
                         <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
                             <stop offset="0%" stop-color="#1e3a8a"/>
@@ -2552,7 +2552,7 @@
         });
 
         /* ==================== THEME TOGGLE ==================== */
-        var savedTheme = localStorage.getItem('emc-theme') || 'light';
+        var savedTheme = localStorage.getItem('emc-theme') || 'dark';
         if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
