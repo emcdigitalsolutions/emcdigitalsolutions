@@ -46,6 +46,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <script>
+        // Apply dark theme immediately to prevent flash
+        if (localStorage.getItem('emc-theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+
     <style>
         /* ========== RESET & BASE ========== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -66,6 +73,41 @@
             --radius: 12px;
             --radius-sm: 8px;
             --nav-height: 72px;
+        }
+
+        /* ========== DARK MODE ========== */
+        [data-theme="dark"] {
+            --bg-primary: #0f1117;
+            --bg-secondary: #1a1c25;
+            --bg-card: #1e2029;
+            --accent: #7ba3c9;
+            --accent-light: #9bbdda;
+            --accent-vivid: #2ec4b2;
+            --accent-vivid-hover: #3dd4c2;
+            --text-primary: #e8e8f0;
+            --text-secondary: #9ca3b0;
+            --border: #2a2d3a;
+            --shadow: rgba(0,0,0,0.2);
+            --shadow-lg: rgba(0,0,0,0.35);
+        }
+        [data-theme="dark"] .navbar.scrolled {
+            background: rgba(15, 17, 23, 0.88);
+        }
+        [data-theme="dark"] .mobile-menu {
+            background: rgba(26, 28, 37, 0.98);
+        }
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #0f1117 0%, #1a1c25 50%, #151720 100%);
+        }
+        [data-theme="dark"] .portfolio-badge {
+            background: rgba(30, 32, 41, 0.92);
+            color: var(--accent-vivid);
+        }
+        [data-theme="dark"] .footer {
+            background: #0a0b0f;
+        }
+        [data-theme="dark"] .cookie-banner {
+            background: #0a0b0f;
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
@@ -235,6 +277,10 @@
         .lang-toggle:hover {
             border-color: var(--accent);
             color: var(--accent);
+        }
+
+        #themeToggleHamburger {
+            display: none;
         }
 
         .hamburger {
@@ -1007,6 +1053,117 @@
             background: var(--accent-vivid-hover);
         }
 
+        /* ========== THEME TOGGLE ========== */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-secondary);
+        }
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        .theme-toggle .icon-moon { display: block; }
+        .theme-toggle .icon-sun { display: none; }
+        [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+        [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+        /* ========== GAMES SECTION ========== */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        .game-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .game-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--shadow-lg);
+        }
+        .game-preview {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .game-preview::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.7;
+        }
+        .game-card:nth-child(1) .game-preview::before { background: linear-gradient(135deg, #0a1628, #1a0a2e, #00f5d4); }
+        .game-card:nth-child(2) .game-preview::before { background: linear-gradient(135deg, #1a0a2e, #2a0a1e, #f700ff); }
+        .game-card:nth-child(3) .game-preview::before { background: linear-gradient(135deg, #0a1628, #0a2818, #39ff14); }
+        .game-card:nth-child(4) .game-preview::before { background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #7b00ff); }
+        .game-card:nth-child(5) .game-preview::before { background: linear-gradient(135deg, #1a0a2e, #2a0a1e, #ff00aa); }
+        .game-card:nth-child(6) .game-preview::before { background: linear-gradient(135deg, #0a1a0a, #1a2e0a, #00f5d4); }
+        .game-card:nth-child(7) .game-preview::before { background: linear-gradient(135deg, #1a0800, #2a1000, #ff6d00); }
+        .game-card:nth-child(8) .game-preview::before { background: linear-gradient(135deg, #0a1628, #0a2828, #00e5ff); }
+        .game-card:nth-child(9) .game-preview::before { background: linear-gradient(135deg, #1a0a2e, #0a1a2e, #f700ff); }
+        .game-card:nth-child(10) .game-preview::before { background: linear-gradient(135deg, #0a0a1a, #1a1a0a, #00f5d4); }
+        .game-preview .game-emoji {
+            font-size: 2.8rem;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 16px rgba(46, 196, 178, 0.4));
+        }
+        .game-body {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .game-body h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .game-body p {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 12px;
+            flex: 1;
+        }
+        .game-play-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 16px;
+            background: var(--accent-vivid);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .game-play-btn:hover {
+            background: var(--accent-vivid-hover);
+            transform: translateY(-1px);
+            color: #fff;
+        }
+        .game-play-btn svg { width: 14px; height: 14px; }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .services-grid {
@@ -1014,6 +1171,9 @@
             }
             .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .games-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
             .about-content {
                 grid-template-columns: 1fr;
@@ -1032,6 +1192,9 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+            #themeToggleHamburger {
+                display: flex;
             }
             .hamburger {
                 display: flex;
@@ -1056,6 +1219,9 @@
             }
             .portfolio-grid {
                 grid-template-columns: 1fr;
+            }
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             .values-grid {
                 grid-template-columns: 1fr 1fr;
@@ -1090,6 +1256,9 @@
             .values-grid {
                 grid-template-columns: 1fr;
             }
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
             .contact-form {
                 padding: 24px;
             }
@@ -1109,23 +1278,30 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="nav-logo">
-                <svg viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="36">
                     <defs>
-                        <linearGradient id="logo-bars" x1="0" y1="0" x2="40" y2="32" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#3d5a80"/>
-                            <stop offset="1" stop-color="#2ec4b2"/>
+                        <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#3d5a80"/>
+                            <stop offset="100%" stop-color="#2ec4b2"/>
+                        </linearGradient>
+                        <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#3d5a80"/>
+                            <stop offset="45%" stop-color="#5b7da6"/>
+                            <stop offset="100%" stop-color="#1a1a2e"/>
                         </linearGradient>
                     </defs>
-                    <path d="M2 5L18 1L18 5L5 8Z" fill="url(#logo-bars)"/>
-                    <path d="M2 14L18 10L18 14L5 17Z" fill="url(#logo-bars)"/>
-                    <path d="M2 23L18 19L18 23L5 26Z" fill="url(#logo-bars)"/>
+                    <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
+                    <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#navBarG)" opacity="0.85"/>
+                    <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#navBarG)"/>
+                    <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#navTxtG)" letter-spacing="3">EMC</text>
                 </svg>
-                <span>EMC Digital Solutions</span>
+                <span>Digital Solutions</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
                 <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
                 <li><a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="#games" data-i18n="nav.games">Games</a></li>
                 <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
                 <li>
                     <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
@@ -1133,7 +1309,17 @@
                         <span id="langLabel">EN</span>
                     </button>
                 </li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </button>
+                </li>
             </ul>
+            <button class="theme-toggle" id="themeToggleHamburger" aria-label="Toggle dark mode" style="margin-right:8px">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
@@ -1145,6 +1331,7 @@
         <a href="#servizi" data-i18n="nav.services">Servizi</a>
         <a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a>
         <a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="#games" data-i18n="nav.games">Games</a>
         <a href="#contatti" data-i18n="nav.contact">Contatti</a>
         <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -1415,7 +1602,7 @@
                     <div class="section-label" data-i18n="about.label">Chi siamo</div>
                     <h2 class="section-title" data-i18n="about.title">Il Nostro Approccio</h2>
                     <p data-i18n="about.p1">EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, IoT industriale e soluzioni digitali.</p>
-                    <p data-i18n="about.p2">Operiamo dalla Sicilia per clienti in tutta Italia, con un approccio artigianale che mette al centro la qualità del codice e la soddisfazione del cliente.</p>
+                    <p data-i18n="about.p2">Operiamo per clienti nazionali ed internazionali, con un approccio professionale e personalizzato sulle esigenze del cliente, che mette al centro la tecnologia allo stato dell'arte, la qualità del codice e la soddisfazione del cliente.</p>
                     <p data-i18n="about.p3">Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l'architettura e sviluppiamo con le tecnologie più adatte.</p>
                 </div>
                 <div class="values-grid fade-in">
@@ -1507,6 +1694,120 @@
         </div>
     </section>
 
+    <!-- ========== GAMES ========== -->
+    <section class="games" id="games" style="background:var(--bg-secondary)">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label" data-i18n="games.label">I nostri giochi</div>
+                <h2 class="section-title" data-i18n="games.title">HTML5 Games</h2>
+                <p class="section-subtitle" data-i18n="games.subtitle">10 giochi arcade costruiti da zero con JavaScript e Canvas API. Zero dipendenze, mobile-ready, giocabili direttamente nel browser.</p>
+            </div>
+            <div class="games-grid">
+
+                <!-- Stack Tower -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#127959;</span></div>
+                    <div class="game-body">
+                        <h3>Stack Tower</h3>
+                        <p data-i18n="games.stack-desc">Tocca per far cadere i blocchi e costruire la torre più alta. Combo bonus per allineamento perfetto.</p>
+                        <a href="https://emcdigitalsolutions.github.io/stack-tower" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Color Switch -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#127912;</span></div>
+                    <div class="game-body">
+                        <h3>Color Switch</h3>
+                        <p data-i18n="games.color-desc">Salta attraverso ostacoli del colore della tua palla. Raccogli stelle per cambiare colore.</p>
+                        <a href="https://emcdigitalsolutions.github.io/color-switch" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Neon Invaders -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#128126;</span></div>
+                    <div class="game-body">
+                        <h3>Neon Invaders</h3>
+                        <p data-i18n="games.invaders-desc">Distruggi ondate di alieni prima che raggiungano il fondo. Scudi, bonus UFO, onde progressive.</p>
+                        <a href="https://emcdigitalsolutions.github.io/neon-invaders" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Void Drift -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#9732;</span></div>
+                    <div class="game-body">
+                        <h3>Void Drift</h3>
+                        <p data-i18n="games.void-desc">Naviga tra campi di asteroidi, distruggi rocce e sopravvivi onda dopo onda. Fisica inerziale.</p>
+                        <a href="https://emcdigitalsolutions.github.io/void-drift" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Neon Breaker -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#127790;</span></div>
+                    <div class="game-body">
+                        <h3>Neon Breaker</h3>
+                        <p data-i18n="games.breaker-desc">Rompi tutti i mattoni con la palla. 4 tipi di mattoni, 6 power-up, azione multi-palla.</p>
+                        <a href="https://emcdigitalsolutions.github.io/neon-breaker" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Neon Snake -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#128013;</span></div>
+                    <div class="game-body">
+                        <h3>Neon Snake</h3>
+                        <p data-i18n="games.snake-desc">Mangia cibo per crescere senza colpirti. Cibo bonus per punti extra. D-pad su mobile.</p>
+                        <a href="https://emcdigitalsolutions.github.io/neon-snake" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Neon Runner -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#127939;</span></div>
+                    <div class="game-body">
+                        <h3>Neon Runner</h3>
+                        <p data-i18n="games.runner-desc">Salta ostacoli e raccogli monete in questo endless runner. Doppio salto, velocità progressiva.</p>
+                        <a href="https://emcdigitalsolutions.github.io/neon-runner" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Neon Blocks -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#129513;</span></div>
+                    <div class="game-body">
+                        <h3>Neon Blocks</h3>
+                        <p data-i18n="games.blocks-desc">Completa righe per eliminarle e fare combo. 7 tetromini, pezzo fantasma, wall kicks.</p>
+                        <a href="https://emcdigitalsolutions.github.io/neon-blocks" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Neon 2048 -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#128290;</span></div>
+                    <div class="game-body">
+                        <h3>Neon 2048</h3>
+                        <p data-i18n="games.2048-desc">Scorri le tessere per unire numeri uguali e raggiungere 2048. Sistema undo, modalità infinita.</p>
+                        <a href="https://emcdigitalsolutions.github.io/neon-2048" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Neon Pong -->
+                <div class="game-card fade-in">
+                    <div class="game-preview"><span class="game-emoji">&#127955;</span></div>
+                    <div class="game-body">
+                        <h3>Neon Pong</h3>
+                        <p data-i18n="games.pong-desc">Muovi la racchetta e batti l'IA. Rimbalzo ad angolo, scia della palla, velocità progressiva.</p>
+                        <a href="https://emcdigitalsolutions.github.io/neon-pong" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- ========== CONTACT ========== -->
     <section class="contact" id="contatti">
         <div class="container">
@@ -1568,18 +1869,24 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <svg viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
                             <defs>
-                                <linearGradient id="logo-bars-footer" x1="0" y1="0" x2="40" y2="32" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#5b7da6"/>
-                                    <stop offset="1" stop-color="#2ec4b2"/>
+                                <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#5b7da6"/>
+                                    <stop offset="100%" stop-color="#2ec4b2"/>
+                                </linearGradient>
+                                <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#5b7da6"/>
+                                    <stop offset="45%" stop-color="#9bbdda"/>
+                                    <stop offset="100%" stop-color="#ffffff"/>
                                 </linearGradient>
                             </defs>
-                            <path d="M2 5L18 1L18 5L5 8Z" fill="url(#logo-bars-footer)"/>
-                            <path d="M2 14L18 10L18 14L5 17Z" fill="url(#logo-bars-footer)"/>
-                            <path d="M2 23L18 19L18 23L5 26Z" fill="url(#logo-bars-footer)"/>
+                            <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>
+                            <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#ftBarG)" opacity="0.85"/>
+                            <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#ftBarG)"/>
+                            <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#ftTxtG)" letter-spacing="3">EMC</text>
                         </svg>
-                        <span>EMC Digital Solutions</span>
+                        <span>Digital Solutions</span>
                     </div>
                     <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, IoT e strategie digitali dalla Sicilia.</p>
                 </div>
@@ -1589,6 +1896,7 @@
                         <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
                         <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
                         <li><a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                        <li><a href="#games" data-i18n="nav.games">Games</a></li>
                         <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
                     </ul>
                 </div>
@@ -1668,7 +1976,7 @@
                 'about.label': 'Chi siamo',
                 'about.title': 'Il Nostro Approccio',
                 'about.p1': 'EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, IoT industriale e soluzioni digitali.',
-                'about.p2': 'Operiamo dalla Sicilia per clienti in tutta Italia, con un approccio artigianale che mette al centro la qualità del codice e la soddisfazione del cliente.',
+                'about.p2': 'Operiamo per clienti nazionali ed internazionali, con un approccio professionale e personalizzato sulle esigenze del cliente, che mette al centro la tecnologia allo stato dell\'arte, la qualità del codice e la soddisfazione del cliente.',
                 'about.p3': 'Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l\'architettura e sviluppiamo con le tecnologie più adatte.',
                 'about.value1': 'Artigianalità Digitale',
                 'about.value2': 'Soluzioni su Misura',
@@ -1696,7 +2004,22 @@
                 'footer.services': 'Servizi',
                 'footer.rights': 'Tutti i diritti riservati.',
                 'cookie.text': 'Questo sito utilizza cookie tecnici per migliorare la tua esperienza di navigazione. Continuando a navigare, accetti l\'utilizzo dei cookie.',
-                'cookie.accept': 'Accetto'
+                'cookie.accept': 'Accetto',
+                'nav.games': 'Games',
+                'games.label': 'I nostri giochi',
+                'games.title': 'HTML5 Games',
+                'games.subtitle': '10 giochi arcade costruiti da zero con JavaScript e Canvas API. Zero dipendenze, mobile-ready, giocabili direttamente nel browser.',
+                'games.play': 'Gioca Ora',
+                'games.stack-desc': 'Tocca per far cadere i blocchi e costruire la torre più alta. Combo bonus per allineamento perfetto.',
+                'games.color-desc': 'Salta attraverso ostacoli del colore della tua palla. Raccogli stelle per cambiare colore.',
+                'games.invaders-desc': 'Distruggi ondate di alieni prima che raggiungano il fondo. Scudi, bonus UFO, onde progressive.',
+                'games.void-desc': 'Naviga tra campi di asteroidi, distruggi rocce e sopravvivi onda dopo onda. Fisica inerziale.',
+                'games.breaker-desc': 'Rompi tutti i mattoni con la palla. 4 tipi di mattoni, 6 power-up, azione multi-palla.',
+                'games.snake-desc': 'Mangia cibo per crescere senza colpirti. Cibo bonus per punti extra. D-pad su mobile.',
+                'games.runner-desc': 'Salta ostacoli e raccogli monete in questo endless runner. Doppio salto, velocità progressiva.',
+                'games.blocks-desc': 'Completa righe per eliminarle e fare combo. 7 tetromini, pezzo fantasma, wall kicks.',
+                'games.2048-desc': 'Scorri le tessere per unire numeri uguali e raggiungere 2048. Sistema undo, modalità infinita.',
+                'games.pong-desc': 'Muovi la racchetta e batti l\'IA. Rimbalzo ad angolo, scia della palla, velocità progressiva.'
             },
             en: {
                 'nav.services': 'Services',
@@ -1745,7 +2068,7 @@
                 'about.label': 'About us',
                 'about.title': 'Our Approach',
                 'about.p1': 'EMC Digital Solutions is a team of professionals with over 15 years of experience in software development, industrial IoT, and digital solutions.',
-                'about.p2': 'We operate from Sicily for clients across Italy, with a craftsman approach that puts code quality and client satisfaction at the center.',
+                'about.p2': 'We work with national and international clients, with a professional approach tailored to each client\'s needs, focusing on state-of-the-art technology, code quality, and client satisfaction.',
                 'about.p3': 'Every project is a tailored solution: we analyze requirements, design the architecture, and develop with the most suitable technologies.',
                 'about.value1': 'Digital Craftsmanship',
                 'about.value2': 'Tailored Solutions',
@@ -1773,7 +2096,22 @@
                 'footer.services': 'Services',
                 'footer.rights': 'All rights reserved.',
                 'cookie.text': 'This website uses technical cookies to improve your browsing experience. By continuing to browse, you accept the use of cookies.',
-                'cookie.accept': 'Accept'
+                'cookie.accept': 'Accept',
+                'nav.games': 'Games',
+                'games.label': 'Our games',
+                'games.title': 'HTML5 Games',
+                'games.subtitle': '10 arcade games built from scratch with JavaScript and Canvas API. Zero dependencies, mobile-ready, playable right in your browser.',
+                'games.play': 'Play Now',
+                'games.stack-desc': 'Tap to drop blocks and build the tallest tower. Perfect alignment triggers combo bonuses.',
+                'games.color-desc': 'Jump through obstacles matching your ball\'s color. Collect stars to switch colors.',
+                'games.invaders-desc': 'Destroy waves of aliens before they reach the bottom. Shields, UFO bonuses, progressive waves.',
+                'games.void-desc': 'Navigate asteroid fields, destroy rocks and survive wave after wave. Inertia physics.',
+                'games.breaker-desc': 'Break all the bricks with the ball. 4 brick types, 6 power-ups, multi-ball action.',
+                'games.snake-desc': 'Eat food to grow longer without hitting yourself. Bonus food for extra points. D-pad on mobile.',
+                'games.runner-desc': 'Jump over obstacles and collect coins in this endless runner. Double jump, progressive speed.',
+                'games.blocks-desc': 'Complete rows to clear them and score combos. 7 tetrominos, ghost piece, wall kicks.',
+                'games.2048-desc': 'Slide tiles to merge equal numbers and reach 2048. Undo system, endless mode.',
+                'games.pong-desc': 'Move your paddle and beat the AI. Angle-based bouncing, ball trail effect, progressive speed.'
             }
         };
 
@@ -1969,6 +2307,26 @@
             localStorage.setItem('emc-cookies-accepted', 'true');
             cookieBanner.classList.remove('show');
         });
+
+        /* ==================== THEME TOGGLE ==================== */
+        var savedTheme = localStorage.getItem('emc-theme') || 'light';
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        function toggleTheme() {
+            var current = document.documentElement.getAttribute('data-theme');
+            var next = current === 'dark' ? 'light' : 'dark';
+            if (next === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            localStorage.setItem('emc-theme', next);
+        }
+
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+        document.getElementById('themeToggleHamburger').addEventListener('click', toggleTheme);
 
         /* ==================== ACTIVE NAV LINK ==================== */
         var sections = document.querySelectorAll('section[id]');
