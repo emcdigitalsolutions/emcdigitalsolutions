@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMC Digital Solutions — Sviluppo Software, IoT, Soluzioni Digitali | Sicilia</title>
+    <meta name="description" content="EMC Digital Solutions: sviluppo software, IoT industriale, SaaS e soluzioni digitali su misura. Operiamo dalla Sicilia per clienti in tutta Italia.">
+    <meta name="keywords" content="sviluppo software sicilia, azienda web sicilia, IoT industria 4.0, sviluppo web, SaaS, ERP, Node-RED, React, gestionali cloud, social media management">
+    <meta name="author" content="EMC Digital Solutions">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://emcdigitalsolutions.it">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="EMC Digital Solutions — Soluzioni Digitali su Misura">
+    <meta property="og:description" content="Sviluppo software, IoT industriale e strategie digitali per far crescere il tuo business. Sicilia, Italia.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://emcdigitalsolutions.it">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="EMC Digital Solutions">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareCompany",
+        "name": "EMC Digital Solutions",
+        "description": "Sviluppo software, IoT industriale, SaaS e soluzioni digitali su misura.",
+        "url": "https://emcdigitalsolutions.it",
+        "areaServed": "IT",
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Sicilia",
+            "addressCountry": "IT"
+        },
+        "knowsAbout": ["Software Development", "IoT", "Industry 4.0", "SaaS", "Web Development", "HTML5 Games"],
+        "serviceType": ["Web Development", "IoT Solutions", "SaaS Development", "Social Media Management", "HTML5 Game Development"]
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fb;
+            --bg-card: #ffffff;
+            --accent: #3d5a80;
+            --accent-light: #5b7da6;
+            --accent-vivid: #2ec4b2;
+            --accent-vivid-hover: #28b0a0;
+            --text-primary: #1a1a2e;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
+            --shadow: rgba(0,0,0,0.06);
+            --shadow-lg: rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --nav-height: 72px;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-vivid);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* Fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 1000;
+            transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 12px var(--shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+
+        .nav-logo svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .nav-logo span {
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-vivid);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 24px;
+            box-shadow: 0 8px 32px var(--shadow-lg);
+            z-index: 999;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu .lang-toggle {
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #eef2f7 100%);
+            overflow: hidden;
+            padding-top: var(--nav-height);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(46, 196, 178, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(61, 90, 128, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-vivid);
+            background: rgba(46, 196, 178, 0.08);
+            padding: 8px 16px;
+            border-radius: 24px;
+            margin-bottom: 24px;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-vivid);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 .accent {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 540px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 56px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--accent-vivid);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px rgba(46, 196, 178, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-vivid-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(46, 196, 178, 0.4);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border: 2px solid var(--border);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat .number {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .hero-stat .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ========== SERVICES ========== */
+        .services {
+            background: var(--bg-secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .services-grid .service-card:nth-child(4),
+        .services-grid .service-card:nth-child(5) {
+            /* Center last 2 cards in a 3-col grid */
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(46, 196, 178, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 26px;
+            height: 26px;
+            color: var(--accent-vivid);
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Last row centering for 5 items in 3-col grid */
+        .services-grid {
+            justify-items: center;
+        }
+        .services-grid .service-card {
+            width: 100%;
+        }
+
+        /* ========== PORTFOLIO ========== */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: all 0.2s;
+            background: var(--bg-card);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .portfolio-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--shadow-lg);
+        }
+
+        .portfolio-card.hidden {
+            display: none;
+        }
+
+        .portfolio-card-img {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            background: var(--bg-secondary);
+        }
+
+        .portfolio-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .portfolio-card:hover .portfolio-card-img img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 12px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(8px);
+            color: var(--accent);
+        }
+
+        .portfolio-card-body {
+            padding: 24px;
+        }
+
+        .portfolio-card-body h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-card-body p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .portfolio-tag {
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 4px 10px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            color: var(--text-secondary);
+        }
+
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-vivid);
+            transition: gap 0.2s;
+        }
+
+        .portfolio-link:hover {
+            gap: 10px;
+        }
+
+        .portfolio-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ========== ABOUT ========== */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 28px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        .value-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 14px;
+            background: rgba(61, 90, 128, 0.06);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .value-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+        }
+
+        .value-card h4 {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* ========== TECHNOLOGIES ========== */
+        .tech-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+        }
+
+        .tech-category h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-badge {
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--text-primary);
+            transition: all 0.2s;
+        }
+
+        .tech-badge:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* ========== CONTACT ========== */
+        .contact {
+            background: var(--bg-secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(46, 196, 178, 0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-vivid);
+        }
+
+        .contact-detail-text {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .contact-detail-text small {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-vivid);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px 32px;
+            background: var(--accent-vivid);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        .form-submit:hover {
+            background: var(--accent-vivid-hover);
+        }
+
+        .form-status {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            color: var(--accent-vivid);
+        }
+
+        .form-status.error {
+            display: block;
+            color: #e74c3c;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--text-primary);
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 340px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .footer h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-vivid);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ========== COOKIE BANNER ========== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--text-primary);
+            color: #fff;
+            padding: 20px 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            z-index: 2000;
+            flex-wrap: wrap;
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.2);
+        }
+
+        .cookie-banner.show {
+            display: flex;
+        }
+
+        .cookie-banner p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+        }
+
+        .cookie-btn {
+            padding: 10px 24px;
+            background: var(--accent-vivid);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .cookie-btn:hover {
+            background: var(--accent-vivid-hover);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero p {
+                font-size: 1.05rem;
+            }
+            .hero-stats {
+                gap: 32px;
+            }
+            .hero-stat .number {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-cta {
+                flex-direction: column;
+            }
+            .btn-primary, .btn-outline {
+                justify-content: center;
+                width: 100%;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form {
+                padding: 24px;
+            }
+            .portfolio-filters {
+                gap: 6px;
+            }
+            .filter-btn {
+                padding: 6px 14px;
+                font-size: 0.78rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logo-bars" x1="0" y1="0" x2="40" y2="32" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3d5a80"/>
+                            <stop offset="1" stop-color="#2ec4b2"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M2 5L18 1L18 5L5 8Z" fill="url(#logo-bars)"/>
+                    <path d="M2 14L18 10L18 14L5 17Z" fill="url(#logo-bars)"/>
+                    <path d="M2 23L18 19L18 23L5 26Z" fill="url(#logo-bars)"/>
+                </svg>
+                <span>EMC Digital Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
+                <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-label" data-i18n="hero.label">Software House — Sicilia, Italia</div>
+                <h1 data-i18n-html="hero.title"><span class="accent">Soluzioni Digitali</span><br>su Misura</h1>
+                <p data-i18n="hero.subtitle">Sviluppo software, IoT industriale e strategie digitali per far crescere il tuo business.</p>
+                <div class="hero-cta">
+                    <a href="#servizi" class="btn-primary" data-i18n="hero.cta1">Scopri i Servizi</a>
+                    <a href="#contatti" class="btn-outline" data-i18n="hero.cta2">Contattaci</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="number" data-count="15">0</div>
+                        <div class="label" data-i18n="hero.stat1">+ anni di esperienza</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="number" data-count="20">0</div>
+                        <div class="label" data-i18n="hero.stat2">+ progetti realizzati</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="number" data-count="10">0</div>
+                        <div class="label" data-i18n="hero.stat3">+ tecnologie</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="services" id="servizi">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label" data-i18n="services.label">Cosa facciamo</div>
+                <h2 class="section-title" data-i18n="services.title">I Nostri Servizi</h2>
+                <p class="section-subtitle" data-i18n="services.subtitle">Dall'idea alla realizzazione, affianchiamo ogni progetto con competenza e attenzione ai dettagli.</p>
+            </div>
+            <div class="services-grid">
+
+                <!-- Web -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3 data-i18n="services.web.title">Sviluppo Web</h3>
+                    <p data-i18n="services.web.desc">Siti vetrina, e-commerce e web app. Design mobile-first, SEO ottimizzato, performance elevate.</p>
+                </div>
+
+                <!-- IoT -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                    </div>
+                    <h3 data-i18n="services.iot.title">IoT & Industria 4.0</h3>
+                    <p data-i18n="services.iot.desc">Monitoraggio CNC, telemetria in tempo reale, digital twin ed edge computing per l'industria manifatturiera.</p>
+                </div>
+
+                <!-- SaaS -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    </div>
+                    <h3 data-i18n="services.saas.title">Software SaaS</h3>
+                    <p data-i18n="services.saas.desc">Gestionali cloud multi-tenant, ERP e piattaforme SaaS con architettura scalabile e sicura.</p>
+                </div>
+
+                <!-- Social -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3 data-i18n="services.social.title">Social Media Management</h3>
+                    <p data-i18n="services.social.desc">Gestione pagine social, creazione contenuti e campagne sponsorizzate geolocalizzate.</p>
+                </div>
+
+                <!-- Games -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3 data-i18n="services.games.title">HTML5 Games</h3>
+                    <p data-i18n="services.games.desc">Giochi arcade per browser e mobile. Zero dipendenze, performance native, pronti per i marketplace.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PORTFOLIO ========== -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label" data-i18n="portfolio.label">I nostri lavori</div>
+                <h2 class="section-title" data-i18n="portfolio.title">Portfolio</h2>
+                <p class="section-subtitle" data-i18n="portfolio.subtitle">Una selezione di progetti realizzati per clienti in diversi settori.</p>
+            </div>
+
+            <div class="portfolio-filters fade-in">
+                <button class="filter-btn active" data-filter="all" data-i18n="portfolio.filter.all">Tutti</button>
+                <button class="filter-btn" data-filter="web" data-i18n="portfolio.filter.web">Web</button>
+                <button class="filter-btn" data-filter="iot" data-i18n="portfolio.filter.iot">IoT</button>
+                <button class="filter-btn" data-filter="saas" data-i18n="portfolio.filter.saas">SaaS</button>
+                <button class="filter-btn" data-filter="games" data-i18n="portfolio.filter.games">Games</button>
+                <button class="filter-btn" data-filter="social" data-i18n="portfolio.filter.social">Social</button>
+            </div>
+
+            <div class="portfolio-grid">
+
+                <!-- RTIndustry -->
+                <div class="portfolio-card fade-in" data-category="iot">
+                    <div class="portfolio-card-img">
+                        <img src="images/rtindustry.png" alt="RTIndustry - IoT Industriale" loading="lazy">
+                        <span class="portfolio-badge">IoT</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>RTIndustry</h3>
+                        <p data-i18n="portfolio.rtindustry.desc">Piattaforma di monitoraggio industriale per macchine CNC. Telemetria in tempo reale, OEE, allarmi e digital twin.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Node-RED</span>
+                            <span class="portfolio-tag">OPC-UA</span>
+                            <span class="portfolio-tag">Vue.js</span>
+                            <span class="portfolio-tag">MQTT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- StockflowERP -->
+                <div class="portfolio-card fade-in" data-category="saas">
+                    <div class="portfolio-card-img">
+                        <img src="images/stockflow-erp.png" alt="StockflowERP" loading="lazy">
+                        <span class="portfolio-badge">SaaS</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>StockflowERP</h3>
+                        <p data-i18n="portfolio.stockflow.desc">Gestionale cloud multi-tenant per il retail. Magazzino, vendite, fatturazione elettronica e analytics integrati.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">React</span>
+                            <span class="portfolio-tag">TypeScript</span>
+                            <span class="portfolio-tag">Prisma</span>
+                            <span class="portfolio-tag">MySQL</span>
+                        </div>
+                        <a href="https://stockflowerp.it" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Grandi Firme -->
+                <div class="portfolio-card fade-in" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/grandifirme.png" alt="Grandi Firme di Fuc&agrave;" loading="lazy">
+                        <span class="portfolio-badge">Web</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>Grandi Firme di Fuc&agrave;</h3>
+                        <p data-i18n="portfolio.grandifirme.desc">Sito vetrina per outlet di abbigliamento bambini. Catalogo prodotti integrato con gestionale StockflowERP.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">React</span>
+                            <span class="portfolio-tag">Express</span>
+                            <span class="portfolio-tag">REST API</span>
+                        </div>
+                        <a href="https://grandifirmedifuca.it" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Prenoty -->
+                <div class="portfolio-card fade-in" data-category="web saas">
+                    <div class="portfolio-card-img">
+                        <img src="images/prenoty.png" alt="Prenoty" loading="lazy">
+                        <span class="portfolio-badge">Web / SaaS</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>Prenoty</h3>
+                        <p data-i18n="portfolio.prenoty.desc">Piattaforma SaaS per la gestione prenotazioni e appuntamenti, con calendario intelligente e notifiche automatiche.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">React</span>
+                            <span class="portfolio-tag">Node.js</span>
+                            <span class="portfolio-tag">Cloudflare</span>
+                        </div>
+                        <a href="https://prenoty-site.pages.dev" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Klein Baby -->
+                <div class="portfolio-card fade-in" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/kleinbaby.png" alt="Klein Baby" loading="lazy">
+                        <span class="portfolio-badge">Web</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>Klein Baby</h3>
+                        <p data-i18n="portfolio.kleinbaby.desc">Sito e-commerce per negozio di abbigliamento bambini. Catalogo dinamico collegato a StockflowERP.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">React</span>
+                            <span class="portfolio-tag">Express</span>
+                            <span class="portfolio-tag">MySQL</span>
+                        </div>
+                        <a href="https://kleinbaby.it" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Herbora -->
+                <div class="portfolio-card fade-in" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/herbora.png" alt="Herbora" loading="lazy">
+                        <span class="portfolio-badge">Web</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>Herbora</h3>
+                        <p data-i18n="portfolio.herbora.desc">Sito vetrina per erboristeria con design "Botanical Editorial". Catalogo prodotti, blog e integrazione social.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5</span>
+                            <span class="portfolio-tag">CSS3</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                        </div>
+                        <a href="https://enrix84.github.io/herbora" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Giuliana La Greca -->
+                <div class="portfolio-card fade-in" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/giulianalagreca.png" alt="Giuliana &amp; La Greca" loading="lazy">
+                        <span class="portfolio-badge">Web</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>Giuliana &amp; La Greca</h3>
+                        <p data-i18n="portfolio.giulianalagreca.desc">Sito istituzionale per agenzia di onoranze funebri. Design sobrio ed elegante con focus sulla comunicazione empatica.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5</span>
+                            <span class="portfolio-tag">CSS3</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                        </div>
+                        <a href="https://enrix84.github.io/giulianalagreca" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Fratelli Di Rosa -->
+                <div class="portfolio-card fade-in" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/fratellidirosa.png" alt="Fratelli Di Rosa" loading="lazy">
+                        <span class="portfolio-badge">Web</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>Fratelli Di Rosa</h3>
+                        <p data-i18n="portfolio.fratellidirosa.desc">Sito istituzionale per agenzia funebre. Design professionale con servizi dettagliati e contatti immediati.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5</span>
+                            <span class="portfolio-tag">CSS3</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                        </div>
+                        <a href="https://enrix84.github.io/fratellidirosa" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Studio Schembri -->
+                <div class="portfolio-card fade-in" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/studioschembri.png" alt="Studio Schembri" loading="lazy">
+                        <span class="portfolio-badge">Web</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>Studio Schembri</h3>
+                        <p data-i18n="portfolio.studioschembri.desc">Sito professionale per studio commercialista. Area informativa con servizi, consulenze e contatti multi-sede.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5</span>
+                            <span class="portfolio-tag">CSS3</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                        </div>
+                        <a href="https://enrix84.github.io/studioschembri" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- HTML5 Games -->
+                <div class="portfolio-card fade-in" data-category="games">
+                    <div class="portfolio-card-img">
+                        <img src="images/stack-tower.png" alt="HTML5 Games Collection" loading="lazy">
+                        <span class="portfolio-badge">Games</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>HTML5 Games</h3>
+                        <p data-i18n="portfolio.games.desc">Collezione di 10+ giochi arcade HTML5. Canvas puro, zero dipendenze, touch-ready. Disponibili su marketplace internazionali.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5 Canvas</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                            <span class="portfolio-tag">Game Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Automation -->
+                <div class="portfolio-card fade-in" data-category="social">
+                    <div class="portfolio-card-img" style="background: linear-gradient(135deg, #3d5a80 0%, #2ec4b2 100%); display: flex; align-items: center; justify-content: center;">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span class="portfolio-badge">Social</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>Social Media Automation</h3>
+                        <p data-i18n="portfolio.social.desc">Pipeline automatizzata per la gestione social dei clienti. Programmazione post, contenuti AI-generated e analisi performance.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Node.js</span>
+                            <span class="portfolio-tag">API Meta</span>
+                            <span class="portfolio-tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CHI SIAMO ========== -->
+    <section class="about" id="chi-siamo">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <div class="section-label" data-i18n="about.label">Chi siamo</div>
+                    <h2 class="section-title" data-i18n="about.title">Il Nostro Approccio</h2>
+                    <p data-i18n="about.p1">EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, IoT industriale e soluzioni digitali.</p>
+                    <p data-i18n="about.p2">Operiamo dalla Sicilia per clienti in tutta Italia, con un approccio artigianale che mette al centro la qualità del codice e la soddisfazione del cliente.</p>
+                    <p data-i18n="about.p3">Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l'architettura e sviluppiamo con le tecnologie più adatte.</p>
+                </div>
+                <div class="values-grid fade-in">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h4 data-i18n="about.value1">Artigianalit&agrave; Digitale</h4>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <h4 data-i18n="about.value2">Soluzioni su Misura</h4>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </div>
+                        <h4 data-i18n="about.value3">Risultati Misurabili</h4>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h4 data-i18n="about.value4">Supporto Diretto</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TECHNOLOGIES ========== -->
+    <section class="technologies" id="tecnologie">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label" data-i18n="tech.label">Il nostro stack</div>
+                <h2 class="section-title" data-i18n="tech.title">Tecnologie</h2>
+                <p class="section-subtitle" data-i18n="tech.subtitle">Strumenti e tecnologie che utilizziamo quotidianamente per realizzare i nostri progetti.</p>
+            </div>
+            <div class="tech-categories fade-in">
+                <div class="tech-category">
+                    <h3>Frontend</h3>
+                    <div class="tech-list">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Vue.js</span>
+                        <span class="tech-badge">Tailwind CSS</span>
+                        <span class="tech-badge">HTML5 Canvas</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Backend</h3>
+                    <div class="tech-list">
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Express</span>
+                        <span class="tech-badge">Java</span>
+                        <span class="tech-badge">Spring Boot</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Database</h3>
+                    <div class="tech-list">
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">MongoDB</span>
+                        <span class="tech-badge">Prisma</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>IoT</h3>
+                    <div class="tech-list">
+                        <span class="tech-badge">Node-RED</span>
+                        <span class="tech-badge">OPC-UA</span>
+                        <span class="tech-badge">MQTT</span>
+                        <span class="tech-badge">Modbus</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="tech-list">
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">PM2</span>
+                        <span class="tech-badge">GitHub Pages</span>
+                        <span class="tech-badge">Cloudflare</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contatti">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label" data-i18n="contact.label">Parliamone</div>
+                <h2 class="section-title" data-i18n="contact.title">Contattaci</h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Hai un progetto in mente? Scrivici e ti risponderemo entro 24 ore.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3 data-i18n="contact.info.title">Iniziamo a collaborare</h3>
+                    <p data-i18n="contact.info.desc">Che tu abbia bisogno di un sito web, un gestionale, una soluzione IoT o una strategia digitale, siamo pronti ad ascoltarti.</p>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="contact-detail-text">
+                            info@emcdigitalsolutions.it
+                            <small>Email</small>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="contact-detail-text" data-i18n="contact.location">
+                            Sicilia, Italia
+                            <small>Operiamo in tutta Italia</small>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form fade-in" id="contactForm" action="https://formsubmit.co/info@emcdigitalsolutions.it" method="POST">
+                    <input type="hidden" name="_subject" value="Nuovo messaggio dal sito EMC Digital Solutions">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    <div class="form-group">
+                        <label for="name" data-i18n="contact.form.name">Nome</label>
+                        <input type="text" id="name" name="name" required data-i18n-placeholder="contact.form.namePlaceholder" placeholder="Il tuo nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required data-i18n-placeholder="contact.form.emailPlaceholder" placeholder="La tua email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-i18n="contact.form.message">Messaggio</label>
+                        <textarea id="message" name="message" required data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="Raccontaci il tuo progetto..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit" data-i18n="contact.form.send">Invia Messaggio</button>
+                    <div class="form-status" id="formStatus"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="logo-bars-footer" x1="0" y1="0" x2="40" y2="32" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#5b7da6"/>
+                                    <stop offset="1" stop-color="#2ec4b2"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M2 5L18 1L18 5L5 8Z" fill="url(#logo-bars-footer)"/>
+                            <path d="M2 14L18 10L18 14L5 17Z" fill="url(#logo-bars-footer)"/>
+                            <path d="M2 23L18 19L18 23L5 26Z" fill="url(#logo-bars-footer)"/>
+                        </svg>
+                        <span>EMC Digital Solutions</span>
+                    </div>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, IoT e strategie digitali dalla Sicilia.</p>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
+                        <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                        <li><a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                        <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.services">Servizi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servizi" data-i18n="services.web.title">Sviluppo Web</a></li>
+                        <li><a href="#servizi" data-i18n="services.iot.title">IoT & Industria 4.0</a></li>
+                        <li><a href="#servizi" data-i18n="services.saas.title">Software SaaS</a></li>
+                        <li><a href="#servizi" data-i18n="services.social.title">Social Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 EMC Digital Solutions. <span data-i18n="footer.rights">Tutti i diritti riservati.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== COOKIE BANNER ========== -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p data-i18n="cookie.text">Questo sito utilizza cookie tecnici per migliorare la tua esperienza di navigazione. Continuando a navigare, accetti l'utilizzo dei cookie.</p>
+        <button class="cookie-btn" id="cookieAccept" data-i18n="cookie.accept">Accetto</button>
+    </div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+    (function() {
+        'use strict';
+
+        /* ==================== i18n ==================== */
+        const translations = {
+            it: {
+                'nav.services': 'Servizi',
+                'nav.portfolio': 'Portfolio',
+                'nav.about': 'Chi Siamo',
+                'nav.contact': 'Contatti',
+                'hero.label': 'Software House — Sicilia, Italia',
+                'hero.title': '<span class="accent">Soluzioni Digitali</span><br>su Misura',
+                'hero.subtitle': 'Sviluppo software, IoT industriale e strategie digitali per far crescere il tuo business.',
+                'hero.cta1': 'Scopri i Servizi',
+                'hero.cta2': 'Contattaci',
+                'hero.stat1': '+ anni di esperienza',
+                'hero.stat2': '+ progetti realizzati',
+                'hero.stat3': '+ tecnologie',
+                'services.label': 'Cosa facciamo',
+                'services.title': 'I Nostri Servizi',
+                'services.subtitle': "Dall'idea alla realizzazione, affianchiamo ogni progetto con competenza e attenzione ai dettagli.",
+                'services.web.title': 'Sviluppo Web',
+                'services.web.desc': 'Siti vetrina, e-commerce e web app. Design mobile-first, SEO ottimizzato, performance elevate.',
+                'services.iot.title': 'IoT & Industria 4.0',
+                'services.iot.desc': 'Monitoraggio CNC, telemetria in tempo reale, digital twin ed edge computing per l\'industria manifatturiera.',
+                'services.saas.title': 'Software SaaS',
+                'services.saas.desc': 'Gestionali cloud multi-tenant, ERP e piattaforme SaaS con architettura scalabile e sicura.',
+                'services.social.title': 'Social Media Management',
+                'services.social.desc': 'Gestione pagine social, creazione contenuti e campagne sponsorizzate geolocalizzate.',
+                'services.games.title': 'HTML5 Games',
+                'services.games.desc': 'Giochi arcade per browser e mobile. Zero dipendenze, performance native, pronti per i marketplace.',
+                'portfolio.label': 'I nostri lavori',
+                'portfolio.title': 'Portfolio',
+                'portfolio.subtitle': 'Una selezione di progetti realizzati per clienti in diversi settori.',
+                'portfolio.filter.all': 'Tutti',
+                'portfolio.filter.web': 'Web',
+                'portfolio.filter.iot': 'IoT',
+                'portfolio.filter.saas': 'SaaS',
+                'portfolio.filter.games': 'Games',
+                'portfolio.filter.social': 'Social',
+                'portfolio.viewProject': 'Visita il sito',
+                'portfolio.rtindustry.desc': 'Piattaforma di monitoraggio industriale per macchine CNC. Telemetria in tempo reale, OEE, allarmi e digital twin.',
+                'portfolio.stockflow.desc': 'Gestionale cloud multi-tenant per il retail. Magazzino, vendite, fatturazione elettronica e analytics integrati.',
+                'portfolio.grandifirme.desc': 'Sito vetrina per outlet di abbigliamento bambini. Catalogo prodotti integrato con gestionale StockflowERP.',
+                'portfolio.prenoty.desc': 'Piattaforma SaaS per la gestione prenotazioni e appuntamenti, con calendario intelligente e notifiche automatiche.',
+                'portfolio.kleinbaby.desc': 'Sito e-commerce per negozio di abbigliamento bambini. Catalogo dinamico collegato a StockflowERP.',
+                'portfolio.herbora.desc': 'Sito vetrina per erboristeria con design "Botanical Editorial". Catalogo prodotti, blog e integrazione social.',
+                'portfolio.giulianalagreca.desc': 'Sito istituzionale per agenzia di onoranze funebri. Design sobrio ed elegante con focus sulla comunicazione empatica.',
+                'portfolio.fratellidirosa.desc': 'Sito istituzionale per agenzia funebre. Design professionale con servizi dettagliati e contatti immediati.',
+                'portfolio.studioschembri.desc': 'Sito professionale per studio commercialista. Area informativa con servizi, consulenze e contatti multi-sede.',
+                'portfolio.games.desc': 'Collezione di 10+ giochi arcade HTML5. Canvas puro, zero dipendenze, touch-ready. Disponibili su marketplace internazionali.',
+                'portfolio.social.desc': 'Pipeline automatizzata per la gestione social dei clienti. Programmazione post, contenuti AI-generated e analisi performance.',
+                'about.label': 'Chi siamo',
+                'about.title': 'Il Nostro Approccio',
+                'about.p1': 'EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, IoT industriale e soluzioni digitali.',
+                'about.p2': 'Operiamo dalla Sicilia per clienti in tutta Italia, con un approccio artigianale che mette al centro la qualità del codice e la soddisfazione del cliente.',
+                'about.p3': 'Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l\'architettura e sviluppiamo con le tecnologie più adatte.',
+                'about.value1': 'Artigianalità Digitale',
+                'about.value2': 'Soluzioni su Misura',
+                'about.value3': 'Risultati Misurabili',
+                'about.value4': 'Supporto Diretto',
+                'tech.label': 'Il nostro stack',
+                'tech.title': 'Tecnologie',
+                'tech.subtitle': 'Strumenti e tecnologie che utilizziamo quotidianamente per realizzare i nostri progetti.',
+                'contact.label': 'Parliamone',
+                'contact.title': 'Contattaci',
+                'contact.subtitle': 'Hai un progetto in mente? Scrivici e ti risponderemo entro 24 ore.',
+                'contact.info.title': 'Iniziamo a collaborare',
+                'contact.info.desc': 'Che tu abbia bisogno di un sito web, un gestionale, una soluzione IoT o una strategia digitale, siamo pronti ad ascoltarti.',
+                'contact.location': 'Sicilia, Italia<small>Operiamo in tutta Italia</small>',
+                'contact.form.name': 'Nome',
+                'contact.form.namePlaceholder': 'Il tuo nome',
+                'contact.form.emailPlaceholder': 'La tua email',
+                'contact.form.message': 'Messaggio',
+                'contact.form.messagePlaceholder': 'Raccontaci il tuo progetto...',
+                'contact.form.send': 'Invia Messaggio',
+                'contact.form.success': 'Messaggio inviato con successo! Ti risponderemo presto.',
+                'contact.form.error': 'Si è verificato un errore. Riprova più tardi.',
+                'footer.desc': 'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, IoT e strategie digitali dalla Sicilia.',
+                'footer.quicklinks': 'Link Rapidi',
+                'footer.services': 'Servizi',
+                'footer.rights': 'Tutti i diritti riservati.',
+                'cookie.text': 'Questo sito utilizza cookie tecnici per migliorare la tua esperienza di navigazione. Continuando a navigare, accetti l\'utilizzo dei cookie.',
+                'cookie.accept': 'Accetto'
+            },
+            en: {
+                'nav.services': 'Services',
+                'nav.portfolio': 'Portfolio',
+                'nav.about': 'About Us',
+                'nav.contact': 'Contact',
+                'hero.label': 'Software House — Sicily, Italy',
+                'hero.title': '<span class="accent">Tailored Digital</span><br>Solutions',
+                'hero.subtitle': 'Software development, industrial IoT, and digital strategies to grow your business.',
+                'hero.cta1': 'Explore Services',
+                'hero.cta2': 'Contact Us',
+                'hero.stat1': '+ years of experience',
+                'hero.stat2': '+ projects delivered',
+                'hero.stat3': '+ technologies',
+                'services.label': 'What we do',
+                'services.title': 'Our Services',
+                'services.subtitle': 'From concept to delivery, we support every project with expertise and attention to detail.',
+                'services.web.title': 'Web Development',
+                'services.web.desc': 'Business websites, e-commerce, and web apps. Mobile-first design, SEO optimized, high performance.',
+                'services.iot.title': 'IoT & Industry 4.0',
+                'services.iot.desc': 'CNC monitoring, real-time telemetry, digital twin, and edge computing for manufacturing.',
+                'services.saas.title': 'SaaS Software',
+                'services.saas.desc': 'Multi-tenant cloud management systems, ERP, and SaaS platforms with scalable, secure architecture.',
+                'services.social.title': 'Social Media Management',
+                'services.social.desc': 'Social page management, content creation, and geo-targeted sponsored campaigns.',
+                'services.games.title': 'HTML5 Games',
+                'services.games.desc': 'Arcade games for browser and mobile. Zero dependencies, native performance, marketplace-ready.',
+                'portfolio.label': 'Our work',
+                'portfolio.title': 'Portfolio',
+                'portfolio.subtitle': 'A selection of projects delivered for clients across different industries.',
+                'portfolio.filter.all': 'All',
+                'portfolio.filter.web': 'Web',
+                'portfolio.filter.iot': 'IoT',
+                'portfolio.filter.saas': 'SaaS',
+                'portfolio.filter.games': 'Games',
+                'portfolio.filter.social': 'Social',
+                'portfolio.viewProject': 'Visit website',
+                'portfolio.rtindustry.desc': 'Industrial monitoring platform for CNC machines. Real-time telemetry, OEE, alarms, and digital twin.',
+                'portfolio.stockflow.desc': 'Multi-tenant cloud ERP for retail. Inventory, sales, electronic invoicing, and integrated analytics.',
+                'portfolio.grandifirme.desc': "Business website for children's clothing outlet. Product catalog integrated with StockflowERP.",
+                'portfolio.prenoty.desc': 'SaaS platform for booking and appointment management, with smart calendar and automatic notifications.',
+                'portfolio.kleinbaby.desc': "E-commerce website for children's clothing store. Dynamic catalog connected to StockflowERP.",
+                'portfolio.herbora.desc': 'Business website for herbal shop with "Botanical Editorial" design. Product catalog, blog, and social integration.',
+                'portfolio.giulianalagreca.desc': 'Institutional website for funeral home. Sober and elegant design focused on empathetic communication.',
+                'portfolio.fratellidirosa.desc': 'Institutional website for funeral agency. Professional design with detailed services and immediate contacts.',
+                'portfolio.studioschembri.desc': 'Professional website for accounting firm. Informative area with services, consultancy, and multi-location contacts.',
+                'portfolio.games.desc': '10+ HTML5 arcade games collection. Pure Canvas, zero dependencies, touch-ready. Available on international marketplaces.',
+                'portfolio.social.desc': 'Automated pipeline for client social media management. Post scheduling, AI-generated content, and performance analysis.',
+                'about.label': 'About us',
+                'about.title': 'Our Approach',
+                'about.p1': 'EMC Digital Solutions is a team of professionals with over 15 years of experience in software development, industrial IoT, and digital solutions.',
+                'about.p2': 'We operate from Sicily for clients across Italy, with a craftsman approach that puts code quality and client satisfaction at the center.',
+                'about.p3': 'Every project is a tailored solution: we analyze requirements, design the architecture, and develop with the most suitable technologies.',
+                'about.value1': 'Digital Craftsmanship',
+                'about.value2': 'Tailored Solutions',
+                'about.value3': 'Measurable Results',
+                'about.value4': 'Direct Support',
+                'tech.label': 'Our stack',
+                'tech.title': 'Technologies',
+                'tech.subtitle': 'Tools and technologies we use daily to build our projects.',
+                'contact.label': "Let's talk",
+                'contact.title': 'Contact Us',
+                'contact.subtitle': "Have a project in mind? Write to us and we'll reply within 24 hours.",
+                'contact.info.title': "Let's start collaborating",
+                'contact.info.desc': 'Whether you need a website, a management system, an IoT solution, or a digital strategy, we are ready to listen.',
+                'contact.location': 'Sicily, Italy<small>We work across all of Italy</small>',
+                'contact.form.name': 'Name',
+                'contact.form.namePlaceholder': 'Your name',
+                'contact.form.emailPlaceholder': 'Your email',
+                'contact.form.message': 'Message',
+                'contact.form.messagePlaceholder': 'Tell us about your project...',
+                'contact.form.send': 'Send Message',
+                'contact.form.success': 'Message sent successfully! We will get back to you soon.',
+                'contact.form.error': 'An error occurred. Please try again later.',
+                'footer.desc': 'Tailored digital solutions for businesses that want to grow. Software development, IoT, and digital strategies from Sicily.',
+                'footer.quicklinks': 'Quick Links',
+                'footer.services': 'Services',
+                'footer.rights': 'All rights reserved.',
+                'cookie.text': 'This website uses technical cookies to improve your browsing experience. By continuing to browse, you accept the use of cookies.',
+                'cookie.accept': 'Accept'
+            }
+        };
+
+        let currentLang = localStorage.getItem('emc-lang') || 'it';
+
+        function applyTranslations(lang) {
+            currentLang = lang;
+            localStorage.setItem('emc-lang', lang);
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-html');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            // Special: contact location uses innerHTML
+            var locEl = document.querySelector('[data-i18n="contact.location"]');
+            if (locEl && translations[lang] && translations[lang]['contact.location']) {
+                locEl.innerHTML = translations[lang]['contact.location'];
+            }
+
+            // Update toggle labels
+            var nextLang = lang === 'it' ? 'EN' : 'IT';
+            var labelEl = document.getElementById('langLabel');
+            var labelMobileEl = document.getElementById('langLabelMobile');
+            if (labelEl) labelEl.textContent = nextLang;
+            if (labelMobileEl) labelMobileEl.textContent = nextLang;
+        }
+
+        function toggleLang() {
+            applyTranslations(currentLang === 'it' ? 'en' : 'it');
+        }
+
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+
+        // Apply stored language on load
+        if (currentLang !== 'it') {
+            applyTranslations(currentLang);
+        }
+
+        /* ==================== NAVBAR ==================== */
+        var navbar = document.getElementById('navbar');
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        /* ==================== COUNTER ANIMATION ==================== */
+        var countersStarted = false;
+
+        function animateCounters() {
+            if (countersStarted) return;
+            var counters = document.querySelectorAll('.hero-stat .number');
+            var heroSection = document.getElementById('hero');
+            var rect = heroSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                countersStarted = true;
+                counters.forEach(function(counter) {
+                    var target = parseInt(counter.getAttribute('data-count'));
+                    var current = 0;
+                    var increment = target / 40;
+                    var timer = setInterval(function() {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current);
+                        }
+                    }, 40);
+                });
+            }
+        }
+
+        window.addEventListener('scroll', animateCounters);
+        animateCounters(); // Check on load
+
+        /* ==================== FADE-IN (IntersectionObserver) ==================== */
+        var fadeElements = document.querySelectorAll('.fade-in');
+        if ('IntersectionObserver' in window) {
+            var fadeObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            fadeElements.forEach(function(el) {
+                fadeObserver.observe(el);
+            });
+        } else {
+            fadeElements.forEach(function(el) {
+                el.classList.add('visible');
+            });
+        }
+
+        /* ==================== PORTFOLIO FILTER ==================== */
+        var filterBtns = document.querySelectorAll('.filter-btn');
+        var portfolioCards = document.querySelectorAll('.portfolio-card');
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var filter = this.getAttribute('data-filter');
+
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                this.classList.add('active');
+
+                portfolioCards.forEach(function(card) {
+                    var categories = card.getAttribute('data-category');
+                    if (filter === 'all' || categories.indexOf(filter) !== -1) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        /* ==================== CONTACT FORM ==================== */
+        var contactForm = document.getElementById('contactForm');
+        var formStatus = document.getElementById('formStatus');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(contactForm);
+
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(function(response) {
+                if (response.ok) {
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = translations[currentLang]['contact.form.success'];
+                    contactForm.reset();
+                } else {
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = translations[currentLang]['contact.form.error'];
+                }
+            }).catch(function() {
+                formStatus.className = 'form-status error';
+                formStatus.textContent = translations[currentLang]['contact.form.error'];
+            });
+        });
+
+        /* ==================== COOKIE BANNER ==================== */
+        var cookieBanner = document.getElementById('cookieBanner');
+        var cookieAccept = document.getElementById('cookieAccept');
+
+        if (!localStorage.getItem('emc-cookies-accepted')) {
+            cookieBanner.classList.add('show');
+        }
+
+        cookieAccept.addEventListener('click', function() {
+            localStorage.setItem('emc-cookies-accepted', 'true');
+            cookieBanner.classList.remove('show');
+        });
+
+        /* ==================== ACTIVE NAV LINK ==================== */
+        var sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', function() {
+            var scrollPos = window.scrollY + 120;
+            sections.forEach(function(section) {
+                var top = section.offsetTop;
+                var height = section.offsetHeight;
+                var id = section.getAttribute('id');
+                var link = document.querySelector('.nav-links a[href="#' + id + '"]');
+                if (link) {
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+    })();
+    </script>
+
+</body>
+</html>
