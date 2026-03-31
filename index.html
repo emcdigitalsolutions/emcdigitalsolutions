@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMC Digital Solutions — Sviluppo Software, IoT, Soluzioni Digitali | Sicilia</title>
-    <meta name="description" content="EMC Digital Solutions: sviluppo software, IoT industriale, SaaS e soluzioni digitali su misura. Operiamo dalla Sicilia per clienti in tutta Italia.">
-    <meta name="keywords" content="sviluppo software sicilia, azienda web sicilia, IoT industria 4.0, sviluppo web, SaaS, ERP, Node-RED, React, gestionali cloud, social media management">
+    <title>EMC Digital Solutions — Sviluppo Software, SaaS, Soluzioni Digitali | Sicilia</title>
+    <meta name="description" content="EMC Digital Solutions: sviluppo software, SaaS e soluzioni digitali su misura. Operiamo dalla Sicilia per clienti in tutta Italia.">
+    <meta name="keywords" content="sviluppo software sicilia, azienda web sicilia, sviluppo web, SaaS, ERP, React, gestionali cloud, social media management, HTML5 games">
     <meta name="author" content="EMC Digital Solutions">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://emcdigitalsolutions.it">
 
     <!-- Open Graph -->
     <meta property="og:title" content="EMC Digital Solutions — Soluzioni Digitali su Misura">
-    <meta property="og:description" content="Sviluppo software, IoT industriale e strategie digitali per far crescere il tuo business. Sicilia, Italia.">
+    <meta property="og:description" content="Sviluppo software, SaaS e strategie digitali per far crescere il tuo business. Sicilia, Italia.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://emcdigitalsolutions.it">
     <meta property="og:locale" content="it_IT">
@@ -28,7 +28,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareCompany",
         "name": "EMC Digital Solutions",
-        "description": "Sviluppo software, IoT industriale, SaaS e soluzioni digitali su misura.",
+        "description": "Sviluppo software, SaaS e soluzioni digitali su misura.",
         "url": "https://emcdigitalsolutions.it",
         "areaServed": "IT",
         "address": {
@@ -36,8 +36,8 @@
             "addressRegion": "Sicilia",
             "addressCountry": "IT"
         },
-        "knowsAbout": ["Software Development", "IoT", "Industry 4.0", "SaaS", "Web Development", "HTML5 Games"],
-        "serviceType": ["Web Development", "IoT Solutions", "SaaS Development", "Social Media Management", "HTML5 Game Development"]
+        "knowsAbout": ["Software Development", "SaaS", "Web Development", "HTML5 Games", "Social Media Management"],
+        "serviceType": ["Web Development", "SaaS Development", "Social Media Management", "HTML5 Game Development"]
     }
     </script>
 
@@ -46,37 +46,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <script>
-        // Apply theme immediately to prevent flash (dark is default)
-        if (localStorage.getItem('emc-theme') !== 'light') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-    </script>
-
     <style>
         /* ========== RESET & BASE ========== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f5f3ef;
-            --bg-card: #ffffff;
-            --accent: #1e3a8a;
-            --accent-light: #3b6dd4;
-            --accent-vivid: #d4a017;
-            --accent-vivid-hover: #b8860b;
-            --text-primary: #0f172a;
-            --text-secondary: #6b7280;
-            --border: #e2ddd3;
-            --shadow: rgba(0,0,0,0.06);
-            --shadow-lg: rgba(0,0,0,0.1);
-            --radius: 12px;
-            --radius-sm: 8px;
-            --nav-height: 72px;
-        }
-
-        /* ========== DARK MODE ========== */
-        [data-theme="dark"] {
             --bg-primary: #0c1120;
             --bg-secondary: #131b2e;
             --bg-card: #172035;
@@ -89,25 +63,9 @@
             --border: #263354;
             --shadow: rgba(0,0,0,0.2);
             --shadow-lg: rgba(0,0,0,0.35);
-        }
-        [data-theme="dark"] .navbar.scrolled {
-            background: rgba(12, 17, 32, 0.88);
-        }
-        [data-theme="dark"] .mobile-menu {
-            background: rgba(19, 27, 46, 0.98);
-        }
-        [data-theme="dark"] .hero {
-            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
-        }
-        [data-theme="dark"] .portfolio-badge {
-            background: rgba(23, 32, 53, 0.92);
-            color: var(--accent-vivid);
-        }
-        [data-theme="dark"] .footer {
-            background: #080d1a;
-        }
-        [data-theme="dark"] .cookie-banner {
-            background: #080d1a;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --nav-height: 72px;
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
@@ -272,7 +230,7 @@
             width: 100%;
             height: 100%;
         }
-        [data-theme="dark"] .hero-particle { opacity: 0.22; }
+        .hero-particle { opacity: 0.22; }
         .hero-particle:nth-child(1) { width: 70px; height: 70px; top: 12%; left: 68%; animation-duration: 9s; }
         .hero-particle:nth-child(2) { width: 50px; height: 50px; top: 55%; left: 82%; animation-duration: 11s; animation-delay: -2s; }
         .hero-particle:nth-child(3) { width: 90px; height: 90px; top: 28%; left: 88%; animation-duration: 13s; animation-delay: -4s; }
@@ -419,7 +377,7 @@
         }
 
         .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(12, 17, 32, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             box-shadow: 0 1px 12px var(--shadow);
@@ -505,10 +463,6 @@
             color: var(--accent);
         }
 
-        #themeToggleHamburger {
-            display: none;
-        }
-
         .hamburger {
             display: none;
             flex-direction: column;
@@ -542,7 +496,7 @@
             top: var(--nav-height);
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(19, 27, 46, 0.98);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 24px;
@@ -578,7 +532,7 @@
             display: flex;
             align-items: center;
             position: relative;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #f0ece4 100%);
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
             overflow: hidden;
             padding-top: var(--nav-height);
         }
@@ -875,8 +829,9 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             border-radius: 16px;
-            background: rgba(255,255,255,0.92);
+            background: rgba(23, 32, 53, 0.92);
             backdrop-filter: blur(8px);
+            color: var(--accent-vivid);
             color: var(--accent);
         }
 
@@ -1170,7 +1125,7 @@
 
         /* ========== FOOTER ========== */
         .footer {
-            background: var(--text-primary);
+            background: #080d1a;
             color: #fff;
             padding: 60px 0 30px;
         }
@@ -1242,7 +1197,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--text-primary);
+            background: #080d1a;
             color: #fff;
             padding: 20px 24px;
             display: none;
@@ -1278,30 +1233,6 @@
         .cookie-btn:hover {
             background: var(--accent-vivid-hover);
         }
-
-        /* ========== THEME TOGGLE ========== */
-        .theme-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: var(--text-secondary);
-        }
-        .theme-toggle:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-        .theme-toggle svg { width: 18px; height: 18px; }
-        .theme-toggle .icon-moon { display: block; }
-        .theme-toggle .icon-sun { display: none; }
-        [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-        [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
         /* ========== GAMES SECTION ========== */
         .games-grid {
@@ -1419,9 +1350,6 @@
             .nav-links {
                 display: none;
             }
-            #themeToggleHamburger {
-                display: flex;
-            }
             .hamburger {
                 display: flex;
             }
@@ -1535,17 +1463,7 @@
                         <span id="langLabel">EN</span>
                     </button>
                 </li>
-                <li>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    </button>
-                </li>
             </ul>
-            <button class="theme-toggle" id="themeToggleHamburger" aria-label="Toggle dark mode" style="margin-right:8px">
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            </button>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
@@ -1589,7 +1507,7 @@
             <div class="hero-content">
                 <div class="hero-label" data-i18n="hero.label">Software House — Sicilia, Italia</div>
                 <h1 data-i18n-html="hero.title"><span class="accent">Soluzioni Digitali</span><br>su Misura<span class="typing-cursor">|</span></h1>
-                <p data-i18n="hero.subtitle">Sviluppo software, IoT industriale e strategie digitali per far crescere il tuo business.</p>
+                <p data-i18n="hero.subtitle">Sviluppo software, SaaS e strategie digitali per far crescere il tuo business.</p>
                 <div class="hero-cta">
                     <a href="#servizi" class="btn-primary" data-i18n="hero.cta1">Scopri i Servizi</a>
                     <a href="#contatti" class="btn-outline" data-i18n="hero.cta2">Contattaci</a>
@@ -1629,15 +1547,6 @@
                     </div>
                     <h3 data-i18n="services.web.title">Sviluppo Web</h3>
                     <p data-i18n="services.web.desc">Siti vetrina, e-commerce e web app. Design mobile-first, SEO ottimizzato, performance elevate.</p>
-                </div>
-
-                <!-- IoT -->
-                <div class="service-card fade-in stagger-2">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
-                    </div>
-                    <h3 data-i18n="services.iot.title">IoT & Industria 4.0</h3>
-                    <p data-i18n="services.iot.desc">Monitoraggio CNC, telemetria in tempo reale, digital twin ed edge computing per l'industria manifatturiera.</p>
                 </div>
 
                 <!-- SaaS -->
@@ -1685,7 +1594,6 @@
             <div class="portfolio-filters fade-in">
                 <button class="filter-btn active" data-filter="all" data-i18n="portfolio.filter.all">Tutti</button>
                 <button class="filter-btn" data-filter="web" data-i18n="portfolio.filter.web">Web</button>
-                <button class="filter-btn" data-filter="iot" data-i18n="portfolio.filter.iot">IoT</button>
                 <button class="filter-btn" data-filter="saas" data-i18n="portfolio.filter.saas">SaaS</button>
                 <button class="filter-btn" data-filter="games" data-i18n="portfolio.filter.games">Games</button>
                 <button class="filter-btn" data-filter="social" data-i18n="portfolio.filter.social">Social</button>
@@ -1849,7 +1757,7 @@
                 <div class="about-text fade-in-left">
                     <div class="section-label" data-i18n="about.label">Chi siamo</div>
                     <h2 class="section-title" data-i18n="about.title">Il Nostro Approccio</h2>
-                    <p data-i18n="about.p1">EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, IoT industriale e soluzioni digitali.</p>
+                    <p data-i18n="about.p1">EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, SaaS e soluzioni digitali.</p>
                     <p data-i18n="about.p2">Operiamo per clienti nazionali ed internazionali, con un approccio professionale e personalizzato sulle esigenze del cliente, che mette al centro la tecnologia allo stato dell'arte, la qualità del codice e la soddisfazione del cliente.</p>
                     <p data-i18n="about.p3">Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l'architettura e sviluppiamo con le tecnologie più adatte.</p>
                 </div>
@@ -1920,15 +1828,6 @@
                         <span class="tech-badge">PostgreSQL</span>
                         <span class="tech-badge">MongoDB</span>
                         <span class="tech-badge">Prisma</span>
-                    </div>
-                </div>
-                <div class="tech-category">
-                    <h3>IoT</h3>
-                    <div class="tech-list">
-                        <span class="tech-badge">Node-RED</span>
-                        <span class="tech-badge">OPC-UA</span>
-                        <span class="tech-badge">MQTT</span>
-                        <span class="tech-badge">Modbus</span>
                     </div>
                 </div>
                 <div class="tech-category">
@@ -2073,7 +1972,7 @@
             <div class="contact-grid">
                 <div class="contact-info fade-in">
                     <h3 data-i18n="contact.info.title">Iniziamo a collaborare</h3>
-                    <p data-i18n="contact.info.desc">Che tu abbia bisogno di un sito web, un gestionale, una soluzione IoT o una strategia digitale, siamo pronti ad ascoltarti.</p>
+                    <p data-i18n="contact.info.desc">Che tu abbia bisogno di un sito web, un gestionale, un SaaS o una strategia digitale, siamo pronti ad ascoltarti.</p>
                     <div class="contact-detail">
                         <div class="contact-detail-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -2142,7 +2041,7 @@
                         </svg>
                         <span>Digital Solutions</span>
                     </div>
-                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, IoT e strategie digitali dalla Sicilia.</p>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
                 </div>
                 <div>
                     <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
@@ -2158,7 +2057,6 @@
                     <h4 data-i18n="footer.services">Servizi</h4>
                     <ul class="footer-links">
                         <li><a href="#servizi" data-i18n="services.web.title">Sviluppo Web</a></li>
-                        <li><a href="#servizi" data-i18n="services.iot.title">IoT & Industria 4.0</a></li>
                         <li><a href="#servizi" data-i18n="services.saas.title">Software SaaS</a></li>
                         <li><a href="#servizi" data-i18n="services.social.title">Social Media</a></li>
                     </ul>
@@ -2190,7 +2088,7 @@
                 'nav.contact': 'Contatti',
                 'hero.label': 'Software House — Sicilia, Italia',
                 'hero.title': '<span class="accent">Soluzioni Digitali</span><br>su Misura<span class="typing-cursor">|</span>',
-                'hero.subtitle': 'Sviluppo software, IoT industriale e strategie digitali per far crescere il tuo business.',
+                'hero.subtitle': 'Sviluppo software, SaaS e strategie digitali per far crescere il tuo business.',
                 'hero.cta1': 'Scopri i Servizi',
                 'hero.cta2': 'Contattaci',
                 'hero.stat1': '+ anni di esperienza',
@@ -2201,8 +2099,6 @@
                 'services.subtitle': "Dall'idea alla realizzazione, affianchiamo ogni progetto con competenza e attenzione ai dettagli.",
                 'services.web.title': 'Sviluppo Web',
                 'services.web.desc': 'Siti vetrina, e-commerce e web app. Design mobile-first, SEO ottimizzato, performance elevate.',
-                'services.iot.title': 'IoT & Industria 4.0',
-                'services.iot.desc': 'Monitoraggio CNC, telemetria in tempo reale, digital twin ed edge computing per l\'industria manifatturiera.',
                 'services.saas.title': 'Software SaaS',
                 'services.saas.desc': 'Gestionali cloud multi-tenant, ERP e piattaforme SaaS con architettura scalabile e sicura.',
                 'services.social.title': 'Social Media Management',
@@ -2214,7 +2110,6 @@
                 'portfolio.subtitle': 'Una selezione di progetti realizzati per clienti in diversi settori.',
                 'portfolio.filter.all': 'Tutti',
                 'portfolio.filter.web': 'Web',
-                'portfolio.filter.iot': 'IoT',
                 'portfolio.filter.saas': 'SaaS',
                 'portfolio.filter.games': 'Games',
                 'portfolio.filter.social': 'Social',
@@ -2229,7 +2124,7 @@
                 'portfolio.social.desc': 'Pipeline automatizzata per la gestione social dei clienti. Programmazione post, contenuti AI-generated e analisi performance.',
                 'about.label': 'Chi siamo',
                 'about.title': 'Il Nostro Approccio',
-                'about.p1': 'EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, IoT industriale e soluzioni digitali.',
+                'about.p1': 'EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, SaaS e soluzioni digitali.',
                 'about.p2': 'Operiamo per clienti nazionali ed internazionali, con un approccio professionale e personalizzato sulle esigenze del cliente, che mette al centro la tecnologia allo stato dell\'arte, la qualità del codice e la soddisfazione del cliente.',
                 'about.p3': 'Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l\'architettura e sviluppiamo con le tecnologie più adatte.',
                 'about.value1': 'Artigianalità Digitale',
@@ -2243,7 +2138,7 @@
                 'contact.title': 'Contattaci',
                 'contact.subtitle': 'Hai un progetto in mente? Scrivici e ti risponderemo entro 24 ore.',
                 'contact.info.title': 'Iniziamo a collaborare',
-                'contact.info.desc': 'Che tu abbia bisogno di un sito web, un gestionale, una soluzione IoT o una strategia digitale, siamo pronti ad ascoltarti.',
+                'contact.info.desc': 'Che tu abbia bisogno di un sito web, un gestionale, un SaaS o una strategia digitale, siamo pronti ad ascoltarti.',
                 'contact.location': 'Sicilia, Italia<small>Operiamo in tutta Italia</small>',
                 'contact.form.name': 'Nome',
                 'contact.form.namePlaceholder': 'Il tuo nome',
@@ -2253,7 +2148,7 @@
                 'contact.form.send': 'Invia Messaggio',
                 'contact.form.success': 'Messaggio inviato con successo! Ti risponderemo presto.',
                 'contact.form.error': 'Si è verificato un errore. Riprova più tardi.',
-                'footer.desc': 'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, IoT e strategie digitali dalla Sicilia.',
+                'footer.desc': 'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
                 'footer.quicklinks': 'Link Rapidi',
                 'footer.services': 'Servizi',
                 'footer.rights': 'Tutti i diritti riservati.',
@@ -2282,7 +2177,7 @@
                 'nav.contact': 'Contact',
                 'hero.label': 'Software House — Sicily, Italy',
                 'hero.title': '<span class="accent">Tailored Digital</span><br>Solutions<span class="typing-cursor">|</span>',
-                'hero.subtitle': 'Software development, industrial IoT, and digital strategies to grow your business.',
+                'hero.subtitle': 'Software development, SaaS, and digital strategies to grow your business.',
                 'hero.cta1': 'Explore Services',
                 'hero.cta2': 'Contact Us',
                 'hero.stat1': '+ years of experience',
@@ -2293,8 +2188,6 @@
                 'services.subtitle': 'From concept to delivery, we support every project with expertise and attention to detail.',
                 'services.web.title': 'Web Development',
                 'services.web.desc': 'Business websites, e-commerce, and web apps. Mobile-first design, SEO optimized, high performance.',
-                'services.iot.title': 'IoT & Industry 4.0',
-                'services.iot.desc': 'CNC monitoring, real-time telemetry, digital twin, and edge computing for manufacturing.',
                 'services.saas.title': 'SaaS Software',
                 'services.saas.desc': 'Multi-tenant cloud management systems, ERP, and SaaS platforms with scalable, secure architecture.',
                 'services.social.title': 'Social Media Management',
@@ -2306,7 +2199,6 @@
                 'portfolio.subtitle': 'A selection of projects delivered for clients across different industries.',
                 'portfolio.filter.all': 'All',
                 'portfolio.filter.web': 'Web',
-                'portfolio.filter.iot': 'IoT',
                 'portfolio.filter.saas': 'SaaS',
                 'portfolio.filter.games': 'Games',
                 'portfolio.filter.social': 'Social',
@@ -2321,7 +2213,7 @@
                 'portfolio.social.desc': 'Automated pipeline for client social media management. Post scheduling, AI-generated content, and performance analysis.',
                 'about.label': 'About us',
                 'about.title': 'Our Approach',
-                'about.p1': 'EMC Digital Solutions is a team of professionals with over 15 years of experience in software development, industrial IoT, and digital solutions.',
+                'about.p1': 'EMC Digital Solutions is a team of professionals with over 15 years of experience in software development, SaaS, and digital solutions.',
                 'about.p2': 'We work with national and international clients, with a professional approach tailored to each client\'s needs, focusing on state-of-the-art technology, code quality, and client satisfaction.',
                 'about.p3': 'Every project is a tailored solution: we analyze requirements, design the architecture, and develop with the most suitable technologies.',
                 'about.value1': 'Digital Craftsmanship',
@@ -2335,7 +2227,7 @@
                 'contact.title': 'Contact Us',
                 'contact.subtitle': "Have a project in mind? Write to us and we'll reply within 24 hours.",
                 'contact.info.title': "Let's start collaborating",
-                'contact.info.desc': 'Whether you need a website, a management system, an IoT solution, or a digital strategy, we are ready to listen.',
+                'contact.info.desc': 'Whether you need a website, a management system, a SaaS solution, or a digital strategy, we are ready to listen.',
                 'contact.location': 'Sicily, Italy<small>We work across all of Italy</small>',
                 'contact.form.name': 'Name',
                 'contact.form.namePlaceholder': 'Your name',
@@ -2345,7 +2237,7 @@
                 'contact.form.send': 'Send Message',
                 'contact.form.success': 'Message sent successfully! We will get back to you soon.',
                 'contact.form.error': 'An error occurred. Please try again later.',
-                'footer.desc': 'Tailored digital solutions for businesses that want to grow. Software development, IoT, and digital strategies from Sicily.',
+                'footer.desc': 'Tailored digital solutions for businesses that want to grow. Software development, SaaS, and digital strategies from Sicily.',
                 'footer.quicklinks': 'Quick Links',
                 'footer.services': 'Services',
                 'footer.rights': 'All rights reserved.',
@@ -2562,26 +2454,6 @@
             localStorage.setItem('emc-cookies-accepted', 'true');
             cookieBanner.classList.remove('show');
         });
-
-        /* ==================== THEME TOGGLE ==================== */
-        var savedTheme = localStorage.getItem('emc-theme') || 'dark';
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-
-        function toggleTheme() {
-            var current = document.documentElement.getAttribute('data-theme');
-            var next = current === 'dark' ? 'light' : 'dark';
-            if (next === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-            }
-            localStorage.setItem('emc-theme', next);
-        }
-
-        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-        document.getElementById('themeToggleHamburger').addEventListener('click', toggleTheme);
 
         /* ==================== ACTIVE NAV LINK ==================== */
         var sections = document.querySelectorAll('section[id]');
