@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://emcdigitalsolutions.github.io/emcdigitalsolutions/sitemap.xml
