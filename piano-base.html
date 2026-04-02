@@ -585,6 +585,58 @@
             min-height: 100px;
         }
 
+        .form-group-checkbox {
+            margin-bottom: 8px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            background: var(--bg-card);
+            cursor: pointer;
+            margin-top: 2px;
+            transition: all 0.2s;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .checkbox-label input[type="checkbox"]:checked::after {
+            content: '\2713';
+            display: block;
+            text-align: center;
+            color: #0c1120;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 14px;
+        }
+
+        .checkbox-label a {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+
+        .checkbox-label a:hover {
+            color: var(--accent);
+        }
+
         form button[type="submit"] {
             width: 100%;
             padding: 14px;
@@ -662,7 +714,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 48px;
             margin-bottom: 48px;
         }
@@ -1044,6 +1096,12 @@
                         <label for="message">Messaggio</label>
                         <textarea id="message" name="messaggio" rows="4" placeholder="Raccontaci della tua attivit&agrave; e cosa vorresti ottenere..."></textarea>
                     </div>
+                    <div class="form-group form-group-checkbox">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="privacy" required>
+                            <span>Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a></span>
+                        </label>
+                    </div>
                     <button type="submit">Invia Richiesta</button>
                     <div id="formStatus" class="form-status"></div>
                 </form>
@@ -1091,6 +1149,13 @@
                         <li><a href="index.html#servizi">Sviluppo Web</a></li>
                         <li><a href="index.html#servizi">Software SaaS</a></li>
                         <li><a href="index.html#servizi">Social Media</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legale</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
