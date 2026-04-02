@@ -2165,11 +2165,8 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form fade-in" id="contactForm" action="https://formsubmit.co/info@emcdigitalsolutions.it" method="POST">
-                    <input type="hidden" name="_subject" value="Nuovo messaggio dal sito EMC Digital Solutions">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="text" name="_honey" style="display:none">
+                <form class="contact-form fade-in" id="contactForm">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                     <div class="form-group">
                         <label for="name" data-i18n="contact.form.name">Nome</label>
                         <input type="text" id="name" name="name" required data-i18n-placeholder="contact.form.namePlaceholder" placeholder="Il tuo nome">
@@ -2717,27 +2714,37 @@
         /* ==================== CONTACT FORM ==================== */
         var contactForm = document.getElementById('contactForm');
         var formStatus = document.getElementById('formStatus');
+        var CONTACT_API = 'https://script.google.com/macros/s/AKfycbxLCgN0-mHN86Dk37a5m-p2A3DgMjc8b__aCO_9oBA_amLUn5MlipebKalo5qNIoSWl/exec';
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            var formData = new FormData(contactForm);
+            if (contactForm.querySelector('[name="_honey"]').value) return;
+            var btn = contactForm.querySelector('.form-submit');
+            btn.disabled = true;
+            btn.textContent = 'Invio in corso...';
+            formStatus.className = 'form-status';
+            formStatus.textContent = '';
 
-            fetch(contactForm.action, {
+            fetch(CONTACT_API, {
                 method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            }).then(function(response) {
-                if (response.ok) {
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = translations[currentLang]['contact.form.success'];
-                    contactForm.reset();
-                } else {
-                    formStatus.className = 'form-status error';
-                    formStatus.textContent = translations[currentLang]['contact.form.error'];
-                }
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    site: 'emcdigitalsolutions',
+                    name: contactForm.querySelector('[name="name"]').value,
+                    email: contactForm.querySelector('[name="email"]').value,
+                    message: contactForm.querySelector('[name="message"]').value
+                })
+            }).then(function() {
+                formStatus.className = 'form-status success';
+                formStatus.textContent = translations[currentLang]['contact.form.success'];
+                contactForm.reset();
             }).catch(function() {
                 formStatus.className = 'form-status error';
                 formStatus.textContent = translations[currentLang]['contact.form.error'];
+            }).finally(function() {
+                btn.disabled = false;
+                btn.textContent = translations[currentLang]['contact.form.send'];
             });
         });
 

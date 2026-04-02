@@ -1010,10 +1010,8 @@
             </div>
 
             <div class="form-wrapper fade-in">
-                <form id="planForm" action="https://formsubmit.co/info@emcdigitalsolutions.it" method="POST">
-                    <input type="hidden" name="_subject" value="Richiesta Piano Starter">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
+                <form id="planForm">
+                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Nome e Cognome *</label>
@@ -1119,27 +1117,37 @@
         // Contact form
         var form = document.getElementById('planForm');
         var formStatus = document.getElementById('formStatus');
+        var CONTACT_API = 'https://script.google.com/macros/s/AKfycbxLCgN0-mHN86Dk37a5m-p2A3DgMjc8b__aCO_9oBA_amLUn5MlipebKalo5qNIoSWl/exec';
         if (form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
+                if (form.querySelector('[name="_honey"]').value) return;
                 var btn = form.querySelector('button[type="submit"]');
                 btn.textContent = 'Invio in corso...';
                 btn.disabled = true;
-                fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
-                .then(function(r) {
-                    if (r.ok) {
-                        formStatus.className = 'form-status success';
-                        formStatus.textContent = 'Messaggio inviato! Ti ricontatteremo al pi\u00f9 presto.';
-                        form.reset();
-                    } else {
-                        formStatus.className = 'form-status error';
-                        formStatus.textContent = 'Errore nell\'invio. Riprova o contattaci direttamente via email.';
-                    }
-                    btn.textContent = 'Invia Richiesta';
-                    btn.disabled = false;
+                formStatus.className = 'form-status';
+                formStatus.textContent = '';
+                var nome = (form.querySelector('[name="nome"]') || {}).value || '';
+                var attivita = (form.querySelector('[name="attivita"]') || {}).value || '';
+                fetch(CONTACT_API, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        site: 'emcdigitalsolutions',
+                        name: nome + (attivita ? ' (' + attivita + ')' : ''),
+                        email: (form.querySelector('[name="email"]') || {}).value || '',
+                        phone: (form.querySelector('[name="telefono"]') || {}).value || '',
+                        message: '[Piano Starter] ' + ((form.querySelector('[name="messaggio"]') || {}).value || 'Richiesta informazioni')
+                    })
+                }).then(function() {
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = 'Messaggio inviato! Ti ricontatteremo al pi\u00f9 presto.';
+                    form.reset();
                 }).catch(function() {
                     formStatus.className = 'form-status error';
                     formStatus.textContent = 'Errore nell\'invio. Riprova o contattaci direttamente via email.';
+                }).finally(function() {
                     btn.textContent = 'Invia Richiesta';
                     btn.disabled = false;
                 });
