@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing — Visibilità Digitale | EMC Digital Solutions</title>
+    <meta name="description" content="Piani e prezzi per il servizio di visibilità digitale di EMC Digital Solutions: sito web, social media, sponsorizzate locali.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#0c1120">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0c1120;
+            --bg-secondary: #131b2e;
+            --bg-card: #172035;
+            --accent: #6b9ef7;
+            --accent-light: #93b8fc;
+            --accent-vivid: #f5c542;
+            --accent-vivid-hover: #ffd666;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9ca3b0;
+            --border: #263354;
+            --shadow: rgba(0,0,0,0.2);
+            --shadow-lg: rgba(0,0,0,0.35);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --nav-height: 72px;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-vivid);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* Fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 1000;
+            transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(12, 17, 32, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 12px var(--shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: linear-gradient(90deg, transparent 30%, rgba(212, 160, 23, 0.08) 50%, transparent 70%);
+            background-size: 200% 100%;
+            animation: shimmer 4s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        .nav-logo svg {
+            width: 128px;
+            height: 128px;
+        }
+
+        .nav-logo span {
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-vivid);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            background: rgba(19, 27, 46, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 24px;
+            box-shadow: 0 8px 32px var(--shadow-lg);
+            z-index: 999;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ========== HERO (mini, no fullscreen) ========== */
+        .page-hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(107, 158, 247, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero .section-subtitle {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+        }
+
+        /* ========== PROBLEMA (quote + stats) ========== */
+        .problema-section {
+            background: var(--bg-primary);
+        }
+
+        .quote-block {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent);
+            padding: 32px 36px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: '\201C';
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: -8px;
+            left: 16px;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            padding-left: 8px;
+        }
+
+        .quote-author {
+            font-size: 0.9rem;
+            color: var(--accent);
+            padding-left: 8px;
+        }
+
+        .insight-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            margin-bottom: 28px;
+        }
+
+        .insight-box h3 {
+            font-size: 1.15rem;
+            color: var(--accent-light);
+            margin-bottom: 8px;
+        }
+
+        .insight-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* ========== PILASTRI ========== */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .pillar-num {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .pillar-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(107,158,247,0.1);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .pillar-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--accent-light);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pillar-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        /* ========== SERVIZI ========== */
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .service-num {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .service-header h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .service-lead {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 32px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: rgba(107,158,247,0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent-light);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        /* ========== SOCIAL COLUMNS ========== */
+        .social-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .social-col {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+        }
+
+        .social-col h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .social-col h4 svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--accent-light);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .social-col ul {
+            list-style: none;
+        }
+
+        .social-col ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-col ul li:last-child {
+            border-bottom: none;
+        }
+
+        .social-col ul li::before {
+            content: '\203A';
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* ========== GEO TAGS ========== */
+        .geo-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .geo-tag {
+            background: rgba(107,158,247,0.1);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.88rem;
+            color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .geo-tag svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .check-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 24px;
+            margin-top: 20px;
+        }
+
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .check-list li::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            border-radius: 50%;
+            background: rgba(107,158,247,0.1);
+            border: 1px solid var(--accent);
+            margin-top: 2px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2393b8fc' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+        }
+
+        .metric-card .stat-number {
+            font-size: 1.8rem;
+        }
+
+        /* ========== PRICING ========== */
+        .pricing-section {
+            background: var(--bg-secondary);
+        }
+
+        .pricing-section > .container {
+            max-width: 1320px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .price-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: border-color 0.3s, transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .price-card.featured {
+            border-color: var(--accent-vivid);
+        }
+
+        .price-card.featured:hover {
+            box-shadow: 0 12px 40px rgba(245,197,66,0.1);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, var(--accent-vivid), var(--accent-vivid-hover));
+            color: #0c1120;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        .price-header {
+            padding: 28px 24px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .price-plan-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .price-ideal {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .price-label {
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .price-setup {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .price-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .price-amount span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .price-body {
+            padding: 20px 24px;
+            flex: 1;
+        }
+
+        .price-footer {
+            padding: 0 24px 24px;
+        }
+
+        .btn-choose {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-choose:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .price-card.featured .btn-choose {
+            background: linear-gradient(135deg, var(--accent-vivid), var(--accent-vivid-hover));
+            color: #0c1120;
+            border-color: var(--accent-vivid);
+        }
+
+        .price-card.featured .btn-choose:hover {
+            box-shadow: 0 4px 20px rgba(245,197,66,0.3);
+            transform: translateY(-1px);
+        }
+
+        .deductible-banner {
+            background: linear-gradient(135deg, rgba(107,158,247,0.08), rgba(245,197,66,0.08));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 32px;
+            text-align: left;
+        }
+
+        .deductible-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: rgba(107,158,247,0.12);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .deductible-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent-vivid);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .deductible-banner strong {
+            color: var(--accent-vivid);
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .deductible-banner p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .price-body ul {
+            list-style: none;
+        }
+
+        .price-body ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(38,51,84,0.5);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .price-body ul li .price-item-content {
+            flex: 1;
+        }
+
+        .price-body ul li:last-child {
+            border-bottom: none;
+        }
+
+        .price-body ul li::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .price-card.featured .price-body ul li::before {
+            background: var(--accent-vivid);
+        }
+
+        .price-body ul li.disabled {
+            opacity: 0.35;
+        }
+
+        .price-body ul li.disabled::before {
+            background: var(--text-secondary);
+        }
+
+        .price-item-desc {
+            font-size: 0.78rem;
+            color: rgba(156,163,176,0.7);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        .price-body ul li.disabled .price-item-desc {
+            display: none;
+        }
+
+        .price-upgrade {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(107,158,247,0.15);
+            color: var(--accent-light);
+            padding: 1px 7px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .price-card.featured .price-upgrade {
+            background: rgba(245,197,66,0.15);
+            color: var(--accent-vivid);
+        }
+
+        .price-note {
+            background: var(--bg-card);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-top: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .price-note svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.5;
+            min-width: 20px;
+            margin-top: 2px;
+        }
+
+        .price-note p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        /* ========== WHY US ========== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: border-color 0.3s;
+        }
+
+        .why-card:hover {
+            border-color: var(--accent);
+        }
+
+        .why-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            opacity: 0.4;
+            margin-bottom: 12px;
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 30%;
+            width: 50%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(107,158,247,0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-light);
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            display: inline-block;
+            text-align: left;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .contact-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .contact-role {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .contact-row:last-child {
+            border-bottom: none;
+        }
+
+        .contact-row svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.5;
+            min-width: 18px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #080d1a;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 340px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo svg {
+            width: 96px;
+            height: 96px;
+        }
+
+        .footer h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-vivid);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ========== SECTION DIVIDER ========== */
+        .section-divider {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .section-divider::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 120px;
+            background: linear-gradient(90deg, transparent, var(--accent-vivid), transparent);
+            border-radius: 2px;
+        }
+
+        /* ========== VS COMPARISON TABLE ========== */
+        .vs-section {
+            background: var(--bg-secondary);
+        }
+
+        .vs-table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .vs-table {
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            width: 100%;
+            min-width: 600px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .vs-header {
+            padding: 20px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            background: var(--bg-card);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .vs-header:first-child {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .vs-header-emc {
+            background: rgba(245, 197, 66, 0.08);
+            border-bottom: 2px solid var(--accent-vivid);
+            position: relative;
+        }
+
+        .vs-badge {
+            display: inline-block;
+            background: var(--accent-vivid);
+            color: #0c1120;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 6px;
+        }
+
+        .vs-row-label {
+            padding: 16px 20px;
+            font-weight: 500;
+            font-size: 0.92rem;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+        }
+
+        .vs-cell {
+            padding: 16px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .vs-col-emc {
+            background: rgba(245, 197, 66, 0.04);
+            border-left: 1px solid rgba(245, 197, 66, 0.2);
+            border-right: 1px solid rgba(245, 197, 66, 0.2);
+        }
+
+        .vs-cell svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        .vs-check { color: #22c55e; }
+        .vs-x { color: #ef4444; }
+        .vs-partial { color: var(--accent-vivid); }
+
+        /* last row no bottom border */
+        .vs-table > :nth-last-child(-n+5) {
+            border-bottom: none;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1280px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .page-hero .section-title {
+                font-size: 2.2rem;
+            }
+
+            .features-grid,
+            .social-columns,
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .check-list {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-row,
+            .metric-row {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .deductible-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .vs-header, .vs-cell {
+                padding: 12px 8px;
+                font-size: 0.85rem;
+            }
+
+            .vs-row-label {
+                padding: 12px 14px;
+                font-size: 0.85rem;
+            }
+
+            .vs-badge {
+                font-size: 0.6rem;
+                padding: 2px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .page-hero .section-title {
+                font-size: 1.8rem;
+            }
+
+            .quote-block {
+                padding: 24px 20px;
+            }
+        }
+
+        /* ========== PRINT ========== */
+        @media print {
+            body {
+                background: #fff;
+                color: #1a1a1a;
+            }
+
+            .navbar, .mobile-menu {
+                display: none !important;
+            }
+
+            section {
+                padding: 40px 0;
+                page-break-inside: avoid;
+            }
+
+            h1, h2, h3, h4, .section-title, .cta-title {
+                color: #1a1a1a !important;
+            }
+
+            p, li, .stat-label, .check-list li, .contact-row {
+                color: #444 !important;
+            }
+
+            .stat-number, .price-amount, .metric-card .stat-number {
+                color: #6b9ef7 !important;
+            }
+
+            .quote-block {
+                background: #f5f5f5;
+                border-left-color: #6b9ef7;
+            }
+
+            .pillar-card, .feature-card, .social-col, .price-card, .why-card,
+            .contact-card, .stat-card, .metric-card, .insight-box {
+                background: #f8f8f8 !important;
+                border-color: #ddd !important;
+            }
+
+            .price-card.featured {
+                border-color: #f5c542 !important;
+            }
+
+            .price-badge {
+                background: #f5c542;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .vs-section {
+                background: #fff !important;
+            }
+
+            .vs-table {
+                border-color: #ccc !important;
+            }
+
+            .vs-header, .vs-cell, .vs-row-label {
+                background: #fff !important;
+                border-color: #ddd !important;
+                color: #1a1a1a !important;
+            }
+
+            .vs-col-emc {
+                background: #fffdf5 !important;
+                border-left-color: #f5c542 !important;
+                border-right-color: #f5c542 !important;
+            }
+
+            .vs-header-emc {
+                background: #fffdf5 !important;
+                border-bottom-color: #f5c542 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="128">
+                    <defs>
+                        <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/>
+                            <stop offset="100%" stop-color="#d4a017"/>
+                        </linearGradient>
+                        <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/>
+                            <stop offset="45%" stop-color="#3b6dd4"/>
+                            <stop offset="100%" stop-color="#0f172a"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
+                    <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#navBarG)" opacity="0.85"/>
+                    <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#navBarG)"/>
+                    <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#navTxtG)" letter-spacing="3">EMC</text>
+                </svg>
+                <span>Digital Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
+                <li><a href="index.html#servizi">Servizi</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#social">Social</a></li>
+                <li><a href="proposta-commerciale.html" class="active">Pricing</a></li>
+                <li><a href="index.html#contatti">Contatti</a></li>
+                <li><a href="index.html#app-mobile">App</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#chi-siamo">Chi Siamo</a>
+        <a href="index.html#servizi">Servizi</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#social">Social</a>
+        <a href="proposta-commerciale.html" class="active">Pricing</a>
+        <a href="index.html#contatti">Contatti</a>
+        <a href="index.html#app-mobile">App</a>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="section-label">Visibilità Digitale</div>
+            <h1 class="section-title">Piani e Prezzi</h1>
+            <p class="section-subtitle">Una strategia digitale completa per far crescere la tua attività. Pricing chiaro e trasparente, senza costi nascosti.</p>
+        </div>
+    </section>
+
+    <!-- ========== IL PROBLEMA ========== -->
+    <section class="problema-section" id="problema">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Il Problema</div>
+                <h2 class="section-title">Perché la visibilità online è importante</h2>
+            </div>
+
+            <div class="quote-block fade-in">
+                <p class="quote-text">"Ho cercato un'attività come la tua su Google... ma non ti ho trovato. Così ho scelto un altro."</p>
+                <p class="quote-author">— Ciò che i clienti pensano, ma non ti dicono</p>
+            </div>
+
+            <div class="insight-box fade-in">
+                <h3>Il concetto di "Top-of-Mind"</h3>
+                <p>Quando una persona cerca un prodotto o un servizio, si rivolge al <strong style="color:var(--text-primary);">primo nome che trova</strong>. Non al migliore, non al più economico — al più <strong style="color:var(--text-primary);">visibile</strong>. Chi non è presente online, semplicemente non esiste per una parte sempre più grande della popolazione.</p>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-card fade-in stagger-1">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">degli italiani usa<br>i social ogni giorno</div>
+                </div>
+                <div class="stat-card fade-in stagger-2">
+                    <div class="stat-number">72%</div>
+                    <div class="stat-label">cerca attività locali<br>su Google e Facebook</div>
+                </div>
+                <div class="stat-card fade-in stagger-3">
+                    <div class="stat-number">3 su 4</div>
+                    <div class="stat-label">scelgono l'attività<br>che trovano per prima online</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== LA SOLUZIONE ========== -->
+    <section id="soluzione">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">La Soluzione</div>
+                <h2 class="section-title">Tre pilastri per la tua crescita</h2>
+                <p class="section-subtitle">Una strategia digitale completa pensata per posizionare la tua attività come punto di riferimento nella zona.</p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card fade-in stagger-1">
+                    <div class="pillar-num">01</div>
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                    <h3>Presenza Online</h3>
+                    <p>Sito web professionale che lavora per te 24 ore su 24, 7 giorni su 7.</p>
+                </div>
+                <div class="pillar-card fade-in stagger-2">
+                    <div class="pillar-num">02</div>
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </div>
+                    <h3>Social Media</h3>
+                    <p>Pagine Facebook e Instagram curate con contenuti professionali e costanti.</p>
+                </div>
+                <div class="pillar-card fade-in stagger-3">
+                    <div class="pillar-num">03</div>
+                    <div class="pillar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>
+                    </div>
+                    <h3>Visibilità Locale</h3>
+                    <p>Google Business Profile e campagne sponsorizzate geolocalizzate nella tua area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== SERVIZIO 01: SITO WEB ========== -->
+    <section id="sito-web">
+        <div class="container">
+            <div class="service-header fade-in">
+                <span class="service-num">01</span>
+                <h3>Sito Web Professionale</h3>
+            </div>
+            <p class="service-lead fade-in">La tua vetrina digitale aperta 24 ore su 24. Un punto di riferimento per chiunque cerchi i tuoi servizi online.</p>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in stagger-1">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div>
+                        <h4>Design su Misura</h4>
+                        <p>Ogni sito viene progettato su misura per la tua attività. Nessun template generico: solo soluzioni personalizzate.</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in stagger-2">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    </div>
+                    <div>
+                        <h4>Mobile-Friendly</h4>
+                        <p>Perfetto su smartphone e tablet. Il 70% delle visite arriva da dispositivi mobili.</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in stagger-3">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <div>
+                        <h4>SEO Ottimizzato</h4>
+                        <p>Posizionamento su Google per le ricerche più rilevanti nella tua zona e nel tuo settore.</p>
+                    </div>
+                </div>
+                <div class="feature-card fade-in stagger-4">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div>
+                        <h4>Veloce e Sicuro</h4>
+                        <p>Tempi di caricamento rapidi, certificato SSL e hosting affidabile. Performance e sicurezza garantite.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== SERVIZIO 02: SOCIAL MEDIA ========== -->
+    <section id="social-media">
+        <div class="container">
+            <div class="service-header fade-in">
+                <span class="service-num">02</span>
+                <h3>Gestione Social Media</h3>
+            </div>
+            <p class="service-lead fade-in">Contenuti professionali e costanti che mantengono il tuo nome visibile nella mente delle persone, ogni giorno.</p>
+
+            <div class="social-columns fade-in">
+                <div class="social-col">
+                    <h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        Facebook
+                    </h4>
+                    <ul>
+                        <li>Pagina Business ottimizzata</li>
+                        <li>8-12 post al mese</li>
+                        <li>Gestione commenti e messaggi</li>
+                        <li>Informazioni sempre aggiornate</li>
+                        <li>Orari, servizi e contatti visibili</li>
+                    </ul>
+                </div>
+                <div class="social-col">
+                    <h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        Instagram
+                    </h4>
+                    <ul>
+                        <li>Profilo curato e professionale</li>
+                        <li>Storie e contenuti visivi</li>
+                        <li>Immagini di qualità</li>
+                        <li>Hashtag strategici locali</li>
+                        <li>Engagement con la community</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="insight-box fade-in">
+                <h3>Tipologie di contenuto</h3>
+                <p>I tuoi prodotti e servizi, il dietro le quinte della tua attività, novità e promozioni, recensioni dei clienti, eventi e ricorrenze. Tutto con un tono professionale e coerente con la tua identità.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== SERVIZIO 03: SPONSORIZZATE ========== -->
+    <section id="sponsorizzate">
+        <div class="container">
+            <div class="service-header fade-in">
+                <span class="service-num">03</span>
+                <h3>Sponsorizzate Locali</h3>
+            </div>
+            <p class="service-lead fade-in">Campagne mirate che portano il tuo nome davanti alle persone giuste, nel territorio giusto, al momento giusto.</p>
+
+            <h4 style="font-size:1rem;font-weight:600;color:var(--accent-light);margin-bottom:12px;" class="fade-in">Copertura Geografica</h4>
+            <div class="geo-tags fade-in">
+                <span class="geo-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    La tua città
+                </span>
+                <span class="geo-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Comuni limitrofi
+                </span>
+                <span class="geo-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    La tua provincia
+                </span>
+                <span class="geo-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Raggio personalizzabile
+                </span>
+            </div>
+
+            <ul class="check-list fade-in">
+                <li>Campagne geolocalizzate su Facebook e Instagram</li>
+                <li>Budget contenuto con risultati misurabili</li>
+                <li>Targeting per età, interessi e area geografica</li>
+                <li>Report periodico con tutte le metriche</li>
+            </ul>
+
+            <div class="metric-row">
+                <div class="metric-card fade-in stagger-1">
+                    <div class="stat-number">5.000+</div>
+                    <div class="stat-label">Persone raggiunte<br>al mese (stima)</div>
+                </div>
+                <div class="metric-card fade-in stagger-2">
+                    <div class="stat-number">da €0,02</div>
+                    <div class="stat-label">Costo medio<br>per persona raggiunta</div>
+                </div>
+                <div class="metric-card fade-in stagger-3">
+                    <div class="stat-number">20 km</div>
+                    <div class="stat-label">Raggio di copertura<br>personalizzabile</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== INVESTIMENTO / PRICING ========== -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Investimento</div>
+                <h2 class="section-title">Scegli il piano più adatto</h2>
+                <p class="section-subtitle"><strong style="color:var(--text-primary);">Pricing chiaro e trasparente</strong>, senza costi nascosti. Ogni piano include tutto il necessario per partire.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Starter -->
+                <div class="price-card fade-in stagger-1">
+                    <div class="price-header">
+                        <div class="price-plan-name">Starter</div>
+                        <div class="price-ideal">Ideale per chi vuole iniziare</div>
+                        <div class="price-label">Setup una tantum</div>
+                        <div class="price-setup">€500</div>
+                        <div class="price-amount">€200<span>/mese</span></div>
+                    </div>
+                    <div class="price-body">
+                        <ul>
+                            <li>
+                                <div class="price-item-content">
+                                    Sito web one-page
+                                    <div class="price-item-desc">Pagina singola con le info essenziali: chi sei, cosa fai, dove trovarti e come contattarti.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    1 piattaforma social
+                                    <div class="price-item-desc">Gestione di Facebook o Instagram a scelta. Setup del profilo e pubblicazione contenuti.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    4-6 post al mese
+                                    <div class="price-item-desc">1-2 pubblicazioni a settimana con grafiche e testi professionali.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Gestione commenti base
+                                    <div class="price-item-desc">Monitoraggio e risposta ai commenti e messaggi sulla piattaforma gestita.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Report trimestrale
+                                    <div class="price-item-desc">Ogni 3 mesi un riepilogo con le metriche principali: visite, interazioni, crescita.</div>
+                                </div>
+                            </li>
+                            <li class="disabled"><div class="price-item-content">Sponsorizzate non incluse</div></li>
+                            <li class="disabled"><div class="price-item-content">Storie e Reels non inclusi</div></li>
+                            <li class="disabled"><div class="price-item-content">Google Business non incluso</div></li>
+                        </ul>
+                    </div>
+                    <div class="price-footer">
+                        <a href="piano-starter.html" class="btn-choose">Scegli Starter</a>
+                    </div>
+                </div>
+
+                <!-- Base -->
+                <div class="price-card fade-in stagger-2">
+                    <div class="price-header">
+                        <div class="price-plan-name">Base</div>
+                        <div class="price-ideal">Per una presenza solida</div>
+                        <div class="price-label">Setup una tantum</div>
+                        <div class="price-setup">€900</div>
+                        <div class="price-amount">€350<span>/mese</span></div>
+                    </div>
+                    <div class="price-body">
+                        <ul>
+                            <li>
+                                <div class="price-item-content">
+                                    Sito web multi-pagina <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc">Sito completo con sezioni dedicate: servizi, chi siamo, gallery, contatti. Più spazio per raccontare la tua attività.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Facebook + Instagram <span class="price-upgrade">+1 social</span>
+                                    <div class="price-item-desc">Gestione di entrambe le piattaforme. Contenuti adattati al formato e al pubblico di ciascuna.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    8-12 post/mese <span class="price-upgrade">x2</span>
+                                    <div class="price-item-desc">2-3 post a settimana con grafiche professionali su entrambi i canali.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    4-6 storie/mese <span class="price-upgrade">nuovo</span>
+                                    <div class="price-item-desc">Storie Instagram per mantenere alta la visibilità quotidiana e il contatto con i follower.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Gestione commenti e messaggi
+                                    <div class="price-item-desc">Monitoraggio e risposta su entrambe le piattaforme, anche ai messaggi privati.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Report mensile <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc">Ogni mese ricevi un report con metriche dettagliate: reach, interazioni, crescita follower.</div>
+                                </div>
+                            </li>
+                            <li class="disabled"><div class="price-item-content">Sponsorizzate non incluse</div></li>
+                            <li class="disabled"><div class="price-item-content">Google Business non incluso</div></li>
+                        </ul>
+                    </div>
+                    <div class="price-footer">
+                        <a href="piano-base.html" class="btn-choose">Scegli Base</a>
+                    </div>
+                </div>
+
+                <!-- Standard (Featured) -->
+                <div class="price-card featured fade-in stagger-3">
+                    <div class="price-badge">Consigliato</div>
+                    <div class="price-header">
+                        <div class="price-plan-name">Standard</div>
+                        <div class="price-ideal">Per chi vuole crescere attivamente</div>
+                        <div class="price-label">Setup una tantum</div>
+                        <div class="price-setup">€1.500</div>
+                        <div class="price-amount">€500<span>/mese</span></div>
+                    </div>
+                    <div class="price-body">
+                        <ul>
+                            <li>
+                                <div class="price-item-content">
+                                    Sito completo + landing page <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc">Sito multi-pagina più una landing page dedicata per promozioni o campagne specifiche.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Facebook + Instagram
+                                    <div class="price-item-desc">Gestione professionale di entrambe le piattaforme con contenuti dedicati.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    12-16 post/mese + storie <span class="price-upgrade">x2</span>
+                                    <div class="price-item-desc">3-4 post a settimana più storie regolari. Presenza costante e visibilità quotidiana.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Reels video (2-4/mese) <span class="price-upgrade">nuovo</span>
+                                    <div class="price-item-desc">Video brevi ottimizzati per l'algoritmo. I reels hanno una copertura organica fino a 10x superiore ai post.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Gestione sponsorizzate Meta <span class="price-upgrade">nuovo</span>
+                                    <div class="price-item-desc">Creazione, monitoraggio e ottimizzazione campagne Facebook e Instagram Ads. Tu scegli il budget, noi gestiamo tutto.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Google Business setup <span class="price-upgrade">nuovo</span>
+                                    <div class="price-item-desc">Creazione e ottimizzazione del profilo Google Business per comparire nelle ricerche locali e su Google Maps.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Report bi-settimanale <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc">Report ogni 2 settimane con analisi dettagliata e suggerimenti per ottimizzare la strategia.</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="price-footer">
+                        <a href="piano-standard.html" class="btn-choose">Scegli Standard</a>
+                    </div>
+                </div>
+
+                <!-- Premium -->
+                <div class="price-card fade-in stagger-4">
+                    <div class="price-header">
+                        <div class="price-plan-name">Premium</div>
+                        <div class="price-ideal">Il massimo della visibilità</div>
+                        <div class="price-label">Setup una tantum</div>
+                        <div class="price-setup">€2.200</div>
+                        <div class="price-amount">€700<span>/mese</span></div>
+                    </div>
+                    <div class="price-body">
+                        <ul>
+                            <li>
+                                <div class="price-item-content">
+                                    Sito + landing pages multiple <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc">Sito completo più landing page multiple per promozioni, campagne stagionali o servizi specifici.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    FB + IG + WhatsApp Business <span class="price-upgrade">+whatsapp</span>
+                                    <div class="price-item-desc">Aggiungi WhatsApp Business: catalogo prodotti, risposte rapide e broadcast promozionali ai tuoi clienti.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    16-20 post/mese + storie + reels <span class="price-upgrade">x2</span>
+                                    <div class="price-item-desc">4-5 post a settimana, storie quotidiane e 4-6 reels video per massimizzare la copertura.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Meta Ads + Google Ads <span class="price-upgrade">+google</span>
+                                    <div class="price-item-desc">Campagne su Facebook, Instagram e Google Ads per intercettare chi ti cerca attivamente.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Google Business + recensioni <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc">Profilo Google ottimizzato più gestione attiva delle recensioni: risposte, solleciti e monitoraggio reputazione.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Report settimanale <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc">Report ogni settimana con analisi in tempo reale, suggerimenti e ottimizzazioni continue.</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price-item-content">
+                                    Consulenza strategica dedicata <span class="price-upgrade">nuovo</span>
+                                    <div class="price-item-desc">Call mensile di consulenza per definire obiettivi, analizzare i risultati e pianificare le azioni future.</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="price-footer">
+                        <a href="piano-premium.html" class="btn-choose">Scegli Premium</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deducibilità fiscale -->
+            <div class="deductible-banner fade-in">
+                <div class="deductible-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <div>
+                    <strong>Investimento 100% deducibile</strong>
+                    <p>Le spese di pubblicità e marketing digitale sono interamente deducibili come costo aziendale per tutte le attività con Partita IVA in regime ordinario (art. 108 TUIR). L'IVA è detraibile. Consulta il tuo commercialista per i dettagli specifici della tua situazione fiscale.</p>
+                </div>
+            </div>
+
+            <div class="price-note fade-in" style="margin-top:20px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <p><strong style="color:var(--text-primary);">Nota sul budget pubblicitario:</strong> Il budget per le sponsorizzate Meta e Google (consigliato €150–300/mese) è a parte e viene pagato direttamente dal cliente tramite il proprio account. In questo modo hai sempre il controllo totale sulla spesa.</p>
+            </div>
+
+            <div class="price-note fade-in" style="margin-top:12px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <p><strong style="color:var(--text-primary);">Hai esigenze specifiche?</strong> Ogni proposta può essere personalizzata e cucita su misura per la tua attività. Contattaci per un preventivo dedicato.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== PERCHE' NOI ========== -->
+    <section id="perche-noi">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Perché Noi</div>
+                <h2 class="section-title">Perché Scegliere Noi</h2>
+                <p class="section-subtitle">Non siamo una grande agenzia impersonale. Siamo un partner locale che conosce il territorio e lavora al tuo fianco.</p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card fade-in stagger-1">
+                    <div class="why-num">01</div>
+                    <h3>Conoscenza del Territorio</h3>
+                    <p>Viviamo e lavoriamo in Sicilia. Conosciamo le dinamiche, le persone e il modo di comunicare della nostra terra. Questo fa la differenza.</p>
+                </div>
+                <div class="why-card fade-in stagger-2">
+                    <div class="why-num">02</div>
+                    <h3>Esperienza Concreta</h3>
+                    <p>Un portfolio di progetti reali per attività locali — siti web, gestione social e campagne che hanno portato risultati tangibili ai nostri clienti.</p>
+                </div>
+                <div class="why-card fade-in stagger-3">
+                    <div class="why-num">03</div>
+                    <h3>Approccio Personale</h3>
+                    <p>Un referente unico, sempre disponibile. Nessun call center, nessun ticket. Comunicazione diretta e rapida, come deve essere.</p>
+                </div>
+                <div class="why-card fade-in stagger-4">
+                    <div class="why-num">04</div>
+                    <h3>Risultati Misurabili</h3>
+                    <p>Report periodici chiari con numeri reali: persone raggiunte, interazioni, visite al sito. Sai sempre esattamente cosa ottieni.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== NOI VS LE ALTERNATIVE ========== -->
+    <section class="vs-section" id="confronto">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label fade-in">Confronto</div>
+                <h2 class="section-title fade-in">Noi vs le Alternative</h2>
+                <p class="section-subtitle fade-in">Cosa cambia davvero nella scelta del partner per la tua visibilità digitale.</p>
+            </div>
+
+            <div class="vs-table-wrapper fade-in">
+                <div class="vs-table">
+                    <!-- Header row -->
+                    <div class="vs-header">Criterio</div>
+                    <div class="vs-header">Fai-da-te</div>
+                    <div class="vs-header">Freelancer</div>
+                    <div class="vs-header">Grande Agenzia</div>
+                    <div class="vs-header vs-header-emc">
+                        <div class="vs-badge">La nostra proposta</div>
+                        <div>EMC</div>
+                    </div>
+
+                    <!-- Row 1: Referente dedicato -->
+                    <div class="vs-row-label">Referente dedicato</div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+
+                    <!-- Row 2: Conoscenza del territorio -->
+                    <div class="vs-row-label">Conoscenza del territorio</div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+
+                    <!-- Row 3: Sito + Social + Ads integrati -->
+                    <div class="vs-row-label">Sito + Social + Ads integrati</div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+
+                    <!-- Row 4: Costi trasparenti e fissi -->
+                    <div class="vs-row-label">Costi trasparenti e fissi</div>
+                    <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+
+                    <!-- Row 5: Tempi di risposta rapidi -->
+                    <div class="vs-row-label">Tempi di risposta rapidi</div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+
+                    <!-- Row 6: Report con numeri reali -->
+                    <div class="vs-row-label">Report con numeri reali</div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+
+                    <!-- Row 7: Personalizzazione su misura -->
+                    <div class="vs-row-label">Personalizzazione su misura</div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+
+                    <!-- Row 8: Contratto flessibile -->
+                    <div class="vs-row-label">Contratto flessibile</div>
+                    <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+
+                    <!-- Row 9: Strategia multi-canale -->
+                    <div class="vs-row-label">Strategia multi-canale</div>
+                    <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                    <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== CTA / CONTATTO ========== -->
+    <section class="cta-section" id="contatto">
+        <div class="container">
+            <h2 class="cta-title fade-in">Prossimi Passi</h2>
+            <p class="cta-subtitle fade-in">Iniziamo insieme a costruire il futuro digitale della tua Azienda.</p>
+
+            <div class="contact-card fade-in">
+                <div class="contact-name">EMC Digital Solutions</div>
+                <div class="contact-role">Full Stack Developers & Graphics & Digital Consultant</div>
+                <div class="contact-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>+39 333 XXX XXXX</span>
+                </div>
+                <div class="contact-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>info@emcdigitalsolutions.it</span>
+                </div>
+                <div class="contact-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    <span>www.emcdigitalsolutions.it</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
+                            <defs>
+                                <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#3b6dd4"/>
+                                    <stop offset="100%" stop-color="#d4a017"/>
+                                </linearGradient>
+                                <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#6b9ef7"/>
+                                    <stop offset="45%" stop-color="#93b8fc"/>
+                                    <stop offset="100%" stop-color="#ffffff"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>
+                            <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#ftBarG)" opacity="0.85"/>
+                            <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#ftBarG)"/>
+                            <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#ftTxtG)" letter-spacing="3">EMC</text>
+                        </svg>
+                        <span>Digital Solutions</span>
+                    </div>
+                    <p>Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                </div>
+                <div>
+                    <h4>Link Rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi">Servizi</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#social">Social</a></li>
+                        <li><a href="proposta-commerciale.html">Pricing</a></li>
+                        <li><a href="index.html#contatti">Contatti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Servizi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#servizi">Sviluppo Web</a></li>
+                        <li><a href="index.html#servizi">Software SaaS</a></li>
+                        <li><a href="index.html#servizi">Social Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+    (function() {
+        'use strict';
+
+        /* ==================== NAVBAR ==================== */
+        var navbar = document.getElementById('navbar');
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        /* ==================== FADE-IN OBSERVER ==================== */
+        var fadeEls = document.querySelectorAll('.fade-in');
+        var fadeObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        fadeEls.forEach(function(el) {
+            fadeObserver.observe(el);
+        });
+    })();
+    </script>
+
+    <!-- Tidio Chat Widget -->
+    <script src="//code.tidio.co/YOUR_PUBLIC_KEY.js" async></script>
+</body>
+</html>
