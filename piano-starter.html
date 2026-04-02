@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano Starter — EMC Digital Solutions</title>
+    <meta name="description" content="Piano Starter di EMC Digital Solutions: sito web one-page, gestione social e report trimestrali. Ideale per chi vuole iniziare con il minimo indispensabile.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#0c1120">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0c1120;
+            --bg-secondary: #131b2e;
+            --bg-card: #172035;
+            --accent: #6b9ef7;
+            --accent-light: #93b8fc;
+            --accent-vivid: #f5c542;
+            --accent-vivid-hover: #ffd666;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9ca3b0;
+            --border: #263354;
+            --shadow: rgba(0,0,0,0.2);
+            --shadow-lg: rgba(0,0,0,0.35);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --nav-height: 72px;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-vivid);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* Fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 1000;
+            transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(12, 17, 32, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 12px var(--shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: linear-gradient(90deg, transparent 30%, rgba(212, 160, 23, 0.08) 50%, transparent 70%);
+            background-size: 200% 100%;
+            animation: shimmer 4s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        .nav-logo svg {
+            width: 128px;
+            height: 128px;
+        }
+
+        .nav-logo span {
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-vivid);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            background: rgba(19, 27, 46, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 24px;
+            box-shadow: 0 8px 32px var(--shadow-lg);
+            z-index: 999;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ========== HERO ========== */
+        .page-hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(107, 158, 247, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero .section-subtitle {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-light);
+        }
+
+        .price-hero {
+            margin-top: 28px;
+        }
+
+        .price-hero .price-label {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .price-hero .price-setup {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .price-hero .price-amount {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 8px;
+        }
+
+        .price-hero .price-amount span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        /* ========== INCLUDES SECTION ========== */
+        .includes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .include-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .include-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .include-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(107,158,247,0.1);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .include-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent-light);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .include-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .include-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== NOT INCLUDED ========== */
+        .not-included-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 24px;
+            margin-top: 20px;
+            margin-bottom: 28px;
+        }
+
+        .not-included-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(38,51,84,0.5);
+        }
+
+        .not-included-list li::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            border-radius: 50%;
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.4);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .not-included-note {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+
+        .upgrade-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            padding: 12px 24px;
+            background: rgba(107,158,247,0.08);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            transition: all 0.3s;
+        }
+
+        .upgrade-link:hover {
+            background: rgba(107,158,247,0.15);
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* ========== COMPARE SECTION ========== */
+        .compare-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .compare-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .compare-card.current {
+            border-color: var(--accent);
+        }
+
+        .compare-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .compare-card .compare-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 4px;
+        }
+
+        .compare-card .compare-price span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .compare-card .compare-setup {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .compare-card .compare-highlights {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .compare-card.current .compare-highlights {
+            color: var(--accent-light);
+        }
+
+        .compare-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(107,158,247,0.15);
+            color: var(--accent-light);
+            padding: 3px 10px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        /* ========== CONTACT FORM ========== */
+        .contact-section {
+            background: var(--bg-secondary);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        form button[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        form button[type="submit"]:hover {
+            box-shadow: 0 4px 20px rgba(107,158,247,0.3);
+            transform: translateY(-1px);
+        }
+
+        form button[type="submit"]:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-status {
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            background: rgba(34,197,94,0.1);
+            color: #22c55e;
+            border: 1px solid rgba(34,197,94,0.3);
+        }
+
+        .form-status.error {
+            display: block;
+            background: rgba(239,68,68,0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239,68,68,0.3);
+        }
+
+        .form-wrapper {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* ========== SECTION DIVIDER ========== */
+        .section-divider {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .section-divider::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 120px;
+            background: linear-gradient(90deg, transparent, var(--accent-vivid), transparent);
+            border-radius: 2px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #080d1a;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 340px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo svg {
+            width: 96px;
+            height: 96px;
+        }
+
+        .footer h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-vivid);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .compare-row {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .page-hero .section-title {
+                font-size: 2.2rem;
+            }
+
+            .includes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .not-included-list {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .page-hero .section-title {
+                font-size: 1.8rem;
+            }
+
+            .price-hero .price-amount {
+                font-size: 2.4rem;
+            }
+        }
+
+        /* ========== PRINT ========== */
+        @media print {
+            body {
+                background: #fff;
+                color: #1a1a1a;
+            }
+
+            .navbar, .mobile-menu {
+                display: none !important;
+            }
+
+            section {
+                padding: 40px 0;
+                page-break-inside: avoid;
+            }
+
+            h1, h2, h3, h4, .section-title {
+                color: #1a1a1a !important;
+            }
+
+            p, li, .include-card p {
+                color: #444 !important;
+            }
+
+            .price-hero .price-amount {
+                color: #6b9ef7 !important;
+            }
+
+            .include-card, .compare-card {
+                background: #f8f8f8 !important;
+                border-color: #ddd !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="128">
+                    <defs>
+                        <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#d4a017"/>
+                        </linearGradient>
+                        <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="45%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#0f172a"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
+                    <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#navBarG)" opacity="0.85"/>
+                    <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#navBarG)"/>
+                    <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#navTxtG)" letter-spacing="3">EMC</text>
+                </svg>
+                <span>Digital Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
+                <li><a href="index.html#servizi">Servizi</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#social">Social</a></li>
+                <li><a href="proposta-commerciale.html" class="active">Pricing</a></li>
+                <li><a href="index.html#contatti">Contatti</a></li>
+                <li><a href="index.html#app-mobile">App</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#chi-siamo">Chi Siamo</a>
+        <a href="index.html#servizi">Servizi</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#social">Social</a>
+        <a href="proposta-commerciale.html" class="active">Pricing</a>
+        <a href="index.html#contatti">Contatti</a>
+        <a href="index.html#app-mobile">App</a>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="page-hero">
+        <div class="container">
+            <a href="proposta-commerciale.html#pricing" class="back-link">&#8592; Torna ai piani</a>
+            <div class="section-label">Piano Starter</div>
+            <h1 class="section-title">Piano Starter</h1>
+            <p class="section-subtitle">Ideale per chi vuole iniziare con il minimo indispensabile: una presenza online professionale senza complicazioni.</p>
+            <div class="price-hero">
+                <div class="price-label">Setup una tantum</div>
+                <div class="price-setup">&euro;500</div>
+                <div class="price-amount">&euro;200<span>/mese</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== COSA INCLUDE ========== -->
+    <section id="cosa-include">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Cosa Include</div>
+                <h2 class="section-title">Tutto quello che ottieni con lo Starter</h2>
+                <p class="section-subtitle">Ogni elemento del piano pensato per darti una base solida da cui partire.</p>
+            </div>
+
+            <div class="includes-grid">
+                <div class="include-card fade-in stagger-1">
+                    <div class="include-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                    <h3>Sito web one-page</h3>
+                    <p>Progettiamo una pagina web professionale che raccoglie tutto il necessario: presentazione della tua attivit&agrave;, servizi offerti, mappa, contatti e un form per essere raggiunto facilmente. Design moderno, responsive e ottimizzato per la velocit&agrave;.</p>
+                </div>
+
+                <div class="include-card fade-in stagger-2">
+                    <div class="include-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </div>
+                    <h3>1 piattaforma social (Facebook o Instagram)</h3>
+                    <p>Setup completo del profilo business: immagine di copertina, bio ottimizzata, informazioni di contatto, orari. Scelta della piattaforma pi&ugrave; adatta al tuo settore e pubblico.</p>
+                </div>
+
+                <div class="include-card fade-in stagger-3">
+                    <div class="include-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h3>4-6 post al mese</h3>
+                    <p>1-2 pubblicazioni a settimana con grafiche professionali e testi curati. Ogni post &egrave; pensato per il tuo pubblico: prodotti, servizi, novit&agrave;, promozioni stagionali.</p>
+                </div>
+
+                <div class="include-card fade-in stagger-4">
+                    <div class="include-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>Gestione commenti base</h3>
+                    <p>Monitoraggio dei commenti e dei messaggi privati sulla piattaforma gestita. Risposte tempestive per mantenere il rapporto con i tuoi clienti.</p>
+                </div>
+
+                <div class="include-card fade-in stagger-5">
+                    <div class="include-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h3>Report trimestrale</h3>
+                    <p>Ogni 3 mesi ricevi un documento con le metriche principali: persone raggiunte, interazioni, crescita follower, post pi&ugrave; performanti. Per capire cosa funziona e dove migliorare.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== COSA NON INCLUDE ========== -->
+    <section id="cosa-non-include">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Cosa NON Include</div>
+                <h2 class="section-title">Funzionalit&agrave; disponibili nei piani superiori</h2>
+                <p class="section-subtitle">Il piano Starter &egrave; pensato per iniziare. Se la tua attivit&agrave; ha bisogno di pi&ugrave;, i piani superiori offrono queste funzionalit&agrave; aggiuntive.</p>
+            </div>
+
+            <ul class="not-included-list fade-in">
+                <li>Sponsorizzate Meta (campagne Facebook e Instagram Ads)</li>
+                <li>Storie e Reels video</li>
+                <li>Seconda piattaforma social</li>
+                <li>Google Business Profile</li>
+            </ul>
+
+            <p class="not-included-note fade-in">Disponibile nei piani superiori</p>
+
+            <a href="piano-base.html" class="upgrade-link fade-in">Vuoi di pi&ugrave;? Scopri il piano Base &#8594;</a>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== CONFRONTA ========== -->
+    <section id="confronta">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Confronto</div>
+                <h2 class="section-title">Come si posiziona lo Starter</h2>
+            </div>
+
+            <div class="compare-row">
+                <div class="compare-card current fade-in stagger-1">
+                    <div class="compare-badge">Piano attuale</div>
+                    <h4>Starter</h4>
+                    <div class="compare-price">&euro;200<span>/mese</span></div>
+                    <div class="compare-setup">Setup &euro;500</div>
+                    <div class="compare-highlights">1 social, 4-6 post/mese, sito one-page, report trimestrale</div>
+                </div>
+                <div class="compare-card fade-in stagger-2">
+                    <h4>Base</h4>
+                    <div class="compare-price">&euro;350<span>/mese</span></div>
+                    <div class="compare-setup">Setup &euro;900</div>
+                    <div class="compare-highlights">2 social, 8-12 post/mese, sito multi-pagina, storie, report mensile</div>
+                </div>
+                <div class="compare-card fade-in stagger-3">
+                    <h4>Standard</h4>
+                    <div class="compare-price">&euro;500<span>/mese</span></div>
+                    <div class="compare-setup">Setup &euro;1.500</div>
+                    <div class="compare-highlights">2 social, 12-16 post/mese, reels, sponsorizzate, Google Business</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== CONTACT FORM ========== -->
+    <section class="contact-section" id="contatto">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Inizia Ora</div>
+                <h2 class="section-title">Richiedi il Piano Starter</h2>
+                <p class="section-subtitle">Compila il modulo e ti ricontatteremo entro 24 ore per definire insieme i dettagli.</p>
+            </div>
+
+            <div class="form-wrapper fade-in">
+                <form id="planForm" action="https://formsubmit.co/info@emcdigitalsolutions.it" method="POST">
+                    <input type="hidden" name="_subject" value="Richiesta Piano Starter">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome e Cognome *</label>
+                            <input type="text" id="name" name="nome" required placeholder="Il tuo nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="business">Nome Attivit&agrave; *</label>
+                            <input type="text" id="business" name="attivita" required placeholder="La tua attivit&agrave;">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="La tua email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefono</label>
+                            <input type="tel" id="phone" name="telefono" placeholder="Il tuo numero">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Messaggio</label>
+                        <textarea id="message" name="messaggio" rows="4" placeholder="Raccontaci della tua attivit&agrave; e cosa vorresti ottenere..."></textarea>
+                    </div>
+                    <button type="submit">Invia Richiesta</button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
+                            <defs>
+                                <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#d4a017"/>
+                                </linearGradient>
+                                <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#6b9ef7"/><stop offset="45%" stop-color="#93b8fc"/><stop offset="100%" stop-color="#ffffff"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>
+                            <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#ftBarG)" opacity="0.85"/>
+                            <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#ftBarG)"/>
+                            <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#ftTxtG)" letter-spacing="3">EMC</text>
+                        </svg>
+                        <span>Digital Solutions</span>
+                    </div>
+                    <p>Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                </div>
+                <div>
+                    <h4>Link Rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi">Servizi</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="proposta-commerciale.html">Pricing</a></li>
+                        <li><a href="index.html#contatti">Contatti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Servizi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#servizi">Sviluppo Web</a></li>
+                        <li><a href="index.html#servizi">Software SaaS</a></li>
+                        <li><a href="index.html#servizi">Social Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+    (function() {
+        'use strict';
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+        // Fade-in observer
+        var fadeEls = document.querySelectorAll('.fade-in');
+        var fadeObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        fadeEls.forEach(function(el) { fadeObserver.observe(el); });
+        // Contact form
+        var form = document.getElementById('planForm');
+        var formStatus = document.getElementById('formStatus');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var btn = form.querySelector('button[type="submit"]');
+                btn.textContent = 'Invio in corso...';
+                btn.disabled = true;
+                fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+                .then(function(r) {
+                    if (r.ok) {
+                        formStatus.className = 'form-status success';
+                        formStatus.textContent = 'Messaggio inviato! Ti ricontatteremo al pi\u00f9 presto.';
+                        form.reset();
+                    } else {
+                        formStatus.className = 'form-status error';
+                        formStatus.textContent = 'Errore nell\'invio. Riprova o contattaci direttamente via email.';
+                    }
+                    btn.textContent = 'Invia Richiesta';
+                    btn.disabled = false;
+                }).catch(function() {
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = 'Errore nell\'invio. Riprova o contattaci direttamente via email.';
+                    btn.textContent = 'Invia Richiesta';
+                    btn.disabled = false;
+                });
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

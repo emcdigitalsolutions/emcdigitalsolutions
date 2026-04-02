@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMC Digital Solutions — Sviluppo Software, SaaS, Soluzioni Digitali | Sicilia</title>
     <meta name="description" content="EMC Digital Solutions: sviluppo software, SaaS e soluzioni digitali su misura. Operiamo dalla Sicilia per clienti in tutta Italia.">
-    <meta name="keywords" content="sviluppo software sicilia, azienda web sicilia, sviluppo web, SaaS, ERP, React, gestionali cloud, social media management, HTML5 games">
+    <meta name="keywords" content="sviluppo software sicilia, azienda web sicilia, sviluppo web, SaaS, ERP, React, gestionali cloud, social media management, sviluppo app android ios">
     <meta name="author" content="EMC Digital Solutions">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://www.emcdigitalsolutions.it/">
@@ -66,7 +66,7 @@
         "sameAs": [
             "https://github.com/emcdigitalsolutions"
         ],
-        "knowsAbout": ["Software Development", "SaaS", "Web Development", "HTML5 Games", "Social Media Management", "ERP", "React", "Node.js"],
+        "knowsAbout": ["Software Development", "SaaS", "Web Development", "App Development", "Social Media Management", "ERP", "React", "Node.js"],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Servizi di Sviluppo Software",
@@ -75,8 +75,8 @@
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": "Sviluppo Web",
-                        "description": "Siti vetrina, e-commerce e web app. Design mobile-first, SEO ottimizzato, performance elevate."
+                        "name": "Sviluppo Web a 360°",
+                        "description": "Siti vetrina, e-commerce e web app con SEO avanzato, Google Analytics, Google Business Profile, Google Maps e posizionamento sui motori di ricerca."
                     }
                 },
                 {
@@ -92,15 +92,15 @@
                     "itemOffered": {
                         "@type": "Service",
                         "name": "Social Media Management",
-                        "description": "Gestione pagine social, creazione contenuti e campagne sponsorizzate geolocalizzate."
+                        "description": "Strategia social completa: gestione pagine, creazione contenuti, piani editoriali, campagne sponsorizzate geolocalizzate e analisi performance."
                     }
                 },
                 {
                     "@type": "Offer",
                     "itemOffered": {
                         "@type": "Service",
-                        "name": "HTML5 Games",
-                        "description": "Giochi arcade per browser e mobile. Zero dipendenze, performance native, pronti per i marketplace."
+                        "name": "Sviluppo App Mobile",
+                        "description": "Applicazioni native e cross-platform per Android e iOS. UX design, notifiche push, rilascio sugli store."
                     }
                 }
             ]
@@ -397,21 +397,6 @@
             color: #fff;
             border-color: var(--accent);
             box-shadow: 0 0 12px rgba(30, 58, 138, 0.3);
-        }
-
-        /* ========== GAME CARD GLOW ========== */
-        .game-card:hover {
-            box-shadow: 0 12px 40px var(--shadow-lg), 0 0 24px rgba(212, 160, 23, 0.2);
-        }
-
-        .game-preview .game-emoji {
-            animation: emojiFloat 3s ease-in-out infinite;
-        }
-
-        .game-play-btn:hover svg {
-            animation: none;
-            transform: translateX(3px);
-            transition: transform 0.2s;
         }
 
         /* ========== SECTION DIVIDER ========== */
@@ -1329,99 +1314,221 @@
             background: var(--accent-vivid-hover);
         }
 
-        /* ========== GAMES SECTION ========== */
-        .games-grid {
+        /* ========== APP SECTION ========== */
+        .app-showcase {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
-        .game-card {
+        .app-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--accent-vivid);
+        }
+        .app-info > p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .app-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .app-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            overflow: hidden;
             transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
         }
-        .game-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px var(--shadow-lg);
+        .app-feature:hover {
+            border-color: var(--accent-vivid);
+            box-shadow: 0 0 20px rgba(212, 160, 23, 0.1);
         }
-        .game-preview {
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+        .app-feature-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-vivid);
+            flex-shrink: 0;
+            margin-top: 2px;
         }
-        .game-preview::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0.7;
-        }
-        .game-card:nth-child(1) .game-preview::before { background: linear-gradient(135deg, #0a1628, #1a0a2e, #fbbf24); }
-        .game-card:nth-child(2) .game-preview::before { background: linear-gradient(135deg, #1a0a2e, #2a0a1e, #f700ff); }
-        .game-card:nth-child(3) .game-preview::before { background: linear-gradient(135deg, #0a1628, #0a2818, #39ff14); }
-        .game-card:nth-child(4) .game-preview::before { background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #7b00ff); }
-        .game-card:nth-child(5) .game-preview::before { background: linear-gradient(135deg, #1a0a2e, #2a0a1e, #ff00aa); }
-        .game-card:nth-child(6) .game-preview::before { background: linear-gradient(135deg, #0a1a0a, #1a2e0a, #fbbf24); }
-        .game-card:nth-child(7) .game-preview::before { background: linear-gradient(135deg, #1a0800, #2a1000, #ff6d00); }
-        .game-card:nth-child(8) .game-preview::before { background: linear-gradient(135deg, #0a1628, #0a2828, #fbbf24); }
-        .game-card:nth-child(9) .game-preview::before { background: linear-gradient(135deg, #1a0a2e, #0a1a2e, #f700ff); }
-        .game-card:nth-child(10) .game-preview::before { background: linear-gradient(135deg, #0a0a1a, #1a1a0a, #fbbf24); }
-        .game-preview .game-emoji {
-            font-size: 2.8rem;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 0 16px rgba(212, 160, 23, 0.4));
-        }
-        .game-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: relative;
-            z-index: 1;
-        }
-        .game-body {
-            padding: 16px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .game-body h3 {
-            font-size: 0.95rem;
+        .app-feature h4 {
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
-        .game-body p {
-            font-size: 0.78rem;
+        .app-feature p {
+            font-size: 0.8rem;
             color: var(--text-secondary);
             line-height: 1.5;
-            margin-bottom: 12px;
-            flex: 1;
         }
-        .game-play-btn {
+        .app-phone-mockup {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 6px;
-            padding: 9px 16px;
+            align-items: center;
+        }
+        .phone-frame {
+            position: relative;
+            width: 280px;
+            height: 560px;
+            background: linear-gradient(145deg, #172035 0%, #0c1120 100%);
+            border-radius: 40px;
+            border: 3px solid var(--border);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4), 0 0 40px rgba(212, 160, 23, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            overflow: hidden;
+        }
+        .phone-notch {
+            width: 120px;
+            height: 28px;
+            background: #080d1a;
+            border-radius: 0 0 16px 16px;
+            margin-bottom: 20px;
+        }
+        .phone-screen {
+            flex: 1;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .phone-app-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-vivid);
+            text-align: center;
+        }
+        .phone-app-tagline {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .phone-ui-element {
+            height: 12px;
+            background: var(--border);
+            border-radius: 6px;
+            opacity: 0.5;
+        }
+        .phone-ui-element.short { width: 60%; }
+        .phone-ui-element.medium { width: 80%; }
+        .phone-ui-btn {
+            margin-top: auto;
+            padding: 12px;
             background: var(--accent-vivid);
-            border-radius: 8px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: #fff;
-            font-size: 0.82rem;
+        }
+        .phone-home-bar {
+            width: 100px;
+            height: 4px;
+            background: var(--text-secondary);
+            border-radius: 2px;
+            margin-top: 12px;
+            opacity: 0.4;
+        }
+        .app-cta {
+            margin-top: 24px;
+        }
+        .app-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--accent-vivid);
+            color: #fff;
+            border-radius: 12px;
             font-weight: 600;
             transition: all 0.2s;
         }
-        .game-play-btn:hover {
+        .app-cta a:hover {
             background: var(--accent-vivid-hover);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
             color: #fff;
         }
-        .game-play-btn svg { width: 14px; height: 14px; }
+
+        /* ========== SOCIAL SECTION ========== */
+        .social-offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .social-offering-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            transition: all 0.3s;
+        }
+        .social-offering-card:hover {
+            border-color: var(--accent-vivid);
+            box-shadow: 0 0 24px rgba(212, 160, 23, 0.1);
+            transform: translateY(-4px);
+        }
+        .social-offering-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(212, 160, 23, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--accent-vivid);
+        }
+        .social-offering-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        .social-offering-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .social-offering-card > p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .social-offering-list {
+            list-style: none;
+            padding: 0;
+        }
+        .social-offering-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+        }
+        .social-offering-list li:first-child {
+            border-top: none;
+        }
+        .social-offering-list li svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-vivid);
+            flex-shrink: 0;
+        }
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
@@ -1431,8 +1538,15 @@
             .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .games-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .social-offerings-grid {
+                grid-template-columns: 1fr;
+            }
+            .app-showcase {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .app-phone-mockup {
+                order: -1;
             }
             .about-content {
                 grid-template-columns: 1fr;
@@ -1476,9 +1590,6 @@
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
-            .games-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
             .values-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1512,7 +1623,7 @@
             .values-grid {
                 grid-template-columns: 1fr;
             }
-            .games-grid {
+            .app-features {
                 grid-template-columns: 1fr;
             }
             .contact-form {
@@ -1554,11 +1665,13 @@
                 <span>Digital Solutions</span>
             </a>
             <ul class="nav-links">
+                <li><a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
                 <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
                 <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
-                <li><a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
-                <li><a href="#games" data-i18n="nav.games">Games</a></li>
+                <li><a href="#social" data-i18n="nav.social">Social</a></li>
+                <li><a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a></li>
                 <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li><a href="#app-mobile" data-i18n="nav.app">App</a></li>
                 <li>
                     <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -1574,11 +1687,13 @@
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
+        <a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
         <a href="#servizi" data-i18n="nav.services">Servizi</a>
         <a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a>
-        <a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
-        <a href="#games" data-i18n="nav.games">Games</a>
+        <a href="#social" data-i18n="nav.social">Social</a>
+        <a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a>
         <a href="#contatti" data-i18n="nav.contact">Contatti</a>
+        <a href="#app-mobile" data-i18n="nav.app">App</a>
         <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             <span id="langLabelMobile">EN</span>
@@ -1632,6 +1747,50 @@
         </div>
     </section>
 
+    <!-- ========== CHI SIAMO ========== -->
+    <section class="about" id="chi-siamo">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in-left">
+                    <div class="section-label" data-i18n="about.label">Chi siamo</div>
+                    <h2 class="section-title" data-i18n="about.title">Il Nostro Approccio</h2>
+                    <p data-i18n="about.p1">EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, SaaS e soluzioni digitali.</p>
+                    <p data-i18n="about.p2">Operiamo per clienti nazionali ed internazionali, con un approccio professionale e personalizzato sulle esigenze del cliente, che mette al centro la tecnologia allo stato dell'arte, la qualità del codice e la soddisfazione del cliente.</p>
+                    <p data-i18n="about.p3">Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l'architettura e sviluppiamo con le tecnologie più adatte.</p>
+                    <p data-i18n="about.p4">Aumentiamo la visibilit&agrave; online della tua azienda utilizzando tecnologie allo stato dell'arte &mdash; dall'indicizzazione sui motori di ricerca all'ottimizzazione delle conversioni &mdash; mantenendo sempre alta la guardia sulla sicurezza informatica.</p>
+                </div>
+                <div class="values-grid fade-in-right">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h4 data-i18n="about.value1">Artigianalit&agrave; Digitale</h4>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <h4 data-i18n="about.value2">Soluzioni su Misura</h4>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </div>
+                        <h4 data-i18n="about.value3">Risultati Misurabili</h4>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h4 data-i18n="about.value4">Supporto Diretto</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider fade-in"></div>
+
     <!-- ========== SERVICES ========== -->
     <section class="services" id="servizi">
         <div class="container">
@@ -1647,8 +1806,8 @@
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                     </div>
-                    <h3 data-i18n="services.web.title">Sviluppo Web</h3>
-                    <p data-i18n="services.web.desc">Siti vetrina, e-commerce e web app. Design mobile-first, SEO ottimizzato, performance elevate.</p>
+                    <h3 data-i18n="services.web.title">Sviluppo Web a 360&deg;</h3>
+                    <p data-i18n="services.web.desc">Siti vetrina, e-commerce e web app con SEO avanzato, Google Analytics, Google Business Profile, inserimento su Google Maps e posizionamento sui motori di ricerca.</p>
                 </div>
 
                 <!-- SaaS -->
@@ -1666,16 +1825,16 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     </div>
                     <h3 data-i18n="services.social.title">Social Media Management</h3>
-                    <p data-i18n="services.social.desc">Gestione pagine social, creazione contenuti e campagne sponsorizzate geolocalizzate.</p>
+                    <p data-i18n="services.social.desc">Strategia social completa: gestione pagine, creazione contenuti, piani editoriali, campagne sponsorizzate geolocalizzate, reportistica e analisi delle performance.</p>
                 </div>
 
-                <!-- Games -->
+                <!-- App Mobile -->
                 <div class="service-card fade-in stagger-5">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                     </div>
-                    <h3 data-i18n="services.games.title">HTML5 Games</h3>
-                    <p data-i18n="services.games.desc">Giochi arcade per browser e mobile. Zero dipendenze, performance native, pronti per i marketplace.</p>
+                    <h3 data-i18n="services.app.title">Sviluppo App</h3>
+                    <p data-i18n="services.app.desc">App native e cross-platform per Android e iOS. UX design, notifiche push e rilascio sugli store.</p>
                 </div>
 
             </div>
@@ -1697,7 +1856,7 @@
                 <button class="filter-btn active" data-filter="all" data-i18n="portfolio.filter.all">Tutti</button>
                 <button class="filter-btn" data-filter="web" data-i18n="portfolio.filter.web">Web</button>
                 <button class="filter-btn" data-filter="saas" data-i18n="portfolio.filter.saas">SaaS</button>
-                <button class="filter-btn" data-filter="games" data-i18n="portfolio.filter.games">Games</button>
+                <button class="filter-btn" data-filter="app" data-i18n="portfolio.filter.app">App</button>
                 <button class="filter-btn" data-filter="social" data-i18n="portfolio.filter.social">Social</button>
             </div>
 
@@ -1812,83 +1971,42 @@
                     </div>
                 </div>
 
-                <!-- HTML5 Games -->
-                <div class="portfolio-card fade-in stagger-7" data-category="games">
+                <!-- Prenoty App -->
+                <div class="portfolio-card fade-in stagger-7" data-category="app saas">
                     <div class="portfolio-card-img">
-                        <img src="images/games-collection.png" alt="HTML5 Games Collection" loading="lazy">
-                        <span class="portfolio-badge">Games</span>
+                        <img src="images/prenoty.png" alt="Prenoty App" loading="lazy">
+                        <span class="portfolio-badge">App</span>
                     </div>
                     <div class="portfolio-card-body">
-                        <h3>HTML5 Games</h3>
-                        <p data-i18n="portfolio.games.desc">Collezione di 10+ giochi arcade HTML5. Canvas puro, zero dipendenze, touch-ready. Disponibili su marketplace internazionali.</p>
+                        <h3>Prenoty App</h3>
+                        <p data-i18n="portfolio.prenoty-app.desc">App mobile per prenotazioni e appuntamenti. Disponibile su Android e iOS con notifiche push e calendario intelligente.</p>
                         <div class="portfolio-tags">
-                            <span class="portfolio-tag">HTML5 Canvas</span>
-                            <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">Game Design</span>
+                            <span class="portfolio-tag">React Native</span>
+                            <span class="portfolio-tag">Android</span>
+                            <span class="portfolio-tag">iOS</span>
                         </div>
+                        <a href="https://prenoty-site.pages.dev" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
                     </div>
                 </div>
 
-                <!-- Social Media Automation -->
+                <!-- Social Media & Visibilità -->
                 <div class="portfolio-card fade-in stagger-8" data-category="social">
                     <div class="portfolio-card-img" style="background: linear-gradient(135deg, #1e3a8a 0%, #d4a017 100%); display: flex; align-items: center; justify-content: center;">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                         <span class="portfolio-badge">Social</span>
                     </div>
                     <div class="portfolio-card-body">
-                        <h3>Social Media Automation</h3>
-                        <p data-i18n="portfolio.social.desc">Pipeline automatizzata per la gestione social dei clienti. Programmazione post, contenuti AI-generated e analisi performance.</p>
+                        <h3 data-i18n="portfolio.social.title">Social Media &amp; Visibilit&agrave;</h3>
+                        <p data-i18n="portfolio.social.desc">Gestione completa della presenza social, campagne pubblicitarie geolocalizzate e strategie di brand per aumentare la visibilit&agrave; online della tua azienda.</p>
                         <div class="portfolio-tags">
-                            <span class="portfolio-tag">Node.js</span>
-                            <span class="portfolio-tag">API Meta</span>
-                            <span class="portfolio-tag">Automation</span>
+                            <span class="portfolio-tag">Facebook</span>
+                            <span class="portfolio-tag">Instagram</span>
+                            <span class="portfolio-tag">Google Ads</span>
                         </div>
+                        <a href="#social" class="portfolio-link" data-i18n="portfolio.viewOffer">Scopri l'offerta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider fade-in"></div>
-
-    <!-- ========== CHI SIAMO ========== -->
-    <section class="about" id="chi-siamo">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text fade-in-left">
-                    <div class="section-label" data-i18n="about.label">Chi siamo</div>
-                    <h2 class="section-title" data-i18n="about.title">Il Nostro Approccio</h2>
-                    <p data-i18n="about.p1">EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, SaaS e soluzioni digitali.</p>
-                    <p data-i18n="about.p2">Operiamo per clienti nazionali ed internazionali, con un approccio professionale e personalizzato sulle esigenze del cliente, che mette al centro la tecnologia allo stato dell'arte, la qualità del codice e la soddisfazione del cliente.</p>
-                    <p data-i18n="about.p3">Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l'architettura e sviluppiamo con le tecnologie più adatte.</p>
-                </div>
-                <div class="values-grid fade-in-right">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <h4 data-i18n="about.value1">Artigianalit&agrave; Digitale</h4>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                        </div>
-                        <h4 data-i18n="about.value2">Soluzioni su Misura</h4>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        </div>
-                        <h4 data-i18n="about.value3">Risultati Misurabili</h4>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                        </div>
-                        <h4 data-i18n="about.value4">Supporto Diretto</h4>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1947,114 +2065,59 @@
 
     <div class="section-divider fade-in"></div>
 
-    <!-- ========== GAMES ========== -->
-    <section class="games" id="games" style="background:var(--bg-secondary)">
+    <!-- ========== SOCIAL & VISIBILITA ========== -->
+    <section class="social-visibility" id="social" style="background:var(--bg-secondary)">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label" data-i18n="games.label">I nostri giochi</div>
-                <h2 class="section-title" data-i18n="games.title">HTML5 Games</h2>
-                <p class="section-subtitle" data-i18n="games.subtitle">10 giochi arcade costruiti da zero con JavaScript e Canvas API. Zero dipendenze, mobile-ready, giocabili direttamente nel browser.</p>
+                <div class="section-label" data-i18n="social.label">La nostra offerta</div>
+                <h2 class="section-title" data-i18n="social.title">Social Media &amp; Visibilit&agrave;</h2>
+                <p class="section-subtitle" data-i18n="social.subtitle">Portiamo la tua azienda dove sono i tuoi clienti: sui social, su Google e nella mente delle persone. Strategie misurabili per aumentare la notoriet&agrave; del brand e il ritorno sull'investimento.</p>
             </div>
-            <div class="games-grid">
+            <div class="social-offerings-grid">
 
-                <!-- Stack Tower -->
-                <div class="game-card fade-in stagger-1">
-                    <div class="game-preview"><img src="images/game-stack-tower.png" alt="Stack Tower" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Stack Tower</h3>
-                        <p data-i18n="games.stack-desc">Tocca per far cadere i blocchi e costruire la torre più alta. Combo bonus per allineamento perfetto.</p>
-                        <a href="https://emcdigitalsolutions.github.io/stack-tower" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                <!-- Gestione Social -->
+                <div class="social-offering-card fade-in stagger-1">
+                    <div class="social-offering-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                     </div>
+                    <h3 data-i18n="social.s1.title">Gestione Social</h3>
+                    <p data-i18n="social.s1.desc">Gestiamo la tua presenza su Facebook e Instagram con contenuti professionali e un piano editoriale studiato per il tuo settore.</p>
+                    <ul class="social-offering-list">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s1.i1">8-12 post al mese</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s1.i2">4-8 stories al mese</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s1.i3">Piano editoriale personalizzato</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s1.i4">Gestione commenti e messaggi</span></li>
+                    </ul>
                 </div>
 
-                <!-- Color Switch -->
-                <div class="game-card fade-in stagger-2">
-                    <div class="game-preview"><img src="images/game-color-switch.png" alt="Color Switch" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Color Switch</h3>
-                        <p data-i18n="games.color-desc">Salta attraverso ostacoli del colore della tua palla. Raccogli stelle per cambiare colore.</p>
-                        <a href="https://emcdigitalsolutions.github.io/color-switch" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                <!-- Campagne Pubblicitarie -->
+                <div class="social-offering-card fade-in stagger-2">
+                    <div class="social-offering-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     </div>
+                    <h3 data-i18n="social.s2.title">Campagne Pubblicitarie</h3>
+                    <p data-i18n="social.s2.desc">Campagne sponsorizzate su Facebook e Instagram con targeting geolocalizzato per raggiungere i clienti nella tua zona e massimizzare il ROI.</p>
+                    <ul class="social-offering-list">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s2.i1">Targeting per zona, et&agrave; e interessi</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s2.i2">Budget misurabile e controllabile</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s2.i3">5.000+ persone raggiunte/mese</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s2.i4">Report mensile con metriche chiare</span></li>
+                    </ul>
                 </div>
 
-                <!-- Neon Invaders -->
-                <div class="game-card fade-in stagger-3">
-                    <div class="game-preview"><img src="images/game-neon-invaders.png" alt="Neon Invaders" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Neon Invaders</h3>
-                        <p data-i18n="games.invaders-desc">Distruggi ondate di alieni prima che raggiungano il fondo. Scudi, bonus UFO, onde progressive.</p>
-                        <a href="https://emcdigitalsolutions.github.io/neon-invaders" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
+                <!-- Visibilità Locale -->
+                <div class="social-offering-card fade-in stagger-3">
+                    <div class="social-offering-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
-                </div>
-
-                <!-- Void Drift -->
-                <div class="game-card fade-in stagger-4">
-                    <div class="game-preview"><img src="images/game-void-drift.png" alt="Void Drift" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Void Drift</h3>
-                        <p data-i18n="games.void-desc">Naviga tra campi di asteroidi, distruggi rocce e sopravvivi onda dopo onda. Fisica inerziale.</p>
-                        <a href="https://emcdigitalsolutions.github.io/void-drift" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
-                    </div>
-                </div>
-
-                <!-- Neon Breaker -->
-                <div class="game-card fade-in stagger-5">
-                    <div class="game-preview"><img src="images/game-neon-breaker.png" alt="Neon Breaker" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Neon Breaker</h3>
-                        <p data-i18n="games.breaker-desc">Rompi tutti i mattoni con la palla. 4 tipi di mattoni, 6 power-up, azione multi-palla.</p>
-                        <a href="https://emcdigitalsolutions.github.io/neon-breaker" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
-                    </div>
-                </div>
-
-                <!-- Neon Snake -->
-                <div class="game-card fade-in stagger-6">
-                    <div class="game-preview"><img src="images/game-neon-snake.png" alt="Neon Snake" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Neon Snake</h3>
-                        <p data-i18n="games.snake-desc">Mangia cibo per crescere senza colpirti. Cibo bonus per punti extra. D-pad su mobile.</p>
-                        <a href="https://emcdigitalsolutions.github.io/neon-snake" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
-                    </div>
-                </div>
-
-                <!-- Neon Runner -->
-                <div class="game-card fade-in stagger-7">
-                    <div class="game-preview"><img src="images/game-neon-runner.png" alt="Neon Runner" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Neon Runner</h3>
-                        <p data-i18n="games.runner-desc">Salta ostacoli e raccogli monete in questo endless runner. Doppio salto, velocità progressiva.</p>
-                        <a href="https://emcdigitalsolutions.github.io/neon-runner" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
-                    </div>
-                </div>
-
-                <!-- Neon Blocks -->
-                <div class="game-card fade-in stagger-8">
-                    <div class="game-preview"><img src="images/game-neon-blocks.png" alt="Neon Blocks" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Neon Blocks</h3>
-                        <p data-i18n="games.blocks-desc">Completa righe per eliminarle e fare combo. 7 tetromini, pezzo fantasma, wall kicks.</p>
-                        <a href="https://emcdigitalsolutions.github.io/neon-blocks" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
-                    </div>
-                </div>
-
-                <!-- Neon 2048 -->
-                <div class="game-card fade-in stagger-9">
-                    <div class="game-preview"><img src="images/game-neon-2048.png" alt="Neon 2048" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Neon 2048</h3>
-                        <p data-i18n="games.2048-desc">Scorri le tessere per unire numeri uguali e raggiungere 2048. Sistema undo, modalità infinita.</p>
-                        <a href="https://emcdigitalsolutions.github.io/neon-2048" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
-                    </div>
-                </div>
-
-                <!-- Neon Pong -->
-                <div class="game-card fade-in stagger-10">
-                    <div class="game-preview"><img src="images/game-neon-pong.png" alt="Neon Pong" loading="lazy"></div>
-                    <div class="game-body">
-                        <h3>Neon Pong</h3>
-                        <p data-i18n="games.pong-desc">Muovi la racchetta e batti l'IA. Rimbalzo ad angolo, scia della palla, velocità progressiva.</p>
-                        <a href="https://emcdigitalsolutions.github.io/neon-pong" target="_blank" rel="noopener" class="game-play-btn" data-i18n="games.play">Gioca Ora <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></a>
-                    </div>
+                    <h3 data-i18n="social.s3.title">Visibilit&agrave; Locale</h3>
+                    <p data-i18n="social.s3.desc">Ti facciamo trovare su Google Maps e nei risultati di ricerca locali. Ottimizziamo il tuo profilo Google Business per attrarre nuovi clienti nella tua zona.</p>
+                    <ul class="social-offering-list">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s3.i1">Google Business Profile ottimizzato</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s3.i2">Inserimento su Google Maps</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s3.i3">SEO locale e posizionamento</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="social.s3.i4">Gestione recensioni e reputazione</span></li>
+                    </ul>
                 </div>
 
             </div>
@@ -2118,6 +2181,74 @@
         </div>
     </section>
 
+    <div class="section-divider fade-in"></div>
+
+    <!-- ========== APP DEVELOPMENT ========== -->
+    <section class="app-development" id="app-mobile" style="background:var(--bg-secondary)">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label" data-i18n="app.label">Le nostre app</div>
+                <h2 class="section-title" data-i18n="app.title">Sviluppo App</h2>
+                <p class="section-subtitle" data-i18n="app.subtitle">Progettiamo e sviluppiamo applicazioni mobile per Android e iOS, dalla progettazione UX al rilascio sugli store.</p>
+            </div>
+            <div class="app-showcase">
+                <div class="app-info fade-in-left">
+                    <h3 data-i18n="app.featured">Prenoty</h3>
+                    <p data-i18n="app.featured-desc">La nostra piattaforma di prenotazioni e appuntamenti, progettata per offrire un'esperienza mobile nativa su entrambe le piattaforme. Calendario intelligente, notifiche push e sincronizzazione in tempo reale.</p>
+                    <div class="app-features">
+                        <div class="app-feature">
+                            <svg class="app-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                            <div>
+                                <h4 data-i18n="app.f1.title">Cross-Platform</h4>
+                                <p data-i18n="app.f1.desc">Android e iOS con un unico codebase. Performance native su ogni dispositivo.</p>
+                            </div>
+                        </div>
+                        <div class="app-feature">
+                            <svg class="app-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                            <div>
+                                <h4 data-i18n="app.f2.title">Notifiche Push</h4>
+                                <p data-i18n="app.f2.desc">Promemoria automatici e notifiche in tempo reale per utenti e gestori.</p>
+                            </div>
+                        </div>
+                        <div class="app-feature">
+                            <svg class="app-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <div>
+                                <h4 data-i18n="app.f3.title">Tempo Reale</h4>
+                                <p data-i18n="app.f3.desc">Sincronizzazione istantanea. Disponibilit&agrave; e prenotazioni sempre aggiornate.</p>
+                            </div>
+                        </div>
+                        <div class="app-feature">
+                            <svg class="app-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <div>
+                                <h4 data-i18n="app.f4.title">Sicurezza</h4>
+                                <p data-i18n="app.f4.desc">Autenticazione sicura, dati crittografati e conformit&agrave; GDPR integrata.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-cta">
+                        <a href="https://prenoty-site.pages.dev" target="_blank" rel="noopener" data-i18n="app.cta">Scopri Prenoty <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+                <div class="app-phone-mockup fade-in-right">
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-app-name">Prenoty</div>
+                            <div class="phone-app-tagline" data-i18n="app.phone-tagline">Prenota in un tap</div>
+                            <div class="phone-ui-element"></div>
+                            <div class="phone-ui-element medium"></div>
+                            <div class="phone-ui-element short"></div>
+                            <div class="phone-ui-element"></div>
+                            <div class="phone-ui-element medium"></div>
+                            <div class="phone-ui-btn" data-i18n="app.phone-btn">Prenota Ora</div>
+                        </div>
+                        <div class="phone-home-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="container">
@@ -2148,11 +2279,13 @@
                 <div>
                     <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
                     <ul class="footer-links">
+                        <li><a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
                         <li><a href="#servizi" data-i18n="nav.services">Servizi</a></li>
                         <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
-                        <li><a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
-                        <li><a href="#games" data-i18n="nav.games">Games</a></li>
+                        <li><a href="#social" data-i18n="nav.social">Social</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a></li>
                         <li><a href="#contatti" data-i18n="nav.contact">Contatti</a></li>
+                        <li><a href="#app-mobile" data-i18n="nav.app">App</a></li>
                     </ul>
                 </div>
                 <div>
@@ -2199,21 +2332,21 @@
                 'services.label': 'Cosa facciamo',
                 'services.title': 'I Nostri Servizi',
                 'services.subtitle': "Dall'idea alla realizzazione, affianchiamo ogni progetto con competenza e attenzione ai dettagli.",
-                'services.web.title': 'Sviluppo Web',
-                'services.web.desc': 'Siti vetrina, e-commerce e web app. Design mobile-first, SEO ottimizzato, performance elevate.',
+                'services.web.title': 'Sviluppo Web a 360°',
+                'services.web.desc': 'Siti vetrina, e-commerce e web app con SEO avanzato, Google Analytics, Google Business Profile, inserimento su Google Maps e posizionamento sui motori di ricerca.',
                 'services.saas.title': 'Software SaaS',
                 'services.saas.desc': 'Gestionali cloud multi-tenant, ERP e piattaforme SaaS con architettura scalabile e sicura.',
                 'services.social.title': 'Social Media Management',
-                'services.social.desc': 'Gestione pagine social, creazione contenuti e campagne sponsorizzate geolocalizzate.',
-                'services.games.title': 'HTML5 Games',
-                'services.games.desc': 'Giochi arcade per browser e mobile. Zero dipendenze, performance native, pronti per i marketplace.',
+                'services.social.desc': 'Strategia social completa: gestione pagine, creazione contenuti, piani editoriali, campagne sponsorizzate geolocalizzate, reportistica e analisi delle performance.',
+                'services.app.title': 'Sviluppo App',
+                'services.app.desc': 'App native e cross-platform per Android e iOS. UX design, notifiche push e rilascio sugli store.',
                 'portfolio.label': 'I nostri lavori',
                 'portfolio.title': 'Portfolio',
                 'portfolio.subtitle': 'Una selezione di progetti realizzati per clienti in diversi settori.',
                 'portfolio.filter.all': 'Tutti',
                 'portfolio.filter.web': 'Web',
                 'portfolio.filter.saas': 'SaaS',
-                'portfolio.filter.games': 'Games',
+                'portfolio.filter.app': 'App',
                 'portfolio.filter.social': 'Social',
                 'portfolio.viewProject': 'Visita il sito',
 'portfolio.stockflow.desc': 'Gestionale cloud multi-tenant per il retail. Magazzino, vendite, fatturazione elettronica e analytics integrati.',
@@ -2222,13 +2355,16 @@
                 'portfolio.kleinbaby.desc': 'Sito e-commerce per negozio di abbigliamento bambini. Catalogo dinamico collegato a StockflowERP.',
                 'portfolio.herbora.desc': 'Sito vetrina per erboristeria con design "Botanical Editorial". Catalogo prodotti, blog e integrazione social.',
                 'portfolio.studioschembri.desc': 'Sito professionale per studio commercialista. Area informativa con servizi, consulenze e contatti multi-sede.',
-                'portfolio.games.desc': 'Collezione di 10+ giochi arcade HTML5. Canvas puro, zero dipendenze, touch-ready. Disponibili su marketplace internazionali.',
-                'portfolio.social.desc': 'Pipeline automatizzata per la gestione social dei clienti. Programmazione post, contenuti AI-generated e analisi performance.',
+                'portfolio.prenoty-app.desc': 'App mobile per prenotazioni e appuntamenti. Disponibile su Android e iOS con notifiche push e calendario intelligente.',
+                'portfolio.social.title': 'Social Media & Visibilità',
+                'portfolio.social.desc': 'Gestione completa della presenza social, campagne pubblicitarie geolocalizzate e strategie di brand per aumentare la visibilità online della tua azienda.',
+                'portfolio.viewOffer': "Scopri l'offerta",
                 'about.label': 'Chi siamo',
                 'about.title': 'Il Nostro Approccio',
                 'about.p1': 'EMC Digital Solutions è un team di professionisti con oltre 15 anni di esperienza nello sviluppo software, SaaS e soluzioni digitali.',
                 'about.p2': 'Operiamo per clienti nazionali ed internazionali, con un approccio professionale e personalizzato sulle esigenze del cliente, che mette al centro la tecnologia allo stato dell\'arte, la qualità del codice e la soddisfazione del cliente.',
                 'about.p3': 'Ogni progetto è una soluzione su misura: analizziamo le esigenze, progettiamo l\'architettura e sviluppiamo con le tecnologie più adatte.',
+                'about.p4': 'Aumentiamo la visibilità online della tua azienda utilizzando tecnologie allo stato dell\'arte — dall\'indicizzazione sui motori di ricerca all\'ottimizzazione delle conversioni — mantenendo sempre alta la guardia sulla sicurezza informatica.',
                 'about.value1': 'Artigianalità Digitale',
                 'about.value2': 'Soluzioni su Misura',
                 'about.value3': 'Risultati Misurabili',
@@ -2236,6 +2372,29 @@
                 'tech.label': 'Il nostro stack',
                 'tech.title': 'Tecnologie',
                 'tech.subtitle': 'Strumenti e tecnologie che utilizziamo quotidianamente per realizzare i nostri progetti.',
+                'nav.social': 'Social',
+                'nav.pricing': 'Pricing',
+                'social.label': 'La nostra offerta',
+                'social.title': 'Social Media & Visibilità',
+                'social.subtitle': 'Portiamo la tua azienda dove sono i tuoi clienti: sui social, su Google e nella mente delle persone. Strategie misurabili per aumentare la notorietà del brand e il ritorno sull\'investimento.',
+                'social.s1.title': 'Gestione Social',
+                'social.s1.desc': 'Gestiamo la tua presenza su Facebook e Instagram con contenuti professionali e un piano editoriale studiato per il tuo settore.',
+                'social.s1.i1': '8-12 post al mese',
+                'social.s1.i2': '4-8 stories al mese',
+                'social.s1.i3': 'Piano editoriale personalizzato',
+                'social.s1.i4': 'Gestione commenti e messaggi',
+                'social.s2.title': 'Campagne Pubblicitarie',
+                'social.s2.desc': 'Campagne sponsorizzate su Facebook e Instagram con targeting geolocalizzato per raggiungere i clienti nella tua zona e massimizzare il ROI.',
+                'social.s2.i1': 'Targeting per zona, età e interessi',
+                'social.s2.i2': 'Budget misurabile e controllabile',
+                'social.s2.i3': '5.000+ persone raggiunte/mese',
+                'social.s2.i4': 'Report mensile con metriche chiare',
+                'social.s3.title': 'Visibilità Locale',
+                'social.s3.desc': 'Ti facciamo trovare su Google Maps e nei risultati di ricerca locali. Ottimizziamo il tuo profilo Google Business per attrarre nuovi clienti nella tua zona.',
+                'social.s3.i1': 'Google Business Profile ottimizzato',
+                'social.s3.i2': 'Inserimento su Google Maps',
+                'social.s3.i3': 'SEO locale e posizionamento',
+                'social.s3.i4': 'Gestione recensioni e reputazione',
                 'contact.label': 'Parliamone',
                 'contact.title': 'Contattaci',
                 'contact.subtitle': 'Hai un progetto in mente? Scrivici e ti risponderemo entro 24 ore.',
@@ -2256,21 +2415,23 @@
                 'footer.rights': 'Tutti i diritti riservati.',
                 'cookie.text': 'Questo sito utilizza cookie tecnici per migliorare la tua esperienza di navigazione. Continuando a navigare, accetti l\'utilizzo dei cookie.',
                 'cookie.accept': 'Accetto',
-                'nav.games': 'Games',
-                'games.label': 'I nostri giochi',
-                'games.title': 'HTML5 Games',
-                'games.subtitle': '10 giochi arcade costruiti da zero con JavaScript e Canvas API. Zero dipendenze, mobile-ready, giocabili direttamente nel browser.',
-                'games.play': 'Gioca Ora',
-                'games.stack-desc': 'Tocca per far cadere i blocchi e costruire la torre più alta. Combo bonus per allineamento perfetto.',
-                'games.color-desc': 'Salta attraverso ostacoli del colore della tua palla. Raccogli stelle per cambiare colore.',
-                'games.invaders-desc': 'Distruggi ondate di alieni prima che raggiungano il fondo. Scudi, bonus UFO, onde progressive.',
-                'games.void-desc': 'Naviga tra campi di asteroidi, distruggi rocce e sopravvivi onda dopo onda. Fisica inerziale.',
-                'games.breaker-desc': 'Rompi tutti i mattoni con la palla. 4 tipi di mattoni, 6 power-up, azione multi-palla.',
-                'games.snake-desc': 'Mangia cibo per crescere senza colpirti. Cibo bonus per punti extra. D-pad su mobile.',
-                'games.runner-desc': 'Salta ostacoli e raccogli monete in questo endless runner. Doppio salto, velocità progressiva.',
-                'games.blocks-desc': 'Completa righe per eliminarle e fare combo. 7 tetromini, pezzo fantasma, wall kicks.',
-                'games.2048-desc': 'Scorri le tessere per unire numeri uguali e raggiungere 2048. Sistema undo, modalità infinita.',
-                'games.pong-desc': 'Muovi la racchetta e batti l\'IA. Rimbalzo ad angolo, scia della palla, velocità progressiva.'
+                'nav.app': 'App',
+                'app.label': 'Le nostre app',
+                'app.title': 'Sviluppo App',
+                'app.subtitle': 'Progettiamo e sviluppiamo applicazioni mobile per Android e iOS, dalla progettazione UX al rilascio sugli store.',
+                'app.featured': 'Prenoty',
+                'app.featured-desc': 'La nostra piattaforma di prenotazioni e appuntamenti, progettata per offrire un\'esperienza mobile nativa su entrambe le piattaforme. Calendario intelligente, notifiche push e sincronizzazione in tempo reale.',
+                'app.f1.title': 'Cross-Platform',
+                'app.f1.desc': 'Android e iOS con un unico codebase. Performance native su ogni dispositivo.',
+                'app.f2.title': 'Notifiche Push',
+                'app.f2.desc': 'Promemoria automatici e notifiche in tempo reale per utenti e gestori.',
+                'app.f3.title': 'Tempo Reale',
+                'app.f3.desc': 'Sincronizzazione istantanea. Disponibilità e prenotazioni sempre aggiornate.',
+                'app.f4.title': 'Sicurezza',
+                'app.f4.desc': 'Autenticazione sicura, dati crittografati e conformità GDPR integrata.',
+                'app.cta': 'Scopri Prenoty',
+                'app.phone-tagline': 'Prenota in un tap',
+                'app.phone-btn': 'Prenota Ora'
             },
             en: {
                 'nav.services': 'Services',
@@ -2288,21 +2449,21 @@
                 'services.label': 'What we do',
                 'services.title': 'Our Services',
                 'services.subtitle': 'From concept to delivery, we support every project with expertise and attention to detail.',
-                'services.web.title': 'Web Development',
-                'services.web.desc': 'Business websites, e-commerce, and web apps. Mobile-first design, SEO optimized, high performance.',
+                'services.web.title': '360° Web Development',
+                'services.web.desc': 'Business websites, e-commerce, and web apps with advanced SEO, Google Analytics, Google Business Profile, Google Maps listing, and search engine positioning.',
                 'services.saas.title': 'SaaS Software',
                 'services.saas.desc': 'Multi-tenant cloud management systems, ERP, and SaaS platforms with scalable, secure architecture.',
                 'services.social.title': 'Social Media Management',
-                'services.social.desc': 'Social page management, content creation, and geo-targeted sponsored campaigns.',
-                'services.games.title': 'HTML5 Games',
-                'services.games.desc': 'Arcade games for browser and mobile. Zero dependencies, native performance, marketplace-ready.',
+                'services.social.desc': 'Complete social strategy: page management, content creation, editorial planning, geo-targeted sponsored campaigns, reporting, and performance analysis.',
+                'services.app.title': 'App Development',
+                'services.app.desc': 'Native and cross-platform apps for Android and iOS. UX design, push notifications, and store release.',
                 'portfolio.label': 'Our work',
                 'portfolio.title': 'Portfolio',
                 'portfolio.subtitle': 'A selection of projects delivered for clients across different industries.',
                 'portfolio.filter.all': 'All',
                 'portfolio.filter.web': 'Web',
                 'portfolio.filter.saas': 'SaaS',
-                'portfolio.filter.games': 'Games',
+                'portfolio.filter.app': 'App',
                 'portfolio.filter.social': 'Social',
                 'portfolio.viewProject': 'Visit website',
 'portfolio.stockflow.desc': 'Multi-tenant cloud ERP for retail. Inventory, sales, electronic invoicing, and integrated analytics.',
@@ -2311,13 +2472,16 @@
                 'portfolio.kleinbaby.desc': "E-commerce website for children's clothing store. Dynamic catalog connected to StockflowERP.",
                 'portfolio.herbora.desc': 'Business website for herbal shop with "Botanical Editorial" design. Product catalog, blog, and social integration.',
                 'portfolio.studioschembri.desc': 'Professional website for accounting firm. Informative area with services, consultancy, and multi-location contacts.',
-                'portfolio.games.desc': '10+ HTML5 arcade games collection. Pure Canvas, zero dependencies, touch-ready. Available on international marketplaces.',
-                'portfolio.social.desc': 'Automated pipeline for client social media management. Post scheduling, AI-generated content, and performance analysis.',
+                'portfolio.prenoty-app.desc': 'Mobile app for bookings and appointments. Available on Android and iOS with push notifications and smart calendar.',
+                'portfolio.social.title': 'Social Media & Visibility',
+                'portfolio.social.desc': 'Complete social presence management, geo-targeted advertising campaigns, and brand strategies to boost your business online visibility.',
+                'portfolio.viewOffer': 'View offer',
                 'about.label': 'About us',
                 'about.title': 'Our Approach',
                 'about.p1': 'EMC Digital Solutions is a team of professionals with over 15 years of experience in software development, SaaS, and digital solutions.',
                 'about.p2': 'We work with national and international clients, with a professional approach tailored to each client\'s needs, focusing on state-of-the-art technology, code quality, and client satisfaction.',
                 'about.p3': 'Every project is a tailored solution: we analyze requirements, design the architecture, and develop with the most suitable technologies.',
+                'about.p4': 'We boost your business online visibility using state-of-the-art technologies — from search engine indexing to conversion optimization — while keeping cybersecurity as a top priority.',
                 'about.value1': 'Digital Craftsmanship',
                 'about.value2': 'Tailored Solutions',
                 'about.value3': 'Measurable Results',
@@ -2325,6 +2489,29 @@
                 'tech.label': 'Our stack',
                 'tech.title': 'Technologies',
                 'tech.subtitle': 'Tools and technologies we use daily to build our projects.',
+                'nav.social': 'Social',
+                'nav.pricing': 'Pricing',
+                'social.label': 'Our offer',
+                'social.title': 'Social Media & Visibility',
+                'social.subtitle': 'We bring your business where your customers are: on social media, on Google, and in people\'s minds. Measurable strategies to boost brand awareness and return on investment.',
+                'social.s1.title': 'Social Management',
+                'social.s1.desc': 'We manage your presence on Facebook and Instagram with professional content and an editorial plan tailored to your industry.',
+                'social.s1.i1': '8-12 posts per month',
+                'social.s1.i2': '4-8 stories per month',
+                'social.s1.i3': 'Customized editorial calendar',
+                'social.s1.i4': 'Comments and messages management',
+                'social.s2.title': 'Advertising Campaigns',
+                'social.s2.desc': 'Sponsored campaigns on Facebook and Instagram with geo-targeted reach to connect with customers in your area and maximize ROI.',
+                'social.s2.i1': 'Targeting by area, age, and interests',
+                'social.s2.i2': 'Measurable and controllable budget',
+                'social.s2.i3': '5,000+ people reached/month',
+                'social.s2.i4': 'Monthly report with clear metrics',
+                'social.s3.title': 'Local Visibility',
+                'social.s3.desc': 'We make you visible on Google Maps and local search results. We optimize your Google Business profile to attract new customers in your area.',
+                'social.s3.i1': 'Optimized Google Business Profile',
+                'social.s3.i2': 'Google Maps listing',
+                'social.s3.i3': 'Local SEO and positioning',
+                'social.s3.i4': 'Reviews and reputation management',
                 'contact.label': "Let's talk",
                 'contact.title': 'Contact Us',
                 'contact.subtitle': "Have a project in mind? Write to us and we'll reply within 24 hours.",
@@ -2345,21 +2532,23 @@
                 'footer.rights': 'All rights reserved.',
                 'cookie.text': 'This website uses technical cookies to improve your browsing experience. By continuing to browse, you accept the use of cookies.',
                 'cookie.accept': 'Accept',
-                'nav.games': 'Games',
-                'games.label': 'Our games',
-                'games.title': 'HTML5 Games',
-                'games.subtitle': '10 arcade games built from scratch with JavaScript and Canvas API. Zero dependencies, mobile-ready, playable right in your browser.',
-                'games.play': 'Play Now',
-                'games.stack-desc': 'Tap to drop blocks and build the tallest tower. Perfect alignment triggers combo bonuses.',
-                'games.color-desc': 'Jump through obstacles matching your ball\'s color. Collect stars to switch colors.',
-                'games.invaders-desc': 'Destroy waves of aliens before they reach the bottom. Shields, UFO bonuses, progressive waves.',
-                'games.void-desc': 'Navigate asteroid fields, destroy rocks and survive wave after wave. Inertia physics.',
-                'games.breaker-desc': 'Break all the bricks with the ball. 4 brick types, 6 power-ups, multi-ball action.',
-                'games.snake-desc': 'Eat food to grow longer without hitting yourself. Bonus food for extra points. D-pad on mobile.',
-                'games.runner-desc': 'Jump over obstacles and collect coins in this endless runner. Double jump, progressive speed.',
-                'games.blocks-desc': 'Complete rows to clear them and score combos. 7 tetrominos, ghost piece, wall kicks.',
-                'games.2048-desc': 'Slide tiles to merge equal numbers and reach 2048. Undo system, endless mode.',
-                'games.pong-desc': 'Move your paddle and beat the AI. Angle-based bouncing, ball trail effect, progressive speed.'
+                'nav.app': 'App',
+                'app.label': 'Our apps',
+                'app.title': 'App Development',
+                'app.subtitle': 'We design and develop mobile applications for Android and iOS, from UX design to store release.',
+                'app.featured': 'Prenoty',
+                'app.featured-desc': 'Our booking and appointment platform, designed to deliver a native mobile experience on both platforms. Smart calendar, push notifications, and real-time synchronization.',
+                'app.f1.title': 'Cross-Platform',
+                'app.f1.desc': 'Android and iOS with a single codebase. Native performance on every device.',
+                'app.f2.title': 'Push Notifications',
+                'app.f2.desc': 'Automatic reminders and real-time notifications for users and managers.',
+                'app.f3.title': 'Real-Time',
+                'app.f3.desc': 'Instant synchronization. Availability and bookings always up to date.',
+                'app.f4.title': 'Security',
+                'app.f4.desc': 'Secure authentication, encrypted data, and built-in GDPR compliance.',
+                'app.cta': 'Discover Prenoty',
+                'app.phone-tagline': 'Book in a tap',
+                'app.phone-btn': 'Book Now'
             }
         };
 

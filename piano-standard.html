@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano Standard — EMC Digital Solutions</title>
+    <meta name="description" content="Piano Standard di EMC Digital Solutions: sito web completo, social media, reels, sponsorizzate Meta, Google Business e report bi-settimanale. Il piano consigliato per chi vuole crescere.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#0c1120">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0c1120;
+            --bg-secondary: #131b2e;
+            --bg-card: #172035;
+            --accent: #6b9ef7;
+            --accent-light: #93b8fc;
+            --accent-vivid: #f5c542;
+            --accent-vivid-hover: #ffd666;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9ca3b0;
+            --border: #263354;
+            --shadow: rgba(0,0,0,0.2);
+            --shadow-lg: rgba(0,0,0,0.35);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --nav-height: 72px;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-vivid);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .section-subtitle {
+            margin: 0 auto;
+        }
+
+        /* Fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 1000;
+            transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(12, 17, 32, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 12px var(--shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: linear-gradient(90deg, transparent 30%, rgba(212, 160, 23, 0.08) 50%, transparent 70%);
+            background-size: 200% 100%;
+            animation: shimmer 4s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        .nav-logo svg {
+            width: 128px;
+            height: 128px;
+        }
+
+        .nav-logo span {
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-vivid);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            background: rgba(19, 27, 46, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 24px;
+            box-shadow: 0 8px 32px var(--shadow-lg);
+            z-index: 999;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ========== HERO ========== */
+        .page-hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(107, 158, 247, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero .section-subtitle {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent-light);
+        }
+
+        .hero-price {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 28px 0 8px;
+        }
+
+        .hero-price span {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .hero-setup {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .hero-setup strong {
+            color: var(--text-primary);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-vivid), var(--accent-vivid-hover));
+            color: #0c1120;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 24px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(245, 197, 66, 0.25);
+        }
+
+        /* ========== FEATURES GRID ========== */
+        .features-section {
+            background: var(--bg-primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            background: rgba(107,158,247,0.1);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent-light);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-content h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-content p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== NOT INCLUDED SECTION ========== */
+        .not-included-section {
+            background: var(--bg-secondary);
+        }
+
+        .not-included-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .not-included-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        .not-included-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--text-secondary);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            min-width: 18px;
+            opacity: 0.5;
+        }
+
+        .upgrade-cta {
+            background: linear-gradient(135deg, rgba(107,158,247,0.08), rgba(245,197,66,0.08));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .upgrade-cta p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .upgrade-cta p strong {
+            color: var(--text-primary);
+        }
+
+        .upgrade-cta a {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #fff;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .upgrade-cta a:hover {
+            box-shadow: 0 4px 20px rgba(107,158,247,0.3);
+            transform: translateY(-1px);
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        .contact-section { background: var(--bg-secondary); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius-sm); color: var(--text-primary); font-family: inherit; font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        form button[type="submit"] {
+            width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #fff; border: none; border-radius: var(--radius-sm); font-size: 1rem; font-weight: 600;
+            cursor: pointer; transition: all 0.3s;
+        }
+        form button[type="submit"]:hover { box-shadow: 0 4px 20px rgba(107,158,247,0.3); transform: translateY(-1px); }
+        form button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .form-status { margin-top: 16px; padding: 12px; border-radius: var(--radius-sm); font-size: 0.9rem; display: none; }
+        .form-status.success { display: block; background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+        .form-status.error { display: block; background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+
+        .contact-form-wrapper {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* ========== SECTION DIVIDER ========== */
+        .section-divider {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .section-divider::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 120px;
+            background: linear-gradient(90deg, transparent, var(--accent-vivid), transparent);
+            border-radius: 2px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #080d1a;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 340px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo svg {
+            width: 96px;
+            height: 96px;
+        }
+
+        .footer h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-vivid);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .page-hero .section-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-price {
+                font-size: 2.4rem;
+            }
+
+            .features-grid,
+            .not-included-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .upgrade-cta {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .form-row { grid-template-columns: 1fr; }
+
+            section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .page-hero .section-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-price {
+                font-size: 2rem;
+            }
+        }
+
+        /* ========== PRINT ========== */
+        @media print {
+            body {
+                background: #fff;
+                color: #1a1a1a;
+            }
+
+            .navbar, .mobile-menu {
+                display: none !important;
+            }
+
+            section {
+                padding: 40px 0;
+                page-break-inside: avoid;
+            }
+
+            h1, h2, h3, h4, .section-title {
+                color: #1a1a1a !important;
+            }
+
+            p, li, .feature-content p {
+                color: #444 !important;
+            }
+
+            .hero-price {
+                color: #6b9ef7 !important;
+            }
+
+            .feature-card, .not-included-item, .upgrade-cta {
+                background: #f8f8f8 !important;
+                border-color: #ddd !important;
+            }
+
+            .hero-badge {
+                background: #f5c542;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="128">
+                    <defs>
+                        <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#d4a017"/>
+                        </linearGradient>
+                        <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="45%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#0f172a"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
+                    <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#navBarG)" opacity="0.85"/>
+                    <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#navBarG)"/>
+                    <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#navTxtG)" letter-spacing="3">EMC</text>
+                </svg>
+                <span>Digital Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
+                <li><a href="index.html#servizi">Servizi</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#social">Social</a></li>
+                <li><a href="proposta-commerciale.html" class="active">Pricing</a></li>
+                <li><a href="index.html#contatti">Contatti</a></li>
+                <li><a href="index.html#app-mobile">App</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#chi-siamo">Chi Siamo</a>
+        <a href="index.html#servizi">Servizi</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#social">Social</a>
+        <a href="proposta-commerciale.html" class="active">Pricing</a>
+        <a href="index.html#contatti">Contatti</a>
+        <a href="index.html#app-mobile">App</a>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="page-hero">
+        <div class="container">
+            <a href="proposta-commerciale.html#pricing" class="back-link">&larr; Torna ai piani</a>
+            <div class="hero-badge">Consigliato</div>
+            <div class="section-label">Piano Standard</div>
+            <h1 class="section-title">Piano Standard</h1>
+            <div class="hero-price">&euro;500<span>/mese</span></div>
+            <p class="hero-setup">Setup una tantum: <strong>&euro;1.500</strong></p>
+            <p class="section-subtitle">Ideale per chi vuole crescere attivamente e raggiungere nuovi clienti</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== COSA INCLUDE ========== -->
+    <section class="features-section" id="cosa-include">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Dettagli</div>
+                <h2 class="section-title">Cosa Include</h2>
+                <p class="section-subtitle">Tutto il necessario per far crescere la tua attivit&agrave; online con una strategia completa e professionale.</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- 1. Sito web completo + landing page -->
+                <div class="feature-card fade-in stagger-1">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Sito web completo + landing page</h3>
+                        <p>Sito multi-pagina professionale (Home, Chi Siamo, Servizi, Gallery, Contatti) pi&ugrave; una landing page dedicata per promozioni, campagne stagionali o servizi specifici. La landing page &egrave; ottimizzata per la conversione: un obiettivo chiaro, form di contatto prominente, design persuasivo. Ideale per campagne sponsorizzate che portano traffico mirato.</p>
+                    </div>
+                </div>
+
+                <!-- 2. Facebook + Instagram -->
+                <div class="feature-card fade-in stagger-2">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Facebook + Instagram</h3>
+                        <p>Gestione professionale di entrambe le piattaforme con contenuti dedicati e adattati al formato di ciascuna. Profili ottimizzati con bio, immagini di copertina, informazioni di contatto sempre aggiornate.</p>
+                    </div>
+                </div>
+
+                <!-- 3. 12-16 post/mese + storie -->
+                <div class="feature-card fade-in stagger-3">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>12-16 post/mese + storie</h3>
+                        <p>3-4 pubblicazioni a settimana su entrambi i canali, pi&ugrave; storie Instagram regolari. Mix strategico di contenuti: prodotti/servizi, dietro le quinte, promozioni, testimonianze, contenuti stagionali. Presenza costante che mantiene la tua attivit&agrave; sempre visibile nel feed dei tuoi follower.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Reels video -->
+                <div class="feature-card fade-in stagger-4">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Reels video (2-4/mese)</h3>
+                        <p>Video brevi (15-60 secondi) ottimizzati per l'algoritmo di Instagram e Facebook. I reels hanno una copertura organica fino a 10 volte superiore ai post tradizionali. Contenuti dinamici che mostrano la tua attivit&agrave; in azione: prodotti, processi, team, trasformazioni.</p>
+                    </div>
+                </div>
+
+                <!-- 5. Gestione sponsorizzate Meta -->
+                <div class="feature-card fade-in stagger-1">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Gestione sponsorizzate Meta</h3>
+                        <p>Creazione, gestione e ottimizzazione delle campagne pubblicitarie su Facebook e Instagram. Definizione del target (et&agrave;, interessi, zona geografica), creazione delle inserzioni, monitoraggio quotidiano e ottimizzazione del budget. Tu decidi quanto investire, noi massimizziamo i risultati. Il budget pubblicitario (consigliato &euro;150-300/mese) &egrave; a parte e pagato direttamente dal cliente tramite il proprio account Meta.</p>
+                    </div>
+                </div>
+
+                <!-- 6. Google Business Profile setup -->
+                <div class="feature-card fade-in stagger-2">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Google Business Profile setup</h3>
+                        <p>Creazione e ottimizzazione completa del profilo Google Business: foto, descrizione, categorie, orari, servizi, attributi. Il tuo profilo apparir&agrave; nelle ricerche locali di Google e su Google Maps. Fondamentale per chi cerca attivit&agrave; "vicino a me".</p>
+                    </div>
+                </div>
+
+                <!-- 7. Report bi-settimanale -->
+                <div class="feature-card fade-in stagger-3">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Report bi-settimanale</h3>
+                        <p>Ogni 2 settimane ricevi un report dettagliato con: persone raggiunte, interazioni, click, crescita follower, andamento campagne sponsorizzate, post pi&ugrave; performanti, suggerimenti per ottimizzare la strategia. Confronto con il periodo precedente per misurare i progressi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== COSA NON INCLUDE ========== -->
+    <section class="not-included-section" id="cosa-non-include">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Non incluso</div>
+                <h2 class="section-title">Cosa NON Include</h2>
+                <p class="section-subtitle">Queste funzionalit&agrave; sono disponibili nel piano Premium per chi desidera il pacchetto completo.</p>
+            </div>
+
+            <div class="not-included-grid fade-in">
+                <div class="not-included-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    WhatsApp Business
+                </div>
+                <div class="not-included-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Google Ads
+                </div>
+                <div class="not-included-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Gestione recensioni attiva
+                </div>
+                <div class="not-included-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Consulenza strategica dedicata
+                </div>
+                <div class="not-included-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    Report settimanale
+                </div>
+            </div>
+
+            <div class="upgrade-cta fade-in">
+                <p><strong>Vuoi il pacchetto completo?</strong> Il piano Premium include tutte queste funzionalit&agrave; e molto altro per una strategia digitale a 360&deg;.</p>
+                <a href="piano-premium.html">Scopri il piano Premium &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== CONTACT FORM ========== -->
+    <section class="contact-section" id="contatto">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Inizia Ora</div>
+                <h2 class="section-title">Richiedi il Piano Standard</h2>
+                <p class="section-subtitle">Compila il form e ti ricontatteremo entro 24 ore per discutere i dettagli e personalizzare il piano per la tua attivit&agrave;.</p>
+            </div>
+
+            <div class="contact-form-wrapper fade-in">
+                <form id="planForm" action="https://formsubmit.co/info@emcdigitalsolutions.it" method="POST">
+                    <input type="hidden" name="_subject" value="Richiesta Piano Standard">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome e Cognome *</label>
+                            <input type="text" id="name" name="nome" required placeholder="Il tuo nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="business">Nome Attivit&agrave; *</label>
+                            <input type="text" id="business" name="attivita" required placeholder="La tua attivit&agrave;">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="La tua email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefono</label>
+                            <input type="tel" id="phone" name="telefono" placeholder="Il tuo numero">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Messaggio</label>
+                        <textarea id="message" name="messaggio" rows="4" placeholder="Raccontaci della tua attivit&agrave; e cosa vorresti ottenere..."></textarea>
+                    </div>
+                    <button type="submit">Invia Richiesta</button>
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
+                            <defs>
+                                <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#d4a017"/>
+                                </linearGradient>
+                                <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#6b9ef7"/><stop offset="45%" stop-color="#93b8fc"/><stop offset="100%" stop-color="#ffffff"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>
+                            <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#ftBarG)" opacity="0.85"/>
+                            <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#ftBarG)"/>
+                            <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#ftTxtG)" letter-spacing="3">EMC</text>
+                        </svg>
+                        <span>Digital Solutions</span>
+                    </div>
+                    <p>Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                </div>
+                <div>
+                    <h4>Link Rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi">Servizi</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="proposta-commerciale.html">Pricing</a></li>
+                        <li><a href="index.html#contatti">Contatti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Servizi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#servizi">Sviluppo Web</a></li>
+                        <li><a href="index.html#servizi">Software SaaS</a></li>
+                        <li><a href="index.html#servizi">Social Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+    (function() {
+        'use strict';
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+        var fadeEls = document.querySelectorAll('.fade-in');
+        var fadeObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        fadeEls.forEach(function(el) { fadeObserver.observe(el); });
+        var form = document.getElementById('planForm');
+        var formStatus = document.getElementById('formStatus');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var btn = form.querySelector('button[type="submit"]');
+                btn.textContent = 'Invio in corso...';
+                btn.disabled = true;
+                fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+                .then(function(r) {
+                    if (r.ok) {
+                        formStatus.className = 'form-status success';
+                        formStatus.textContent = 'Messaggio inviato! Ti ricontatteremo al pi\u00f9 presto.';
+                        form.reset();
+                    } else {
+                        formStatus.className = 'form-status error';
+                        formStatus.textContent = 'Errore nell\'invio. Riprova o contattaci direttamente via email.';
+                    }
+                    btn.textContent = 'Invia Richiesta';
+                    btn.disabled = false;
+                }).catch(function() {
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = 'Errore nell\'invio. Riprova o contattaci direttamente via email.';
+                    btn.textContent = 'Invia Richiesta';
+                    btn.disabled = false;
+                });
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
