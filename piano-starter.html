@@ -772,6 +772,31 @@
             color: rgba(255,255,255,0.4);
         }
 
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .mobile-menu .lang-toggle {
+            margin-top: 16px;
+            justify-content: center;
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .footer-grid {
@@ -897,37 +922,47 @@
                 <span>Digital Solutions</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                <li><a href="index.html#servizi">Servizi</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
-                <li><a href="index.html#social">Social</a></li>
-                <li><a href="proposta-commerciale.html" class="active">Pricing</a></li>
-                <li><a href="index.html#contatti">Contatti</a></li>
-                <li><a href="index.html#app-mobile">App</a></li>
+                <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
+                <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="index.html#social" data-i18n="nav.social">Social</a></li>
+                <li><a href="index.html#app-mobile" data-i18n="nav.app">App</a></li>
+                <li><a href="proposta-commerciale.html" class="active" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html#chi-siamo">Chi Siamo</a>
-        <a href="index.html#servizi">Servizi</a>
-        <a href="index.html#portfolio">Portfolio</a>
-        <a href="index.html#social">Social</a>
-        <a href="proposta-commerciale.html" class="active">Pricing</a>
-        <a href="index.html#contatti">Contatti</a>
-        <a href="index.html#app-mobile">App</a>
+        <a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="index.html#social" data-i18n="nav.social">Social</a>
+        <a href="index.html#app-mobile" data-i18n="nav.app">App</a>
+        <a href="proposta-commerciale.html" class="active" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
     </div>
 
     <!-- ========== HERO ========== -->
     <section class="page-hero">
         <div class="container">
-            <a href="proposta-commerciale.html#pricing" class="back-link">&#8592; Torna ai piani</a>
-            <div class="section-label">Piano Starter</div>
-            <h1 class="section-title">Piano Starter</h1>
-            <p class="section-subtitle">Ideale per chi vuole iniziare con il minimo indispensabile: una presenza online professionale senza complicazioni.</p>
+            <a href="proposta-commerciale.html#pricing" class="back-link" data-i18n="back">&#8592; Torna ai piani</a>
+            <div class="section-label" data-i18n="hero.label">Piano Starter</div>
+            <h1 class="section-title" data-i18n="hero.title">Piano Starter</h1>
+            <p class="section-subtitle" data-i18n="hero.subtitle">Ideale per chi vuole iniziare con il minimo indispensabile: una presenza online professionale senza complicazioni.</p>
             <div class="price-hero">
-                <div class="price-label">Setup una tantum</div>
-                <div class="price-setup">&euro;500</div>
+                <div class="price-label" data-i18n="price.label">Setup una tantum</div>
+                <div class="price-setup" data-i18n="price.setup">&euro;500</div>
                 <div class="price-amount">&euro;200<span>/mese</span></div>
             </div>
         </div>
@@ -939,9 +974,9 @@
     <section id="cosa-include">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">Cosa Include</div>
-                <h2 class="section-title">Tutto quello che ottieni con lo Starter</h2>
-                <p class="section-subtitle">Ogni elemento del piano pensato per darti una base solida da cui partire.</p>
+                <div class="section-label" data-i18n="inc.label">Cosa Include</div>
+                <h2 class="section-title" data-i18n="inc.title">Tutto quello che ottieni con lo Starter</h2>
+                <p class="section-subtitle" data-i18n="inc.subtitle">Ogni elemento del piano pensato per darti una base solida da cui partire.</p>
             </div>
 
             <div class="includes-grid">
@@ -949,40 +984,40 @@
                     <div class="include-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
                     </div>
-                    <h3>Sito web one-page</h3>
-                    <p>Progettiamo una pagina web professionale che raccoglie tutto il necessario: presentazione della tua attivit&agrave;, servizi offerti, mappa, contatti e un form per essere raggiunto facilmente. Design moderno, responsive e ottimizzato per la velocit&agrave;.</p>
+                    <h3 data-i18n="inc1.title">Sito web one-page</h3>
+                    <p data-i18n="inc1.desc">Progettiamo una pagina web professionale che raccoglie tutto il necessario: presentazione della tua attivit&agrave;, servizi offerti, mappa, contatti e un form per essere raggiunto facilmente. Design moderno, responsive e ottimizzato per la velocit&agrave;.</p>
                 </div>
 
                 <div class="include-card fade-in stagger-2">
                     <div class="include-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                     </div>
-                    <h3>1 piattaforma social (Facebook o Instagram)</h3>
-                    <p>Setup completo del profilo business: immagine di copertina, bio ottimizzata, informazioni di contatto, orari. Scelta della piattaforma pi&ugrave; adatta al tuo settore e pubblico.</p>
+                    <h3 data-i18n="inc2.title">1 piattaforma social (Facebook o Instagram)</h3>
+                    <p data-i18n="inc2.desc">Setup completo del profilo business: immagine di copertina, bio ottimizzata, informazioni di contatto, orari. Scelta della piattaforma pi&ugrave; adatta al tuo settore e pubblico.</p>
                 </div>
 
                 <div class="include-card fade-in stagger-3">
                     <div class="include-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                     </div>
-                    <h3>4-6 post al mese</h3>
-                    <p>1-2 pubblicazioni a settimana con grafiche professionali e testi curati. Ogni post &egrave; pensato per il tuo pubblico: prodotti, servizi, novit&agrave;, promozioni stagionali.</p>
+                    <h3 data-i18n="inc3.title">4-6 post al mese</h3>
+                    <p data-i18n="inc3.desc">1-2 pubblicazioni a settimana con grafiche professionali e testi curati. Ogni post &egrave; pensato per il tuo pubblico: prodotti, servizi, novit&agrave;, promozioni stagionali.</p>
                 </div>
 
                 <div class="include-card fade-in stagger-4">
                     <div class="include-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     </div>
-                    <h3>Gestione commenti base</h3>
-                    <p>Monitoraggio dei commenti e dei messaggi privati sulla piattaforma gestita. Risposte tempestive per mantenere il rapporto con i tuoi clienti.</p>
+                    <h3 data-i18n="inc4.title">Gestione commenti base</h3>
+                    <p data-i18n="inc4.desc">Monitoraggio dei commenti e dei messaggi privati sulla piattaforma gestita. Risposte tempestive per mantenere il rapporto con i tuoi clienti.</p>
                 </div>
 
                 <div class="include-card fade-in stagger-5">
                     <div class="include-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                     </div>
-                    <h3>Report trimestrale</h3>
-                    <p>Ogni 3 mesi ricevi un documento con le metriche principali: persone raggiunte, interazioni, crescita follower, post pi&ugrave; performanti. Per capire cosa funziona e dove migliorare.</p>
+                    <h3 data-i18n="inc5.title">Report trimestrale</h3>
+                    <p data-i18n="inc5.desc">Ogni 3 mesi ricevi un documento con le metriche principali: persone raggiunte, interazioni, crescita follower, post pi&ugrave; performanti. Per capire cosa funziona e dove migliorare.</p>
                 </div>
             </div>
         </div>
@@ -994,21 +1029,21 @@
     <section id="cosa-non-include">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">Cosa NON Include</div>
-                <h2 class="section-title">Funzionalit&agrave; disponibili nei piani superiori</h2>
-                <p class="section-subtitle">Il piano Starter &egrave; pensato per iniziare. Se la tua attivit&agrave; ha bisogno di pi&ugrave;, i piani superiori offrono queste funzionalit&agrave; aggiuntive.</p>
+                <div class="section-label" data-i18n="notinc.label">Cosa NON Include</div>
+                <h2 class="section-title" data-i18n="notinc.title">Funzionalit&agrave; disponibili nei piani superiori</h2>
+                <p class="section-subtitle" data-i18n="notinc.subtitle">Il piano Starter &egrave; pensato per iniziare. Se la tua attivit&agrave; ha bisogno di pi&ugrave;, i piani superiori offrono queste funzionalit&agrave; aggiuntive.</p>
             </div>
 
             <ul class="not-included-list fade-in">
-                <li>Sponsorizzate Meta (campagne Facebook e Instagram Ads)</li>
-                <li>Storie e Reels video</li>
-                <li>Seconda piattaforma social</li>
-                <li>Google Business Profile</li>
+                <li data-i18n="notinc1">Sponsorizzate Meta (campagne Facebook e Instagram Ads)</li>
+                <li data-i18n="notinc2">Storie e Reels video</li>
+                <li data-i18n="notinc3">Seconda piattaforma social</li>
+                <li data-i18n="notinc4">Google Business Profile</li>
             </ul>
 
-            <p class="not-included-note fade-in">Disponibile nei piani superiori</p>
+            <p class="not-included-note fade-in" data-i18n="notinc.note">Disponibile nei piani superiori</p>
 
-            <a href="piano-base.html" class="upgrade-link fade-in">Vuoi di pi&ugrave;? Scopri il piano Base &#8594;</a>
+            <a href="piano-base.html" class="upgrade-link fade-in" data-i18n="upgrade">Vuoi di pi&ugrave;? Scopri il piano Base &#8594;</a>
         </div>
     </section>
 
@@ -1018,29 +1053,29 @@
     <section id="confronta">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">Confronto</div>
-                <h2 class="section-title">Come si posiziona lo Starter</h2>
+                <div class="section-label" data-i18n="compare.label">Confronto</div>
+                <h2 class="section-title" data-i18n="compare.title">Come si posiziona lo Starter</h2>
             </div>
 
             <div class="compare-row">
                 <div class="compare-card current fade-in stagger-1">
-                    <div class="compare-badge">Piano attuale</div>
+                    <div class="compare-badge" data-i18n="compare.badge">Piano attuale</div>
                     <h4>Starter</h4>
                     <div class="compare-price">&euro;200<span>/mese</span></div>
                     <div class="compare-setup">Setup &euro;500</div>
-                    <div class="compare-highlights">1 social, 4-6 post/mese, sito one-page, report trimestrale</div>
+                    <div class="compare-highlights" data-i18n="compare.starter.highlights">1 social, 4-6 post/mese, sito one-page, report trimestrale</div>
                 </div>
                 <div class="compare-card fade-in stagger-2">
                     <h4>Base</h4>
                     <div class="compare-price">&euro;350<span>/mese</span></div>
                     <div class="compare-setup">Setup &euro;900</div>
-                    <div class="compare-highlights">2 social, 8-12 post/mese, sito multi-pagina, storie, report mensile</div>
+                    <div class="compare-highlights" data-i18n="compare.base.highlights">2 social, 8-12 post/mese, sito multi-pagina, storie, report mensile</div>
                 </div>
                 <div class="compare-card fade-in stagger-3">
                     <h4>Standard</h4>
                     <div class="compare-price">&euro;500<span>/mese</span></div>
                     <div class="compare-setup">Setup &euro;1.500</div>
-                    <div class="compare-highlights">2 social, 12-16 post/mese, reels, sponsorizzate, Google Business</div>
+                    <div class="compare-highlights" data-i18n="compare.standard.highlights">2 social, 12-16 post/mese, reels, sponsorizzate, Google Business</div>
                 </div>
             </div>
         </div>
@@ -1052,12 +1087,12 @@
     <section class="contact-section" id="contatto">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">Inizia Ora</div>
-                <h2 class="section-title">Richiedi il Piano Starter</h2>
-                <p class="section-subtitle">Compila il modulo e ti ricontatteremo entro 24 ore per definire insieme i dettagli.</p>
+                <div class="section-label" data-i18n="contact.label">Inizia Ora</div>
+                <h2 class="section-title" data-i18n="contact.title">Richiedi il Piano Starter</h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Compila il modulo e ti ricontatteremo entro 24 ore per definire insieme i dettagli.</p>
                 <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/emcdigitalsolution/30min'});return false;" style="display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:14px 28px;background:var(--accent-vivid);color:#0c1120;font-weight:700;font-size:0.95rem;border-radius:50px;transition:background 0.3s,transform 0.2s;text-decoration:none;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    Prenota una Consulenza Gratuita
+                    <span data-i18n="contact.calendly">Prenota una Consulenza Gratuita</span>
                 </a>
             </div>
 
@@ -1066,35 +1101,35 @@
                     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Nome e Cognome *</label>
-                            <input type="text" id="name" name="nome" required placeholder="Il tuo nome">
+                            <label for="name" data-i18n="form.name">Nome e Cognome *</label>
+                            <input type="text" id="name" name="nome" required placeholder="Il tuo nome" data-i18n-placeholder="form.name.ph">
                         </div>
                         <div class="form-group">
-                            <label for="business">Nome Attivit&agrave; *</label>
-                            <input type="text" id="business" name="attivita" required placeholder="La tua attivit&agrave;">
+                            <label for="business" data-i18n="form.business">Nome Attivit&agrave; *</label>
+                            <input type="text" id="business" name="attivita" required placeholder="La tua attivit&agrave;" data-i18n-placeholder="form.business.ph">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required placeholder="La tua email">
+                            <label for="email" data-i18n="form.email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="La tua email" data-i18n-placeholder="form.email.ph">
                         </div>
                         <div class="form-group">
-                            <label for="phone">Telefono</label>
-                            <input type="tel" id="phone" name="telefono" placeholder="Il tuo numero">
+                            <label for="phone" data-i18n="form.phone">Telefono</label>
+                            <input type="tel" id="phone" name="telefono" placeholder="Il tuo numero" data-i18n-placeholder="form.phone.ph">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="message">Messaggio</label>
-                        <textarea id="message" name="messaggio" rows="4" placeholder="Raccontaci della tua attivit&agrave; e cosa vorresti ottenere..."></textarea>
+                        <label for="message" data-i18n="form.message">Messaggio</label>
+                        <textarea id="message" name="messaggio" rows="4" placeholder="Raccontaci della tua attivit&agrave; e cosa vorresti ottenere..." data-i18n-placeholder="form.message.ph"></textarea>
                     </div>
                     <div class="form-group form-group-checkbox">
                         <label class="checkbox-label">
                             <input type="checkbox" name="privacy" required>
-                            <span>Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a></span>
+                            <span data-i18n-html="form.privacy">Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a></span>
                         </label>
                     </div>
-                    <button type="submit">Invia Richiesta</button>
+                    <button type="submit" data-i18n="form.submit">Invia Richiesta</button>
                     <div id="formStatus" class="form-status"></div>
                 </form>
             </div>
@@ -1123,35 +1158,36 @@
                         </svg>
                         <span>Digital Solutions</span>
                     </div>
-                    <p>Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
                 </div>
                 <div>
-                    <h4>Link Rapidi</h4>
+                    <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                        <li><a href="index.html#servizi">Servizi</a></li>
-                        <li><a href="index.html#portfolio">Portfolio</a></li>
-                        <li><a href="proposta-commerciale.html">Pricing</a></li>
-                        <li><a href="index.html#contatti">Contatti</a></li>
+                        <li><a href="index.html#chi-siamo" data-i18n="footer.link.about">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi" data-i18n="footer.link.services">Servizi</a></li>
+                        <li><a href="index.html#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.pricing">Pricing</a></li>
+                        <li><a href="index.html#contatti" data-i18n="footer.link.contact">Contatti</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Servizi</h4>
+                    <h4 data-i18n="footer.services">Servizi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#servizi">Sviluppo Web</a></li>
-                        <li><a href="index.html#servizi">Software SaaS</a></li>
-                        <li><a href="index.html#servizi">Social Media</a></li>
+                        <li><a href="servizio-web.html" data-i18n="footer.link.web">Sviluppo Web</a></li>
+                        <li><a href="servizio-saas.html" data-i18n="footer.link.saas">Software SaaS</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.social">Social Media</a></li>
+                        <li><a href="servizio-app.html" data-i18n="footer.link.app">Sviluppo App</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Legale</h4>
+                    <h4 data-i18n="footer.legal">Legale</h4>
                     <ul class="footer-links">
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html" data-i18n="footer.cookie">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
+            <div class="footer-bottom" data-i18n="footer.rights">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
         </div>
     </footer>
 
@@ -1218,6 +1254,134 @@
                 });
             });
         }
+        // i18n translations
+        var translations = {
+            it: {
+                'nav.about':'Chi Siamo','nav.services':'Servizi','nav.portfolio':'Portfolio','nav.social':'Social','nav.app':'App','nav.pricing':'Pricing','nav.contact':'Contatti',
+                'back':'\u2190 Torna ai piani',
+                'hero.label':'Piano Starter','hero.title':'Piano Starter',
+                'hero.subtitle':'Ideale per chi vuole iniziare con il minimo indispensabile: una presenza online professionale senza complicazioni.',
+                'price.label':'Setup una tantum','price.setup':'\u20ac500',
+                'inc.label':'Cosa Include','inc.title':'Tutto quello che ottieni con lo Starter',
+                'inc.subtitle':'Ogni elemento del piano pensato per darti una base solida da cui partire.',
+                'inc1.title':'Sito web one-page',
+                'inc1.desc':'Progettiamo una pagina web professionale che raccoglie tutto il necessario: presentazione della tua attivit\u00e0, servizi offerti, mappa, contatti e un form per essere raggiunto facilmente. Design moderno, responsive e ottimizzato per la velocit\u00e0.',
+                'inc2.title':'1 piattaforma social (Facebook o Instagram)',
+                'inc2.desc':'Setup completo del profilo business: immagine di copertina, bio ottimizzata, informazioni di contatto, orari. Scelta della piattaforma pi\u00f9 adatta al tuo settore e pubblico.',
+                'inc3.title':'4-6 post al mese',
+                'inc3.desc':'1-2 pubblicazioni a settimana con grafiche professionali e testi curati. Ogni post \u00e8 pensato per il tuo pubblico: prodotti, servizi, novit\u00e0, promozioni stagionali.',
+                'inc4.title':'Gestione commenti base',
+                'inc4.desc':'Monitoraggio dei commenti e dei messaggi privati sulla piattaforma gestita. Risposte tempestive per mantenere il rapporto con i tuoi clienti.',
+                'inc5.title':'Report trimestrale',
+                'inc5.desc':'Ogni 3 mesi ricevi un documento con le metriche principali: persone raggiunte, interazioni, crescita follower, post pi\u00f9 performanti. Per capire cosa funziona e dove migliorare.',
+                'notinc.label':'Cosa NON Include','notinc.title':'Funzionalit\u00e0 disponibili nei piani superiori',
+                'notinc.subtitle':'Il piano Starter \u00e8 pensato per iniziare. Se la tua attivit\u00e0 ha bisogno di pi\u00f9, i piani superiori offrono queste funzionalit\u00e0 aggiuntive.',
+                'notinc1':'Sponsorizzate Meta (campagne Facebook e Instagram Ads)','notinc2':'Storie e Reels video',
+                'notinc3':'Seconda piattaforma social','notinc4':'Google Business Profile',
+                'notinc.note':'Disponibile nei piani superiori',
+                'upgrade':'Vuoi di pi\u00f9? Scopri il piano Base \u2192',
+                'compare.label':'Confronto','compare.title':'Come si posiziona lo Starter',
+                'compare.badge':'Piano attuale',
+                'compare.starter.highlights':'1 social, 4-6 post/mese, sito one-page, report trimestrale',
+                'compare.base.highlights':'2 social, 8-12 post/mese, sito multi-pagina, storie, report mensile',
+                'compare.standard.highlights':'2 social, 12-16 post/mese, reels, sponsorizzate, Google Business',
+                'contact.label':'Inizia Ora','contact.title':'Richiedi il Piano Starter',
+                'contact.subtitle':'Compila il modulo e ti ricontatteremo entro 24 ore per definire insieme i dettagli.',
+                'contact.calendly':'Prenota una Consulenza Gratuita',
+                'form.name':'Nome e Cognome *','form.business':'Nome Attivit\u00e0 *',
+                'form.email':'Email *','form.phone':'Telefono','form.message':'Messaggio',
+                'form.privacy':'Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a>',
+                'form.privacyLink':'Privacy Policy',
+                'form.submit':'Invia Richiesta',
+                'form.name.ph':'Il tuo nome','form.business.ph':'La tua attivit\u00e0',
+                'form.email.ph':'La tua email','form.phone.ph':'Il tuo numero',
+                'form.message.ph':'Raccontaci della tua attivit\u00e0 e cosa vorresti ottenere...',
+                'footer.quicklinks':'Link Rapidi','footer.services':'Servizi','footer.legal':'Legale',
+                'footer.desc':'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
+                'footer.rights':'\u00a9 2026 EMC Digital Solutions. Tutti i diritti riservati.',
+                'footer.link.about':'Chi Siamo','footer.link.services':'Servizi','footer.link.portfolio':'Portfolio',
+                'footer.link.pricing':'Pricing','footer.link.contact':'Contatti',
+                'footer.link.web':'Sviluppo Web','footer.link.saas':'Software SaaS',
+                'footer.link.social':'Social Media','footer.link.app':'Sviluppo App',
+                'footer.privacy':'Privacy Policy','footer.cookie':'Cookie Policy'
+            },
+            en: {
+                'nav.about':'About Us','nav.services':'Services','nav.portfolio':'Portfolio','nav.social':'Social','nav.app':'App','nav.pricing':'Pricing','nav.contact':'Contact',
+                'back':'\u2190 Back to plans',
+                'hero.label':'Starter Plan','hero.title':'Starter Plan',
+                'hero.subtitle':'Ideal for those who want to start with the essentials: a professional online presence without complications.',
+                'price.label':'One-time setup','price.setup':'\u20ac500',
+                'inc.label':'What\'s Included','inc.title':'Everything you get with Starter',
+                'inc.subtitle':'Every element of the plan designed to give you a solid foundation to start from.',
+                'inc1.title':'One-page website',
+                'inc1.desc':'We design a professional web page that gathers everything you need: presentation of your business, services offered, map, contacts and a form to be easily reached. Modern, responsive design optimized for speed.',
+                'inc2.title':'1 social platform (Facebook or Instagram)',
+                'inc2.desc':'Complete business profile setup: cover image, optimized bio, contact information, hours. Choice of the platform best suited to your industry and audience.',
+                'inc3.title':'4-6 posts per month',
+                'inc3.desc':'1-2 posts per week with professional graphics and curated copy. Each post is designed for your audience: products, services, news, seasonal promotions.',
+                'inc4.title':'Basic comment management',
+                'inc4.desc':'Monitoring comments and private messages on the managed platform. Timely responses to maintain the relationship with your customers.',
+                'inc5.title':'Quarterly report',
+                'inc5.desc':'Every 3 months you receive a document with key metrics: people reached, interactions, follower growth, top-performing posts. To understand what works and where to improve.',
+                'notinc.label':'What\'s NOT Included','notinc.title':'Features available in higher plans',
+                'notinc.subtitle':'The Starter plan is designed to get started. If your business needs more, higher plans offer these additional features.',
+                'notinc1':'Meta Ads (Facebook and Instagram Ads campaigns)','notinc2':'Stories and Reels video',
+                'notinc3':'Second social platform','notinc4':'Google Business Profile',
+                'notinc.note':'Available in higher plans',
+                'upgrade':'Want more? Discover the Base plan \u2192',
+                'compare.label':'Comparison','compare.title':'How Starter compares',
+                'compare.badge':'Current plan',
+                'compare.starter.highlights':'1 social, 4-6 posts/month, one-page site, quarterly report',
+                'compare.base.highlights':'2 social, 8-12 posts/month, multi-page site, stories, monthly report',
+                'compare.standard.highlights':'2 social, 12-16 posts/month, reels, ads, Google Business',
+                'contact.label':'Get Started','contact.title':'Request the Starter Plan',
+                'contact.subtitle':'Fill out the form and we\'ll get back to you within 24 hours to define the details together.',
+                'contact.calendly':'Book a Free Consultation',
+                'form.name':'Full Name *','form.business':'Business Name *',
+                'form.email':'Email *','form.phone':'Phone','form.message':'Message',
+                'form.privacy':'I have read and accept the <a href="privacy-policy.html" target="_blank">Privacy Policy</a>',
+                'form.privacyLink':'Privacy Policy',
+                'form.submit':'Send Request',
+                'form.name.ph':'Your name','form.business.ph':'Your business',
+                'form.email.ph':'Your email','form.phone.ph':'Your number',
+                'form.message.ph':'Tell us about your business and what you\'d like to achieve...',
+                'footer.quicklinks':'Quick Links','footer.services':'Services','footer.legal':'Legal',
+                'footer.desc':'Tailored digital solutions for businesses that want to grow. Software development, SaaS and digital strategies from Sicily.',
+                'footer.rights':'\u00a9 2026 EMC Digital Solutions. All rights reserved.',
+                'footer.link.about':'About Us','footer.link.services':'Services','footer.link.portfolio':'Portfolio',
+                'footer.link.pricing':'Pricing','footer.link.contact':'Contact',
+                'footer.link.web':'Web Development','footer.link.saas':'SaaS Software',
+                'footer.link.social':'Social Media','footer.link.app':'App Development',
+                'footer.privacy':'Privacy Policy','footer.cookie':'Cookie Policy'
+            }
+        };
+        var currentLang = localStorage.getItem('emc-lang') || 'it';
+        function applyTranslations(lang) {
+            currentLang = lang;
+            localStorage.setItem('emc-lang', lang);
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-html');
+                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) el.placeholder = translations[lang][key];
+            });
+            var nextLang = lang === 'it' ? 'EN' : 'IT';
+            var l = document.getElementById('langLabel');
+            var lm = document.getElementById('langLabelMobile');
+            if (l) l.textContent = nextLang;
+            if (lm) lm.textContent = nextLang;
+        }
+        function toggleLang() { applyTranslations(currentLang === 'it' ? 'en' : 'it'); }
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+        if (currentLang !== 'it') applyTranslations(currentLang);
     })();
     </script>
 

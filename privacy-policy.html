@@ -199,7 +199,7 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .mobile-menu a:last-child {
+        .mobile-menu a:last-of-type {
             border-bottom: none;
         }
 
@@ -389,6 +389,31 @@
             color: rgba(255,255,255,0.4);
         }
 
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .mobile-menu .lang-toggle {
+            margin-top: 16px;
+            justify-content: center;
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .footer-grid {
@@ -453,32 +478,42 @@
                 <span>Digital Solutions</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                <li><a href="index.html#servizi">Servizi</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
-                <li><a href="index.html#social">Social</a></li>
-                <li><a href="proposta-commerciale.html">Pricing</a></li>
-                <li><a href="index.html#contatti">Contatti</a></li>
-                <li><a href="index.html#app-mobile">App</a></li>
+                <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
+                <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="index.html#social" data-i18n="nav.social">Social</a></li>
+                <li><a href="index.html#app-mobile" data-i18n="nav.app">App</a></li>
+                <li><a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html#chi-siamo">Chi Siamo</a>
-        <a href="index.html#servizi">Servizi</a>
-        <a href="index.html#portfolio">Portfolio</a>
-        <a href="index.html#social">Social</a>
-        <a href="proposta-commerciale.html">Pricing</a>
-        <a href="index.html#contatti">Contatti</a>
-        <a href="index.html#app-mobile">App</a>
+        <a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="index.html#social" data-i18n="nav.social">Social</a>
+        <a href="index.html#app-mobile" data-i18n="nav.app">App</a>
+        <a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
     </div>
 
     <!-- ========== HERO ========== -->
     <section class="page-hero">
         <div class="container">
-            <h1>Privacy Policy</h1>
-            <p>Informativa sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR)</p>
+            <h1 data-i18n="hero.title">Privacy Policy</h1>
+            <p data-i18n="hero.desc">Informativa sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR)</p>
         </div>
     </section>
 
@@ -486,92 +521,92 @@
     <section class="policy-content">
         <div class="container">
 
-            <h2>1. Titolare del trattamento</h2>
-            <p>Il Titolare del trattamento dei dati personali è:</p>
-            <p><strong>EMC Digital Solutions</strong><br>
+            <h2 data-i18n="pp.s1.title">1. Titolare del trattamento</h2>
+            <p data-i18n="pp.s1.p1">Il Titolare del trattamento dei dati personali è:</p>
+            <p data-i18n-html="pp.s1.p2.html"><strong>EMC Digital Solutions</strong><br>
             Email: <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a><br>
             Sede operativa: Sicilia, Italia</p>
 
-            <h2>2. Dati personali raccolti</h2>
-            <p>Attraverso il modulo di contatto presente sul sito, raccogliamo i seguenti dati personali forniti volontariamente dall'utente:</p>
+            <h2 data-i18n="pp.s2.title">2. Dati personali raccolti</h2>
+            <p data-i18n="pp.s2.p1">Attraverso il modulo di contatto presente sul sito, raccogliamo i seguenti dati personali forniti volontariamente dall'utente:</p>
             <ul>
-                <li>Nome e cognome</li>
-                <li>Indirizzo email</li>
-                <li>Numero di telefono (facoltativo)</li>
-                <li>Messaggio di testo</li>
+                <li data-i18n="pp.s2.li1">Nome e cognome</li>
+                <li data-i18n="pp.s2.li2">Indirizzo email</li>
+                <li data-i18n="pp.s2.li3">Numero di telefono (facoltativo)</li>
+                <li data-i18n="pp.s2.li4">Messaggio di testo</li>
             </ul>
-            <p>Nelle pagine relative ai piani di servizio, vengono inoltre raccolti:</p>
+            <p data-i18n="pp.s2.p2">Nelle pagine relative ai piani di servizio, vengono inoltre raccolti:</p>
             <ul>
-                <li>Nome dell'attività</li>
-            </ul>
-
-            <h2>3. Finalità del trattamento</h2>
-            <p>I dati personali raccolti vengono trattati per le seguenti finalità:</p>
-            <ul>
-                <li>Rispondere alle richieste di contatto e di informazioni inviate tramite il modulo</li>
-                <li>Fornire preventivi e informazioni sui servizi offerti</li>
-                <li>Gestire la comunicazione pre-contrattuale</li>
+                <li data-i18n="pp.s2.li5">Nome dell'attività</li>
             </ul>
 
-            <h2>4. Base giuridica del trattamento</h2>
-            <p>Il trattamento dei dati personali si basa sul <strong>consenso dell'interessato</strong> (art. 6, par. 1, lett. a del GDPR), espresso al momento dell'invio del modulo di contatto tramite la spunta dell'apposita casella di accettazione della presente informativa.</p>
-
-            <h2>5. Modalità di trattamento</h2>
-            <p>I dati personali vengono trattati con strumenti elettronici e sono protetti con misure di sicurezza adeguate a prevenire la perdita dei dati, usi illeciti o non corretti e accessi non autorizzati.</p>
-
-            <h2>6. Conservazione dei dati</h2>
-            <p>I dati raccolti tramite il modulo di contatto vengono conservati per il tempo strettamente necessario a gestire la richiesta e, successivamente, per un periodo non superiore a <strong>24 mesi</strong> dalla data di raccolta, salvo diversa necessità legata a obblighi di legge.</p>
-
-            <h2>7. Cookie e dati di navigazione</h2>
-            <p>Il sito utilizza esclusivamente <strong>cookie tecnici</strong> e dati memorizzati nel localStorage del browser:</p>
+            <h2 data-i18n="pp.s3.title">3. Finalità del trattamento</h2>
+            <p data-i18n="pp.s3.p1">I dati personali raccolti vengono trattati per le seguenti finalità:</p>
             <ul>
-                <li><strong>emc-lang</strong> — Memorizza la preferenza linguistica dell'utente (IT/EN)</li>
-                <li><strong>emc-cookies-accepted</strong> — Registra l'accettazione del banner cookie</li>
-            </ul>
-            <p>Questi dati non vengono trasmessi a server esterni e non consentono l'identificazione dell'utente. Per maggiori dettagli, consulta la nostra <a href="cookie-policy.html">Cookie Policy</a>.</p>
-
-            <h2>8. Servizi di terze parti</h2>
-            <p>Il sito utilizza i seguenti servizi di terze parti che potrebbero raccogliere dati in modo autonomo:</p>
-
-            <h3>Google Fonts</h3>
-            <p>Per il caricamento dei font, il sito effettua richieste ai server di Google. Google potrebbe raccogliere l'indirizzo IP dell'utente. Per maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.</p>
-
-            <h3>Tidio (Live Chat)</h3>
-            <p>Il widget di chat dal vivo Tidio potrebbe raccogliere dati relativi all'interazione dell'utente con il servizio. Per maggiori informazioni: <a href="https://www.tidio.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy di Tidio</a>.</p>
-
-            <h3>Calendly</h3>
-            <p>Il servizio di prenotazione appuntamenti Calendly potrebbe raccogliere dati forniti dall'utente durante la prenotazione. Per maggiori informazioni: <a href="https://calendly.com/privacy" target="_blank" rel="noopener">Privacy Policy di Calendly</a>.</p>
-
-            <h3>Google Apps Script</h3>
-            <p>I dati del modulo di contatto vengono trasmessi tramite Google Apps Script ai fini dell'invio delle email di notifica. I dati transitano attraverso i server di Google. Per maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.</p>
-
-            <h2>9. Comunicazione e diffusione dei dati</h2>
-            <p>I dati personali raccolti non verranno comunicati a terzi, venduti o ceduti in alcuna forma, salvo quanto necessario per l'erogazione dei servizi descritti nella sezione "Servizi di terze parti" e salvo obblighi di legge.</p>
-
-            <h2>10. Diritti dell'interessato</h2>
-            <p>Ai sensi degli articoli 15-22 del GDPR, l'interessato ha il diritto di:</p>
-            <ul>
-                <li><strong>Accesso</strong> — ottenere conferma dell'esistenza di un trattamento e accedere ai propri dati</li>
-                <li><strong>Rettifica</strong> — ottenere la correzione di dati inesatti o l'integrazione di dati incompleti</li>
-                <li><strong>Cancellazione</strong> — ottenere la cancellazione dei propri dati personali (diritto all'oblio)</li>
-                <li><strong>Limitazione</strong> — ottenere la limitazione del trattamento</li>
-                <li><strong>Portabilità</strong> — ricevere i propri dati in un formato strutturato e leggibile da dispositivo automatico</li>
-                <li><strong>Opposizione</strong> — opporsi al trattamento dei propri dati personali</li>
-                <li><strong>Revoca del consenso</strong> — revocare in qualsiasi momento il consenso prestato, senza pregiudicare la liceità del trattamento basato sul consenso prima della revoca</li>
+                <li data-i18n="pp.s3.li1">Rispondere alle richieste di contatto e di informazioni inviate tramite il modulo</li>
+                <li data-i18n="pp.s3.li2">Fornire preventivi e informazioni sui servizi offerti</li>
+                <li data-i18n="pp.s3.li3">Gestire la comunicazione pre-contrattuale</li>
             </ul>
 
-            <h2>11. Come esercitare i propri diritti</h2>
-            <p>Per esercitare i diritti sopra elencati o per qualsiasi domanda relativa al trattamento dei dati personali, è possibile contattarci all'indirizzo:</p>
-            <p><strong>Email:</strong> <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a></p>
-            <p>Risponderemo alla richiesta entro 30 giorni dalla ricezione.</p>
+            <h2 data-i18n="pp.s4.title">4. Base giuridica del trattamento</h2>
+            <p data-i18n-html="pp.s4.p1.html">Il trattamento dei dati personali si basa sul <strong>consenso dell'interessato</strong> (art. 6, par. 1, lett. a del GDPR), espresso al momento dell'invio del modulo di contatto tramite la spunta dell'apposita casella di accettazione della presente informativa.</p>
 
-            <h2>12. Diritto di reclamo</h2>
-            <p>L'interessato ha il diritto di proporre reclamo all'autorità di controllo competente (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">Garante per la protezione dei dati personali</a>) qualora ritenga che il trattamento dei propri dati violi il Regolamento UE 2016/679.</p>
+            <h2 data-i18n="pp.s5.title">5. Modalità di trattamento</h2>
+            <p data-i18n="pp.s5.p1">I dati personali vengono trattati con strumenti elettronici e sono protetti con misure di sicurezza adeguate a prevenire la perdita dei dati, usi illeciti o non corretti e accessi non autorizzati.</p>
 
-            <h2>13. Modifiche alla presente informativa</h2>
-            <p>Il Titolare si riserva il diritto di apportare modifiche alla presente informativa in qualsiasi momento, dandone pubblicità agli utenti su questa pagina. Si consiglia di consultare periodicamente questa pagina.</p>
+            <h2 data-i18n="pp.s6.title">6. Conservazione dei dati</h2>
+            <p data-i18n-html="pp.s6.p1.html">I dati raccolti tramite il modulo di contatto vengono conservati per il tempo strettamente necessario a gestire la richiesta e, successivamente, per un periodo non superiore a <strong>24 mesi</strong> dalla data di raccolta, salvo diversa necessità legata a obblighi di legge.</p>
 
-            <p class="update-date">Ultimo aggiornamento: Aprile 2026</p>
+            <h2 data-i18n="pp.s7.title">7. Cookie e dati di navigazione</h2>
+            <p data-i18n-html="pp.s7.p1.html">Il sito utilizza esclusivamente <strong>cookie tecnici</strong> e dati memorizzati nel localStorage del browser:</p>
+            <ul>
+                <li data-i18n-html="pp.s7.li1.html"><strong>emc-lang</strong> — Memorizza la preferenza linguistica dell'utente (IT/EN)</li>
+                <li data-i18n-html="pp.s7.li2.html"><strong>emc-cookies-accepted</strong> — Registra l'accettazione del banner cookie</li>
+            </ul>
+            <p data-i18n-html="pp.s7.p2.html">Questi dati non vengono trasmessi a server esterni e non consentono l'identificazione dell'utente. Per maggiori dettagli, consulta la nostra <a href="cookie-policy.html">Cookie Policy</a>.</p>
+
+            <h2 data-i18n="pp.s8.title">8. Servizi di terze parti</h2>
+            <p data-i18n="pp.s8.p1">Il sito utilizza i seguenti servizi di terze parti che potrebbero raccogliere dati in modo autonomo:</p>
+
+            <h3 data-i18n="pp.s8.gf.title">Google Fonts</h3>
+            <p data-i18n-html="pp.s8.gf.p1.html">Per il caricamento dei font, il sito effettua richieste ai server di Google. Google potrebbe raccogliere l'indirizzo IP dell'utente. Per maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.</p>
+
+            <h3 data-i18n="pp.s8.tidio.title">Tidio (Live Chat)</h3>
+            <p data-i18n-html="pp.s8.tidio.p1.html">Il widget di chat dal vivo Tidio potrebbe raccogliere dati relativi all'interazione dell'utente con il servizio. Per maggiori informazioni: <a href="https://www.tidio.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy di Tidio</a>.</p>
+
+            <h3 data-i18n="pp.s8.cal.title">Calendly</h3>
+            <p data-i18n-html="pp.s8.cal.p1.html">Il servizio di prenotazione appuntamenti Calendly potrebbe raccogliere dati forniti dall'utente durante la prenotazione. Per maggiori informazioni: <a href="https://calendly.com/privacy" target="_blank" rel="noopener">Privacy Policy di Calendly</a>.</p>
+
+            <h3 data-i18n="pp.s8.gas.title">Google Apps Script</h3>
+            <p data-i18n-html="pp.s8.gas.p1.html">I dati del modulo di contatto vengono trasmessi tramite Google Apps Script ai fini dell'invio delle email di notifica. I dati transitano attraverso i server di Google. Per maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.</p>
+
+            <h2 data-i18n="pp.s9.title">9. Comunicazione e diffusione dei dati</h2>
+            <p data-i18n="pp.s9.p1">I dati personali raccolti non verranno comunicati a terzi, venduti o ceduti in alcuna forma, salvo quanto necessario per l'erogazione dei servizi descritti nella sezione "Servizi di terze parti" e salvo obblighi di legge.</p>
+
+            <h2 data-i18n="pp.s10.title">10. Diritti dell'interessato</h2>
+            <p data-i18n="pp.s10.p1">Ai sensi degli articoli 15-22 del GDPR, l'interessato ha il diritto di:</p>
+            <ul>
+                <li data-i18n-html="pp.s10.li1.html"><strong>Accesso</strong> — ottenere conferma dell'esistenza di un trattamento e accedere ai propri dati</li>
+                <li data-i18n-html="pp.s10.li2.html"><strong>Rettifica</strong> — ottenere la correzione di dati inesatti o l'integrazione di dati incompleti</li>
+                <li data-i18n-html="pp.s10.li3.html"><strong>Cancellazione</strong> — ottenere la cancellazione dei propri dati personali (diritto all'oblio)</li>
+                <li data-i18n-html="pp.s10.li4.html"><strong>Limitazione</strong> — ottenere la limitazione del trattamento</li>
+                <li data-i18n-html="pp.s10.li5.html"><strong>Portabilità</strong> — ricevere i propri dati in un formato strutturato e leggibile da dispositivo automatico</li>
+                <li data-i18n-html="pp.s10.li6.html"><strong>Opposizione</strong> — opporsi al trattamento dei propri dati personali</li>
+                <li data-i18n-html="pp.s10.li7.html"><strong>Revoca del consenso</strong> — revocare in qualsiasi momento il consenso prestato, senza pregiudicare la liceità del trattamento basato sul consenso prima della revoca</li>
+            </ul>
+
+            <h2 data-i18n="pp.s11.title">11. Come esercitare i propri diritti</h2>
+            <p data-i18n="pp.s11.p1">Per esercitare i diritti sopra elencati o per qualsiasi domanda relativa al trattamento dei dati personali, è possibile contattarci all'indirizzo:</p>
+            <p data-i18n-html="pp.s11.p2.html"><strong>Email:</strong> <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a></p>
+            <p data-i18n="pp.s11.p3">Risponderemo alla richiesta entro 30 giorni dalla ricezione.</p>
+
+            <h2 data-i18n="pp.s12.title">12. Diritto di reclamo</h2>
+            <p data-i18n-html="pp.s12.p1.html">L'interessato ha il diritto di proporre reclamo all'autorità di controllo competente (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">Garante per la protezione dei dati personali</a>) qualora ritenga che il trattamento dei propri dati violi il Regolamento UE 2016/679.</p>
+
+            <h2 data-i18n="pp.s13.title">13. Modifiche alla presente informativa</h2>
+            <p data-i18n="pp.s13.p1">Il Titolare si riserva il diritto di apportare modifiche alla presente informativa in qualsiasi momento, dandone pubblicità agli utenti su questa pagina. Si consiglia di consultare periodicamente questa pagina.</p>
+
+            <p class="update-date" data-i18n="pp.update">Ultimo aggiornamento: Aprile 2026</p>
 
         </div>
     </section>
@@ -598,35 +633,36 @@
                         </svg>
                         <span>Digital Solutions</span>
                     </div>
-                    <p>Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
                 </div>
                 <div>
-                    <h4>Link Rapidi</h4>
+                    <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                        <li><a href="index.html#servizi">Servizi</a></li>
-                        <li><a href="index.html#portfolio">Portfolio</a></li>
-                        <li><a href="proposta-commerciale.html">Pricing</a></li>
-                        <li><a href="index.html#contatti">Contatti</a></li>
+                        <li><a href="index.html#chi-siamo" data-i18n="footer.link.about">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi" data-i18n="footer.link.services">Servizi</a></li>
+                        <li><a href="index.html#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.pricing">Pricing</a></li>
+                        <li><a href="index.html#contatti" data-i18n="footer.link.contact">Contatti</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Servizi</h4>
+                    <h4 data-i18n="footer.services">Servizi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#servizi">Sviluppo Web</a></li>
-                        <li><a href="index.html#servizi">Software SaaS</a></li>
-                        <li><a href="index.html#servizi">Social Media</a></li>
+                        <li><a href="servizio-web.html" data-i18n="footer.link.web">Sviluppo Web</a></li>
+                        <li><a href="servizio-saas.html" data-i18n="footer.link.saas">Software SaaS</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.social">Social Media</a></li>
+                        <li><a href="servizio-app.html" data-i18n="footer.link.app">Sviluppo App</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Legale</h4>
+                    <h4 data-i18n="footer.legal">Legale</h4>
                     <ul class="footer-links">
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html" data-i18n="footer.cookie">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
+            <div class="footer-bottom" data-i18n-html="footer.rights">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
         </div>
     </footer>
 
@@ -634,6 +670,8 @@
     <script>
     (function() {
         'use strict';
+
+        /* --- Hamburger menu --- */
         var hamburger = document.getElementById('hamburger');
         var mobileMenu = document.getElementById('mobileMenu');
         hamburger.addEventListener('click', function() {
@@ -646,6 +684,176 @@
                 mobileMenu.classList.remove('open');
             });
         });
+
+        /* --- i18n translations --- */
+        var translations = {
+            it: {
+                'nav.about':'Chi Siamo','nav.services':'Servizi','nav.portfolio':'Portfolio','nav.social':'Social','nav.app':'App','nav.pricing':'Pricing','nav.contact':'Contatti',
+                'hero.title':'Privacy Policy',
+                'hero.desc':'Informativa sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR)',
+                'pp.s1.title':'1. Titolare del trattamento',
+                'pp.s1.p1':'Il Titolare del trattamento dei dati personali \u00e8:',
+                'pp.s1.p2.html':'<strong>EMC Digital Solutions</strong><br>Email: <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a><br>Sede operativa: Sicilia, Italia',
+                'pp.s2.title':'2. Dati personali raccolti',
+                'pp.s2.p1':'Attraverso il modulo di contatto presente sul sito, raccogliamo i seguenti dati personali forniti volontariamente dall\'utente:',
+                'pp.s2.li1':'Nome e cognome','pp.s2.li2':'Indirizzo email','pp.s2.li3':'Numero di telefono (facoltativo)','pp.s2.li4':'Messaggio di testo',
+                'pp.s2.p2':'Nelle pagine relative ai piani di servizio, vengono inoltre raccolti:',
+                'pp.s2.li5':'Nome dell\'attivit\u00e0',
+                'pp.s3.title':'3. Finalit\u00e0 del trattamento',
+                'pp.s3.p1':'I dati personali raccolti vengono trattati per le seguenti finalit\u00e0:',
+                'pp.s3.li1':'Rispondere alle richieste di contatto e di informazioni inviate tramite il modulo',
+                'pp.s3.li2':'Fornire preventivi e informazioni sui servizi offerti',
+                'pp.s3.li3':'Gestire la comunicazione pre-contrattuale',
+                'pp.s4.title':'4. Base giuridica del trattamento',
+                'pp.s4.p1.html':'Il trattamento dei dati personali si basa sul <strong>consenso dell\'interessato</strong> (art. 6, par. 1, lett. a del GDPR), espresso al momento dell\'invio del modulo di contatto tramite la spunta dell\'apposita casella di accettazione della presente informativa.',
+                'pp.s5.title':'5. Modalit\u00e0 di trattamento',
+                'pp.s5.p1':'I dati personali vengono trattati con strumenti elettronici e sono protetti con misure di sicurezza adeguate a prevenire la perdita dei dati, usi illeciti o non corretti e accessi non autorizzati.',
+                'pp.s6.title':'6. Conservazione dei dati',
+                'pp.s6.p1.html':'I dati raccolti tramite il modulo di contatto vengono conservati per il tempo strettamente necessario a gestire la richiesta e, successivamente, per un periodo non superiore a <strong>24 mesi</strong> dalla data di raccolta, salvo diversa necessit\u00e0 legata a obblighi di legge.',
+                'pp.s7.title':'7. Cookie e dati di navigazione',
+                'pp.s7.p1.html':'Il sito utilizza esclusivamente <strong>cookie tecnici</strong> e dati memorizzati nel localStorage del browser:',
+                'pp.s7.li1.html':'<strong>emc-lang</strong> \u2014 Memorizza la preferenza linguistica dell\'utente (IT/EN)',
+                'pp.s7.li2.html':'<strong>emc-cookies-accepted</strong> \u2014 Registra l\'accettazione del banner cookie',
+                'pp.s7.p2.html':'Questi dati non vengono trasmessi a server esterni e non consentono l\'identificazione dell\'utente. Per maggiori dettagli, consulta la nostra <a href="cookie-policy.html">Cookie Policy</a>.',
+                'pp.s8.title':'8. Servizi di terze parti',
+                'pp.s8.p1':'Il sito utilizza i seguenti servizi di terze parti che potrebbero raccogliere dati in modo autonomo:',
+                'pp.s8.gf.title':'Google Fonts',
+                'pp.s8.gf.p1.html':'Per il caricamento dei font, il sito effettua richieste ai server di Google. Google potrebbe raccogliere l\'indirizzo IP dell\'utente. Per maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.',
+                'pp.s8.tidio.title':'Tidio (Live Chat)',
+                'pp.s8.tidio.p1.html':'Il widget di chat dal vivo Tidio potrebbe raccogliere dati relativi all\'interazione dell\'utente con il servizio. Per maggiori informazioni: <a href="https://www.tidio.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy di Tidio</a>.',
+                'pp.s8.cal.title':'Calendly',
+                'pp.s8.cal.p1.html':'Il servizio di prenotazione appuntamenti Calendly potrebbe raccogliere dati forniti dall\'utente durante la prenotazione. Per maggiori informazioni: <a href="https://calendly.com/privacy" target="_blank" rel="noopener">Privacy Policy di Calendly</a>.',
+                'pp.s8.gas.title':'Google Apps Script',
+                'pp.s8.gas.p1.html':'I dati del modulo di contatto vengono trasmessi tramite Google Apps Script ai fini dell\'invio delle email di notifica. I dati transitano attraverso i server di Google. Per maggiori informazioni: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.',
+                'pp.s9.title':'9. Comunicazione e diffusione dei dati',
+                'pp.s9.p1':'I dati personali raccolti non verranno comunicati a terzi, venduti o ceduti in alcuna forma, salvo quanto necessario per l\'erogazione dei servizi descritti nella sezione "Servizi di terze parti" e salvo obblighi di legge.',
+                'pp.s10.title':'10. Diritti dell\'interessato',
+                'pp.s10.p1':'Ai sensi degli articoli 15-22 del GDPR, l\'interessato ha il diritto di:',
+                'pp.s10.li1.html':'<strong>Accesso</strong> \u2014 ottenere conferma dell\'esistenza di un trattamento e accedere ai propri dati',
+                'pp.s10.li2.html':'<strong>Rettifica</strong> \u2014 ottenere la correzione di dati inesatti o l\'integrazione di dati incompleti',
+                'pp.s10.li3.html':'<strong>Cancellazione</strong> \u2014 ottenere la cancellazione dei propri dati personali (diritto all\'oblio)',
+                'pp.s10.li4.html':'<strong>Limitazione</strong> \u2014 ottenere la limitazione del trattamento',
+                'pp.s10.li5.html':'<strong>Portabilit\u00e0</strong> \u2014 ricevere i propri dati in un formato strutturato e leggibile da dispositivo automatico',
+                'pp.s10.li6.html':'<strong>Opposizione</strong> \u2014 opporsi al trattamento dei propri dati personali',
+                'pp.s10.li7.html':'<strong>Revoca del consenso</strong> \u2014 revocare in qualsiasi momento il consenso prestato, senza pregiudicare la liceit\u00e0 del trattamento basato sul consenso prima della revoca',
+                'pp.s11.title':'11. Come esercitare i propri diritti',
+                'pp.s11.p1':'Per esercitare i diritti sopra elencati o per qualsiasi domanda relativa al trattamento dei dati personali, \u00e8 possibile contattarci all\'indirizzo:',
+                'pp.s11.p2.html':'<strong>Email:</strong> <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a>',
+                'pp.s11.p3':'Risponderemo alla richiesta entro 30 giorni dalla ricezione.',
+                'pp.s12.title':'12. Diritto di reclamo',
+                'pp.s12.p1.html':'L\'interessato ha il diritto di proporre reclamo all\'autorit\u00e0 di controllo competente (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">Garante per la protezione dei dati personali</a>) qualora ritenga che il trattamento dei propri dati violi il Regolamento UE 2016/679.',
+                'pp.s13.title':'13. Modifiche alla presente informativa',
+                'pp.s13.p1':'Il Titolare si riserva il diritto di apportare modifiche alla presente informativa in qualsiasi momento, dandone pubblicit\u00e0 agli utenti su questa pagina. Si consiglia di consultare periodicamente questa pagina.',
+                'pp.update':'Ultimo aggiornamento: Aprile 2026',
+                'footer.quicklinks':'Link Rapidi','footer.services':'Servizi','footer.legal':'Legale',
+                'footer.desc':'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
+                'footer.rights':'\u00a9 2026 EMC Digital Solutions. Tutti i diritti riservati.',
+                'footer.link.about':'Chi Siamo','footer.link.services':'Servizi','footer.link.portfolio':'Portfolio',
+                'footer.link.pricing':'Pricing','footer.link.contact':'Contatti',
+                'footer.link.web':'Sviluppo Web','footer.link.saas':'Software SaaS',
+                'footer.link.social':'Social Media','footer.link.app':'Sviluppo App',
+                'footer.privacy':'Privacy Policy','footer.cookie':'Cookie Policy'
+            },
+            en: {
+                'nav.about':'About Us','nav.services':'Services','nav.portfolio':'Portfolio','nav.social':'Social','nav.app':'App','nav.pricing':'Pricing','nav.contact':'Contact',
+                'hero.title':'Privacy Policy',
+                'hero.desc':'Information on the processing of personal data pursuant to EU Regulation 2016/679 (GDPR)',
+                'pp.s1.title':'1. Data Controller',
+                'pp.s1.p1':'The Data Controller is:',
+                'pp.s1.p2.html':'<strong>EMC Digital Solutions</strong><br>Email: <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a><br>Operating headquarters: Sicily, Italy',
+                'pp.s2.title':'2. Personal data collected',
+                'pp.s2.p1':'Through the contact form on the site, we collect the following personal data voluntarily provided by the user:',
+                'pp.s2.li1':'Full name','pp.s2.li2':'Email address','pp.s2.li3':'Phone number (optional)','pp.s2.li4':'Text message',
+                'pp.s2.p2':'On service plan pages, the following are also collected:',
+                'pp.s2.li5':'Business name',
+                'pp.s3.title':'3. Purpose of processing',
+                'pp.s3.p1':'Personal data collected are processed for the following purposes:',
+                'pp.s3.li1':'Responding to contact requests and information sent through the form',
+                'pp.s3.li2':'Providing quotes and information about the services offered',
+                'pp.s3.li3':'Managing pre-contractual communication',
+                'pp.s4.title':'4. Legal basis for processing',
+                'pp.s4.p1.html':'The processing of personal data is based on the <strong>consent of the data subject</strong> (Art. 6, par. 1, lett. a of the GDPR), expressed when submitting the contact form by checking the acceptance box for this privacy policy.',
+                'pp.s5.title':'5. Processing methods',
+                'pp.s5.p1':'Personal data are processed using electronic tools and are protected with adequate security measures to prevent data loss, unlawful or incorrect use and unauthorized access.',
+                'pp.s6.title':'6. Data retention',
+                'pp.s6.p1.html':'Data collected through the contact form are retained for the time strictly necessary to manage the request and, subsequently, for a period not exceeding <strong>24 months</strong> from the date of collection, unless otherwise required by legal obligations.',
+                'pp.s7.title':'7. Cookies and browsing data',
+                'pp.s7.p1.html':'The site exclusively uses <strong>technical cookies</strong> and data stored in the browser\'s localStorage:',
+                'pp.s7.li1.html':'<strong>emc-lang</strong> \u2014 Stores the user\'s language preference (IT/EN)',
+                'pp.s7.li2.html':'<strong>emc-cookies-accepted</strong> \u2014 Records the acceptance of the cookie banner',
+                'pp.s7.p2.html':'This data is not transmitted to external servers and does not allow user identification. For more details, see our <a href="cookie-policy.html">Cookie Policy</a>.',
+                'pp.s8.title':'8. Third-party services',
+                'pp.s8.p1':'The site uses the following third-party services that may independently collect data:',
+                'pp.s8.gf.title':'Google Fonts',
+                'pp.s8.gf.p1.html':'For font loading, the site makes requests to Google servers. Google may collect the user\'s IP address. For more information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.',
+                'pp.s8.tidio.title':'Tidio (Live Chat)',
+                'pp.s8.tidio.p1.html':'The Tidio live chat widget may collect data related to user interaction with the service. For more information: <a href="https://www.tidio.com/privacy-policy/" target="_blank" rel="noopener">Tidio Privacy Policy</a>.',
+                'pp.s8.cal.title':'Calendly',
+                'pp.s8.cal.p1.html':'The Calendly appointment booking service may collect data provided by the user during booking. For more information: <a href="https://calendly.com/privacy" target="_blank" rel="noopener">Calendly Privacy Policy</a>.',
+                'pp.s8.gas.title':'Google Apps Script',
+                'pp.s8.gas.p1.html':'Contact form data is transmitted via Google Apps Script for email notification purposes. Data passes through Google servers. For more information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.',
+                'pp.s9.title':'9. Data communication and dissemination',
+                'pp.s9.p1':'Personal data collected will not be communicated to third parties, sold or transferred in any form, except as necessary for the provision of services described in the "Third-party services" section and except for legal obligations.',
+                'pp.s10.title':'10. Rights of the data subject',
+                'pp.s10.p1':'Pursuant to Articles 15-22 of the GDPR, the data subject has the right to:',
+                'pp.s10.li1.html':'<strong>Access</strong> \u2014 obtain confirmation of the existence of processing and access their data',
+                'pp.s10.li2.html':'<strong>Rectification</strong> \u2014 obtain correction of inaccurate data or integration of incomplete data',
+                'pp.s10.li3.html':'<strong>Erasure</strong> \u2014 obtain deletion of their personal data (right to be forgotten)',
+                'pp.s10.li4.html':'<strong>Restriction</strong> \u2014 obtain restriction of processing',
+                'pp.s10.li5.html':'<strong>Portability</strong> \u2014 receive their data in a structured, machine-readable format',
+                'pp.s10.li6.html':'<strong>Objection</strong> \u2014 object to the processing of their personal data',
+                'pp.s10.li7.html':'<strong>Withdrawal of consent</strong> \u2014 withdraw consent at any time, without affecting the lawfulness of processing based on consent before its withdrawal',
+                'pp.s11.title':'11. How to exercise your rights',
+                'pp.s11.p1':'To exercise the rights listed above or for any questions regarding the processing of personal data, you can contact us at:',
+                'pp.s11.p2.html':'<strong>Email:</strong> <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a>',
+                'pp.s11.p3':'We will respond to the request within 30 days of receipt.',
+                'pp.s12.title':'12. Right to lodge a complaint',
+                'pp.s12.p1.html':'The data subject has the right to lodge a complaint with the competent supervisory authority (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">Italian Data Protection Authority</a>) if they believe that the processing of their data violates EU Regulation 2016/679.',
+                'pp.s13.title':'13. Changes to this policy',
+                'pp.s13.p1':'The Controller reserves the right to make changes to this policy at any time, publishing them on this page. We recommend checking this page periodically.',
+                'pp.update':'Last updated: April 2026',
+                'footer.quicklinks':'Quick Links','footer.services':'Services','footer.legal':'Legal',
+                'footer.desc':'Tailored digital solutions for businesses that want to grow. Software development, SaaS and digital strategies from Sicily.',
+                'footer.rights':'\u00a9 2026 EMC Digital Solutions. All rights reserved.',
+                'footer.link.about':'About Us','footer.link.services':'Services','footer.link.portfolio':'Portfolio',
+                'footer.link.pricing':'Pricing','footer.link.contact':'Contact',
+                'footer.link.web':'Web Development','footer.link.saas':'SaaS Software',
+                'footer.link.social':'Social Media','footer.link.app':'App Development',
+                'footer.privacy':'Privacy Policy','footer.cookie':'Cookie Policy'
+            }
+        };
+
+        var currentLang = localStorage.getItem('emc-lang') || 'it';
+
+        function applyTranslations(lang) {
+            var t = translations[lang];
+            if (!t) return;
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) el.textContent = t[key];
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-html');
+                if (t[key] !== undefined) el.innerHTML = t[key];
+            });
+            document.documentElement.lang = lang;
+            var otherLabel = (lang === 'it') ? 'EN' : 'IT';
+            var labelDesktop = document.getElementById('langLabel');
+            var labelMobile = document.getElementById('langLabelMobile');
+            if (labelDesktop) labelDesktop.textContent = otherLabel;
+            if (labelMobile) labelMobile.textContent = otherLabel;
+        }
+
+        function toggleLang() {
+            currentLang = (currentLang === 'it') ? 'en' : 'it';
+            localStorage.setItem('emc-lang', currentLang);
+            applyTranslations(currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+
+        applyTranslations(currentLang);
     })();
     </script>
 </body>

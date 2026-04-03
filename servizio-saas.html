@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software SaaS — EMC Digital Solutions</title>
+    <meta name="description" content="Sviluppo software SaaS, gestionali cloud multi-tenant, ERP e piattaforme scalabili. Architettura sicura e moderna dalla Sicilia.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#0c1120">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0c1120;
+            --bg-secondary: #131b2e;
+            --bg-card: #172035;
+            --accent: #6b9ef7;
+            --accent-light: #93b8fc;
+            --accent-vivid: #f5c542;
+            --accent-vivid-hover: #ffd666;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9ca3b0;
+            --border: #263354;
+            --shadow: rgba(0,0,0,0.2);
+            --shadow-lg: rgba(0,0,0,0.35);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --nav-height: 72px;
+            --theme-color: #93b8fc;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 1000;
+            background: rgba(12, 17, 32, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 12px var(--shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: linear-gradient(90deg, transparent 30%, rgba(212, 160, 23, 0.08) 50%, transparent 70%);
+            background-size: 200% 100%;
+            animation: shimmer 4s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        .nav-logo svg {
+            width: 128px;
+            height: 128px;
+        }
+
+        .nav-logo span {
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-vivid);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            background: rgba(19, 27, 46, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 24px;
+            box-shadow: 0 8px 32px var(--shadow-lg);
+            z-index: 999;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ========== PAGE HERO ========== */
+        .page-hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(147, 184, 252, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(147, 184, 252, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #e8e4dc 0%, #93b8fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ========== FEATURE GRID ========== */
+        .features {
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(147, 184, 252, 0.1);
+            border-color: rgba(147, 184, 252, 0.3);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-sm);
+            background: rgba(147, 184, 252, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 26px;
+            height: 26px;
+            color: var(--theme-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== SECTION HEADER ========== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-vivid);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #93b8fc, #6b9ef7);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(147, 184, 252, 0.35);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #080d1a;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 340px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo svg {
+            width: 96px;
+            height: 96px;
+        }
+
+        .footer h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-vivid);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .mobile-menu .lang-toggle {
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .features {
+                padding: 60px 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="128">
+                    <defs>
+                        <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#d4a017"/>
+                        </linearGradient>
+                        <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="45%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#0f172a"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
+                    <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#navBarG)" opacity="0.85"/>
+                    <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#navBarG)"/>
+                    <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#navTxtG)" letter-spacing="3">EMC</text>
+                </svg>
+                <span>Digital Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
+                <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="index.html#social" data-i18n="nav.social">Social</a></li>
+                <li><a href="index.html#app-mobile" data-i18n="nav.app">App</a></li>
+                <li><a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="index.html#social" data-i18n="nav.social">Social</a>
+        <a href="index.html#app-mobile" data-i18n="nav.app">App</a>
+        <a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 data-i18n="hero.title">Software SaaS</h1>
+            <p data-i18n="hero.desc">Progettiamo piattaforme cloud multi-tenant, gestionali ERP e soluzioni SaaS su misura. Architettura scalabile, sicura e pronta per crescere con il tuo business.</p>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label" data-i18n="feat.label">Le nostre soluzioni</div>
+                <h2 class="section-title" data-i18n="feat.title">Software cloud su misura</h2>
+                <p class="section-subtitle" data-i18n="feat.subtitle">Ogni piattaforma viene progettata per le esigenze specifiche del tuo settore, con tecnologie moderne e affidabili.</p>
+            </div>
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    </div>
+                    <h3 data-i18n="feat1.title">Gestionali Cloud Multi-Tenant</h3>
+                    <p data-i18n="feat1.desc">Software gestionali accessibili da browser, con separazione dati sicura tra clienti diversi. Ogni utente ha il suo ambiente, ma l'infrastruttura &egrave; condivisa per massima efficienza.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3 data-i18n="feat2.title">ERP Personalizzati</h3>
+                    <p data-i18n="feat2.desc">Sistemi ERP costruiti sulle tue esigenze: gestione magazzino, vendite, contabilit&agrave;, CRM e reportistica avanzata, tutto in un'unica piattaforma integrata.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3 data-i18n="feat3.title">Piattaforme SaaS</h3>
+                    <p data-i18n="feat3.desc">Applicazioni web distribuite come servizio in abbonamento. Dall'idea al prodotto finito: onboarding utenti, billing, dashboard admin e API per integrazioni esterne.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 data-i18n="feat4.title">Architettura Scalabile e Sicura</h3>
+                    <p data-i18n="feat4.desc">Stack tecnologico moderno con React, Node.js, TypeScript e database relazionali. Deploy containerizzato, backup automatici e crittografia dei dati sensibili.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-i18n="cta.title">Hai un'idea per un software?</h2>
+            <p data-i18n="cta.desc">Parliamone insieme. Analizziamo le tue esigenze e ti proponiamo la soluzione pi&ugrave; adatta, senza impegno.</p>
+            <a href="index.html#contatti" class="cta-btn" data-i18n="cta.btn">Contattaci</a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
+                            <defs>
+                                <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#d4a017"/>
+                                </linearGradient>
+                                <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#6b9ef7"/><stop offset="45%" stop-color="#93b8fc"/><stop offset="100%" stop-color="#ffffff"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>
+                            <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#ftBarG)" opacity="0.85"/>
+                            <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#ftBarG)"/>
+                            <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#ftTxtG)" letter-spacing="3">EMC</text>
+                        </svg>
+                        <span>Digital Solutions</span>
+                    </div>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#chi-siamo" data-i18n="footer.link.about">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi" data-i18n="footer.link.services">Servizi</a></li>
+                        <li><a href="index.html#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.pricing">Pricing</a></li>
+                        <li><a href="index.html#contatti" data-i18n="footer.link.contact">Contatti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.services">Servizi</h4>
+                    <ul class="footer-links">
+                        <li><a href="servizio-web.html" data-i18n="footer.link.web">Sviluppo Web</a></li>
+                        <li><a href="servizio-saas.html" data-i18n="footer.link.saas">Software SaaS</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.social">Social Media</a></li>
+                        <li><a href="servizio-app.html" data-i18n="footer.link.app">Sviluppo App</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.legal">Legale</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html" data-i18n="footer.cookie">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" data-i18n="footer.rights">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+    (function() {
+        'use strict';
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        var translations = {
+            it: {
+                'nav.about': 'Chi Siamo', 'nav.services': 'Servizi', 'nav.portfolio': 'Portfolio',
+                'nav.social': 'Social', 'nav.app': 'App', 'nav.pricing': 'Pricing', 'nav.contact': 'Contatti',
+                'hero.title': 'Software SaaS',
+                'hero.desc': 'Progettiamo piattaforme cloud multi-tenant, gestionali ERP e soluzioni SaaS su misura. Architettura scalabile, sicura e pronta per crescere con il tuo business.',
+                'feat.label': 'Le nostre soluzioni',
+                'feat.title': 'Software cloud su misura',
+                'feat.subtitle': 'Ogni piattaforma viene progettata per le esigenze specifiche del tuo settore, con tecnologie moderne e affidabili.',
+                'feat1.title': 'Gestionali Cloud Multi-Tenant',
+                'feat1.desc': 'Software gestionali accessibili da browser, con separazione dati sicura tra clienti diversi. Ogni utente ha il suo ambiente, ma l\'infrastruttura \u00e8 condivisa per massima efficienza.',
+                'feat2.title': 'ERP Personalizzati',
+                'feat2.desc': 'Sistemi ERP costruiti sulle tue esigenze: gestione magazzino, vendite, contabilit\u00e0, CRM e reportistica avanzata, tutto in un\'unica piattaforma integrata.',
+                'feat3.title': 'Piattaforme SaaS',
+                'feat3.desc': 'Applicazioni web distribuite come servizio in abbonamento. Dall\'idea al prodotto finito: onboarding utenti, billing, dashboard admin e API per integrazioni esterne.',
+                'feat4.title': 'Architettura Scalabile e Sicura',
+                'feat4.desc': 'Stack tecnologico moderno con React, Node.js, TypeScript e database relazionali. Deploy containerizzato, backup automatici e crittografia dei dati sensibili.',
+                'cta.title': 'Hai un\'idea per un software?',
+                'cta.desc': 'Parliamone insieme. Analizziamo le tue esigenze e ti proponiamo la soluzione pi\u00f9 adatta, senza impegno.',
+                'cta.btn': 'Contattaci',
+                'footer.quicklinks': 'Link Rapidi', 'footer.services': 'Servizi', 'footer.legal': 'Legale',
+                'footer.desc': 'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
+                'footer.rights': '\u00a9 2026 EMC Digital Solutions. Tutti i diritti riservati.',
+                'footer.link.about': 'Chi Siamo', 'footer.link.services': 'Servizi', 'footer.link.portfolio': 'Portfolio',
+                'footer.link.pricing': 'Pricing', 'footer.link.contact': 'Contatti',
+                'footer.link.web': 'Sviluppo Web', 'footer.link.saas': 'Software SaaS',
+                'footer.link.social': 'Social Media', 'footer.link.app': 'Sviluppo App',
+                'footer.privacy': 'Privacy Policy', 'footer.cookie': 'Cookie Policy'
+            },
+            en: {
+                'nav.about': 'About Us', 'nav.services': 'Services', 'nav.portfolio': 'Portfolio',
+                'nav.social': 'Social', 'nav.app': 'App', 'nav.pricing': 'Pricing', 'nav.contact': 'Contact',
+                'hero.title': 'SaaS Software',
+                'hero.desc': 'We design multi-tenant cloud platforms, ERP management systems and custom SaaS solutions. Scalable, secure architecture ready to grow with your business.',
+                'feat.label': 'Our solutions',
+                'feat.title': 'Custom cloud software',
+                'feat.subtitle': 'Every platform is designed for your industry\'s specific needs, with modern and reliable technologies.',
+                'feat1.title': 'Multi-Tenant Cloud Management',
+                'feat1.desc': 'Browser-accessible management software with secure data separation between different clients. Each user has their own environment, but the infrastructure is shared for maximum efficiency.',
+                'feat2.title': 'Custom ERP Systems',
+                'feat2.desc': 'ERP systems built for your needs: inventory management, sales, accounting, CRM and advanced reporting, all in one integrated platform.',
+                'feat3.title': 'SaaS Platforms',
+                'feat3.desc': 'Web applications delivered as a subscription service. From idea to finished product: user onboarding, billing, admin dashboard and API for external integrations.',
+                'feat4.title': 'Scalable & Secure Architecture',
+                'feat4.desc': 'Modern tech stack with React, Node.js, TypeScript and relational databases. Containerized deployment, automatic backups and sensitive data encryption.',
+                'cta.title': 'Have an idea for a software?',
+                'cta.desc': 'Let\'s talk about it. We analyze your needs and propose the most suitable solution, no commitment.',
+                'cta.btn': 'Contact Us',
+                'footer.quicklinks': 'Quick Links', 'footer.services': 'Services', 'footer.legal': 'Legal',
+                'footer.desc': 'Tailored digital solutions for businesses that want to grow. Software development, SaaS and digital strategies from Sicily.',
+                'footer.rights': '\u00a9 2026 EMC Digital Solutions. All rights reserved.',
+                'footer.link.about': 'About Us', 'footer.link.services': 'Services', 'footer.link.portfolio': 'Portfolio',
+                'footer.link.pricing': 'Pricing', 'footer.link.contact': 'Contact',
+                'footer.link.web': 'Web Development', 'footer.link.saas': 'SaaS Software',
+                'footer.link.social': 'Social Media', 'footer.link.app': 'App Development',
+                'footer.privacy': 'Privacy Policy', 'footer.cookie': 'Cookie Policy'
+            }
+        };
+
+        var currentLang = localStorage.getItem('emc-lang') || 'it';
+        function applyTranslations(lang) {
+            currentLang = lang;
+            localStorage.setItem('emc-lang', lang);
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-html');
+                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            var nextLang = lang === 'it' ? 'EN' : 'IT';
+            var l = document.getElementById('langLabel');
+            var lm = document.getElementById('langLabelMobile');
+            if (l) l.textContent = nextLang;
+            if (lm) lm.textContent = nextLang;
+        }
+        function toggleLang() { applyTranslations(currentLang === 'it' ? 'en' : 'it'); }
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+        if (currentLang !== 'it') applyTranslations(currentLang);
+    })();
+    </script>
+</body>
+</html>

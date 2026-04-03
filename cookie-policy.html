@@ -199,7 +199,7 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .mobile-menu a:last-child {
+        .mobile-menu a:last-of-type {
             border-bottom: none;
         }
 
@@ -423,6 +423,31 @@
             color: rgba(255,255,255,0.4);
         }
 
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .mobile-menu .lang-toggle {
+            margin-top: 16px;
+            justify-content: center;
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .footer-grid {
@@ -497,32 +522,42 @@
                 <span>Digital Solutions</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                <li><a href="index.html#servizi">Servizi</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
-                <li><a href="index.html#social">Social</a></li>
-                <li><a href="proposta-commerciale.html">Pricing</a></li>
-                <li><a href="index.html#contatti">Contatti</a></li>
-                <li><a href="index.html#app-mobile">App</a></li>
+                <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
+                <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="index.html#social" data-i18n="nav.social">Social</a></li>
+                <li><a href="index.html#app-mobile" data-i18n="nav.app">App</a></li>
+                <li><a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html#chi-siamo">Chi Siamo</a>
-        <a href="index.html#servizi">Servizi</a>
-        <a href="index.html#portfolio">Portfolio</a>
-        <a href="index.html#social">Social</a>
-        <a href="proposta-commerciale.html">Pricing</a>
-        <a href="index.html#contatti">Contatti</a>
-        <a href="index.html#app-mobile">App</a>
+        <a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="index.html#social" data-i18n="nav.social">Social</a>
+        <a href="index.html#app-mobile" data-i18n="nav.app">App</a>
+        <a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
     </div>
 
     <!-- ========== HERO ========== -->
     <section class="page-hero">
         <div class="container">
-            <h1>Cookie Policy</h1>
-            <p>Informativa sull'utilizzo dei cookie e delle tecnologie di memorizzazione locale</p>
+            <h1 data-i18n="hero.title">Cookie Policy</h1>
+            <p data-i18n="hero.desc">Informativa sull'utilizzo dei cookie e delle tecnologie di memorizzazione locale</p>
         </div>
     </section>
 
@@ -530,80 +565,80 @@
     <section class="policy-content">
         <div class="container">
 
-            <h2>1. Cosa sono i cookie</h2>
-            <p>I cookie sono piccoli file di testo che i siti web visitati dall'utente inviano al suo browser, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla visita successiva. I cookie permettono ai siti di ricordare alcune informazioni per migliorare l'esperienza di navigazione.</p>
-            <p>Oltre ai cookie tradizionali, i siti web moderni possono utilizzare anche il <strong>localStorage</strong>, una tecnologia simile che consente di memorizzare dati nel browser dell'utente in modo persistente.</p>
+            <h2 data-i18n="cp.s1.title">1. Cosa sono i cookie</h2>
+            <p data-i18n="cp.s1.p1">I cookie sono piccoli file di testo che i siti web visitati dall'utente inviano al suo browser, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla visita successiva. I cookie permettono ai siti di ricordare alcune informazioni per migliorare l'esperienza di navigazione.</p>
+            <p data-i18n-html="cp.s1.p2.html">Oltre ai cookie tradizionali, i siti web moderni possono utilizzare anche il <strong>localStorage</strong>, una tecnologia simile che consente di memorizzare dati nel browser dell'utente in modo persistente.</p>
 
-            <h2>2. Cookie e dati tecnici utilizzati da questo sito</h2>
-            <p>Il sito <strong>emcdigitalsolutions</strong> non utilizza cookie di profilazione propri. Utilizza esclusivamente dati tecnici memorizzati nel localStorage del browser, necessari per il corretto funzionamento del sito:</p>
+            <h2 data-i18n="cp.s2.title">2. Cookie e dati tecnici utilizzati da questo sito</h2>
+            <p data-i18n-html="cp.s2.p1.html">Il sito <strong>emcdigitalsolutions</strong> non utilizza cookie di profilazione propri. Utilizza esclusivamente dati tecnici memorizzati nel localStorage del browser, necessari per il corretto funzionamento del sito:</p>
 
             <table class="cookie-table">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Tipo</th>
-                        <th>Finalità</th>
-                        <th>Durata</th>
+                        <th data-i18n="cp.table.name">Nome</th>
+                        <th data-i18n="cp.table.type">Tipo</th>
+                        <th data-i18n="cp.table.purpose">Finalità</th>
+                        <th data-i18n="cp.table.duration">Durata</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><code>emc-lang</code></td>
-                        <td>localStorage</td>
-                        <td>Memorizza la preferenza linguistica dell'utente (IT o EN)</td>
-                        <td>Persistente</td>
+                        <td data-i18n="cp.table.r1.type">localStorage</td>
+                        <td data-i18n="cp.table.r1.purpose">Memorizza la preferenza linguistica dell'utente (IT o EN)</td>
+                        <td data-i18n="cp.table.r1.duration">Persistente</td>
                     </tr>
                     <tr>
                         <td><code>emc-cookies-accepted</code></td>
-                        <td>localStorage</td>
-                        <td>Registra l'accettazione del banner informativo sui cookie</td>
-                        <td>Persistente</td>
+                        <td data-i18n="cp.table.r2.type">localStorage</td>
+                        <td data-i18n="cp.table.r2.purpose">Registra l'accettazione del banner informativo sui cookie</td>
+                        <td data-i18n="cp.table.r2.duration">Persistente</td>
                     </tr>
                 </tbody>
             </table>
 
-            <p>Questi dati vengono memorizzati esclusivamente nel browser dell'utente e <strong>non vengono trasmessi</strong> a nessun server esterno. Non consentono in alcun modo l'identificazione personale dell'utente.</p>
+            <p data-i18n-html="cp.s2.p2.html">Questi dati vengono memorizzati esclusivamente nel browser dell'utente e <strong>non vengono trasmessi</strong> a nessun server esterno. Non consentono in alcun modo l'identificazione personale dell'utente.</p>
 
-            <h2>3. Cookie di terze parti</h2>
-            <p>Il sito integra servizi di terze parti che potrebbero installare cookie propri nel browser dell'utente. Questi cookie non sono sotto il controllo diretto di EMC Digital Solutions.</p>
+            <h2 data-i18n="cp.s3.title">3. Cookie di terze parti</h2>
+            <p data-i18n="cp.s3.p1">Il sito integra servizi di terze parti che potrebbero installare cookie propri nel browser dell'utente. Questi cookie non sono sotto il controllo diretto di EMC Digital Solutions.</p>
 
-            <h3>Google Fonts</h3>
-            <p>Il sito carica font dal servizio Google Fonts, che comporta richieste ai server di Google. Google potrebbe raccogliere dati tecnici come l'indirizzo IP dell'utente.</p>
+            <h3 data-i18n="cp.s3.gf.title">Google Fonts</h3>
+            <p data-i18n="cp.s3.gf.p1">Il sito carica font dal servizio Google Fonts, che comporta richieste ai server di Google. Google potrebbe raccogliere dati tecnici come l'indirizzo IP dell'utente.</p>
             <ul>
-                <li>Finalità: Caricamento dei font tipografici</li>
-                <li>Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+                <li data-i18n="cp.s3.gf.li1">Finalità: Caricamento dei font tipografici</li>
+                <li data-i18n-html="cp.s3.gf.li2.html">Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
             </ul>
 
-            <h3>Tidio (Live Chat)</h3>
-            <p>Il widget di chat dal vivo Tidio potrebbe installare cookie tecnici e di funzionalità per gestire la sessione di chat e migliorare l'esperienza di supporto.</p>
+            <h3 data-i18n="cp.s3.tidio.title">Tidio (Live Chat)</h3>
+            <p data-i18n="cp.s3.tidio.p1">Il widget di chat dal vivo Tidio potrebbe installare cookie tecnici e di funzionalità per gestire la sessione di chat e migliorare l'esperienza di supporto.</p>
             <ul>
-                <li>Finalità: Servizio di live chat e assistenza</li>
-                <li>Privacy Policy: <a href="https://www.tidio.com/privacy-policy/" target="_blank" rel="noopener">tidio.com/privacy-policy</a></li>
+                <li data-i18n="cp.s3.tidio.li1">Finalità: Servizio di live chat e assistenza</li>
+                <li data-i18n-html="cp.s3.tidio.li2.html">Privacy Policy: <a href="https://www.tidio.com/privacy-policy/" target="_blank" rel="noopener">tidio.com/privacy-policy</a></li>
             </ul>
 
-            <h3>Calendly</h3>
-            <p>Il servizio di prenotazione Calendly, disponibile su alcune pagine, potrebbe utilizzare cookie per gestire il flusso di prenotazione degli appuntamenti.</p>
+            <h3 data-i18n="cp.s3.cal.title">Calendly</h3>
+            <p data-i18n="cp.s3.cal.p1">Il servizio di prenotazione Calendly, disponibile su alcune pagine, potrebbe utilizzare cookie per gestire il flusso di prenotazione degli appuntamenti.</p>
             <ul>
-                <li>Finalità: Prenotazione appuntamenti</li>
-                <li>Privacy Policy: <a href="https://calendly.com/privacy" target="_blank" rel="noopener">calendly.com/privacy</a></li>
+                <li data-i18n="cp.s3.cal.li1">Finalità: Prenotazione appuntamenti</li>
+                <li data-i18n-html="cp.s3.cal.li2.html">Privacy Policy: <a href="https://calendly.com/privacy" target="_blank" rel="noopener">calendly.com/privacy</a></li>
             </ul>
 
-            <h2>4. Come disabilitare i cookie</h2>
-            <p>L'utente può gestire i cookie e i dati del localStorage attraverso le impostazioni del proprio browser. Di seguito le istruzioni per i principali browser:</p>
+            <h2 data-i18n="cp.s4.title">4. Come disabilitare i cookie</h2>
+            <p data-i18n="cp.s4.p1">L'utente può gestire i cookie e i dati del localStorage attraverso le impostazioni del proprio browser. Di seguito le istruzioni per i principali browser:</p>
             <ul>
-                <li><strong>Google Chrome</strong>: Impostazioni &gt; Privacy e sicurezza &gt; Cookie e altri dati dei siti</li>
-                <li><strong>Mozilla Firefox</strong>: Impostazioni &gt; Privacy e sicurezza &gt; Cookie e dati dei siti web</li>
-                <li><strong>Safari</strong>: Preferenze &gt; Privacy &gt; Gestisci dati siti web</li>
-                <li><strong>Microsoft Edge</strong>: Impostazioni &gt; Cookie e autorizzazioni sito &gt; Cookie e dati del sito</li>
+                <li data-i18n-html="cp.s4.li1.html"><strong>Google Chrome</strong>: Impostazioni &gt; Privacy e sicurezza &gt; Cookie e altri dati dei siti</li>
+                <li data-i18n-html="cp.s4.li2.html"><strong>Mozilla Firefox</strong>: Impostazioni &gt; Privacy e sicurezza &gt; Cookie e dati dei siti web</li>
+                <li data-i18n-html="cp.s4.li3.html"><strong>Safari</strong>: Preferenze &gt; Privacy &gt; Gestisci dati siti web</li>
+                <li data-i18n-html="cp.s4.li4.html"><strong>Microsoft Edge</strong>: Impostazioni &gt; Cookie e autorizzazioni sito &gt; Cookie e dati del sito</li>
             </ul>
-            <p>Per cancellare i dati del localStorage, è possibile utilizzare gli strumenti per sviluppatori del browser (generalmente accessibili con il tasto F12) nella sezione "Application" o "Archiviazione".</p>
-            <p><strong>Nota:</strong> La disabilitazione dei cookie tecnici o la cancellazione del localStorage potrebbe compromettere il corretto funzionamento di alcune funzionalità del sito, come il salvataggio della preferenza linguistica.</p>
+            <p data-i18n="cp.s4.p2">Per cancellare i dati del localStorage, è possibile utilizzare gli strumenti per sviluppatori del browser (generalmente accessibili con il tasto F12) nella sezione "Application" o "Archiviazione".</p>
+            <p data-i18n-html="cp.s4.p3.html"><strong>Nota:</strong> La disabilitazione dei cookie tecnici o la cancellazione del localStorage potrebbe compromettere il corretto funzionamento di alcune funzionalità del sito, come il salvataggio della preferenza linguistica.</p>
 
-            <h2>5. Maggiori informazioni</h2>
-            <p>Per maggiori informazioni sul trattamento dei dati personali, consulta la nostra <a href="privacy-policy.html">Privacy Policy</a>.</p>
-            <p>Per qualsiasi domanda relativa ai cookie e alle tecnologie di tracciamento, contattaci all'indirizzo: <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a></p>
+            <h2 data-i18n="cp.s5.title">5. Maggiori informazioni</h2>
+            <p data-i18n-html="cp.s5.p1.html">Per maggiori informazioni sul trattamento dei dati personali, consulta la nostra <a href="privacy-policy.html">Privacy Policy</a>.</p>
+            <p data-i18n-html="cp.s5.p2.html">Per qualsiasi domanda relativa ai cookie e alle tecnologie di tracciamento, contattaci all'indirizzo: <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a></p>
 
-            <p class="update-date">Ultimo aggiornamento: Aprile 2026</p>
+            <p class="update-date" data-i18n="cp.update">Ultimo aggiornamento: Aprile 2026</p>
 
         </div>
     </section>
@@ -630,35 +665,36 @@
                         </svg>
                         <span>Digital Solutions</span>
                     </div>
-                    <p>Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
                 </div>
                 <div>
-                    <h4>Link Rapidi</h4>
+                    <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                        <li><a href="index.html#servizi">Servizi</a></li>
-                        <li><a href="index.html#portfolio">Portfolio</a></li>
-                        <li><a href="proposta-commerciale.html">Pricing</a></li>
-                        <li><a href="index.html#contatti">Contatti</a></li>
+                        <li><a href="index.html#chi-siamo" data-i18n="footer.link.about">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi" data-i18n="footer.link.services">Servizi</a></li>
+                        <li><a href="index.html#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.pricing">Pricing</a></li>
+                        <li><a href="index.html#contatti" data-i18n="footer.link.contact">Contatti</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Servizi</h4>
+                    <h4 data-i18n="footer.services">Servizi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#servizi">Sviluppo Web</a></li>
-                        <li><a href="index.html#servizi">Software SaaS</a></li>
-                        <li><a href="index.html#servizi">Social Media</a></li>
+                        <li><a href="servizio-web.html" data-i18n="footer.link.web">Sviluppo Web</a></li>
+                        <li><a href="servizio-saas.html" data-i18n="footer.link.saas">Software SaaS</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.social">Social Media</a></li>
+                        <li><a href="servizio-app.html" data-i18n="footer.link.app">Sviluppo App</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Legale</h4>
+                    <h4 data-i18n="footer.legal">Legale</h4>
                     <ul class="footer-links">
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html" data-i18n="footer.cookie">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
+            <div class="footer-bottom" data-i18n-html="footer.rights">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
         </div>
     </footer>
 
@@ -666,6 +702,8 @@
     <script>
     (function() {
         'use strict';
+
+        /* --- Hamburger menu --- */
         var hamburger = document.getElementById('hamburger');
         var mobileMenu = document.getElementById('mobileMenu');
         hamburger.addEventListener('click', function() {
@@ -678,6 +716,146 @@
                 mobileMenu.classList.remove('open');
             });
         });
+
+        /* --- i18n translations --- */
+        var translations = {
+            it: {
+                'nav.about':'Chi Siamo','nav.services':'Servizi','nav.portfolio':'Portfolio','nav.social':'Social','nav.app':'App','nav.pricing':'Pricing','nav.contact':'Contatti',
+                'hero.title':'Cookie Policy',
+                'hero.desc':'Informativa sull\'utilizzo dei cookie e delle tecnologie di memorizzazione locale',
+                'cp.s1.title':'1. Cosa sono i cookie',
+                'cp.s1.p1':'I cookie sono piccoli file di testo che i siti web visitati dall\'utente inviano al suo browser, dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla visita successiva. I cookie permettono ai siti di ricordare alcune informazioni per migliorare l\'esperienza di navigazione.',
+                'cp.s1.p2.html':'Oltre ai cookie tradizionali, i siti web moderni possono utilizzare anche il <strong>localStorage</strong>, una tecnologia simile che consente di memorizzare dati nel browser dell\'utente in modo persistente.',
+                'cp.s2.title':'2. Cookie e dati tecnici utilizzati da questo sito',
+                'cp.s2.p1.html':'Il sito <strong>emcdigitalsolutions</strong> non utilizza cookie di profilazione propri. Utilizza esclusivamente dati tecnici memorizzati nel localStorage del browser, necessari per il corretto funzionamento del sito:',
+                'cp.table.name':'Nome','cp.table.type':'Tipo','cp.table.purpose':'Finalit\u00e0','cp.table.duration':'Durata',
+                'cp.table.r1.type':'localStorage',
+                'cp.table.r1.purpose':'Memorizza la preferenza linguistica dell\'utente (IT o EN)',
+                'cp.table.r1.duration':'Persistente',
+                'cp.table.r2.type':'localStorage',
+                'cp.table.r2.purpose':'Registra l\'accettazione del banner informativo sui cookie',
+                'cp.table.r2.duration':'Persistente',
+                'cp.s2.p2.html':'Questi dati vengono memorizzati esclusivamente nel browser dell\'utente e <strong>non vengono trasmessi</strong> a nessun server esterno. Non consentono in alcun modo l\'identificazione personale dell\'utente.',
+                'cp.s3.title':'3. Cookie di terze parti',
+                'cp.s3.p1':'Il sito integra servizi di terze parti che potrebbero installare cookie propri nel browser dell\'utente. Questi cookie non sono sotto il controllo diretto di EMC Digital Solutions.',
+                'cp.s3.gf.title':'Google Fonts',
+                'cp.s3.gf.p1':'Il sito carica font dal servizio Google Fonts, che comporta richieste ai server di Google. Google potrebbe raccogliere dati tecnici come l\'indirizzo IP dell\'utente.',
+                'cp.s3.gf.li1':'Finalit\u00e0: Caricamento dei font tipografici',
+                'cp.s3.gf.li2.html':'Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>',
+                'cp.s3.tidio.title':'Tidio (Live Chat)',
+                'cp.s3.tidio.p1':'Il widget di chat dal vivo Tidio potrebbe installare cookie tecnici e di funzionalit\u00e0 per gestire la sessione di chat e migliorare l\'esperienza di supporto.',
+                'cp.s3.tidio.li1':'Finalit\u00e0: Servizio di live chat e assistenza',
+                'cp.s3.tidio.li2.html':'Privacy Policy: <a href="https://www.tidio.com/privacy-policy/" target="_blank" rel="noopener">tidio.com/privacy-policy</a>',
+                'cp.s3.cal.title':'Calendly',
+                'cp.s3.cal.p1':'Il servizio di prenotazione Calendly, disponibile su alcune pagine, potrebbe utilizzare cookie per gestire il flusso di prenotazione degli appuntamenti.',
+                'cp.s3.cal.li1':'Finalit\u00e0: Prenotazione appuntamenti',
+                'cp.s3.cal.li2.html':'Privacy Policy: <a href="https://calendly.com/privacy" target="_blank" rel="noopener">calendly.com/privacy</a>',
+                'cp.s4.title':'4. Come disabilitare i cookie',
+                'cp.s4.p1':'L\'utente pu\u00f2 gestire i cookie e i dati del localStorage attraverso le impostazioni del proprio browser. Di seguito le istruzioni per i principali browser:',
+                'cp.s4.li1.html':'<strong>Google Chrome</strong>: Impostazioni &gt; Privacy e sicurezza &gt; Cookie e altri dati dei siti',
+                'cp.s4.li2.html':'<strong>Mozilla Firefox</strong>: Impostazioni &gt; Privacy e sicurezza &gt; Cookie e dati dei siti web',
+                'cp.s4.li3.html':'<strong>Safari</strong>: Preferenze &gt; Privacy &gt; Gestisci dati siti web',
+                'cp.s4.li4.html':'<strong>Microsoft Edge</strong>: Impostazioni &gt; Cookie e autorizzazioni sito &gt; Cookie e dati del sito',
+                'cp.s4.p2':'Per cancellare i dati del localStorage, \u00e8 possibile utilizzare gli strumenti per sviluppatori del browser (generalmente accessibili con il tasto F12) nella sezione "Application" o "Archiviazione".',
+                'cp.s4.p3.html':'<strong>Nota:</strong> La disabilitazione dei cookie tecnici o la cancellazione del localStorage potrebbe compromettere il corretto funzionamento di alcune funzionalit\u00e0 del sito, come il salvataggio della preferenza linguistica.',
+                'cp.s5.title':'5. Maggiori informazioni',
+                'cp.s5.p1.html':'Per maggiori informazioni sul trattamento dei dati personali, consulta la nostra <a href="privacy-policy.html">Privacy Policy</a>.',
+                'cp.s5.p2.html':'Per qualsiasi domanda relativa ai cookie e alle tecnologie di tracciamento, contattaci all\'indirizzo: <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a>',
+                'cp.update':'Ultimo aggiornamento: Aprile 2026',
+                'footer.quicklinks':'Link Rapidi','footer.services':'Servizi','footer.legal':'Legale',
+                'footer.desc':'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
+                'footer.rights':'\u00a9 2026 EMC Digital Solutions. Tutti i diritti riservati.',
+                'footer.link.about':'Chi Siamo','footer.link.services':'Servizi','footer.link.portfolio':'Portfolio',
+                'footer.link.pricing':'Pricing','footer.link.contact':'Contatti',
+                'footer.link.web':'Sviluppo Web','footer.link.saas':'Software SaaS',
+                'footer.link.social':'Social Media','footer.link.app':'Sviluppo App',
+                'footer.privacy':'Privacy Policy','footer.cookie':'Cookie Policy'
+            },
+            en: {
+                'nav.about':'About Us','nav.services':'Services','nav.portfolio':'Portfolio','nav.social':'Social','nav.app':'App','nav.pricing':'Pricing','nav.contact':'Contact',
+                'hero.title':'Cookie Policy',
+                'hero.desc':'Information on the use of cookies and local storage technologies',
+                'cp.s1.title':'1. What are cookies',
+                'cp.s1.p1':'Cookies are small text files that websites visited by the user send to their browser, where they are stored to be retransmitted to the same sites on subsequent visits. Cookies allow sites to remember certain information to improve the browsing experience.',
+                'cp.s1.p2.html':'In addition to traditional cookies, modern websites may also use <strong>localStorage</strong>, a similar technology that allows data to be stored persistently in the user\'s browser.',
+                'cp.s2.title':'2. Cookies and technical data used by this site',
+                'cp.s2.p1.html':'The <strong>emcdigitalsolutions</strong> site does not use its own profiling cookies. It exclusively uses technical data stored in the browser\'s localStorage, necessary for the proper functioning of the site:',
+                'cp.table.name':'Name','cp.table.type':'Type','cp.table.purpose':'Purpose','cp.table.duration':'Duration',
+                'cp.table.r1.type':'localStorage',
+                'cp.table.r1.purpose':'Stores the user\'s language preference (IT or EN)',
+                'cp.table.r1.duration':'Persistent',
+                'cp.table.r2.type':'localStorage',
+                'cp.table.r2.purpose':'Records the acceptance of the cookie information banner',
+                'cp.table.r2.duration':'Persistent',
+                'cp.s2.p2.html':'This data is stored exclusively in the user\'s browser and is <strong>not transmitted</strong> to any external server. It does not in any way allow personal identification of the user.',
+                'cp.s3.title':'3. Third-party cookies',
+                'cp.s3.p1':'The site integrates third-party services that may install their own cookies in the user\'s browser. These cookies are not under the direct control of EMC Digital Solutions.',
+                'cp.s3.gf.title':'Google Fonts',
+                'cp.s3.gf.p1':'The site loads fonts from the Google Fonts service, which involves requests to Google servers. Google may collect technical data such as the user\'s IP address.',
+                'cp.s3.gf.li1':'Purpose: Loading typographic fonts',
+                'cp.s3.gf.li2.html':'Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>',
+                'cp.s3.tidio.title':'Tidio (Live Chat)',
+                'cp.s3.tidio.p1':'The Tidio live chat widget may install technical and functional cookies to manage the chat session and improve the support experience.',
+                'cp.s3.tidio.li1':'Purpose: Live chat and support service',
+                'cp.s3.tidio.li2.html':'Privacy Policy: <a href="https://www.tidio.com/privacy-policy/" target="_blank" rel="noopener">tidio.com/privacy-policy</a>',
+                'cp.s3.cal.title':'Calendly',
+                'cp.s3.cal.p1':'The Calendly booking service, available on some pages, may use cookies to manage the appointment booking flow.',
+                'cp.s3.cal.li1':'Purpose: Appointment booking',
+                'cp.s3.cal.li2.html':'Privacy Policy: <a href="https://calendly.com/privacy" target="_blank" rel="noopener">calendly.com/privacy</a>',
+                'cp.s4.title':'4. How to disable cookies',
+                'cp.s4.p1':'Users can manage cookies and localStorage data through their browser settings. Below are instructions for the main browsers:',
+                'cp.s4.li1.html':'<strong>Google Chrome</strong>: Settings &gt; Privacy and security &gt; Cookies and other site data',
+                'cp.s4.li2.html':'<strong>Mozilla Firefox</strong>: Settings &gt; Privacy & Security &gt; Cookies and Site Data',
+                'cp.s4.li3.html':'<strong>Safari</strong>: Preferences &gt; Privacy &gt; Manage Website Data',
+                'cp.s4.li4.html':'<strong>Microsoft Edge</strong>: Settings &gt; Cookies and site permissions &gt; Cookies and site data',
+                'cp.s4.p2':'To clear localStorage data, you can use the browser\'s developer tools (generally accessible with the F12 key) in the "Application" or "Storage" section.',
+                'cp.s4.p3.html':'<strong>Note:</strong> Disabling technical cookies or clearing localStorage may compromise the proper functioning of some site features, such as saving the language preference.',
+                'cp.s5.title':'5. More information',
+                'cp.s5.p1.html':'For more information on the processing of personal data, see our <a href="privacy-policy.html">Privacy Policy</a>.',
+                'cp.s5.p2.html':'For any questions regarding cookies and tracking technologies, contact us at: <a href="mailto:emcdigitalsolution@gmail.com">emcdigitalsolution@gmail.com</a>',
+                'cp.update':'Last updated: April 2026',
+                'footer.quicklinks':'Quick Links','footer.services':'Services','footer.legal':'Legal',
+                'footer.desc':'Tailored digital solutions for businesses that want to grow. Software development, SaaS and digital strategies from Sicily.',
+                'footer.rights':'\u00a9 2026 EMC Digital Solutions. All rights reserved.',
+                'footer.link.about':'About Us','footer.link.services':'Services','footer.link.portfolio':'Portfolio',
+                'footer.link.pricing':'Pricing','footer.link.contact':'Contact',
+                'footer.link.web':'Web Development','footer.link.saas':'SaaS Software',
+                'footer.link.social':'Social Media','footer.link.app':'App Development',
+                'footer.privacy':'Privacy Policy','footer.cookie':'Cookie Policy'
+            }
+        };
+
+        var currentLang = localStorage.getItem('emc-lang') || 'it';
+
+        function applyTranslations(lang) {
+            var t = translations[lang];
+            if (!t) return;
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) el.textContent = t[key];
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-html');
+                if (t[key] !== undefined) el.innerHTML = t[key];
+            });
+            document.documentElement.lang = lang;
+            var otherLabel = (lang === 'it') ? 'EN' : 'IT';
+            var labelDesktop = document.getElementById('langLabel');
+            var labelMobile = document.getElementById('langLabelMobile');
+            if (labelDesktop) labelDesktop.textContent = otherLabel;
+            if (labelMobile) labelMobile.textContent = otherLabel;
+        }
+
+        function toggleLang() {
+            currentLang = (currentLang === 'it') ? 'en' : 'it';
+            localStorage.setItem('emc-lang', currentLang);
+            applyTranslations(currentLang);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+
+        applyTranslations(currentLang);
     })();
     </script>
 </body>

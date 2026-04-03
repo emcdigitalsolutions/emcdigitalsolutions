@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sviluppo App — EMC Digital Solutions</title>
+    <meta name="description" content="Sviluppo app native e cross-platform per Android e iOS. UX design, notifiche push e rilascio sugli store. Dalla Sicilia per tutta Italia.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#0c1120">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0c1120;
+            --bg-secondary: #131b2e;
+            --bg-card: #172035;
+            --accent: #6b9ef7;
+            --accent-light: #93b8fc;
+            --accent-vivid: #f5c542;
+            --accent-vivid-hover: #ffd666;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9ca3b0;
+            --border: #263354;
+            --shadow: rgba(0,0,0,0.2);
+            --shadow-lg: rgba(0,0,0,0.35);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --nav-height: 72px;
+            --theme-color: #34d399;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 1000;
+            background: rgba(12, 17, 32, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 12px var(--shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: linear-gradient(90deg, transparent 30%, rgba(212, 160, 23, 0.08) 50%, transparent 70%);
+            background-size: 200% 100%;
+            animation: shimmer 4s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        .nav-logo svg {
+            width: 128px;
+            height: 128px;
+        }
+
+        .nav-logo span {
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-vivid);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            background: rgba(19, 27, 46, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 24px;
+            box-shadow: 0 8px 32px var(--shadow-lg);
+            z-index: 999;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ========== PAGE HERO ========== */
+        .page-hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #e8e4dc 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ========== FEATURE GRID ========== */
+        .features {
+            padding: 80px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin-top: 48px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(52, 211, 153, 0.1);
+            border-color: rgba(52, 211, 153, 0.3);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-sm);
+            background: rgba(52, 211, 153, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 26px;
+            height: 26px;
+            color: var(--theme-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== SECTION HEADER ========== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-vivid);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========== HIGHLIGHT SECTION ========== */
+        .highlight {
+            padding: 60px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .highlight-inner {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .highlight-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: rgba(52, 211, 153, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .highlight-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--theme-color);
+        }
+
+        .highlight-text h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .highlight-text p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #34d399, #10b981);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(52, 211, 153, 0.35);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #080d1a;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 340px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo svg {
+            width: 96px;
+            height: 96px;
+        }
+
+        .footer h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-vivid);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .mobile-menu .lang-toggle {
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .features {
+                padding: 60px 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="128">
+                    <defs>
+                        <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#d4a017"/>
+                        </linearGradient>
+                        <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="45%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#0f172a"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
+                    <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#navBarG)" opacity="0.85"/>
+                    <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#navBarG)"/>
+                    <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#navTxtG)" letter-spacing="3">EMC</text>
+                </svg>
+                <span>Digital Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
+                <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="index.html#social" data-i18n="nav.social">Social</a></li>
+                <li><a href="index.html#app-mobile" data-i18n="nav.app">App</a></li>
+                <li><a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="index.html#social" data-i18n="nav.social">Social</a>
+        <a href="index.html#app-mobile" data-i18n="nav.app">App</a>
+        <a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 data-i18n="hero.title">Sviluppo App</h1>
+            <p data-i18n="hero.desc">Realizziamo applicazioni mobile native e cross-platform per Android e iOS. Dall'idea al rilascio sugli store, con un'esperienza utente curata in ogni dettaglio.</p>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label" data-i18n="feat.label">Cosa offriamo</div>
+                <h2 class="section-title" data-i18n="feat.title">App mobile su misura</h2>
+                <p class="section-subtitle" data-i18n="feat.subtitle">Progettiamo applicazioni pensate per i tuoi utenti, con tecnologie moderne e performance eccellenti.</p>
+            </div>
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    </div>
+                    <h3 data-i18n="feat1.title">App Native &amp; Cross-Platform</h3>
+                    <p data-i18n="feat1.desc">Sviluppo con React Native e tecnologie native per garantire prestazioni fluide su entrambe le piattaforme, con un unico codebase dove possibile.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    </div>
+                    <h3 data-i18n="feat2.title">UX/UI Design</h3>
+                    <p data-i18n="feat2.desc">Interfacce intuitive e moderne progettate seguendo le linee guida Material Design e Human Interface. Ogni interazione &egrave; pensata per l'utente finale.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    </div>
+                    <h3 data-i18n="feat3.title">Notifiche Push &amp; Integrazioni</h3>
+                    <p data-i18n="feat3.desc">Notifiche push per coinvolgere gli utenti, integrazioni con API esterne, sistemi di pagamento, mappe, calendario e molto altro.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                    </div>
+                    <h3 data-i18n="feat4.title">Rilascio sugli Store</h3>
+                    <p data-i18n="feat4.desc">Gestiamo l'intero processo di pubblicazione su App Store e Google Play: ottimizzazione scheda, screenshot, descrizioni e aggiornamenti successivi.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HIGHLIGHT: PRENOTY ========== -->
+    <section class="highlight">
+        <div class="container">
+            <div class="highlight-inner">
+                <div class="highlight-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+                </div>
+                <div class="highlight-text">
+                    <h3 data-i18n="highlight.title">Caso studio: Prenoty</h3>
+                    <p data-i18n="highlight.desc">App di prenotazione appuntamenti multi-attivit&agrave;, con gestione calendario, notifiche e area clienti. Un esempio concreto di come trasformiamo un'idea in un prodotto funzionante e pronto per il mercato.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-i18n="cta.title">Hai un'idea per un'app?</h2>
+            <p data-i18n="cta.desc">Raccontaci il tuo progetto e scopri come possiamo trasformarlo in realt&agrave;.</p>
+            <a href="index.html#contatti" class="cta-btn" data-i18n="cta.btn">Contattaci</a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
+                            <defs>
+                                <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#d4a017"/>
+                                </linearGradient>
+                                <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#6b9ef7"/><stop offset="45%" stop-color="#93b8fc"/><stop offset="100%" stop-color="#ffffff"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>
+                            <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#ftBarG)" opacity="0.85"/>
+                            <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#ftBarG)"/>
+                            <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#ftTxtG)" letter-spacing="3">EMC</text>
+                        </svg>
+                        <span>Digital Solutions</span>
+                    </div>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#chi-siamo" data-i18n="footer.link.about">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi" data-i18n="footer.link.services">Servizi</a></li>
+                        <li><a href="index.html#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.pricing">Pricing</a></li>
+                        <li><a href="index.html#contatti" data-i18n="footer.link.contact">Contatti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.services">Servizi</h4>
+                    <ul class="footer-links">
+                        <li><a href="servizio-web.html" data-i18n="footer.link.web">Sviluppo Web</a></li>
+                        <li><a href="servizio-saas.html" data-i18n="footer.link.saas">Software SaaS</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.social">Social Media</a></li>
+                        <li><a href="servizio-app.html" data-i18n="footer.link.app">Sviluppo App</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.legal">Legale</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html" data-i18n="footer.cookie">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" data-i18n="footer.rights">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+    (function() {
+        'use strict';
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        /* ========== i18n ========== */
+        var translations = {
+            it: {
+                'nav.about': 'Chi Siamo', 'nav.services': 'Servizi', 'nav.portfolio': 'Portfolio',
+                'nav.social': 'Social', 'nav.app': 'App', 'nav.pricing': 'Pricing', 'nav.contact': 'Contatti',
+                'hero.title': 'Sviluppo App',
+                'hero.desc': 'Realizziamo applicazioni mobile native e cross-platform per Android e iOS. Dall\'idea al rilascio sugli store, con un\'esperienza utente curata in ogni dettaglio.',
+                'feat.label': 'Cosa offriamo',
+                'feat.title': 'App mobile su misura',
+                'feat.subtitle': 'Progettiamo applicazioni pensate per i tuoi utenti, con tecnologie moderne e performance eccellenti.',
+                'feat1.title': 'App Native & Cross-Platform',
+                'feat1.desc': 'Sviluppo con React Native e tecnologie native per garantire prestazioni fluide su entrambe le piattaforme, con un unico codebase dove possibile.',
+                'feat2.title': 'UX/UI Design',
+                'feat2.desc': 'Interfacce intuitive e moderne progettate seguendo le linee guida Material Design e Human Interface. Ogni interazione \u00e8 pensata per l\'utente finale.',
+                'feat3.title': 'Notifiche Push & Integrazioni',
+                'feat3.desc': 'Notifiche push per coinvolgere gli utenti, integrazioni con API esterne, sistemi di pagamento, mappe, calendario e molto altro.',
+                'feat4.title': 'Rilascio sugli Store',
+                'feat4.desc': 'Gestiamo l\'intero processo di pubblicazione su App Store e Google Play: ottimizzazione scheda, screenshot, descrizioni e aggiornamenti successivi.',
+                'highlight.title': 'Caso studio: Prenoty',
+                'highlight.desc': 'App di prenotazione appuntamenti multi-attivit\u00e0, con gestione calendario, notifiche e area clienti. Un esempio concreto di come trasformiamo un\'idea in un prodotto funzionante e pronto per il mercato.',
+                'cta.title': 'Hai un\'idea per un\'app?',
+                'cta.desc': 'Raccontaci il tuo progetto e scopri come possiamo trasformarlo in realt\u00e0.',
+                'cta.btn': 'Contattaci',
+                'footer.quicklinks': 'Link Rapidi', 'footer.services': 'Servizi', 'footer.legal': 'Legale',
+                'footer.desc': 'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
+                'footer.rights': '\u00a9 2026 EMC Digital Solutions. Tutti i diritti riservati.',
+                'footer.link.about': 'Chi Siamo', 'footer.link.services': 'Servizi', 'footer.link.portfolio': 'Portfolio',
+                'footer.link.pricing': 'Pricing', 'footer.link.contact': 'Contatti',
+                'footer.link.web': 'Sviluppo Web', 'footer.link.saas': 'Software SaaS',
+                'footer.link.social': 'Social Media', 'footer.link.app': 'Sviluppo App',
+                'footer.privacy': 'Privacy Policy', 'footer.cookie': 'Cookie Policy'
+            },
+            en: {
+                'nav.about': 'About Us', 'nav.services': 'Services', 'nav.portfolio': 'Portfolio',
+                'nav.social': 'Social', 'nav.app': 'App', 'nav.pricing': 'Pricing', 'nav.contact': 'Contact',
+                'hero.title': 'App Development',
+                'hero.desc': 'We build native and cross-platform mobile applications for Android and iOS. From idea to store release, with a user experience crafted in every detail.',
+                'feat.label': 'What we offer',
+                'feat.title': 'Custom mobile apps',
+                'feat.subtitle': 'We design applications built for your users, with modern technologies and excellent performance.',
+                'feat1.title': 'Native & Cross-Platform Apps',
+                'feat1.desc': 'Development with React Native and native technologies to ensure smooth performance on both platforms, with a single codebase where possible.',
+                'feat2.title': 'UX/UI Design',
+                'feat2.desc': 'Intuitive and modern interfaces designed following Material Design and Human Interface guidelines. Every interaction is crafted for the end user.',
+                'feat3.title': 'Push Notifications & Integrations',
+                'feat3.desc': 'Push notifications to engage users, integrations with external APIs, payment systems, maps, calendar and much more.',
+                'feat4.title': 'Store Release',
+                'feat4.desc': 'We manage the entire publishing process on App Store and Google Play: listing optimization, screenshots, descriptions and subsequent updates.',
+                'highlight.title': 'Case study: Prenoty',
+                'highlight.desc': 'Multi-business appointment booking app, with calendar management, notifications and customer area. A concrete example of how we turn an idea into a working product ready for the market.',
+                'cta.title': 'Have an idea for an app?',
+                'cta.desc': 'Tell us about your project and discover how we can make it a reality.',
+                'cta.btn': 'Contact Us',
+                'footer.quicklinks': 'Quick Links', 'footer.services': 'Services', 'footer.legal': 'Legal',
+                'footer.desc': 'Tailored digital solutions for businesses that want to grow. Software development, SaaS and digital strategies from Sicily.',
+                'footer.rights': '\u00a9 2026 EMC Digital Solutions. All rights reserved.',
+                'footer.link.about': 'About Us', 'footer.link.services': 'Services', 'footer.link.portfolio': 'Portfolio',
+                'footer.link.pricing': 'Pricing', 'footer.link.contact': 'Contact',
+                'footer.link.web': 'Web Development', 'footer.link.saas': 'SaaS Software',
+                'footer.link.social': 'Social Media', 'footer.link.app': 'App Development',
+                'footer.privacy': 'Privacy Policy', 'footer.cookie': 'Cookie Policy'
+            }
+        };
+
+        function applyTranslations(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+            var label = lang === 'it' ? 'EN' : 'IT';
+            document.getElementById('langLabel').textContent = label;
+            document.getElementById('langLabelMobile').textContent = label;
+        }
+
+        function toggleLang() {
+            var current = localStorage.getItem('emc-lang') || 'it';
+            var next = current === 'it' ? 'en' : 'it';
+            localStorage.setItem('emc-lang', next);
+            applyTranslations(next);
+        }
+
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+
+        var savedLang = localStorage.getItem('emc-lang') || 'it';
+        if (savedLang !== 'it') {
+            applyTranslations(savedLang);
+        }
+    })();
+    </script>
+</body>
+</html>

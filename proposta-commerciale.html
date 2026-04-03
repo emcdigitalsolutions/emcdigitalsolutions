@@ -1258,6 +1258,31 @@
             border-bottom: none;
         }
 
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .mobile-menu .lang-toggle {
+            margin-top: 16px;
+            justify-content: center;
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1280px) {
             .pricing-grid {
@@ -1464,13 +1489,19 @@
                 <span>Digital Solutions</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                <li><a href="index.html#servizi">Servizi</a></li>
+                <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
                 <li><a href="index.html#portfolio">Portfolio</a></li>
                 <li><a href="index.html#social">Social</a></li>
-                <li><a href="proposta-commerciale.html" class="active">Pricing</a></li>
-                <li><a href="index.html#contatti">Contatti</a></li>
                 <li><a href="index.html#app-mobile">App</a></li>
+                <li><a href="proposta-commerciale.html" class="active">Pricing</a></li>
+                <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -1480,21 +1511,25 @@
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html#chi-siamo">Chi Siamo</a>
-        <a href="index.html#servizi">Servizi</a>
+        <a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
         <a href="index.html#portfolio">Portfolio</a>
         <a href="index.html#social">Social</a>
-        <a href="proposta-commerciale.html" class="active">Pricing</a>
-        <a href="index.html#contatti">Contatti</a>
         <a href="index.html#app-mobile">App</a>
+        <a href="proposta-commerciale.html" class="active">Pricing</a>
+        <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
     </div>
 
     <!-- ========== HERO ========== -->
     <section class="page-hero">
         <div class="container">
-            <div class="section-label">Visibilità Digitale</div>
-            <h1 class="section-title">Piani e Prezzi</h1>
-            <p class="section-subtitle">Una strategia digitale completa per far crescere la tua attività. Pricing chiaro e trasparente, senza costi nascosti.</p>
+            <div class="section-label" data-i18n="hero.label">Visibilità Digitale</div>
+            <h1 class="section-title" data-i18n="hero.title">Piani e Prezzi</h1>
+            <p class="section-subtitle" data-i18n="hero.subtitle">Una strategia digitale completa per far crescere la tua attività. Pricing chiaro e trasparente, senza costi nascosti.</p>
         </div>
     </section>
 
@@ -1502,32 +1537,32 @@
     <section class="problema-section" id="problema">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">Il Problema</div>
-                <h2 class="section-title">Perché la visibilità online è importante</h2>
+                <div class="section-label" data-i18n="problem.label">Il Problema</div>
+                <h2 class="section-title" data-i18n="problem.title">Perché la visibilità online è importante</h2>
             </div>
 
             <div class="quote-block fade-in">
-                <p class="quote-text">"Ho cercato un'attività come la tua su Google... ma non ti ho trovato. Così ho scelto un altro."</p>
-                <p class="quote-author">— Ciò che i clienti pensano, ma non ti dicono</p>
+                <p class="quote-text" data-i18n="problem.quote">"Ho cercato un'attività come la tua su Google... ma non ti ho trovato. Così ho scelto un altro."</p>
+                <p class="quote-author" data-i18n="problem.quoteAuthor">— Ciò che i clienti pensano, ma non ti dicono</p>
             </div>
 
             <div class="insight-box fade-in">
-                <h3>Il concetto di "Top-of-Mind"</h3>
-                <p>Quando una persona cerca un prodotto o un servizio, si rivolge al <strong style="color:var(--text-primary);">primo nome che trova</strong>. Non al migliore, non al più economico — al più <strong style="color:var(--text-primary);">visibile</strong>. Chi non è presente online, semplicemente non esiste per una parte sempre più grande della popolazione.</p>
+                <h3 data-i18n="problem.insightTitle">Il concetto di "Top-of-Mind"</h3>
+                <p data-i18n-html="problem.insightText">Quando una persona cerca un prodotto o un servizio, si rivolge al <strong style="color:var(--text-primary);">primo nome che trova</strong>. Non al migliore, non al più economico — al più <strong style="color:var(--text-primary);">visibile</strong>. Chi non è presente online, semplicemente non esiste per una parte sempre più grande della popolazione.</p>
             </div>
 
             <div class="stat-row">
                 <div class="stat-card fade-in stagger-1">
                     <div class="stat-number">87%</div>
-                    <div class="stat-label">degli italiani usa<br>i social ogni giorno</div>
+                    <div class="stat-label" data-i18n-html="problem.stat1">degli italiani usa<br>i social ogni giorno</div>
                 </div>
                 <div class="stat-card fade-in stagger-2">
                     <div class="stat-number">72%</div>
-                    <div class="stat-label">cerca attività locali<br>su Google e Facebook</div>
+                    <div class="stat-label" data-i18n-html="problem.stat2">cerca attività locali<br>su Google e Facebook</div>
                 </div>
                 <div class="stat-card fade-in stagger-3">
-                    <div class="stat-number">3 su 4</div>
-                    <div class="stat-label">scelgono l'attività<br>che trovano per prima online</div>
+                    <div class="stat-number" data-i18n="problem.stat3num">3 su 4</div>
+                    <div class="stat-label" data-i18n-html="problem.stat3">scelgono l'attività<br>che trovano per prima online</div>
                 </div>
             </div>
         </div>
@@ -1539,9 +1574,9 @@
     <section id="soluzione">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">La Soluzione</div>
-                <h2 class="section-title">Tre pilastri per la tua crescita</h2>
-                <p class="section-subtitle">Una strategia digitale completa pensata per posizionare la tua attività come punto di riferimento nella zona.</p>
+                <div class="section-label" data-i18n="pillars.label">La Soluzione</div>
+                <h2 class="section-title" data-i18n="pillars.title">Tre pilastri per la tua crescita</h2>
+                <p class="section-subtitle" data-i18n="pillars.subtitle">Una strategia digitale completa pensata per posizionare la tua attività come punto di riferimento nella zona.</p>
             </div>
 
             <div class="pillars-grid">
@@ -1550,8 +1585,8 @@
                     <div class="pillar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
                     </div>
-                    <h3>Presenza Online</h3>
-                    <p>Sito web professionale che lavora per te 24 ore su 24, 7 giorni su 7.</p>
+                    <h3 data-i18n="pillars.p1title">Presenza Online</h3>
+                    <p data-i18n="pillars.p1text">Sito web professionale che lavora per te 24 ore su 24, 7 giorni su 7.</p>
                 </div>
                 <div class="pillar-card fade-in stagger-2">
                     <div class="pillar-num">02</div>
@@ -1559,15 +1594,15 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                     </div>
                     <h3>Social Media</h3>
-                    <p>Pagine Facebook e Instagram curate con contenuti professionali e costanti.</p>
+                    <p data-i18n="pillars.p2text">Pagine Facebook e Instagram curate con contenuti professionali e costanti.</p>
                 </div>
                 <div class="pillar-card fade-in stagger-3">
                     <div class="pillar-num">03</div>
                     <div class="pillar-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>
                     </div>
-                    <h3>Visibilità Locale</h3>
-                    <p>Google Business Profile e campagne sponsorizzate geolocalizzate nella tua area.</p>
+                    <h3 data-i18n="pillars.p3title">Visibilità Locale</h3>
+                    <p data-i18n="pillars.p3text">Google Business Profile e campagne sponsorizzate geolocalizzate nella tua area.</p>
                 </div>
             </div>
         </div>
@@ -1580,9 +1615,9 @@
         <div class="container">
             <div class="service-header fade-in">
                 <span class="service-num">01</span>
-                <h3>Sito Web Professionale</h3>
+                <h3 data-i18n="svc1.title">Sito Web Professionale</h3>
             </div>
-            <p class="service-lead fade-in">La tua vetrina digitale aperta 24 ore su 24. Un punto di riferimento per chiunque cerchi i tuoi servizi online.</p>
+            <p class="service-lead fade-in" data-i18n="svc1.lead">La tua vetrina digitale aperta 24 ore su 24. Un punto di riferimento per chiunque cerchi i tuoi servizi online.</p>
 
             <div class="features-grid">
                 <div class="feature-card fade-in stagger-1">
@@ -1590,8 +1625,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                     </div>
                     <div>
-                        <h4>Design su Misura</h4>
-                        <p>Ogni sito viene progettato su misura per la tua attività. Nessun template generico: solo soluzioni personalizzate.</p>
+                        <h4 data-i18n="svc1.f1title">Design su Misura</h4>
+                        <p data-i18n="svc1.f1text">Ogni sito viene progettato su misura per la tua attività. Nessun template generico: solo soluzioni personalizzate.</p>
                     </div>
                 </div>
                 <div class="feature-card fade-in stagger-2">
@@ -1600,7 +1635,7 @@
                     </div>
                     <div>
                         <h4>Mobile-Friendly</h4>
-                        <p>Perfetto su smartphone e tablet. Il 70% delle visite arriva da dispositivi mobili.</p>
+                        <p data-i18n="svc1.f2text">Perfetto su smartphone e tablet. Il 70% delle visite arriva da dispositivi mobili.</p>
                     </div>
                 </div>
                 <div class="feature-card fade-in stagger-3">
@@ -1608,8 +1643,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                     </div>
                     <div>
-                        <h4>SEO Ottimizzato</h4>
-                        <p>Posizionamento su Google per le ricerche più rilevanti nella tua zona e nel tuo settore.</p>
+                        <h4 data-i18n="svc1.f3title">SEO Ottimizzato</h4>
+                        <p data-i18n="svc1.f3text">Posizionamento su Google per le ricerche più rilevanti nella tua zona e nel tuo settore.</p>
                     </div>
                 </div>
                 <div class="feature-card fade-in stagger-4">
@@ -1617,8 +1652,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     </div>
                     <div>
-                        <h4>Veloce e Sicuro</h4>
-                        <p>Tempi di caricamento rapidi, certificato SSL e hosting affidabile. Performance e sicurezza garantite.</p>
+                        <h4 data-i18n="svc1.f4title">Veloce e Sicuro</h4>
+                        <p data-i18n="svc1.f4text">Tempi di caricamento rapidi, certificato SSL e hosting affidabile. Performance e sicurezza garantite.</p>
                     </div>
                 </div>
             </div>
@@ -1632,9 +1667,9 @@
         <div class="container">
             <div class="service-header fade-in">
                 <span class="service-num">02</span>
-                <h3>Gestione Social Media</h3>
+                <h3 data-i18n="svc2.title">Gestione Social Media</h3>
             </div>
-            <p class="service-lead fade-in">Contenuti professionali e costanti che mantengono il tuo nome visibile nella mente delle persone, ogni giorno.</p>
+            <p class="service-lead fade-in" data-i18n="svc2.lead">Contenuti professionali e costanti che mantengono il tuo nome visibile nella mente delle persone, ogni giorno.</p>
 
             <div class="social-columns fade-in">
                 <div class="social-col">
@@ -1643,11 +1678,11 @@
                         Facebook
                     </h4>
                     <ul>
-                        <li>Pagina Business ottimizzata</li>
-                        <li>8-12 post al mese</li>
-                        <li>Gestione commenti e messaggi</li>
-                        <li>Informazioni sempre aggiornate</li>
-                        <li>Orari, servizi e contatti visibili</li>
+                        <li data-i18n="svc2.fb1">Pagina Business ottimizzata</li>
+                        <li data-i18n="svc2.fb2">8-12 post al mese</li>
+                        <li data-i18n="svc2.fb3">Gestione commenti e messaggi</li>
+                        <li data-i18n="svc2.fb4">Informazioni sempre aggiornate</li>
+                        <li data-i18n="svc2.fb5">Orari, servizi e contatti visibili</li>
                     </ul>
                 </div>
                 <div class="social-col">
@@ -1656,18 +1691,18 @@
                         Instagram
                     </h4>
                     <ul>
-                        <li>Profilo curato e professionale</li>
-                        <li>Storie e contenuti visivi</li>
-                        <li>Immagini di qualità</li>
-                        <li>Hashtag strategici locali</li>
-                        <li>Engagement con la community</li>
+                        <li data-i18n="svc2.ig1">Profilo curato e professionale</li>
+                        <li data-i18n="svc2.ig2">Storie e contenuti visivi</li>
+                        <li data-i18n="svc2.ig3">Immagini di qualità</li>
+                        <li data-i18n="svc2.ig4">Hashtag strategici locali</li>
+                        <li data-i18n="svc2.ig5">Engagement con la community</li>
                     </ul>
                 </div>
             </div>
 
             <div class="insight-box fade-in">
-                <h3>Tipologie di contenuto</h3>
-                <p>I tuoi prodotti e servizi, il dietro le quinte della tua attività, novità e promozioni, recensioni dei clienti, eventi e ricorrenze. Tutto con un tono professionale e coerente con la tua identità.</p>
+                <h3 data-i18n="svc2.insightTitle">Tipologie di contenuto</h3>
+                <p data-i18n="svc2.insightText">I tuoi prodotti e servizi, il dietro le quinte della tua attività, novità e promozioni, recensioni dei clienti, eventi e ricorrenze. Tutto con un tono professionale e coerente con la tua identità.</p>
             </div>
         </div>
     </section>
@@ -1679,49 +1714,49 @@
         <div class="container">
             <div class="service-header fade-in">
                 <span class="service-num">03</span>
-                <h3>Sponsorizzate Locali</h3>
+                <h3 data-i18n="svc3.title">Sponsorizzate Locali</h3>
             </div>
-            <p class="service-lead fade-in">Campagne mirate che portano il tuo nome davanti alle persone giuste, nel territorio giusto, al momento giusto.</p>
+            <p class="service-lead fade-in" data-i18n="svc3.lead">Campagne mirate che portano il tuo nome davanti alle persone giuste, nel territorio giusto, al momento giusto.</p>
 
-            <h4 style="font-size:1rem;font-weight:600;color:var(--accent-light);margin-bottom:12px;" class="fade-in">Copertura Geografica</h4>
+            <h4 style="font-size:1rem;font-weight:600;color:var(--accent-light);margin-bottom:12px;" class="fade-in" data-i18n="svc3.geoTitle">Copertura Geografica</h4>
             <div class="geo-tags fade-in">
                 <span class="geo-tag">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    La tua città
+                    <span data-i18n="svc3.geo1">La tua città</span>
                 </span>
                 <span class="geo-tag">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    Comuni limitrofi
+                    <span data-i18n="svc3.geo2">Comuni limitrofi</span>
                 </span>
                 <span class="geo-tag">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    La tua provincia
+                    <span data-i18n="svc3.geo3">La tua provincia</span>
                 </span>
                 <span class="geo-tag">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    Raggio personalizzabile
+                    <span data-i18n="svc3.geo4">Raggio personalizzabile</span>
                 </span>
             </div>
 
             <ul class="check-list fade-in">
-                <li>Campagne geolocalizzate su Facebook e Instagram</li>
-                <li>Budget contenuto con risultati misurabili</li>
-                <li>Targeting per età, interessi e area geografica</li>
-                <li>Report periodico con tutte le metriche</li>
+                <li data-i18n="svc3.check1">Campagne geolocalizzate su Facebook e Instagram</li>
+                <li data-i18n="svc3.check2">Budget contenuto con risultati misurabili</li>
+                <li data-i18n="svc3.check3">Targeting per età, interessi e area geografica</li>
+                <li data-i18n="svc3.check4">Report periodico con tutte le metriche</li>
             </ul>
 
             <div class="metric-row">
                 <div class="metric-card fade-in stagger-1">
-                    <div class="stat-number">5.000+</div>
-                    <div class="stat-label">Persone raggiunte<br>al mese (stima)</div>
+                    <div class="stat-number" data-i18n="svc3.m1num">5.000+</div>
+                    <div class="stat-label" data-i18n-html="svc3.m1label">Persone raggiunte<br>al mese (stima)</div>
                 </div>
                 <div class="metric-card fade-in stagger-2">
-                    <div class="stat-number">da €0,02</div>
-                    <div class="stat-label">Costo medio<br>per persona raggiunta</div>
+                    <div class="stat-number" data-i18n="svc3.m2num">da €0,02</div>
+                    <div class="stat-label" data-i18n-html="svc3.m2label">Costo medio<br>per persona raggiunta</div>
                 </div>
                 <div class="metric-card fade-in stagger-3">
                     <div class="stat-number">20 km</div>
-                    <div class="stat-label">Raggio di copertura<br>personalizzabile</div>
+                    <div class="stat-label" data-i18n-html="svc3.m3label">Raggio di copertura<br>personalizzabile</div>
                 </div>
             </div>
         </div>
@@ -1733,9 +1768,9 @@
     <section class="pricing-section" id="pricing">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">Investimento</div>
-                <h2 class="section-title">Scegli il piano più adatto</h2>
-                <p class="section-subtitle"><strong style="color:var(--text-primary);">Pricing chiaro e trasparente</strong>, senza costi nascosti. Ogni piano include tutto il necessario per partire.</p>
+                <div class="section-label" data-i18n="pricing.label">Investimento</div>
+                <h2 class="section-title" data-i18n="pricing.title">Scegli il piano più adatto</h2>
+                <p class="section-subtitle" data-i18n-html="pricing.subtitle"><strong style="color:var(--text-primary);">Pricing chiaro e trasparente</strong>, senza costi nascosti. Ogni piano include tutto il necessario per partire.</p>
             </div>
 
             <div class="pricing-grid">
@@ -1743,50 +1778,50 @@
                 <div class="price-card fade-in stagger-1">
                     <div class="price-header">
                         <div class="price-plan-name">Starter</div>
-                        <div class="price-ideal">Ideale per chi vuole iniziare</div>
-                        <div class="price-label">Setup una tantum</div>
+                        <div class="price-ideal" data-i18n="pricing.s.ideal">Ideale per chi vuole iniziare</div>
+                        <div class="price-label" data-i18n="pricing.setupLabel">Setup una tantum</div>
                         <div class="price-setup">€500</div>
-                        <div class="price-amount">€200<span>/mese</span></div>
+                        <div class="price-amount" data-i18n-html="pricing.s.price">€200<span>/mese</span></div>
                     </div>
                     <div class="price-body">
                         <ul>
                             <li>
                                 <div class="price-item-content">
-                                    Sito web one-page
-                                    <div class="price-item-desc">Pagina singola con le info essenziali: chi sei, cosa fai, dove trovarti e come contattarti.</div>
+                                    <span data-i18n="pricing.s.f1">Sito web one-page</span>
+                                    <div class="price-item-desc" data-i18n="pricing.s.f1d">Pagina singola con le info essenziali: chi sei, cosa fai, dove trovarti e come contattarti.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    1 piattaforma social
-                                    <div class="price-item-desc">Gestione di Facebook o Instagram a scelta. Setup del profilo e pubblicazione contenuti.</div>
+                                    <span data-i18n="pricing.s.f2">1 piattaforma social</span>
+                                    <div class="price-item-desc" data-i18n="pricing.s.f2d">Gestione di Facebook o Instagram a scelta. Setup del profilo e pubblicazione contenuti.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    4-6 post al mese
-                                    <div class="price-item-desc">1-2 pubblicazioni a settimana con grafiche e testi professionali.</div>
+                                    <span data-i18n="pricing.s.f3">4-6 post al mese</span>
+                                    <div class="price-item-desc" data-i18n="pricing.s.f3d">1-2 pubblicazioni a settimana con grafiche e testi professionali.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Gestione commenti base
-                                    <div class="price-item-desc">Monitoraggio e risposta ai commenti e messaggi sulla piattaforma gestita.</div>
+                                    <span data-i18n="pricing.s.f4">Gestione commenti base</span>
+                                    <div class="price-item-desc" data-i18n="pricing.s.f4d">Monitoraggio e risposta ai commenti e messaggi sulla piattaforma gestita.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Report trimestrale
-                                    <div class="price-item-desc">Ogni 3 mesi un riepilogo con le metriche principali: visite, interazioni, crescita.</div>
+                                    <span data-i18n="pricing.s.f5">Report trimestrale</span>
+                                    <div class="price-item-desc" data-i18n="pricing.s.f5d">Ogni 3 mesi un riepilogo con le metriche principali: visite, interazioni, crescita.</div>
                                 </div>
                             </li>
-                            <li class="disabled"><div class="price-item-content">Sponsorizzate non incluse</div></li>
-                            <li class="disabled"><div class="price-item-content">Storie e Reels non inclusi</div></li>
-                            <li class="disabled"><div class="price-item-content">Google Business non incluso</div></li>
+                            <li class="disabled"><div class="price-item-content" data-i18n="pricing.s.d1">Sponsorizzate non incluse</div></li>
+                            <li class="disabled"><div class="price-item-content" data-i18n="pricing.s.d2">Storie e Reels non inclusi</div></li>
+                            <li class="disabled"><div class="price-item-content" data-i18n="pricing.s.d3">Google Business non incluso</div></li>
                         </ul>
                     </div>
                     <div class="price-footer">
-                        <a href="piano-starter.html" class="btn-choose">Scegli Starter</a>
+                        <a href="piano-starter.html" class="btn-choose" data-i18n="pricing.s.cta">Scegli Starter</a>
                     </div>
                 </div>
 
@@ -1794,116 +1829,116 @@
                 <div class="price-card fade-in stagger-2">
                     <div class="price-header">
                         <div class="price-plan-name">Base</div>
-                        <div class="price-ideal">Per una presenza solida</div>
-                        <div class="price-label">Setup una tantum</div>
+                        <div class="price-ideal" data-i18n="pricing.b.ideal">Per una presenza solida</div>
+                        <div class="price-label" data-i18n="pricing.setupLabel">Setup una tantum</div>
                         <div class="price-setup">€900</div>
-                        <div class="price-amount">€350<span>/mese</span></div>
+                        <div class="price-amount" data-i18n-html="pricing.b.price">€350<span>/mese</span></div>
                     </div>
                     <div class="price-body">
                         <ul>
                             <li>
                                 <div class="price-item-content">
-                                    Sito web multi-pagina <span class="price-upgrade">upgrade</span>
-                                    <div class="price-item-desc">Sito completo con sezioni dedicate: servizi, chi siamo, gallery, contatti. Più spazio per raccontare la tua attività.</div>
+                                    <span data-i18n="pricing.b.f1">Sito web multi-pagina</span> <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc" data-i18n="pricing.b.f1d">Sito completo con sezioni dedicate: servizi, chi siamo, gallery, contatti. Più spazio per raccontare la tua attività.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
                                     Facebook + Instagram <span class="price-upgrade">+1 social</span>
-                                    <div class="price-item-desc">Gestione di entrambe le piattaforme. Contenuti adattati al formato e al pubblico di ciascuna.</div>
+                                    <div class="price-item-desc" data-i18n="pricing.b.f2d">Gestione di entrambe le piattaforme. Contenuti adattati al formato e al pubblico di ciascuna.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
                                     8-12 post/mese <span class="price-upgrade">x2</span>
-                                    <div class="price-item-desc">2-3 post a settimana con grafiche professionali su entrambi i canali.</div>
+                                    <div class="price-item-desc" data-i18n="pricing.b.f3d">2-3 post a settimana con grafiche professionali su entrambi i canali.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    4-6 storie/mese <span class="price-upgrade">nuovo</span>
-                                    <div class="price-item-desc">Storie Instagram per mantenere alta la visibilità quotidiana e il contatto con i follower.</div>
+                                    <span data-i18n="pricing.b.f4">4-6 storie/mese</span> <span class="price-upgrade" data-i18n="pricing.tagNew">nuovo</span>
+                                    <div class="price-item-desc" data-i18n="pricing.b.f4d">Storie Instagram per mantenere alta la visibilità quotidiana e il contatto con i follower.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Gestione commenti e messaggi
-                                    <div class="price-item-desc">Monitoraggio e risposta su entrambe le piattaforme, anche ai messaggi privati.</div>
+                                    <span data-i18n="pricing.b.f5">Gestione commenti e messaggi</span>
+                                    <div class="price-item-desc" data-i18n="pricing.b.f5d">Monitoraggio e risposta su entrambe le piattaforme, anche ai messaggi privati.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Report mensile <span class="price-upgrade">upgrade</span>
-                                    <div class="price-item-desc">Ogni mese ricevi un report con metriche dettagliate: reach, interazioni, crescita follower.</div>
+                                    <span data-i18n="pricing.b.f6">Report mensile</span> <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc" data-i18n="pricing.b.f6d">Ogni mese ricevi un report con metriche dettagliate: reach, interazioni, crescita follower.</div>
                                 </div>
                             </li>
-                            <li class="disabled"><div class="price-item-content">Sponsorizzate non incluse</div></li>
-                            <li class="disabled"><div class="price-item-content">Google Business non incluso</div></li>
+                            <li class="disabled"><div class="price-item-content" data-i18n="pricing.b.d1">Sponsorizzate non incluse</div></li>
+                            <li class="disabled"><div class="price-item-content" data-i18n="pricing.b.d2">Google Business non incluso</div></li>
                         </ul>
                     </div>
                     <div class="price-footer">
-                        <a href="piano-base.html" class="btn-choose">Scegli Base</a>
+                        <a href="piano-base.html" class="btn-choose" data-i18n="pricing.b.cta">Scegli Base</a>
                     </div>
                 </div>
 
                 <!-- Standard (Featured) -->
                 <div class="price-card featured fade-in stagger-3">
-                    <div class="price-badge">Consigliato</div>
+                    <div class="price-badge" data-i18n="pricing.recommended">Consigliato</div>
                     <div class="price-header">
                         <div class="price-plan-name">Standard</div>
-                        <div class="price-ideal">Per chi vuole crescere attivamente</div>
-                        <div class="price-label">Setup una tantum</div>
+                        <div class="price-ideal" data-i18n="pricing.st.ideal">Per chi vuole crescere attivamente</div>
+                        <div class="price-label" data-i18n="pricing.setupLabel">Setup una tantum</div>
                         <div class="price-setup">€1.500</div>
-                        <div class="price-amount">€500<span>/mese</span></div>
+                        <div class="price-amount" data-i18n-html="pricing.st.price">€500<span>/mese</span></div>
                     </div>
                     <div class="price-body">
                         <ul>
                             <li>
                                 <div class="price-item-content">
-                                    Sito completo + landing page <span class="price-upgrade">upgrade</span>
-                                    <div class="price-item-desc">Sito multi-pagina più una landing page dedicata per promozioni o campagne specifiche.</div>
+                                    <span data-i18n="pricing.st.f1">Sito completo + landing page</span> <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc" data-i18n="pricing.st.f1d">Sito multi-pagina più una landing page dedicata per promozioni o campagne specifiche.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
                                     Facebook + Instagram
-                                    <div class="price-item-desc">Gestione professionale di entrambe le piattaforme con contenuti dedicati.</div>
+                                    <div class="price-item-desc" data-i18n="pricing.st.f2d">Gestione professionale di entrambe le piattaforme con contenuti dedicati.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    12-16 post/mese + storie <span class="price-upgrade">x2</span>
-                                    <div class="price-item-desc">3-4 post a settimana più storie regolari. Presenza costante e visibilità quotidiana.</div>
+                                    <span data-i18n="pricing.st.f3">12-16 post/mese + storie</span> <span class="price-upgrade">x2</span>
+                                    <div class="price-item-desc" data-i18n="pricing.st.f3d">3-4 post a settimana più storie regolari. Presenza costante e visibilità quotidiana.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Reels video (2-4/mese) <span class="price-upgrade">nuovo</span>
-                                    <div class="price-item-desc">Video brevi ottimizzati per l'algoritmo. I reels hanno una copertura organica fino a 10x superiore ai post.</div>
+                                    <span data-i18n="pricing.st.f4">Reels video (2-4/mese)</span> <span class="price-upgrade" data-i18n="pricing.tagNew">nuovo</span>
+                                    <div class="price-item-desc" data-i18n="pricing.st.f4d">Video brevi ottimizzati per l'algoritmo. I reels hanno una copertura organica fino a 10x superiore ai post.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Gestione sponsorizzate Meta <span class="price-upgrade">nuovo</span>
-                                    <div class="price-item-desc">Creazione, monitoraggio e ottimizzazione campagne Facebook e Instagram Ads. Tu scegli il budget, noi gestiamo tutto.</div>
+                                    <span data-i18n="pricing.st.f5">Gestione sponsorizzate Meta</span> <span class="price-upgrade" data-i18n="pricing.tagNew">nuovo</span>
+                                    <div class="price-item-desc" data-i18n="pricing.st.f5d">Creazione, monitoraggio e ottimizzazione campagne Facebook e Instagram Ads. Tu scegli il budget, noi gestiamo tutto.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Google Business setup <span class="price-upgrade">nuovo</span>
-                                    <div class="price-item-desc">Creazione e ottimizzazione del profilo Google Business per comparire nelle ricerche locali e su Google Maps.</div>
+                                    <span data-i18n="pricing.st.f6">Google Business setup</span> <span class="price-upgrade" data-i18n="pricing.tagNew">nuovo</span>
+                                    <div class="price-item-desc" data-i18n="pricing.st.f6d">Creazione e ottimizzazione del profilo Google Business per comparire nelle ricerche locali e su Google Maps.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Report bi-settimanale <span class="price-upgrade">upgrade</span>
-                                    <div class="price-item-desc">Report ogni 2 settimane con analisi dettagliata e suggerimenti per ottimizzare la strategia.</div>
+                                    <span data-i18n="pricing.st.f7">Report bi-settimanale</span> <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc" data-i18n="pricing.st.f7d">Report ogni 2 settimane con analisi dettagliata e suggerimenti per ottimizzare la strategia.</div>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="price-footer">
-                        <a href="piano-standard.html" class="btn-choose">Scegli Standard</a>
+                        <a href="piano-standard.html" class="btn-choose" data-i18n="pricing.st.cta">Scegli Standard</a>
                     </div>
                 </div>
 
@@ -1911,59 +1946,59 @@
                 <div class="price-card fade-in stagger-4">
                     <div class="price-header">
                         <div class="price-plan-name">Premium</div>
-                        <div class="price-ideal">Il massimo della visibilità</div>
-                        <div class="price-label">Setup una tantum</div>
+                        <div class="price-ideal" data-i18n="pricing.p.ideal">Il massimo della visibilità</div>
+                        <div class="price-label" data-i18n="pricing.setupLabel">Setup una tantum</div>
                         <div class="price-setup">€2.200</div>
-                        <div class="price-amount">€700<span>/mese</span></div>
+                        <div class="price-amount" data-i18n-html="pricing.p.price">€700<span>/mese</span></div>
                     </div>
                     <div class="price-body">
                         <ul>
                             <li>
                                 <div class="price-item-content">
-                                    Sito + landing pages multiple <span class="price-upgrade">upgrade</span>
-                                    <div class="price-item-desc">Sito completo più landing page multiple per promozioni, campagne stagionali o servizi specifici.</div>
+                                    <span data-i18n="pricing.p.f1">Sito + landing pages multiple</span> <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc" data-i18n="pricing.p.f1d">Sito completo più landing page multiple per promozioni, campagne stagionali o servizi specifici.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
                                     FB + IG + WhatsApp Business <span class="price-upgrade">+whatsapp</span>
-                                    <div class="price-item-desc">Aggiungi WhatsApp Business: catalogo prodotti, risposte rapide e broadcast promozionali ai tuoi clienti.</div>
+                                    <div class="price-item-desc" data-i18n="pricing.p.f2d">Aggiungi WhatsApp Business: catalogo prodotti, risposte rapide e broadcast promozionali ai tuoi clienti.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    16-20 post/mese + storie + reels <span class="price-upgrade">x2</span>
-                                    <div class="price-item-desc">4-5 post a settimana, storie quotidiane e 4-6 reels video per massimizzare la copertura.</div>
+                                    <span data-i18n="pricing.p.f3">16-20 post/mese + storie + reels</span> <span class="price-upgrade">x2</span>
+                                    <div class="price-item-desc" data-i18n="pricing.p.f3d">4-5 post a settimana, storie quotidiane e 4-6 reels video per massimizzare la copertura.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
                                     Meta Ads + Google Ads <span class="price-upgrade">+google</span>
-                                    <div class="price-item-desc">Campagne su Facebook, Instagram e Google Ads per intercettare chi ti cerca attivamente.</div>
+                                    <div class="price-item-desc" data-i18n="pricing.p.f4d">Campagne su Facebook, Instagram e Google Ads per intercettare chi ti cerca attivamente.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Google Business + recensioni <span class="price-upgrade">upgrade</span>
-                                    <div class="price-item-desc">Profilo Google ottimizzato più gestione attiva delle recensioni: risposte, solleciti e monitoraggio reputazione.</div>
+                                    <span data-i18n="pricing.p.f5">Google Business + recensioni</span> <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc" data-i18n="pricing.p.f5d">Profilo Google ottimizzato più gestione attiva delle recensioni: risposte, solleciti e monitoraggio reputazione.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Report settimanale <span class="price-upgrade">upgrade</span>
-                                    <div class="price-item-desc">Report ogni settimana con analisi in tempo reale, suggerimenti e ottimizzazioni continue.</div>
+                                    <span data-i18n="pricing.p.f6">Report settimanale</span> <span class="price-upgrade">upgrade</span>
+                                    <div class="price-item-desc" data-i18n="pricing.p.f6d">Report ogni settimana con analisi in tempo reale, suggerimenti e ottimizzazioni continue.</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="price-item-content">
-                                    Consulenza strategica dedicata <span class="price-upgrade">nuovo</span>
-                                    <div class="price-item-desc">Call mensile di consulenza per definire obiettivi, analizzare i risultati e pianificare le azioni future.</div>
+                                    <span data-i18n="pricing.p.f7">Consulenza strategica dedicata</span> <span class="price-upgrade" data-i18n="pricing.tagNew">nuovo</span>
+                                    <div class="price-item-desc" data-i18n="pricing.p.f7d">Call mensile di consulenza per definire obiettivi, analizzare i risultati e pianificare le azioni future.</div>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="price-footer">
-                        <a href="piano-premium.html" class="btn-choose">Scegli Premium</a>
+                        <a href="piano-premium.html" class="btn-choose" data-i18n="pricing.p.cta">Scegli Premium</a>
                     </div>
                 </div>
             </div>
@@ -1974,19 +2009,19 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                 </div>
                 <div>
-                    <strong>Investimento 100% deducibile</strong>
-                    <p>Le spese di pubblicità e marketing digitale sono interamente deducibili come costo aziendale per tutte le attività con Partita IVA in regime ordinario (art. 108 TUIR). L'IVA è detraibile. Consulta il tuo commercialista per i dettagli specifici della tua situazione fiscale.</p>
+                    <strong data-i18n="pricing.deductTitle">Investimento 100% deducibile</strong>
+                    <p data-i18n="pricing.deductText">Le spese di pubblicità e marketing digitale sono interamente deducibili come costo aziendale per tutte le attività con Partita IVA in regime ordinario (art. 108 TUIR). L'IVA è detraibile. Consulta il tuo commercialista per i dettagli specifici della tua situazione fiscale.</p>
                 </div>
             </div>
 
             <div class="price-note fade-in" style="margin-top:20px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                <p><strong style="color:var(--text-primary);">Nota sul budget pubblicitario:</strong> Il budget per le sponsorizzate Meta e Google (consigliato €150–300/mese) è a parte e viene pagato direttamente dal cliente tramite il proprio account. In questo modo hai sempre il controllo totale sulla spesa.</p>
+                <p data-i18n-html="pricing.noteAds"><strong style="color:var(--text-primary);">Nota sul budget pubblicitario:</strong> Il budget per le sponsorizzate Meta e Google (consigliato €150–300/mese) è a parte e viene pagato direttamente dal cliente tramite il proprio account. In questo modo hai sempre il controllo totale sulla spesa.</p>
             </div>
 
             <div class="price-note fade-in" style="margin-top:12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                <p><strong style="color:var(--text-primary);">Hai esigenze specifiche?</strong> Ogni proposta può essere personalizzata e cucita su misura per la tua attività. Contattaci per un preventivo dedicato.</p>
+                <p data-i18n-html="pricing.noteCustom"><strong style="color:var(--text-primary);">Hai esigenze specifiche?</strong> Ogni proposta può essere personalizzata e cucita su misura per la tua attività. Contattaci per un preventivo dedicato.</p>
             </div>
         </div>
     </section>
@@ -1997,31 +2032,31 @@
     <section id="perche-noi">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">Perché Noi</div>
-                <h2 class="section-title">Perché Scegliere Noi</h2>
-                <p class="section-subtitle">Non siamo una grande agenzia impersonale. Siamo un partner locale che conosce il territorio e lavora al tuo fianco.</p>
+                <div class="section-label" data-i18n="why.label">Perché Noi</div>
+                <h2 class="section-title" data-i18n="why.title">Perché Scegliere Noi</h2>
+                <p class="section-subtitle" data-i18n="why.subtitle">Non siamo una grande agenzia impersonale. Siamo un partner locale che conosce il territorio e lavora al tuo fianco.</p>
             </div>
 
             <div class="why-grid">
                 <div class="why-card fade-in stagger-1">
                     <div class="why-num">01</div>
-                    <h3>Conoscenza del Territorio</h3>
-                    <p>Viviamo e lavoriamo in Sicilia. Conosciamo le dinamiche, le persone e il modo di comunicare della nostra terra. Questo fa la differenza.</p>
+                    <h3 data-i18n="why.w1title">Conoscenza del Territorio</h3>
+                    <p data-i18n="why.w1text">Viviamo e lavoriamo in Sicilia. Conosciamo le dinamiche, le persone e il modo di comunicare della nostra terra. Questo fa la differenza.</p>
                 </div>
                 <div class="why-card fade-in stagger-2">
                     <div class="why-num">02</div>
-                    <h3>Esperienza Concreta</h3>
-                    <p>Un portfolio di progetti reali per attività locali — siti web, gestione social e campagne che hanno portato risultati tangibili ai nostri clienti.</p>
+                    <h3 data-i18n="why.w2title">Esperienza Concreta</h3>
+                    <p data-i18n="why.w2text">Un portfolio di progetti reali per attività locali — siti web, gestione social e campagne che hanno portato risultati tangibili ai nostri clienti.</p>
                 </div>
                 <div class="why-card fade-in stagger-3">
                     <div class="why-num">03</div>
-                    <h3>Approccio Personale</h3>
-                    <p>Un referente unico, sempre disponibile. Nessun call center, nessun ticket. Comunicazione diretta e rapida, come deve essere.</p>
+                    <h3 data-i18n="why.w3title">Approccio Personale</h3>
+                    <p data-i18n="why.w3text">Un referente unico, sempre disponibile. Nessun call center, nessun ticket. Comunicazione diretta e rapida, come deve essere.</p>
                 </div>
                 <div class="why-card fade-in stagger-4">
                     <div class="why-num">04</div>
-                    <h3>Risultati Misurabili</h3>
-                    <p>Report periodici chiari con numeri reali: persone raggiunte, interazioni, visite al sito. Sai sempre esattamente cosa ottieni.</p>
+                    <h3 data-i18n="why.w4title">Risultati Misurabili</h3>
+                    <p data-i18n="why.w4text">Report periodici chiari con numeri reali: persone raggiunte, interazioni, visite al sito. Sai sempre esattamente cosa ottieni.</p>
                 </div>
             </div>
         </div>
@@ -2033,81 +2068,81 @@
     <section class="vs-section" id="confronto">
         <div class="container">
             <div class="section-header">
-                <div class="section-label fade-in">Confronto</div>
-                <h2 class="section-title fade-in">Noi vs le Alternative</h2>
-                <p class="section-subtitle fade-in">Cosa cambia davvero nella scelta del partner per la tua visibilità digitale.</p>
+                <div class="section-label fade-in" data-i18n="vs.label">Confronto</div>
+                <h2 class="section-title fade-in" data-i18n="vs.title">Noi vs le Alternative</h2>
+                <p class="section-subtitle fade-in" data-i18n="vs.subtitle">Cosa cambia davvero nella scelta del partner per la tua visibilità digitale.</p>
             </div>
 
             <div class="vs-table-wrapper fade-in">
                 <div class="vs-table">
                     <!-- Header row -->
-                    <div class="vs-header">Criterio</div>
-                    <div class="vs-header">Fai-da-te</div>
+                    <div class="vs-header" data-i18n="vs.hCriteria">Criterio</div>
+                    <div class="vs-header" data-i18n="vs.hDiy">Fai-da-te</div>
                     <div class="vs-header">Freelancer</div>
-                    <div class="vs-header">Grande Agenzia</div>
+                    <div class="vs-header" data-i18n="vs.hAgency">Grande Agenzia</div>
                     <div class="vs-header vs-header-emc">
-                        <div class="vs-badge">La nostra proposta</div>
+                        <div class="vs-badge" data-i18n="vs.badge">La nostra proposta</div>
                         <div>EMC</div>
                     </div>
 
                     <!-- Row 1: Referente dedicato -->
-                    <div class="vs-row-label">Referente dedicato</div>
+                    <div class="vs-row-label" data-i18n="vs.r1">Referente dedicato</div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
 
                     <!-- Row 2: Conoscenza del territorio -->
-                    <div class="vs-row-label">Conoscenza del territorio</div>
+                    <div class="vs-row-label" data-i18n="vs.r2">Conoscenza del territorio</div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
 
                     <!-- Row 3: Sito + Social + Ads integrati -->
-                    <div class="vs-row-label">Sito + Social + Ads integrati</div>
+                    <div class="vs-row-label" data-i18n="vs.r3">Sito + Social + Ads integrati</div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
 
                     <!-- Row 4: Costi trasparenti e fissi -->
-                    <div class="vs-row-label">Costi trasparenti e fissi</div>
+                    <div class="vs-row-label" data-i18n="vs.r4">Costi trasparenti e fissi</div>
                     <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
 
                     <!-- Row 5: Tempi di risposta rapidi -->
-                    <div class="vs-row-label">Tempi di risposta rapidi</div>
+                    <div class="vs-row-label" data-i18n="vs.r5">Tempi di risposta rapidi</div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
 
                     <!-- Row 6: Report con numeri reali -->
-                    <div class="vs-row-label">Report con numeri reali</div>
+                    <div class="vs-row-label" data-i18n="vs.r6">Report con numeri reali</div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
 
                     <!-- Row 7: Personalizzazione su misura -->
-                    <div class="vs-row-label">Personalizzazione su misura</div>
+                    <div class="vs-row-label" data-i18n="vs.r7">Personalizzazione su misura</div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
 
                     <!-- Row 8: Contratto flessibile -->
-                    <div class="vs-row-label">Contratto flessibile</div>
+                    <div class="vs-row-label" data-i18n="vs.r8">Contratto flessibile</div>
                     <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell vs-col-emc"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
 
                     <!-- Row 9: Strategia multi-canale -->
-                    <div class="vs-row-label">Strategia multi-canale</div>
+                    <div class="vs-row-label" data-i18n="vs.r9">Strategia multi-canale</div>
                     <div class="vs-cell"><svg class="vs-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
                     <div class="vs-cell"><svg class="vs-partial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
                     <div class="vs-cell"><svg class="vs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -2122,17 +2157,17 @@
     <!-- ========== CTA / CONTATTO ========== -->
     <section class="cta-section" id="contatto">
         <div class="container">
-            <h2 class="cta-title fade-in">Prossimi Passi</h2>
-            <p class="cta-subtitle fade-in">Iniziamo insieme a costruire il futuro digitale della tua Azienda.</p>
+            <h2 class="cta-title fade-in" data-i18n="cta.title">Prossimi Passi</h2>
+            <p class="cta-subtitle fade-in" data-i18n="cta.subtitle">Iniziamo insieme a costruire il futuro digitale della tua Azienda.</p>
 
             <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/emcdigitalsolution/30min'});return false;" class="btn-calendly fade-in" style="display:inline-flex;align-items:center;gap:10px;margin-bottom:40px;padding:16px 32px;background:var(--accent-vivid);color:#0c1120;font-weight:700;font-size:1rem;border-radius:50px;transition:background 0.3s,transform 0.2s;text-decoration:none;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                Prenota una Consulenza Gratuita
+                <span data-i18n="cta.calendly">Prenota una Consulenza Gratuita</span>
             </a>
 
             <div class="contact-card fade-in">
                 <div class="contact-name">EMC Digital Solutions</div>
-                <div class="contact-role">Full Stack Developers & Graphics & Digital Consultant</div>
+                <div class="contact-role" data-i18n="cta.role">Full Stack Developers & Graphics & Digital Consultant</div>
                 <div class="contact-row">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     <span>+39 333 XXX XXXX</span>
@@ -2174,36 +2209,37 @@
                         </svg>
                         <span>Digital Solutions</span>
                     </div>
-                    <p>Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
                 </div>
                 <div>
-                    <h4>Link Rapidi</h4>
+                    <h4 data-i18n="footer.quickLinks">Link Rapidi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                        <li><a href="index.html#servizi">Servizi</a></li>
+                        <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
                         <li><a href="index.html#portfolio">Portfolio</a></li>
                         <li><a href="index.html#social">Social</a></li>
                         <li><a href="proposta-commerciale.html">Pricing</a></li>
-                        <li><a href="index.html#contatti">Contatti</a></li>
+                        <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Servizi</h4>
+                    <h4 data-i18n="footer.services">Servizi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#servizi">Sviluppo Web</a></li>
-                        <li><a href="index.html#servizi">Software SaaS</a></li>
-                        <li><a href="index.html#servizi">Social Media</a></li>
+                        <li><a href="servizio-web.html" data-i18n="footer.webDev">Sviluppo Web</a></li>
+                        <li><a href="servizio-saas.html">Software SaaS</a></li>
+                        <li><a href="proposta-commerciale.html">Social Media</a></li>
+                        <li><a href="servizio-app.html" data-i18n="footer.appDev">Sviluppo App</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Legale</h4>
+                    <h4 data-i18n="footer.legal">Legale</h4>
                     <ul class="footer-links">
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
                         <li><a href="cookie-policy.html">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom" data-i18n-html="footer.copy">
                 &copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.
             </div>
         </div>
@@ -2213,6 +2249,474 @@
     <script>
     (function() {
         'use strict';
+
+        /* ==================== I18N TRANSLATIONS ==================== */
+        var translations = {
+            it: {
+                /* Nav */
+                'nav.about': 'Chi Siamo',
+                'nav.services': 'Servizi',
+                'nav.contact': 'Contatti',
+
+                /* Hero */
+                'hero.label': 'Visibilità Digitale',
+                'hero.title': 'Piani e Prezzi',
+                'hero.subtitle': 'Una strategia digitale completa per far crescere la tua attività. Pricing chiaro e trasparente, senza costi nascosti.',
+
+                /* Problem */
+                'problem.label': 'Il Problema',
+                'problem.title': 'Perché la visibilità online è importante',
+                'problem.quote': '"Ho cercato un\'attività come la tua su Google... ma non ti ho trovato. Così ho scelto un altro."',
+                'problem.quoteAuthor': '— Ciò che i clienti pensano, ma non ti dicono',
+                'problem.insightTitle': 'Il concetto di "Top-of-Mind"',
+                'problem.insightText': 'Quando una persona cerca un prodotto o un servizio, si rivolge al <strong style="color:var(--text-primary);">primo nome che trova</strong>. Non al migliore, non al più economico — al più <strong style="color:var(--text-primary);">visibile</strong>. Chi non è presente online, semplicemente non esiste per una parte sempre più grande della popolazione.',
+                'problem.stat1': 'degli italiani usa<br>i social ogni giorno',
+                'problem.stat2': 'cerca attività locali<br>su Google e Facebook',
+                'problem.stat3num': '3 su 4',
+                'problem.stat3': 'scelgono l\'attività<br>che trovano per prima online',
+
+                /* Pillars */
+                'pillars.label': 'La Soluzione',
+                'pillars.title': 'Tre pilastri per la tua crescita',
+                'pillars.subtitle': 'Una strategia digitale completa pensata per posizionare la tua attività come punto di riferimento nella zona.',
+                'pillars.p1title': 'Presenza Online',
+                'pillars.p1text': 'Sito web professionale che lavora per te 24 ore su 24, 7 giorni su 7.',
+                'pillars.p2text': 'Pagine Facebook e Instagram curate con contenuti professionali e costanti.',
+                'pillars.p3title': 'Visibilità Locale',
+                'pillars.p3text': 'Google Business Profile e campagne sponsorizzate geolocalizzate nella tua area.',
+
+                /* Service 1 - Website */
+                'svc1.title': 'Sito Web Professionale',
+                'svc1.lead': 'La tua vetrina digitale aperta 24 ore su 24. Un punto di riferimento per chiunque cerchi i tuoi servizi online.',
+                'svc1.f1title': 'Design su Misura',
+                'svc1.f1text': 'Ogni sito viene progettato su misura per la tua attività. Nessun template generico: solo soluzioni personalizzate.',
+                'svc1.f2text': 'Perfetto su smartphone e tablet. Il 70% delle visite arriva da dispositivi mobili.',
+                'svc1.f3title': 'SEO Ottimizzato',
+                'svc1.f3text': 'Posizionamento su Google per le ricerche più rilevanti nella tua zona e nel tuo settore.',
+                'svc1.f4title': 'Veloce e Sicuro',
+                'svc1.f4text': 'Tempi di caricamento rapidi, certificato SSL e hosting affidabile. Performance e sicurezza garantite.',
+
+                /* Service 2 - Social */
+                'svc2.title': 'Gestione Social Media',
+                'svc2.lead': 'Contenuti professionali e costanti che mantengono il tuo nome visibile nella mente delle persone, ogni giorno.',
+                'svc2.fb1': 'Pagina Business ottimizzata',
+                'svc2.fb2': '8-12 post al mese',
+                'svc2.fb3': 'Gestione commenti e messaggi',
+                'svc2.fb4': 'Informazioni sempre aggiornate',
+                'svc2.fb5': 'Orari, servizi e contatti visibili',
+                'svc2.ig1': 'Profilo curato e professionale',
+                'svc2.ig2': 'Storie e contenuti visivi',
+                'svc2.ig3': 'Immagini di qualità',
+                'svc2.ig4': 'Hashtag strategici locali',
+                'svc2.ig5': 'Engagement con la community',
+                'svc2.insightTitle': 'Tipologie di contenuto',
+                'svc2.insightText': 'I tuoi prodotti e servizi, il dietro le quinte della tua attività, novità e promozioni, recensioni dei clienti, eventi e ricorrenze. Tutto con un tono professionale e coerente con la tua identità.',
+
+                /* Service 3 - Ads */
+                'svc3.title': 'Sponsorizzate Locali',
+                'svc3.lead': 'Campagne mirate che portano il tuo nome davanti alle persone giuste, nel territorio giusto, al momento giusto.',
+                'svc3.geoTitle': 'Copertura Geografica',
+                'svc3.geo1': 'La tua città',
+                'svc3.geo2': 'Comuni limitrofi',
+                'svc3.geo3': 'La tua provincia',
+                'svc3.geo4': 'Raggio personalizzabile',
+                'svc3.check1': 'Campagne geolocalizzate su Facebook e Instagram',
+                'svc3.check2': 'Budget contenuto con risultati misurabili',
+                'svc3.check3': 'Targeting per età, interessi e area geografica',
+                'svc3.check4': 'Report periodico con tutte le metriche',
+                'svc3.m1num': '5.000+',
+                'svc3.m1label': 'Persone raggiunte<br>al mese (stima)',
+                'svc3.m2num': 'da €0,02',
+                'svc3.m2label': 'Costo medio<br>per persona raggiunta',
+                'svc3.m3label': 'Raggio di copertura<br>personalizzabile',
+
+                /* Pricing */
+                'pricing.label': 'Investimento',
+                'pricing.title': 'Scegli il piano più adatto',
+                'pricing.subtitle': '<strong style="color:var(--text-primary);">Pricing chiaro e trasparente</strong>, senza costi nascosti. Ogni piano include tutto il necessario per partire.',
+                'pricing.setupLabel': 'Setup una tantum',
+                'pricing.recommended': 'Consigliato',
+                'pricing.tagNew': 'nuovo',
+
+                /* Starter */
+                'pricing.s.ideal': 'Ideale per chi vuole iniziare',
+                'pricing.s.price': '€200<span>/mese</span>',
+                'pricing.s.f1': 'Sito web one-page',
+                'pricing.s.f1d': 'Pagina singola con le info essenziali: chi sei, cosa fai, dove trovarti e come contattarti.',
+                'pricing.s.f2': '1 piattaforma social',
+                'pricing.s.f2d': 'Gestione di Facebook o Instagram a scelta. Setup del profilo e pubblicazione contenuti.',
+                'pricing.s.f3': '4-6 post al mese',
+                'pricing.s.f3d': '1-2 pubblicazioni a settimana con grafiche e testi professionali.',
+                'pricing.s.f4': 'Gestione commenti base',
+                'pricing.s.f4d': 'Monitoraggio e risposta ai commenti e messaggi sulla piattaforma gestita.',
+                'pricing.s.f5': 'Report trimestrale',
+                'pricing.s.f5d': 'Ogni 3 mesi un riepilogo con le metriche principali: visite, interazioni, crescita.',
+                'pricing.s.d1': 'Sponsorizzate non incluse',
+                'pricing.s.d2': 'Storie e Reels non inclusi',
+                'pricing.s.d3': 'Google Business non incluso',
+                'pricing.s.cta': 'Scegli Starter',
+
+                /* Base */
+                'pricing.b.ideal': 'Per una presenza solida',
+                'pricing.b.price': '€350<span>/mese</span>',
+                'pricing.b.f1': 'Sito web multi-pagina',
+                'pricing.b.f1d': 'Sito completo con sezioni dedicate: servizi, chi siamo, gallery, contatti. Più spazio per raccontare la tua attività.',
+                'pricing.b.f2d': 'Gestione di entrambe le piattaforme. Contenuti adattati al formato e al pubblico di ciascuna.',
+                'pricing.b.f3d': '2-3 post a settimana con grafiche professionali su entrambi i canali.',
+                'pricing.b.f4': '4-6 storie/mese',
+                'pricing.b.f4d': 'Storie Instagram per mantenere alta la visibilità quotidiana e il contatto con i follower.',
+                'pricing.b.f5': 'Gestione commenti e messaggi',
+                'pricing.b.f5d': 'Monitoraggio e risposta su entrambe le piattaforme, anche ai messaggi privati.',
+                'pricing.b.f6': 'Report mensile',
+                'pricing.b.f6d': 'Ogni mese ricevi un report con metriche dettagliate: reach, interazioni, crescita follower.',
+                'pricing.b.d1': 'Sponsorizzate non incluse',
+                'pricing.b.d2': 'Google Business non incluso',
+                'pricing.b.cta': 'Scegli Base',
+
+                /* Standard */
+                'pricing.st.ideal': 'Per chi vuole crescere attivamente',
+                'pricing.st.price': '€500<span>/mese</span>',
+                'pricing.st.f1': 'Sito completo + landing page',
+                'pricing.st.f1d': 'Sito multi-pagina più una landing page dedicata per promozioni o campagne specifiche.',
+                'pricing.st.f2d': 'Gestione professionale di entrambe le piattaforme con contenuti dedicati.',
+                'pricing.st.f3': '12-16 post/mese + storie',
+                'pricing.st.f3d': '3-4 post a settimana più storie regolari. Presenza costante e visibilità quotidiana.',
+                'pricing.st.f4': 'Reels video (2-4/mese)',
+                'pricing.st.f4d': 'Video brevi ottimizzati per l\'algoritmo. I reels hanno una copertura organica fino a 10x superiore ai post.',
+                'pricing.st.f5': 'Gestione sponsorizzate Meta',
+                'pricing.st.f5d': 'Creazione, monitoraggio e ottimizzazione campagne Facebook e Instagram Ads. Tu scegli il budget, noi gestiamo tutto.',
+                'pricing.st.f6': 'Google Business setup',
+                'pricing.st.f6d': 'Creazione e ottimizzazione del profilo Google Business per comparire nelle ricerche locali e su Google Maps.',
+                'pricing.st.f7': 'Report bi-settimanale',
+                'pricing.st.f7d': 'Report ogni 2 settimane con analisi dettagliata e suggerimenti per ottimizzare la strategia.',
+                'pricing.st.cta': 'Scegli Standard',
+
+                /* Premium */
+                'pricing.p.ideal': 'Il massimo della visibilità',
+                'pricing.p.price': '€700<span>/mese</span>',
+                'pricing.p.f1': 'Sito + landing pages multiple',
+                'pricing.p.f1d': 'Sito completo più landing page multiple per promozioni, campagne stagionali o servizi specifici.',
+                'pricing.p.f2d': 'Aggiungi WhatsApp Business: catalogo prodotti, risposte rapide e broadcast promozionali ai tuoi clienti.',
+                'pricing.p.f3': '16-20 post/mese + storie + reels',
+                'pricing.p.f3d': '4-5 post a settimana, storie quotidiane e 4-6 reels video per massimizzare la copertura.',
+                'pricing.p.f4d': 'Campagne su Facebook, Instagram e Google Ads per intercettare chi ti cerca attivamente.',
+                'pricing.p.f5': 'Google Business + recensioni',
+                'pricing.p.f5d': 'Profilo Google ottimizzato più gestione attiva delle recensioni: risposte, solleciti e monitoraggio reputazione.',
+                'pricing.p.f6': 'Report settimanale',
+                'pricing.p.f6d': 'Report ogni settimana con analisi in tempo reale, suggerimenti e ottimizzazioni continue.',
+                'pricing.p.f7': 'Consulenza strategica dedicata',
+                'pricing.p.f7d': 'Call mensile di consulenza per definire obiettivi, analizzare i risultati e pianificare le azioni future.',
+                'pricing.p.cta': 'Scegli Premium',
+
+                /* Pricing notes */
+                'pricing.deductTitle': 'Investimento 100% deducibile',
+                'pricing.deductText': 'Le spese di pubblicità e marketing digitale sono interamente deducibili come costo aziendale per tutte le attività con Partita IVA in regime ordinario (art. 108 TUIR). L\'IVA è detraibile. Consulta il tuo commercialista per i dettagli specifici della tua situazione fiscale.',
+                'pricing.noteAds': '<strong style="color:var(--text-primary);">Nota sul budget pubblicitario:</strong> Il budget per le sponsorizzate Meta e Google (consigliato €150–300/mese) è a parte e viene pagato direttamente dal cliente tramite il proprio account. In questo modo hai sempre il controllo totale sulla spesa.',
+                'pricing.noteCustom': '<strong style="color:var(--text-primary);">Hai esigenze specifiche?</strong> Ogni proposta può essere personalizzata e cucita su misura per la tua attività. Contattaci per un preventivo dedicato.',
+
+                /* Why Us */
+                'why.label': 'Perché Noi',
+                'why.title': 'Perché Scegliere Noi',
+                'why.subtitle': 'Non siamo una grande agenzia impersonale. Siamo un partner locale che conosce il territorio e lavora al tuo fianco.',
+                'why.w1title': 'Conoscenza del Territorio',
+                'why.w1text': 'Viviamo e lavoriamo in Sicilia. Conosciamo le dinamiche, le persone e il modo di comunicare della nostra terra. Questo fa la differenza.',
+                'why.w2title': 'Esperienza Concreta',
+                'why.w2text': 'Un portfolio di progetti reali per attività locali — siti web, gestione social e campagne che hanno portato risultati tangibili ai nostri clienti.',
+                'why.w3title': 'Approccio Personale',
+                'why.w3text': 'Un referente unico, sempre disponibile. Nessun call center, nessun ticket. Comunicazione diretta e rapida, come deve essere.',
+                'why.w4title': 'Risultati Misurabili',
+                'why.w4text': 'Report periodici chiari con numeri reali: persone raggiunte, interazioni, visite al sito. Sai sempre esattamente cosa ottieni.',
+
+                /* VS Comparison */
+                'vs.label': 'Confronto',
+                'vs.title': 'Noi vs le Alternative',
+                'vs.subtitle': 'Cosa cambia davvero nella scelta del partner per la tua visibilità digitale.',
+                'vs.hCriteria': 'Criterio',
+                'vs.hDiy': 'Fai-da-te',
+                'vs.hAgency': 'Grande Agenzia',
+                'vs.badge': 'La nostra proposta',
+                'vs.r1': 'Referente dedicato',
+                'vs.r2': 'Conoscenza del territorio',
+                'vs.r3': 'Sito + Social + Ads integrati',
+                'vs.r4': 'Costi trasparenti e fissi',
+                'vs.r5': 'Tempi di risposta rapidi',
+                'vs.r6': 'Report con numeri reali',
+                'vs.r7': 'Personalizzazione su misura',
+                'vs.r8': 'Contratto flessibile',
+                'vs.r9': 'Strategia multi-canale',
+
+                /* CTA */
+                'cta.title': 'Prossimi Passi',
+                'cta.subtitle': 'Iniziamo insieme a costruire il futuro digitale della tua Azienda.',
+                'cta.calendly': 'Prenota una Consulenza Gratuita',
+                'cta.role': 'Full Stack Developers & Graphics & Digital Consultant',
+
+                /* Footer */
+                'footer.desc': 'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
+                'footer.quickLinks': 'Link Rapidi',
+                'footer.services': 'Servizi',
+                'footer.legal': 'Legale',
+                'footer.webDev': 'Sviluppo Web',
+                'footer.appDev': 'Sviluppo App',
+                'footer.copy': '&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.'
+            },
+            en: {
+                /* Nav */
+                'nav.about': 'About Us',
+                'nav.services': 'Services',
+                'nav.contact': 'Contact',
+
+                /* Hero */
+                'hero.label': 'Digital Visibility',
+                'hero.title': 'Digital Visibility Plans',
+                'hero.subtitle': 'Everything your business needs to grow online. Clear and transparent pricing, no hidden costs.',
+
+                /* Problem */
+                'problem.label': 'The Problem',
+                'problem.title': 'Why online visibility matters',
+                'problem.quote': '"I searched for a business like yours on Google... but I couldn\'t find you. So I chose someone else."',
+                'problem.quoteAuthor': '— What customers think, but never tell you',
+                'problem.insightTitle': 'The "Top-of-Mind" concept',
+                'problem.insightText': 'When someone looks for a product or service, they turn to the <strong style="color:var(--text-primary);">first name they find</strong>. Not the best, not the cheapest — the most <strong style="color:var(--text-primary);">visible</strong>. If you\'re not online, you simply don\'t exist for an ever-growing portion of the population.',
+                'problem.stat1': 'of Italians use<br>social media every day',
+                'problem.stat2': 'search for local businesses<br>on Google and Facebook',
+                'problem.stat3num': '3 out of 4',
+                'problem.stat3': 'choose the business<br>they find first online',
+
+                /* Pillars */
+                'pillars.label': 'The Solution',
+                'pillars.title': 'The 3 Pillars for your growth',
+                'pillars.subtitle': 'A complete digital strategy designed to position your business as a reference point in your area.',
+                'pillars.p1title': 'Online Presence',
+                'pillars.p1text': 'A professional website working for you 24 hours a day, 7 days a week.',
+                'pillars.p2text': 'Curated Facebook and Instagram pages with professional and consistent content.',
+                'pillars.p3title': 'Local Visibility',
+                'pillars.p3text': 'Google Business Profile and geo-targeted sponsored campaigns in your area.',
+
+                /* Service 1 - Website */
+                'svc1.title': 'Professional Website',
+                'svc1.lead': 'Your digital storefront open 24/7. A reference point for anyone looking for your services online.',
+                'svc1.f1title': 'Custom Design',
+                'svc1.f1text': 'Every website is custom-designed for your business. No generic templates: only tailored solutions.',
+                'svc1.f2text': 'Perfect on smartphones and tablets. 70% of visits come from mobile devices.',
+                'svc1.f3title': 'SEO Optimized',
+                'svc1.f3text': 'Google ranking for the most relevant searches in your area and industry.',
+                'svc1.f4title': 'Fast & Secure',
+                'svc1.f4text': 'Fast loading times, SSL certificate and reliable hosting. Performance and security guaranteed.',
+
+                /* Service 2 - Social */
+                'svc2.title': 'Social Media Management',
+                'svc2.lead': 'Professional and consistent content that keeps your name visible in people\'s minds, every day.',
+                'svc2.fb1': 'Optimized Business Page',
+                'svc2.fb2': '8-12 posts per month',
+                'svc2.fb3': 'Comment and message management',
+                'svc2.fb4': 'Always up-to-date information',
+                'svc2.fb5': 'Hours, services and contacts visible',
+                'svc2.ig1': 'Curated professional profile',
+                'svc2.ig2': 'Stories and visual content',
+                'svc2.ig3': 'High quality images',
+                'svc2.ig4': 'Strategic local hashtags',
+                'svc2.ig5': 'Community engagement',
+                'svc2.insightTitle': 'Content types',
+                'svc2.insightText': 'Your products and services, behind the scenes of your business, news and promotions, customer reviews, events and holidays. All with a professional tone consistent with your identity.',
+
+                /* Service 3 - Ads */
+                'svc3.title': 'Local Sponsored Ads',
+                'svc3.lead': 'Targeted campaigns that put your name in front of the right people, in the right area, at the right time.',
+                'svc3.geoTitle': 'Geographic Coverage',
+                'svc3.geo1': 'Your city',
+                'svc3.geo2': 'Neighboring towns',
+                'svc3.geo3': 'Your province',
+                'svc3.geo4': 'Customizable radius',
+                'svc3.check1': 'Geo-targeted campaigns on Facebook and Instagram',
+                'svc3.check2': 'Contained budget with measurable results',
+                'svc3.check3': 'Targeting by age, interests and geographic area',
+                'svc3.check4': 'Periodic report with all metrics',
+                'svc3.m1num': '5,000+',
+                'svc3.m1label': 'People reached<br>per month (estimate)',
+                'svc3.m2num': 'from €0.02',
+                'svc3.m2label': 'Average cost<br>per person reached',
+                'svc3.m3label': 'Coverage radius<br>customizable',
+
+                /* Pricing */
+                'pricing.label': 'Investment',
+                'pricing.title': 'Choose the right plan',
+                'pricing.subtitle': '<strong style="color:var(--text-primary);">Clear and transparent pricing</strong>, no hidden costs. Every plan includes everything you need to get started.',
+                'pricing.setupLabel': 'One-time setup',
+                'pricing.recommended': 'Recommended',
+                'pricing.tagNew': 'new',
+
+                /* Starter */
+                'pricing.s.ideal': 'Ideal for getting started',
+                'pricing.s.price': '€200<span>/month</span>',
+                'pricing.s.f1': 'One-page website',
+                'pricing.s.f1d': 'Single page with essential info: who you are, what you do, where to find you and how to contact you.',
+                'pricing.s.f2': '1 social platform',
+                'pricing.s.f2d': 'Management of Facebook or Instagram of your choice. Profile setup and content publishing.',
+                'pricing.s.f3': '4-6 posts per month',
+                'pricing.s.f3d': '1-2 posts per week with professional graphics and copy.',
+                'pricing.s.f4': 'Basic comment management',
+                'pricing.s.f4d': 'Monitoring and replying to comments and messages on the managed platform.',
+                'pricing.s.f5': 'Quarterly report',
+                'pricing.s.f5d': 'Every 3 months a summary with key metrics: visits, interactions, growth.',
+                'pricing.s.d1': 'Sponsored ads not included',
+                'pricing.s.d2': 'Stories and Reels not included',
+                'pricing.s.d3': 'Google Business not included',
+                'pricing.s.cta': 'Choose Starter',
+
+                /* Base */
+                'pricing.b.ideal': 'For a solid presence',
+                'pricing.b.price': '€350<span>/month</span>',
+                'pricing.b.f1': 'Multi-page website',
+                'pricing.b.f1d': 'Complete site with dedicated sections: services, about us, gallery, contacts. More space to showcase your business.',
+                'pricing.b.f2d': 'Management of both platforms. Content adapted to the format and audience of each.',
+                'pricing.b.f3d': '2-3 posts per week with professional graphics on both channels.',
+                'pricing.b.f4': '4-6 stories/month',
+                'pricing.b.f4d': 'Instagram Stories to maintain high daily visibility and connection with followers.',
+                'pricing.b.f5': 'Comment and message management',
+                'pricing.b.f5d': 'Monitoring and replying on both platforms, including private messages.',
+                'pricing.b.f6': 'Monthly report',
+                'pricing.b.f6d': 'Every month you receive a report with detailed metrics: reach, interactions, follower growth.',
+                'pricing.b.d1': 'Sponsored ads not included',
+                'pricing.b.d2': 'Google Business not included',
+                'pricing.b.cta': 'Choose Base',
+
+                /* Standard */
+                'pricing.st.ideal': 'For those who want to actively grow',
+                'pricing.st.price': '€500<span>/month</span>',
+                'pricing.st.f1': 'Full site + landing page',
+                'pricing.st.f1d': 'Multi-page site plus a dedicated landing page for promotions or specific campaigns.',
+                'pricing.st.f2d': 'Professional management of both platforms with dedicated content.',
+                'pricing.st.f3': '12-16 posts/month + stories',
+                'pricing.st.f3d': '3-4 posts per week plus regular stories. Constant presence and daily visibility.',
+                'pricing.st.f4': 'Video Reels (2-4/month)',
+                'pricing.st.f4d': 'Short videos optimized for the algorithm. Reels have up to 10x higher organic reach than posts.',
+                'pricing.st.f5': 'Meta sponsored ads management',
+                'pricing.st.f5d': 'Creation, monitoring and optimization of Facebook and Instagram Ads campaigns. You choose the budget, we manage everything.',
+                'pricing.st.f6': 'Google Business setup',
+                'pricing.st.f6d': 'Creation and optimization of your Google Business profile to appear in local searches and on Google Maps.',
+                'pricing.st.f7': 'Bi-weekly report',
+                'pricing.st.f7d': 'Report every 2 weeks with detailed analysis and suggestions to optimize the strategy.',
+                'pricing.st.cta': 'Choose Standard',
+
+                /* Premium */
+                'pricing.p.ideal': 'Maximum visibility',
+                'pricing.p.price': '€700<span>/month</span>',
+                'pricing.p.f1': 'Site + multiple landing pages',
+                'pricing.p.f1d': 'Complete site plus multiple landing pages for promotions, seasonal campaigns or specific services.',
+                'pricing.p.f2d': 'Add WhatsApp Business: product catalog, quick replies and promotional broadcasts to your customers.',
+                'pricing.p.f3': '16-20 posts/month + stories + reels',
+                'pricing.p.f3d': '4-5 posts per week, daily stories and 4-6 video reels to maximize coverage.',
+                'pricing.p.f4d': 'Campaigns on Facebook, Instagram and Google Ads to reach people actively searching for you.',
+                'pricing.p.f5': 'Google Business + reviews',
+                'pricing.p.f5d': 'Optimized Google profile plus active review management: responses, solicitations and reputation monitoring.',
+                'pricing.p.f6': 'Weekly report',
+                'pricing.p.f6d': 'Weekly report with real-time analysis, suggestions and continuous optimizations.',
+                'pricing.p.f7': 'Dedicated strategic consulting',
+                'pricing.p.f7d': 'Monthly consulting call to define goals, analyze results and plan future actions.',
+                'pricing.p.cta': 'Choose Premium',
+
+                /* Pricing notes */
+                'pricing.deductTitle': '100% tax-deductible investment',
+                'pricing.deductText': 'Advertising and digital marketing expenses are fully deductible as a business cost for all businesses with VAT registration in Italy (art. 108 TUIR). VAT is deductible. Consult your accountant for details specific to your tax situation.',
+                'pricing.noteAds': '<strong style="color:var(--text-primary);">Note on ad budget:</strong> The budget for Meta and Google sponsored ads (recommended €150-300/month) is separate and paid directly by the client through their own account. This way you always have full control over spending.',
+                'pricing.noteCustom': '<strong style="color:var(--text-primary);">Have specific needs?</strong> Every proposal can be customized and tailored to your business. Contact us for a dedicated quote.',
+
+                /* Why Us */
+                'why.label': 'Why Us',
+                'why.title': 'Why Choose Us',
+                'why.subtitle': 'We are not a large impersonal agency. We are a local partner who knows the territory and works alongside you.',
+                'why.w1title': 'Local Knowledge',
+                'why.w1text': 'We live and work in Sicily. We know the dynamics, the people and the way of communicating of our land. This makes the difference.',
+                'why.w2title': 'Proven Experience',
+                'why.w2text': 'A portfolio of real projects for local businesses — websites, social management and campaigns that have delivered tangible results to our clients.',
+                'why.w3title': 'Personal Approach',
+                'why.w3text': 'A single point of contact, always available. No call center, no tickets. Direct and fast communication, as it should be.',
+                'why.w4title': 'Measurable Results',
+                'why.w4text': 'Clear periodic reports with real numbers: people reached, interactions, website visits. You always know exactly what you get.',
+
+                /* VS Comparison */
+                'vs.label': 'Comparison',
+                'vs.title': 'Us vs the Alternatives',
+                'vs.subtitle': 'What truly changes when choosing the right partner for your digital visibility.',
+                'vs.hCriteria': 'Criteria',
+                'vs.hDiy': 'DIY',
+                'vs.hAgency': 'Large Agency',
+                'vs.badge': 'Our proposal',
+                'vs.r1': 'Dedicated contact person',
+                'vs.r2': 'Local knowledge',
+                'vs.r3': 'Website + Social + Ads integrated',
+                'vs.r4': 'Transparent and fixed costs',
+                'vs.r5': 'Fast response times',
+                'vs.r6': 'Reports with real numbers',
+                'vs.r7': 'Custom tailored',
+                'vs.r8': 'Flexible contract',
+                'vs.r9': 'Multi-channel strategy',
+
+                /* CTA */
+                'cta.title': 'Next Steps',
+                'cta.subtitle': 'Let\'s start building the digital future of your Business together.',
+                'cta.calendly': 'Book a Free Consultation',
+                'cta.role': 'Full Stack Developers & Graphics & Digital Consultant',
+
+                /* Footer */
+                'footer.desc': 'Custom digital solutions for businesses that want to grow. Software development, SaaS and digital strategies from Sicily.',
+                'footer.quickLinks': 'Quick Links',
+                'footer.services': 'Services',
+                'footer.legal': 'Legal',
+                'footer.webDev': 'Web Development',
+                'footer.appDev': 'App Development',
+                'footer.copy': '&copy; 2026 EMC Digital Solutions. All rights reserved.'
+            }
+        };
+
+        var currentLang = localStorage.getItem('emc-lang') || 'it';
+
+        function applyTranslations(lang) {
+            currentLang = lang;
+            localStorage.setItem('emc-lang', lang);
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-html');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            // Update toggle labels
+            var nextLang = lang === 'it' ? 'EN' : 'IT';
+            var labelEl = document.getElementById('langLabel');
+            var labelMobileEl = document.getElementById('langLabelMobile');
+            if (labelEl) labelEl.textContent = nextLang;
+            if (labelMobileEl) labelMobileEl.textContent = nextLang;
+        }
+
+        function toggleLang() {
+            applyTranslations(currentLang === 'it' ? 'en' : 'it');
+        }
+
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+
+        // Apply stored language on load
+        if (currentLang !== 'it') {
+            applyTranslations(currentLang);
+        }
 
         /* ==================== NAVBAR ==================== */
         var navbar = document.getElementById('navbar');

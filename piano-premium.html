@@ -584,6 +584,31 @@
             color: rgba(255,255,255,0.4);
         }
 
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .mobile-menu .lang-toggle {
+            margin-top: 16px;
+            justify-content: center;
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .footer-grid {
@@ -705,37 +730,47 @@
                 <span>Digital Solutions</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                <li><a href="index.html#servizi">Servizi</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
-                <li><a href="index.html#social">Social</a></li>
-                <li><a href="proposta-commerciale.html" class="active">Pricing</a></li>
-                <li><a href="index.html#contatti">Contatti</a></li>
-                <li><a href="index.html#app-mobile">App</a></li>
+                <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
+                <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="index.html#social" data-i18n="nav.social">Social</a></li>
+                <li><a href="index.html#app-mobile" data-i18n="nav.app">App</a></li>
+                <li><a href="proposta-commerciale.html" class="active" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html#chi-siamo">Chi Siamo</a>
-        <a href="index.html#servizi">Servizi</a>
-        <a href="index.html#portfolio">Portfolio</a>
-        <a href="index.html#social">Social</a>
-        <a href="proposta-commerciale.html" class="active">Pricing</a>
-        <a href="index.html#contatti">Contatti</a>
-        <a href="index.html#app-mobile">App</a>
+        <a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="index.html#social" data-i18n="nav.social">Social</a>
+        <a href="index.html#app-mobile" data-i18n="nav.app">App</a>
+        <a href="proposta-commerciale.html" class="active" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
     </div>
 
     <!-- ========== HERO ========== -->
     <section class="page-hero">
         <div class="container">
-            <a href="proposta-commerciale.html#pricing" class="back-link">&larr; Torna ai piani</a>
-            <div class="hero-badge">Tutto incluso</div>
-            <div class="section-label">Piano Premium</div>
-            <h1 class="section-title">Piano Premium</h1>
+            <a href="proposta-commerciale.html#pricing" class="back-link" data-i18n="back">&larr; Torna ai piani</a>
+            <div class="hero-badge" data-i18n="hero.badge">Tutto incluso</div>
+            <div class="section-label" data-i18n="hero.label">Piano Premium</div>
+            <h1 class="section-title" data-i18n="hero.title">Piano Premium</h1>
             <div class="hero-price">&euro;700<span>/mese</span></div>
-            <p class="hero-setup">Setup una tantum: <strong>&euro;2.200</strong></p>
-            <p class="section-subtitle">Ideale per chi vuole il massimo della visibilit&agrave; e una strategia digitale a 360&deg;</p>
+            <p class="hero-setup" data-i18n-html="hero.setup">Setup una tantum: <strong>&euro;2.200</strong></p>
+            <p class="section-subtitle" data-i18n="hero.subtitle">Ideale per chi vuole il massimo della visibilit&agrave; e una strategia digitale a 360&deg;</p>
         </div>
     </section>
 
@@ -745,9 +780,9 @@
     <section class="features-section" id="cosa-include">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">Dettagli</div>
-                <h2 class="section-title">Cosa Include</h2>
-                <p class="section-subtitle">Il pacchetto pi&ugrave; completo per dominare la tua presenza digitale su tutti i canali, senza compromessi.</p>
+                <div class="section-label" data-i18n="inc.label">Dettagli</div>
+                <h2 class="section-title" data-i18n="inc.title">Cosa Include</h2>
+                <p class="section-subtitle" data-i18n="inc.subtitle">Il pacchetto pi&ugrave; completo per dominare la tua presenza digitale su tutti i canali, senza compromessi.</p>
             </div>
 
             <div class="features-grid">
@@ -757,8 +792,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
                     </div>
                     <div class="feature-content">
-                        <h3>Sito web completo + landing pages multiple</h3>
-                        <p>Sito multi-pagina professionale pi&ugrave; landing page multiple per diversi servizi, promozioni stagionali o campagne specifiche. Ogni landing &egrave; ottimizzata per la conversione con A/B testing e analytics dedicati. Aggiornamenti e modifiche inclusi durante tutto il mese.</p>
+                        <h3 data-i18n="inc1.title">Sito web completo + landing pages multiple</h3>
+                        <p data-i18n="inc1.desc">Sito multi-pagina professionale pi&ugrave; landing page multiple per diversi servizi, promozioni stagionali o campagne specifiche. Ogni landing &egrave; ottimizzata per la conversione con A/B testing e analytics dedicati. Aggiornamenti e modifiche inclusi durante tutto il mese.</p>
                     </div>
                 </div>
 
@@ -768,8 +803,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                     </div>
                     <div class="feature-content">
-                        <h3>Facebook + Instagram + WhatsApp Business</h3>
-                        <p>Gestione completa di tre piattaforme. WhatsApp Business include: setup catalogo prodotti/servizi, configurazione risposte rapide e messaggi di benvenuto, broadcast promozionali periodici ai contatti. Il canale diretto pi&ugrave; efficace per fidelizzare i clienti esistenti.</p>
+                        <h3 data-i18n="inc2.title">Facebook + Instagram + WhatsApp Business</h3>
+                        <p data-i18n="inc2.desc">Gestione completa di tre piattaforme. WhatsApp Business include: setup catalogo prodotti/servizi, configurazione risposte rapide e messaggi di benvenuto, broadcast promozionali periodici ai contatti. Il canale diretto pi&ugrave; efficace per fidelizzare i clienti esistenti.</p>
                     </div>
                 </div>
 
@@ -779,8 +814,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                     </div>
                     <div class="feature-content">
-                        <h3>16-20 post/mese + storie + reels (4-6/mese)</h3>
-                        <p>4-5 pubblicazioni a settimana su tutti i canali, storie quotidiane e 4-6 reels video al mese. La frequenza pi&ugrave; alta per massimizzare la visibilit&agrave; e la copertura organica. Piano editoriale strutturato con calendario mensile condiviso e approvazione preventiva dei contenuti.</p>
+                        <h3 data-i18n="inc3.title">16-20 post/mese + storie + reels (4-6/mese)</h3>
+                        <p data-i18n="inc3.desc">4-5 pubblicazioni a settimana su tutti i canali, storie quotidiane e 4-6 reels video al mese. La frequenza pi&ugrave; alta per massimizzare la visibilit&agrave; e la copertura organica. Piano editoriale strutturato con calendario mensile condiviso e approvazione preventiva dei contenuti.</p>
                     </div>
                 </div>
 
@@ -790,8 +825,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
                     <div class="feature-content">
-                        <h3>Sponsorizzate Meta + Google Ads</h3>
-                        <p>Gestione completa delle campagne su Facebook, Instagram E Google Ads. Google Ads ti permette di intercettare chi sta cercando attivamente i tuoi servizi su Google &mdash; il momento di massima intenzione di acquisto. Campagne Search, Display e Local per una copertura a 360&deg;.</p>
+                        <h3 data-i18n="inc4.title">Sponsorizzate Meta + Google Ads</h3>
+                        <p data-i18n="inc4.desc">Gestione completa delle campagne su Facebook, Instagram E Google Ads. Google Ads ti permette di intercettare chi sta cercando attivamente i tuoi servizi su Google &mdash; il momento di massima intenzione di acquisto. Campagne Search, Display e Local per una copertura a 360&deg;.</p>
                     </div>
                 </div>
 
@@ -801,8 +836,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </div>
                     <div class="feature-content">
-                        <h3>Google Business Profile + gestione recensioni</h3>
-                        <p>Profilo Google ottimizzato come nello Standard, PLUS gestione attiva delle recensioni: risposte professionali a tutte le recensioni (positive e negative), strategia di sollecito recensioni per i clienti soddisfatti, monitoraggio della reputazione online. Le recensioni sono il fattore #1 per la scelta di un'attivit&agrave; locale.</p>
+                        <h3 data-i18n="inc5.title">Google Business Profile + gestione recensioni</h3>
+                        <p data-i18n="inc5.desc">Profilo Google ottimizzato come nello Standard, PLUS gestione attiva delle recensioni: risposte professionali a tutte le recensioni (positive e negative), strategia di sollecito recensioni per i clienti soddisfatti, monitoraggio della reputazione online. Le recensioni sono il fattore #1 per la scelta di un'attivit&agrave; locale.</p>
                     </div>
                 </div>
 
@@ -812,8 +847,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                     </div>
                     <div class="feature-content">
-                        <h3>Report settimanale</h3>
-                        <p>Ogni settimana ricevi un aggiornamento completo: performance social, andamento campagne, analisi competitor, suggerimenti operativi. Dashboard condivisa con accesso in tempo reale alle metriche principali.</p>
+                        <h3 data-i18n="inc6.title">Report settimanale</h3>
+                        <p data-i18n="inc6.desc">Ogni settimana ricevi un aggiornamento completo: performance social, andamento campagne, analisi competitor, suggerimenti operativi. Dashboard condivisa con accesso in tempo reale alle metriche principali.</p>
                     </div>
                 </div>
 
@@ -823,8 +858,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
                     <div class="feature-content">
-                        <h3>Consulenza strategica dedicata</h3>
-                        <p>Call mensile di 30-45 minuti per: analisi dei risultati, definizione degli obiettivi del mese successivo, brainstorming su nuove iniziative, risposta a tutte le tue domande. Un referente unico che conosce la tua attivit&agrave; in profondit&agrave;.</p>
+                        <h3 data-i18n="inc7.title">Consulenza strategica dedicata</h3>
+                        <p data-i18n="inc7.desc">Call mensile di 30-45 minuti per: analisi dei risultati, definizione degli obiettivi del mese successivo, brainstorming su nuove iniziative, risposta a tutte le tue domande. Un referente unico che conosce la tua attivit&agrave; in profondit&agrave;.</p>
                     </div>
                 </div>
             </div>
@@ -837,12 +872,12 @@
     <section class="contact-section" id="contatto">
         <div class="container">
             <div class="section-header fade-in">
-                <div class="section-label">Inizia Ora</div>
-                <h2 class="section-title">Richiedi il Piano Premium</h2>
-                <p class="section-subtitle">Compila il form e ti ricontatteremo entro 24 ore per discutere i dettagli e personalizzare il piano per la tua attivit&agrave;.</p>
+                <div class="section-label" data-i18n="contact.label">Inizia Ora</div>
+                <h2 class="section-title" data-i18n="contact.title">Richiedi il Piano Premium</h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Compila il form e ti ricontatteremo entro 24 ore per discutere i dettagli e personalizzare il piano per la tua attivit&agrave;.</p>
                 <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/emcdigitalsolution/30min'});return false;" style="display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:14px 28px;background:var(--accent-vivid);color:#0c1120;font-weight:700;font-size:0.95rem;border-radius:50px;transition:background 0.3s,transform 0.2s;text-decoration:none;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    Prenota una Consulenza Gratuita
+                    <span data-i18n="contact.calendly">Prenota una Consulenza Gratuita</span>
                 </a>
             </div>
 
@@ -851,35 +886,35 @@
                     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Nome e Cognome *</label>
-                            <input type="text" id="name" name="nome" required placeholder="Il tuo nome">
+                            <label for="name" data-i18n="form.name">Nome e Cognome *</label>
+                            <input type="text" id="name" name="nome" required placeholder="Il tuo nome" data-i18n-placeholder="form.name.ph">
                         </div>
                         <div class="form-group">
-                            <label for="business">Nome Attivit&agrave; *</label>
-                            <input type="text" id="business" name="attivita" required placeholder="La tua attivit&agrave;">
+                            <label for="business" data-i18n="form.business">Nome Attivit&agrave; *</label>
+                            <input type="text" id="business" name="attivita" required placeholder="La tua attivit&agrave;" data-i18n-placeholder="form.business.ph">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required placeholder="La tua email">
+                            <label for="email" data-i18n="form.email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="La tua email" data-i18n-placeholder="form.email.ph">
                         </div>
                         <div class="form-group">
-                            <label for="phone">Telefono</label>
-                            <input type="tel" id="phone" name="telefono" placeholder="Il tuo numero">
+                            <label for="phone" data-i18n="form.phone">Telefono</label>
+                            <input type="tel" id="phone" name="telefono" placeholder="Il tuo numero" data-i18n-placeholder="form.phone.ph">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="message">Messaggio</label>
-                        <textarea id="message" name="messaggio" rows="4" placeholder="Raccontaci della tua attivit&agrave; e cosa vorresti ottenere..."></textarea>
+                        <label for="message" data-i18n="form.message">Messaggio</label>
+                        <textarea id="message" name="messaggio" rows="4" placeholder="Raccontaci della tua attivit&agrave; e cosa vorresti ottenere..." data-i18n-placeholder="form.message.ph"></textarea>
                     </div>
                     <div class="form-group form-group-checkbox">
                         <label class="checkbox-label">
                             <input type="checkbox" name="privacy" required>
-                            <span>Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a></span>
+                            <span data-i18n-html="form.privacy">Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a></span>
                         </label>
                     </div>
-                    <button type="submit">Invia Richiesta</button>
+                    <button type="submit" data-i18n="form.submit">Invia Richiesta</button>
                     <div id="formStatus" class="form-status"></div>
                 </form>
             </div>
@@ -908,35 +943,36 @@
                         </svg>
                         <span>Digital Solutions</span>
                     </div>
-                    <p>Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
                 </div>
                 <div>
-                    <h4>Link Rapidi</h4>
+                    <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#chi-siamo">Chi Siamo</a></li>
-                        <li><a href="index.html#servizi">Servizi</a></li>
-                        <li><a href="index.html#portfolio">Portfolio</a></li>
-                        <li><a href="proposta-commerciale.html">Pricing</a></li>
-                        <li><a href="index.html#contatti">Contatti</a></li>
+                        <li><a href="index.html#chi-siamo" data-i18n="footer.link.about">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi" data-i18n="footer.link.services">Servizi</a></li>
+                        <li><a href="index.html#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.pricing">Pricing</a></li>
+                        <li><a href="index.html#contatti" data-i18n="footer.link.contact">Contatti</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Servizi</h4>
+                    <h4 data-i18n="footer.services">Servizi</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#servizi">Sviluppo Web</a></li>
-                        <li><a href="index.html#servizi">Software SaaS</a></li>
-                        <li><a href="index.html#servizi">Social Media</a></li>
+                        <li><a href="servizio-web.html" data-i18n="footer.link.web">Sviluppo Web</a></li>
+                        <li><a href="servizio-saas.html" data-i18n="footer.link.saas">Software SaaS</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.social">Social Media</a></li>
+                        <li><a href="servizio-app.html" data-i18n="footer.link.app">Sviluppo App</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Legale</h4>
+                    <h4 data-i18n="footer.legal">Legale</h4>
                     <ul class="footer-links">
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html" data-i18n="footer.cookie">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
+            <div class="footer-bottom" data-i18n="footer.rights">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
         </div>
     </footer>
 
@@ -1001,6 +1037,120 @@
                 });
             });
         }
+        // i18n translations
+        var translations = {
+            it: {
+                'nav.about':'Chi Siamo','nav.services':'Servizi','nav.portfolio':'Portfolio','nav.social':'Social','nav.app':'App','nav.pricing':'Pricing','nav.contact':'Contatti',
+                'back':'\u2190 Torna ai piani',
+                'hero.badge':'Tutto incluso',
+                'hero.label':'Piano Premium','hero.title':'Piano Premium',
+                'hero.setup':'Setup una tantum: <strong>\u20ac2.200</strong>',
+                'hero.subtitle':'Ideale per chi vuole il massimo della visibilit\u00e0 e una strategia digitale a 360\u00b0',
+                'inc.label':'Dettagli','inc.title':'Cosa Include',
+                'inc.subtitle':'Il pacchetto pi\u00f9 completo per dominare la tua presenza digitale su tutti i canali, senza compromessi.',
+                'inc1.title':'Sito web completo + landing pages multiple',
+                'inc1.desc':'Sito multi-pagina professionale pi\u00f9 landing page multiple per diversi servizi, promozioni stagionali o campagne specifiche. Ogni landing \u00e8 ottimizzata per la conversione con A/B testing e analytics dedicati. Aggiornamenti e modifiche inclusi durante tutto il mese.',
+                'inc2.title':'Facebook + Instagram + WhatsApp Business',
+                'inc2.desc':'Gestione completa di tre piattaforme. WhatsApp Business include: setup catalogo prodotti/servizi, configurazione risposte rapide e messaggi di benvenuto, broadcast promozionali periodici ai contatti. Il canale diretto pi\u00f9 efficace per fidelizzare i clienti esistenti.',
+                'inc3.title':'16-20 post/mese + storie + reels (4-6/mese)',
+                'inc3.desc':'4-5 pubblicazioni a settimana su tutti i canali, storie quotidiane e 4-6 reels video al mese. La frequenza pi\u00f9 alta per massimizzare la visibilit\u00e0 e la copertura organica. Piano editoriale strutturato con calendario mensile condiviso e approvazione preventiva dei contenuti.',
+                'inc4.title':'Sponsorizzate Meta + Google Ads',
+                'inc4.desc':'Gestione completa delle campagne su Facebook, Instagram E Google Ads. Google Ads ti permette di intercettare chi sta cercando attivamente i tuoi servizi su Google \u2014 il momento di massima intenzione di acquisto. Campagne Search, Display e Local per una copertura a 360\u00b0.',
+                'inc5.title':'Google Business Profile + gestione recensioni',
+                'inc5.desc':'Profilo Google ottimizzato come nello Standard, PLUS gestione attiva delle recensioni: risposte professionali a tutte le recensioni (positive e negative), strategia di sollecito recensioni per i clienti soddisfatti, monitoraggio della reputazione online. Le recensioni sono il fattore #1 per la scelta di un\'attivit\u00e0 locale.',
+                'inc6.title':'Report settimanale',
+                'inc6.desc':'Ogni settimana ricevi un aggiornamento completo: performance social, andamento campagne, analisi competitor, suggerimenti operativi. Dashboard condivisa con accesso in tempo reale alle metriche principali.',
+                'inc7.title':'Consulenza strategica dedicata',
+                'inc7.desc':'Call mensile di 30-45 minuti per: analisi dei risultati, definizione degli obiettivi del mese successivo, brainstorming su nuove iniziative, risposta a tutte le tue domande. Un referente unico che conosce la tua attivit\u00e0 in profondit\u00e0.',
+                'contact.label':'Inizia Ora','contact.title':'Richiedi il Piano Premium',
+                'contact.subtitle':'Compila il form e ti ricontatteremo entro 24 ore per discutere i dettagli e personalizzare il piano per la tua attivit\u00e0.',
+                'contact.calendly':'Prenota una Consulenza Gratuita',
+                'form.name':'Nome e Cognome *','form.business':'Nome Attivit\u00e0 *',
+                'form.email':'Email *','form.phone':'Telefono','form.message':'Messaggio',
+                'form.privacy':'Ho letto e accetto la <a href="privacy-policy.html" target="_blank">Privacy Policy</a>',
+                'form.submit':'Invia Richiesta',
+                'form.name.ph':'Il tuo nome','form.business.ph':'La tua attivit\u00e0',
+                'form.email.ph':'La tua email','form.phone.ph':'Il tuo numero',
+                'form.message.ph':'Raccontaci della tua attivit\u00e0 e cosa vorresti ottenere...',
+                'footer.quicklinks':'Link Rapidi','footer.services':'Servizi','footer.legal':'Legale',
+                'footer.desc':'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
+                'footer.rights':'\u00a9 2026 EMC Digital Solutions. Tutti i diritti riservati.',
+                'footer.link.about':'Chi Siamo','footer.link.services':'Servizi','footer.link.portfolio':'Portfolio',
+                'footer.link.pricing':'Pricing','footer.link.contact':'Contatti',
+                'footer.link.web':'Sviluppo Web','footer.link.saas':'Software SaaS',
+                'footer.link.social':'Social Media','footer.link.app':'Sviluppo App',
+                'footer.privacy':'Privacy Policy','footer.cookie':'Cookie Policy'
+            },
+            en: {
+                'nav.about':'About Us','nav.services':'Services','nav.portfolio':'Portfolio','nav.social':'Social','nav.app':'App','nav.pricing':'Pricing','nav.contact':'Contact',
+                'back':'\u2190 Back to plans',
+                'hero.badge':'All inclusive',
+                'hero.label':'Premium Plan','hero.title':'Premium Plan',
+                'hero.setup':'One-time setup: <strong>\u20ac2,200</strong>',
+                'hero.subtitle':'Ideal for those who want maximum visibility and a 360\u00b0 digital strategy',
+                'inc.label':'Details','inc.title':'What\'s Included',
+                'inc.subtitle':'The most complete package to dominate your digital presence across all channels, without compromise.',
+                'inc1.title':'Complete website + multiple landing pages',
+                'inc1.desc':'Professional multi-page site plus multiple landing pages for different services, seasonal promotions or specific campaigns. Each landing page is optimized for conversion with A/B testing and dedicated analytics. Updates and modifications included throughout the month.',
+                'inc2.title':'Facebook + Instagram + WhatsApp Business',
+                'inc2.desc':'Complete management of three platforms. WhatsApp Business includes: product/service catalog setup, quick reply and welcome message configuration, periodic promotional broadcasts to contacts. The most effective direct channel for retaining existing customers.',
+                'inc3.title':'16-20 posts/month + stories + reels (4-6/month)',
+                'inc3.desc':'4-5 posts per week across all channels, daily stories and 4-6 video reels per month. The highest frequency to maximize visibility and organic reach. Structured editorial plan with shared monthly calendar and pre-approval of content.',
+                'inc4.title':'Meta Ads + Google Ads',
+                'inc4.desc':'Complete campaign management on Facebook, Instagram AND Google Ads. Google Ads lets you intercept people actively searching for your services on Google \u2014 the moment of highest purchase intent. Search, Display and Local campaigns for 360\u00b0 coverage.',
+                'inc5.title':'Google Business Profile + review management',
+                'inc5.desc':'Optimized Google profile as in Standard, PLUS active review management: professional responses to all reviews (positive and negative), review solicitation strategy for satisfied customers, online reputation monitoring. Reviews are the #1 factor for choosing a local business.',
+                'inc6.title':'Weekly report',
+                'inc6.desc':'Every week you receive a complete update: social performance, campaign progress, competitor analysis, operational suggestions. Shared dashboard with real-time access to key metrics.',
+                'inc7.title':'Dedicated strategic consulting',
+                'inc7.desc':'Monthly 30-45 minute call for: results analysis, next month\'s goal setting, brainstorming new initiatives, answering all your questions. A single point of contact who knows your business in depth.',
+                'contact.label':'Get Started','contact.title':'Request the Premium Plan',
+                'contact.subtitle':'Fill out the form and we\'ll get back to you within 24 hours to discuss details and customize the plan for your business.',
+                'contact.calendly':'Book a Free Consultation',
+                'form.name':'Full Name *','form.business':'Business Name *',
+                'form.email':'Email *','form.phone':'Phone','form.message':'Message',
+                'form.privacy':'I have read and accept the <a href="privacy-policy.html" target="_blank">Privacy Policy</a>',
+                'form.submit':'Send Request',
+                'form.name.ph':'Your name','form.business.ph':'Your business',
+                'form.email.ph':'Your email','form.phone.ph':'Your number',
+                'form.message.ph':'Tell us about your business and what you\'d like to achieve...',
+                'footer.quicklinks':'Quick Links','footer.services':'Services','footer.legal':'Legal',
+                'footer.desc':'Tailored digital solutions for businesses that want to grow. Software development, SaaS and digital strategies from Sicily.',
+                'footer.rights':'\u00a9 2026 EMC Digital Solutions. All rights reserved.',
+                'footer.link.about':'About Us','footer.link.services':'Services','footer.link.portfolio':'Portfolio',
+                'footer.link.pricing':'Pricing','footer.link.contact':'Contact',
+                'footer.link.web':'Web Development','footer.link.saas':'SaaS Software',
+                'footer.link.social':'Social Media','footer.link.app':'App Development',
+                'footer.privacy':'Privacy Policy','footer.cookie':'Cookie Policy'
+            }
+        };
+        var currentLang = localStorage.getItem('emc-lang') || 'it';
+        function applyTranslations(lang) {
+            currentLang = lang;
+            localStorage.setItem('emc-lang', lang);
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-html');
+                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) el.placeholder = translations[lang][key];
+            });
+            var nextLang = lang === 'it' ? 'EN' : 'IT';
+            var l = document.getElementById('langLabel');
+            var lm = document.getElementById('langLabelMobile');
+            if (l) l.textContent = nextLang;
+            if (lm) lm.textContent = nextLang;
+        }
+        function toggleLang() { applyTranslations(currentLang === 'it' ? 'en' : 'it'); }
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+        if (currentLang !== 'it') applyTranslations(currentLang);
     })();
     </script>
 
