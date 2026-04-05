@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News &amp; Aggiornamenti &mdash; EMC Digital Solutions</title>
+    <meta name="description" content="News, annunci e aggiornamenti da EMC Digital Solutions. Segui le ultime novità dal mondo dello sviluppo web, software e soluzioni digitali dalla Sicilia.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#0c1120">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Buona Pasqua 2026 — EMC Digital Solutions">
+    <meta property="og:description" content="Tanti auguri di Buona Pasqua da EMC Digital Solutions. Che questa Pasqua porti nuovi progetti, crescita e serenità.">
+    <meta property="og:image" content="https://www.emcdigitalsolutions.it/images/news-buona-pasqua-2026.png">
+    <meta property="og:url" content="https://www.emcdigitalsolutions.it/news.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0c1120;
+            --bg-secondary: #131b2e;
+            --bg-card: #172035;
+            --accent: #6b9ef7;
+            --accent-light: #93b8fc;
+            --accent-vivid: #f5c542;
+            --accent-vivid-hover: #ffd666;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9ca3b0;
+            --border: #263354;
+            --shadow: rgba(0,0,0,0.2);
+            --shadow-lg: rgba(0,0,0,0.35);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --nav-height: 72px;
+            --theme-color: #6b9ef7;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            z-index: 1000;
+            background: rgba(12, 17, 32, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 12px var(--shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: linear-gradient(90deg, transparent 30%, rgba(212, 160, 23, 0.08) 50%, transparent 70%);
+            background-size: 200% 100%;
+            animation: shimmer 4s ease-in-out infinite;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        .nav-logo svg {
+            width: 128px;
+            height: 128px;
+        }
+
+        .nav-logo span {
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-vivid);
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            background: rgba(19, 27, 46, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 24px;
+            box-shadow: 0 8px 32px var(--shadow-lg);
+            z-index: 999;
+        }
+
+        .mobile-menu.open { display: block; }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-of-type { border-bottom: none; }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ========== PAGE HERO ========== */
+        .page-hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 50%, #0f1728 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(107, 158, 247, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(245, 197, 66, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero .container { position: relative; z-index: 1; }
+
+        .page-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #e8e4dc 0%, #6b9ef7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ========== ARTICLES ========== */
+        .articles {
+            padding: 80px 0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(107, 158, 247, 0.15);
+            border-color: rgba(107, 158, 247, 0.3);
+        }
+
+        .article-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1200 / 630;
+            background: linear-gradient(135deg, #0c1120 0%, #131b2e 100%);
+            overflow: hidden;
+        }
+
+        .article-image svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .article-content {
+            padding: 36px 40px;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .article-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .article-date svg {
+            width: 14px;
+            height: 14px;
+            color: var(--accent);
+        }
+
+        .article-category {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-vivid);
+            background: rgba(245, 197, 66, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(245, 197, 66, 0.2);
+        }
+
+        .article-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        .article-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .article-card p:last-of-type { margin-bottom: 0; }
+
+        .article-signature {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #6b9ef7, #3b6dd4);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(107, 158, 247, 0.35);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #080d1a;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 340px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo svg {
+            width: 96px;
+            height: 96px;
+        }
+
+        .footer h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-links { list-style: none; }
+
+        .footer-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover { color: var(--accent-vivid); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .mobile-menu .lang-toggle {
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .page-hero h1 { font-size: 2.2rem; }
+
+            .articles { padding: 60px 0; }
+            .article-card h2 { font-size: 1.5rem; }
+            .article-content { padding: 28px 24px; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .page-hero h1 { font-size: 1.8rem; }
+            .article-card h2 { font-size: 1.35rem; }
+            .article-content { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="128">
+                    <defs>
+                        <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#d4a017"/>
+                        </linearGradient>
+                        <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="45%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#0f172a"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
+                    <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#navBarG)" opacity="0.85"/>
+                    <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#navBarG)"/>
+                    <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#navTxtG)" letter-spacing="3">EMC</text>
+                </svg>
+                <span>Digital Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
+                <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="news.html" class="active" data-i18n="nav.news">News</a></li>
+                <li><a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="news.html" data-i18n="nav.news">News</a>
+        <a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1 data-i18n="hero.title">News &amp; Aggiornamenti</h1>
+            <p data-i18n="hero.desc">Annunci, novit&agrave; e approfondimenti dal mondo EMC Digital Solutions. Segui le ultime dal nostro team dalla Sicilia.</p>
+        </div>
+    </section>
+
+    <!-- ========== ARTICLES ========== -->
+    <section class="articles">
+        <div class="container">
+            <div class="articles-grid">
+
+                <!-- ===== Article 1: Buona Pasqua 2026 ===== -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice">
+                            <defs>
+                                <linearGradient id="easterBg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#0c1120"/>
+                                    <stop offset="50%" stop-color="#131b2e"/>
+                                    <stop offset="100%" stop-color="#0f1728"/>
+                                </linearGradient>
+                                <linearGradient id="easterEgg" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#ffd666"/>
+                                    <stop offset="45%" stop-color="#f5c542"/>
+                                    <stop offset="100%" stop-color="#b8860b"/>
+                                </linearGradient>
+                                <linearGradient id="easterBar" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#1e3a8a"/>
+                                    <stop offset="100%" stop-color="#3b6dd4"/>
+                                </linearGradient>
+                                <linearGradient id="easterTitle" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+                                    <stop offset="0%" stop-color="#93b8fc"/>
+                                    <stop offset="50%" stop-color="#ffd666"/>
+                                    <stop offset="100%" stop-color="#93b8fc"/>
+                                </linearGradient>
+                                <radialGradient id="eggShine" cx="0.35" cy="0.3" r="0.5">
+                                    <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+                                    <stop offset="60%" stop-color="rgba(255,255,255,0.1)"/>
+                                    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                                </radialGradient>
+                                <radialGradient id="bgGlow" cx="0.5" cy="0.5" r="0.5">
+                                    <stop offset="0%" stop-color="rgba(107,158,247,0.25)"/>
+                                    <stop offset="70%" stop-color="rgba(107,158,247,0.05)"/>
+                                    <stop offset="100%" stop-color="rgba(107,158,247,0)"/>
+                                </radialGradient>
+                                <filter id="eggShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceAlpha" stdDeviation="12"/>
+                                    <feOffset dx="0" dy="8"/>
+                                    <feComponentTransfer><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
+                                    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- Background -->
+                            <rect width="1200" height="630" fill="url(#easterBg)"/>
+                            <rect width="1200" height="630" fill="url(#bgGlow)"/>
+
+                            <!-- Decorative dots pattern -->
+                            <g opacity="0.15" fill="#f5c542">
+                                <circle cx="100" cy="100" r="3"/>
+                                <circle cx="180" cy="160" r="2"/>
+                                <circle cx="260" cy="90" r="2.5"/>
+                                <circle cx="1100" cy="120" r="3"/>
+                                <circle cx="1020" cy="200" r="2"/>
+                                <circle cx="1140" cy="240" r="2.5"/>
+                                <circle cx="80" cy="520" r="2.5"/>
+                                <circle cx="160" cy="480" r="2"/>
+                                <circle cx="240" cy="540" r="3"/>
+                                <circle cx="1050" cy="500" r="3"/>
+                                <circle cx="1130" cy="440" r="2"/>
+                                <circle cx="980" cy="560" r="2.5"/>
+                            </g>
+
+                            <!-- Title text "Buona Pasqua" -->
+                            <text x="600" y="110" text-anchor="middle" font-family="'Inter','Segoe UI',sans-serif" font-size="64" font-weight="700" fill="url(#easterTitle)" letter-spacing="2">Buona Pasqua</text>
+                            <text x="600" y="160" text-anchor="middle" font-family="'Inter','Segoe UI',sans-serif" font-size="28" font-weight="500" fill="#e8e4dc" opacity="0.7" letter-spacing="6">2026</text>
+
+                            <!-- Egg with EMC logo inside -->
+                            <g filter="url(#eggShadow)">
+                                <!-- Egg shape -->
+                                <ellipse cx="600" cy="355" rx="140" ry="180" fill="url(#easterEgg)"/>
+                                <!-- Egg highlight -->
+                                <ellipse cx="600" cy="355" rx="140" ry="180" fill="url(#eggShine)"/>
+                                <!-- Decorative bands on egg -->
+                                <path d="M 465 320 Q 600 290, 735 320" stroke="#1e3a8a" stroke-width="4" fill="none" opacity="0.35"/>
+                                <path d="M 465 395 Q 600 420, 735 395" stroke="#1e3a8a" stroke-width="4" fill="none" opacity="0.35"/>
+                                <!-- Small dots on egg -->
+                                <circle cx="540" cy="355" r="4" fill="#1e3a8a" opacity="0.3"/>
+                                <circle cx="600" cy="355" r="4" fill="#1e3a8a" opacity="0.3"/>
+                                <circle cx="660" cy="355" r="4" fill="#1e3a8a" opacity="0.3"/>
+                            </g>
+
+                            <!-- EMC 3-bar logo (positioned above egg) -->
+                            <g transform="translate(510, 235) scale(4.5)">
+                                <path d="M0,0 H20 L28,4 L20,8 H0 A4,4 0 0,1 0,0Z" fill="url(#easterBar)"/>
+                                <path d="M0,11 H16 L24,15 L16,19 H0 A4,4 0 0,1 0,11Z" fill="url(#easterBar)" opacity="0.85"/>
+                                <path d="M0,22 H20 L28,26 L20,30 H0 A4,4 0 0,1 0,22Z" fill="url(#easterBar)"/>
+                            </g>
+
+                            <!-- Footer brand text -->
+                            <text x="600" y="590" text-anchor="middle" font-family="'Inter','Segoe UI',sans-serif" font-size="20" font-weight="600" fill="#e8e4dc" opacity="0.75" letter-spacing="4">EMC DIGITAL SOLUTIONS</text>
+                        </svg>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                <span data-i18n="art1.date">5 Aprile 2026</span>
+                            </span>
+                            <span class="article-category" data-i18n="art1.category">Annunci</span>
+                        </div>
+                        <h2 data-i18n="art1.title">Buona Pasqua 2026 &mdash; Auguri dal team EMC</h2>
+                        <p data-i18n="art1.p1">La Pasqua &egrave; un momento di rinascita, di nuovi inizi e di progetti che prendono vita. Da EMC Digital Solutions vogliamo augurare a tutti i nostri clienti, partner e amici una serena Pasqua piena di serenit&agrave; e gioia.</p>
+                        <p data-i18n="art1.p2">Il 2026 &egrave; appena iniziato e il nostro team &egrave; gi&agrave; al lavoro su nuove soluzioni digitali: sviluppo web, software SaaS gestionali, applicazioni mobile e automazioni intelligenti per aiutare le aziende siciliane &mdash; e non solo &mdash; a crescere nel panorama digitale.</p>
+                        <p data-i18n="art1.p3">Grazie per la fiducia che ci accordate ogni giorno. Che questa Pasqua porti nuove idee, nuovi progetti e tanta voglia di fare insieme. Un abbraccio e tanti auguri!</p>
+                        <div class="article-signature" data-i18n="art1.sign">— Il team di EMC Digital Solutions</div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-i18n="cta.title">Hai un progetto in mente?</h2>
+            <p data-i18n="cta.desc">Raccontaci la tua idea e ti aiuteremo a portarla online nel modo giusto.</p>
+            <a href="index.html#contatti" class="cta-btn" data-i18n="cta.btn">Contattaci</a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
+                            <defs>
+                                <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#d4a017"/>
+                                </linearGradient>
+                                <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#6b9ef7"/><stop offset="45%" stop-color="#93b8fc"/><stop offset="100%" stop-color="#ffffff"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>
+                            <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#ftBarG)" opacity="0.85"/>
+                            <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#ftBarG)"/>
+                            <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#ftTxtG)" letter-spacing="3">EMC</text>
+                        </svg>
+                        <span>Digital Solutions</span>
+                    </div>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#chi-siamo" data-i18n="footer.link.about">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi" data-i18n="footer.link.services">Servizi</a></li>
+                        <li><a href="index.html#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
+                        <li><a href="news.html" data-i18n="footer.link.news">News</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.pricing">Pricing</a></li>
+                        <li><a href="index.html#contatti" data-i18n="footer.link.contact">Contatti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.services">Servizi</h4>
+                    <ul class="footer-links">
+                        <li><a href="servizio-web.html" data-i18n="footer.link.web">Sviluppo Web</a></li>
+                        <li><a href="servizio-saas.html" data-i18n="footer.link.saas">Software SaaS</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.social">Social Media</a></li>
+                        <li><a href="servizio-app.html" data-i18n="footer.link.app">Sviluppo App</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.legal">Legale</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html" data-i18n="footer.cookie">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" data-i18n="footer.rights">&copy; 2026 EMC Digital Solutions. Tutti i diritti riservati.</div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+    (function() {
+        'use strict';
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        // i18n
+        var translations = {
+            it: {
+                'nav.about': 'Chi Siamo',
+                'nav.services': 'Servizi',
+                'nav.portfolio': 'Portfolio',
+                'nav.news': 'News',
+                'nav.pricing': 'Pricing',
+                'nav.contact': 'Contatti',
+                'hero.title': 'News & Aggiornamenti',
+                'hero.desc': 'Annunci, novit\u00e0 e approfondimenti dal mondo EMC Digital Solutions. Segui le ultime dal nostro team dalla Sicilia.',
+                'art1.date': '5 Aprile 2026',
+                'art1.category': 'Annunci',
+                'art1.title': 'Buona Pasqua 2026 — Auguri dal team EMC',
+                'art1.p1': 'La Pasqua \u00e8 un momento di rinascita, di nuovi inizi e di progetti che prendono vita. Da EMC Digital Solutions vogliamo augurare a tutti i nostri clienti, partner e amici una serena Pasqua piena di serenit\u00e0 e gioia.',
+                'art1.p2': 'Il 2026 \u00e8 appena iniziato e il nostro team \u00e8 gi\u00e0 al lavoro su nuove soluzioni digitali: sviluppo web, software SaaS gestionali, applicazioni mobile e automazioni intelligenti per aiutare le aziende siciliane — e non solo — a crescere nel panorama digitale.',
+                'art1.p3': 'Grazie per la fiducia che ci accordate ogni giorno. Che questa Pasqua porti nuove idee, nuovi progetti e tanta voglia di fare insieme. Un abbraccio e tanti auguri!',
+                'art1.sign': '— Il team di EMC Digital Solutions',
+                'cta.title': 'Hai un progetto in mente?',
+                'cta.desc': 'Raccontaci la tua idea e ti aiuteremo a portarla online nel modo giusto.',
+                'cta.btn': 'Contattaci',
+                'footer.quicklinks': 'Link Rapidi',
+                'footer.services': 'Servizi',
+                'footer.legal': 'Legale',
+                'footer.desc': 'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
+                'footer.rights': '\u00a9 2026 EMC Digital Solutions. Tutti i diritti riservati.',
+                'footer.link.about': 'Chi Siamo',
+                'footer.link.services': 'Servizi',
+                'footer.link.portfolio': 'Portfolio',
+                'footer.link.news': 'News',
+                'footer.link.pricing': 'Pricing',
+                'footer.link.contact': 'Contatti',
+                'footer.link.web': 'Sviluppo Web',
+                'footer.link.saas': 'Software SaaS',
+                'footer.link.social': 'Social Media',
+                'footer.link.app': 'Sviluppo App',
+                'footer.privacy': 'Privacy Policy',
+                'footer.cookie': 'Cookie Policy'
+            },
+            en: {
+                'nav.about': 'About Us',
+                'nav.services': 'Services',
+                'nav.portfolio': 'Portfolio',
+                'nav.news': 'News',
+                'nav.pricing': 'Pricing',
+                'nav.contact': 'Contact',
+                'hero.title': 'News & Updates',
+                'hero.desc': 'Announcements, news and insights from the EMC Digital Solutions world. Follow the latest from our team in Sicily.',
+                'art1.date': 'April 5, 2026',
+                'art1.category': 'Announcements',
+                'art1.title': 'Happy Easter 2026 — Greetings from the EMC team',
+                'art1.p1': 'Easter is a time of rebirth, new beginnings and projects coming to life. From EMC Digital Solutions, we wish all our clients, partners and friends a peaceful Easter full of serenity and joy.',
+                'art1.p2': '2026 has just begun and our team is already working on new digital solutions: web development, SaaS management software, mobile applications and smart automations to help Sicilian companies — and beyond — grow in the digital landscape.',
+                'art1.p3': 'Thank you for the trust you place in us every day. May this Easter bring new ideas, new projects and lots of enthusiasm to work together. A hug and best wishes!',
+                'art1.sign': '— The EMC Digital Solutions team',
+                'cta.title': 'Have a project in mind?',
+                'cta.desc': 'Tell us about your idea and we will help you bring it online the right way.',
+                'cta.btn': 'Contact Us',
+                'footer.quicklinks': 'Quick Links',
+                'footer.services': 'Services',
+                'footer.legal': 'Legal',
+                'footer.desc': 'Tailored digital solutions for businesses that want to grow. Software development, SaaS and digital strategies from Sicily.',
+                'footer.rights': '\u00a9 2026 EMC Digital Solutions. All rights reserved.',
+                'footer.link.about': 'About Us',
+                'footer.link.services': 'Services',
+                'footer.link.portfolio': 'Portfolio',
+                'footer.link.news': 'News',
+                'footer.link.pricing': 'Pricing',
+                'footer.link.contact': 'Contact',
+                'footer.link.web': 'Web Development',
+                'footer.link.saas': 'SaaS Software',
+                'footer.link.social': 'Social Media',
+                'footer.link.app': 'App Development',
+                'footer.privacy': 'Privacy Policy',
+                'footer.cookie': 'Cookie Policy'
+            }
+        };
+
+        var currentLang = localStorage.getItem('emc-lang') || 'it';
+
+        function applyTranslations(lang) {
+            currentLang = lang;
+            localStorage.setItem('emc-lang', lang);
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-html');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            var nextLang = lang === 'it' ? 'EN' : 'IT';
+            var labelEl = document.getElementById('langLabel');
+            var labelMobileEl = document.getElementById('langLabelMobile');
+            if (labelEl) labelEl.textContent = nextLang;
+            if (labelMobileEl) labelMobileEl.textContent = nextLang;
+        }
+
+        function toggleLang() {
+            applyTranslations(currentLang === 'it' ? 'en' : 'it');
+        }
+
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+        if (currentLang !== 'it') {
+            applyTranslations(currentLang);
+        }
+    })();
+    </script>
+</body>
+</html>
