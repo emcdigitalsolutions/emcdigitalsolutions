@@ -7,9 +7,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 70" width="720" height="70">
   <defs>
     <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#0e1529"/>
-      <stop offset="40%"  stop-color="#1a2548"/>
-      <stop offset="70%"  stop-color="#8b6f1f"/>
+      <stop offset="0%"   stop-color="#6b9ef7"/>
+      <stop offset="50%"  stop-color="#93b8fc"/>
       <stop offset="100%" stop-color="#f5c542"/>
     </linearGradient>
   </defs>
