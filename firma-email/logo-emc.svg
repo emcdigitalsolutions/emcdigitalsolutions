@@ -38,8 +38,9 @@
   <!-- Glow oro bottom-right -->
   <ellipse cx="260" cy="260" rx="100" ry="70" fill="#f5c542" opacity="0.05"/>
 
-  <!-- 3 chevron orizzontali (logo) — centrato -->
-  <g transform="translate(75 70)">
+  <!-- 3 chevron orizzontali (la "E" stilizzata) — centrati con il wordmark sotto.
+       Larghezza chevron = 132u. Per centrare in viewBox 320, offset = (320-132)/2 = 94. -->
+  <g transform="translate(94 70)">
     <path d="M4,4 H100 L132,18 L100,32 H4 A14,14 0 0,1 4,4Z" fill="url(#chevGrad)"/>
     <path d="M4,46 H84 L116,60 L84,74 H4 A14,14 0 0,1 4,46Z" fill="url(#chevGrad)" opacity="0.85"/>
     <path d="M4,88 H100 L132,102 L100,116 H4 A14,14 0 0,1 4,88Z" fill="url(#chevGrad)"/>
