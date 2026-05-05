@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 30" width="700" height="30">
+  <defs>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  stop-color="#6b9ef7"/>
+      <stop offset="50%" stop-color="#93b8fc"/>
+      <stop offset="100%" stop-color="#f5c542"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="22"
+        font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="20" font-weight="700" letter-spacing="2.4"
+        fill="url(#g3)">FOUNDER &amp; SOFTWARE DEVELOPER</text>
+</svg>
