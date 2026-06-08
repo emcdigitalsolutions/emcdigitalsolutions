@@ -1832,6 +1832,16 @@
             }
         }
     </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Quali servizi offrite?","acceptedAnswer":{"@type":"Answer","text":"Sviluppo di siti web ed e-commerce, software gestionali su misura, social media management, visibilità su Google e app per Android e iOS."}},
+{"@type":"Question","name":"Quanto costa un sito web?","acceptedAnswer":{"@type":"Answer","text":"Dipende dalle esigenze: realizziamo soluzioni su misura, dal sito vetrina alla piattaforma complessa. Contattaci per un preventivo gratuito."}},
+{"@type":"Question","name":"In quanto tempo è pronto un sito?","acceptedAnswer":{"@type":"Answer","text":"In genere poche settimane per un sito vetrina; tempi maggiori per progetti complessi. Definiamo insieme una tabella di marcia chiara."}},
+{"@type":"Question","name":"Vi occupate anche di social e SEO?","acceptedAnswer":{"@type":"Answer","text":"Sì: gestione social, piani editoriali, campagne geolocalizzate, SEO e Google Business Profile per farti trovare dai clienti giusti."}},
+{"@type":"Question","name":"Offrite assistenza dopo la pubblicazione?","acceptedAnswer":{"@type":"Answer","text":"Sì: manutenzione, aggiornamenti e supporto diretto e continuativo. Non ti lasciamo solo dopo il lancio."}},
+{"@type":"Question","name":"Dove operate?","acceptedAnswer":{"@type":"Answer","text":"Siamo in Sicilia e seguiamo clienti in tutta Italia, da remoto e sul territorio."}}
+]}
+</script>
 </head>
 <body>
 
@@ -2481,6 +2491,34 @@
     </section>
 
     <!-- ========== FOOTER ========== -->
+    <!-- FAQ -->
+    <section class="emcfaq-sec" id="faq">
+      <div class="emcfaq-wrap">
+        <p class="emcfaq-eye" data-i18n="faq.eyebrow">FAQ</p>
+        <h2 class="emcfaq-title" data-i18n="faq.title">Domande frequenti</h2>
+        <div class="emcfaq-list">
+          <details><summary data-i18n="faq.q1">Quali servizi offrite?</summary><p data-i18n="faq.a1">Sviluppo di siti web ed e-commerce, software gestionali su misura, social media management, visibilità su Google e app per Android e iOS.</p></details>
+          <details><summary data-i18n="faq.q2">Quanto costa un sito web?</summary><p data-i18n="faq.a2">Dipende dalle esigenze: realizziamo soluzioni su misura, dal sito vetrina alla piattaforma complessa. Contattaci per un preventivo gratuito.</p></details>
+          <details><summary data-i18n="faq.q3">In quanto tempo è pronto un sito?</summary><p data-i18n="faq.a3">In genere poche settimane per un sito vetrina; tempi maggiori per progetti complessi. Definiamo insieme una tabella di marcia chiara.</p></details>
+          <details><summary data-i18n="faq.q4">Vi occupate anche di social e SEO?</summary><p data-i18n="faq.a4">Sì: gestione social, piani editoriali, campagne geolocalizzate, SEO e Google Business Profile per farti trovare dai clienti giusti.</p></details>
+          <details><summary data-i18n="faq.q5">Offrite assistenza dopo la pubblicazione?</summary><p data-i18n="faq.a5">Sì: manutenzione, aggiornamenti e supporto diretto e continuativo. Non ti lasciamo solo dopo il lancio.</p></details>
+          <details><summary data-i18n="faq.q6">Dove operate?</summary><p data-i18n="faq.a6">Siamo in Sicilia e seguiamo clienti in tutta Italia, da remoto e sul territorio.</p></details>
+        </div>
+      </div>
+    </section>
+    <style>
+    .emcfaq-sec{background:var(--bg-secondary,#0a0f1c);padding:90px 20px;font-family:'Inter',sans-serif}
+    .emcfaq-wrap{max-width:820px;margin:0 auto}
+    .emcfaq-eye{text-align:center;text-transform:uppercase;letter-spacing:.2em;font-size:13px;font-weight:600;color:var(--accent-vivid,#f5c542);margin:0 0 10px}
+    .emcfaq-title{text-align:center;font-size:clamp(28px,4vw,38px);font-weight:700;color:#fff;margin:0 0 34px}
+    .emcfaq-list details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:14px;margin-bottom:12px;padding:0 22px}
+    .emcfaq-list summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;color:#fff;display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:17px}
+    .emcfaq-list summary::-webkit-details-marker{display:none}
+    .emcfaq-list summary::after{content:"+";font-size:24px;color:var(--accent,#6b9ef7);transition:.2s;flex-shrink:0}
+    .emcfaq-list details[open] summary::after{transform:rotate(45deg);color:var(--accent-vivid,#f5c542)}
+    .emcfaq-list details p{padding:0 0 18px;margin:0;color:rgba(255,255,255,.72);line-height:1.65}
+    </style>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -2557,6 +2595,20 @@
         /* ==================== i18n ==================== */
         const translations = {
             it: {
+                'faq.eyebrow': 'FAQ',
+                'faq.title': 'Domande frequenti',
+                'faq.q1': 'Quali servizi offrite?',
+                'faq.a1': 'Sviluppo di siti web ed e-commerce, software gestionali su misura, social media management, visibilità su Google e app per Android e iOS.',
+                'faq.q2': 'Quanto costa un sito web?',
+                'faq.a2': 'Dipende dalle esigenze: realizziamo soluzioni su misura, dal sito vetrina alla piattaforma complessa. Contattaci per un preventivo gratuito.',
+                'faq.q3': 'In quanto tempo è pronto un sito?',
+                'faq.a3': 'In genere poche settimane per un sito vetrina; tempi maggiori per progetti complessi. Definiamo insieme una tabella di marcia chiara.',
+                'faq.q4': 'Vi occupate anche di social e SEO?',
+                'faq.a4': 'Sì: gestione social, piani editoriali, campagne geolocalizzate, SEO e Google Business Profile per farti trovare dai clienti giusti.',
+                'faq.q5': 'Offrite assistenza dopo la pubblicazione?',
+                'faq.a5': 'Sì: manutenzione, aggiornamenti e supporto diretto e continuativo. Non ti lasciamo solo dopo il lancio.',
+                'faq.q6': 'Dove operate?',
+                'faq.a6': 'Siamo in Sicilia e seguiamo clienti in tutta Italia, da remoto e sul territorio.',
                 'nav.services': 'Servizi',
                 'nav.portfolio': 'Portfolio',
                 'nav.about': 'Chi Siamo',
@@ -2681,6 +2733,20 @@
                 'app.phone-btn': 'Prenota Ora'
             },
             en: {
+                'faq.eyebrow': 'FAQ',
+                'faq.title': 'Frequently asked questions',
+                'faq.q1': 'What services do you offer?',
+                'faq.a1': 'Web and e-commerce development, custom management software, social media management, Google visibility and Android & iOS apps.',
+                'faq.q2': 'How much does a website cost?',
+                'faq.a2': 'It depends on your needs: we build tailor-made solutions, from showcase sites to complex platforms. Contact us for a free quote.',
+                'faq.q3': 'How long does it take to build a website?',
+                'faq.a3': 'Usually a few weeks for a showcase site; longer for complex projects. We define a clear roadmap together.',
+                'faq.q4': 'Do you also handle social media and SEO?',
+                'faq.a4': 'Yes: social media management, content plans, geo-targeted campaigns, SEO and Google Business Profile to help the right customers find you.',
+                'faq.q5': 'Do you provide support after launch?',
+                'faq.a5': 'Yes: maintenance, updates and ongoing direct support. We don\'t leave you alone after launch.',
+                'faq.q6': 'Where do you operate?',
+                'faq.a6': 'We are based in Sicily and work with clients across Italy, both remotely and on-site.',
                 'nav.services': 'Services',
                 'nav.portfolio': 'Portfolio',
                 'nav.about': 'About Us',
