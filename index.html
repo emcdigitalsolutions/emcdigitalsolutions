@@ -2403,7 +2403,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone" data-i18n="contact.form.phone">Telefono</label>
-                        <input type="tel" id="phone" name="phone" data-i18n-placeholder="contact.form.phonePlaceholder" placeholder="Il tuo numero di telefono">
+                        <input type="tel" id="phone" name="phone" inputmode="numeric" pattern="[0-9+ ]*" maxlength="20" oninput="this.value=this.value.replace(/[^0-9+ ]/g,'')" data-i18n-placeholder="contact.form.phonePlaceholder" placeholder="Il tuo numero di telefono">
                     </div>
                     <div class="form-group">
                         <label for="message" data-i18n="contact.form.message">Messaggio</label>
@@ -3026,43 +3026,7 @@
             });
         });
 
-        /* ==================== CONTACT FORM ==================== */
-        var contactForm = document.getElementById('contactForm');
-        var formStatus = document.getElementById('formStatus');
-        var CONTACT_API = 'https://script.google.com/macros/s/AKfycbxLCgN0-mHN86Dk37a5m-p2A3DgMjc8b__aCO_9oBA_amLUn5MlipebKalo5qNIoSWl/exec';
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (contactForm.querySelector('[name="_honey"]').value) return;
-            var btn = contactForm.querySelector('.form-submit');
-            btn.disabled = true;
-            btn.textContent = 'Invio in corso...';
-            formStatus.className = 'form-status';
-            formStatus.textContent = '';
-
-            fetch(CONTACT_API, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    site: 'emcdigitalsolutions',
-                    name: contactForm.querySelector('[name="name"]').value,
-                    email: contactForm.querySelector('[name="email"]').value,
-                    phone: contactForm.querySelector('[name="phone"]').value,
-                    message: contactForm.querySelector('[name="message"]').value
-                })
-            }).then(function() {
-                formStatus.className = 'form-status success';
-                formStatus.textContent = translations[currentLang]['contact.form.success'];
-                contactForm.reset();
-            }).catch(function() {
-                formStatus.className = 'form-status error';
-                formStatus.textContent = translations[currentLang]['contact.form.error'];
-            }).finally(function() {
-                btn.disabled = false;
-                btn.textContent = translations[currentLang]['contact.form.send'];
-            });
-        });
+        /* contact form: gestione in <script> ISOLATO in fondo al body */
 
         /* ==================== COOKIE BANNER ==================== */
         var cookieBanner = document.getElementById('cookieBanner');
@@ -3105,6 +3069,44 @@
             });
         });
 
+    })();
+    </script>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+    <style>
+    #toast{position:fixed;left:50%;top:16px;transform:translate(-50%,-24px);max-width:92%;padding:15px 22px;border-radius:14px;font-size:15px;font-weight:700;color:#fff;text-align:center;box-shadow:0 14px 38px rgba(0,0,0,.28);z-index:99999;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+    #toast.show{opacity:1;transform:translate(-50%,0)}
+    #toast.ok{background:#1e9e5a}#toast.err{background:#c0392b}
+    </style>
+    <!-- Contact form: script ISOLATO e indipendente (invio reale via Apps Script EMC). -->
+    <script>
+    (function(){
+      function init(){
+        var form=document.getElementById('contactForm');
+        if(!form) return;
+        var status=document.getElementById('formStatus');
+        var API='https://script.google.com/macros/s/AKfycbxLCgN0-mHN86Dk37a5m-p2A3DgMjc8b__aCO_9oBA_amLUn5MlipebKalo5qNIoSWl/exec';
+        function lang(){var l=document.documentElement.lang;try{l=l||localStorage.getItem('emc-lang');}catch(e){}return l==='en'?'en':'it';}
+        var T={it:{ok:'Messaggio inviato con successo! Ti risponderemo presto.',err:'Si è verificato un errore. Riprova più tardi.',req:'Compila i campi obbligatori (nome, email e messaggio).',sending:'Invio in corso...',send:'Invia Messaggio'},
+               en:{ok:'Message sent successfully! We will get back to you soon.',err:'An error occurred. Please try again later.',req:'Please fill in name, email and message.',sending:'Sending...',send:'Send Message'}};
+        function v(n){var el=form.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+        function showToast(msg,type){var t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.className=type;setTimeout(function(){t.classList.add('show');},10);clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},6000);}
+        function show(type,msg){if(status){status.className='form-status '+(type==='ok'?'success':'error');status.textContent=msg;}showToast(msg,type);try{if(status)status.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}}
+        var btn=form.querySelector('.form-submit');
+        form.addEventListener('submit',function(e){
+          e.preventDefault();
+          var L=T[lang()];
+          var honey=form.querySelector('[name="_honey"]');
+          if(honey&&honey.value) return;
+          if(!v('name')||!v('email')||!v('message')){show('err',L.req);return;}
+          if(btn){btn.disabled=true;btn.textContent=L.sending;}
+          fetch(API,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({site:'emcdigitalsolutions',name:v('name'),email:v('email'),phone:v('phone'),message:v('message')})})
+          .then(function(){show('ok',L.ok);form.reset();})
+          .catch(function(){show('err',L.err);})
+          .finally(function(){if(btn){btn.disabled=false;btn.textContent=L.send;}});
+        });
+      }
+      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
     })();
     </script>
 

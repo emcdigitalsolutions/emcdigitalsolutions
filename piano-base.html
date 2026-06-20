@@ -1126,7 +1126,7 @@
                         </div>
                         <div class="form-group">
                             <label for="phone" data-i18n="form.phone">Telefono</label>
-                            <input type="tel" id="phone" name="telefono" placeholder="Il tuo numero" data-i18n-placeholder="form.phone.ph">
+                            <input type="tel" id="phone" name="telefono" inputmode="numeric" pattern="[0-9+ ]*" maxlength="20" oninput="this.value=this.value.replace(/[^0-9+ ]/g,'')" placeholder="Il tuo numero" data-i18n-placeholder="form.phone.ph">
                         </div>
                     </div>
                     <div class="form-group">
@@ -1227,44 +1227,7 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         fadeEls.forEach(function(el) { fadeObserver.observe(el); });
         // Contact form
-        var form = document.getElementById('planForm');
-        var formStatus = document.getElementById('formStatus');
-        var CONTACT_API = 'https://script.google.com/macros/s/AKfycbxLCgN0-mHN86Dk37a5m-p2A3DgMjc8b__aCO_9oBA_amLUn5MlipebKalo5qNIoSWl/exec';
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                if (form.querySelector('[name="_honey"]').value) return;
-                var btn = form.querySelector('button[type="submit"]');
-                btn.textContent = 'Invio in corso...';
-                btn.disabled = true;
-                formStatus.className = 'form-status';
-                formStatus.textContent = '';
-                var nome = (form.querySelector('[name="nome"]') || {}).value || '';
-                var attivita = (form.querySelector('[name="attivita"]') || {}).value || '';
-                fetch(CONTACT_API, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        site: 'emcdigitalsolutions',
-                        name: nome + (attivita ? ' (' + attivita + ')' : ''),
-                        email: (form.querySelector('[name="email"]') || {}).value || '',
-                        phone: (form.querySelector('[name="telefono"]') || {}).value || '',
-                        message: '[Piano Base] ' + ((form.querySelector('[name="messaggio"]') || {}).value || 'Richiesta informazioni')
-                    })
-                }).then(function() {
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = 'Messaggio inviato! Ti ricontatteremo al pi\u00f9 presto.';
-                    form.reset();
-                }).catch(function() {
-                    formStatus.className = 'form-status error';
-                    formStatus.textContent = 'Errore nell\'invio. Riprova o contattaci direttamente via email.';
-                }).finally(function() {
-                    btn.textContent = 'Invia Richiesta';
-                    btn.disabled = false;
-                });
-            });
-        }
+        /* plan form: gestione in <script> ISOLATO in fondo al body */
         // i18n translations
         var translations = {
             it: {
@@ -1400,5 +1363,46 @@
 
     <!-- Tidio Chat Widget -->
     <script src="//code.tidio.co/2yhx0ive6e8uvpkzcqvvnet6ape2xw07.js" async></script>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <style>
+    #toast{position:fixed;left:50%;top:16px;transform:translate(-50%,-24px);max-width:92%;padding:15px 22px;border-radius:14px;font-size:15px;font-weight:700;color:#fff;text-align:center;box-shadow:0 14px 38px rgba(0,0,0,.28);z-index:99999;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+    #toast.show{opacity:1;transform:translate(-50%,0)}
+    #toast.ok{background:#1e9e5a}#toast.err{background:#c0392b}
+    </style>
+    <!-- Plan form: script ISOLATO e indipendente (invio reale via Apps Script EMC). -->
+    <script>
+    (function(){
+      function init(){
+        var form=document.getElementById('planForm');
+        if(!form) return;
+        var status=document.getElementById('formStatus');
+        var API='https://script.google.com/macros/s/AKfycbxLCgN0-mHN86Dk37a5m-p2A3DgMjc8b__aCO_9oBA_amLUn5MlipebKalo5qNIoSWl/exec';
+        var m=(location.pathname.match(/piano-(\w+)/)||[]);
+        var plan=m[1]?('Piano '+m[1].charAt(0).toUpperCase()+m[1].slice(1)):'Piano';
+        function lang(){var l=document.documentElement.lang;try{l=l||localStorage.getItem('emc-lang');}catch(e){}return l==='en'?'en':'it';}
+        var T={it:{ok:'Messaggio inviato! Ti ricontatteremo al più presto.',err:'Errore nell\'invio. Riprova o contattaci direttamente via email.',req:'Compila i campi obbligatori.',sending:'Invio in corso...',send:'Invia Richiesta'},
+               en:{ok:'Message sent! We will get back to you soon.',err:'Sending error. Please try again or email us directly.',req:'Please fill in the required fields.',sending:'Sending...',send:'Send Request'}};
+        function q(n){var el=form.querySelector('[name="'+n+'"]');return el?el.value.trim():'';}
+        function showToast(msg,type){var t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.className=type;setTimeout(function(){t.classList.add('show');},10);clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show');},6000);}
+        function show(type,msg){if(status){status.className='form-status '+(type==='ok'?'success':'error');status.textContent=msg;}showToast(msg,type);try{if(status)status.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}}
+        var btn=form.querySelector('button[type="submit"]');
+        form.addEventListener('submit',function(e){
+          e.preventDefault();
+          var L=T[lang()];
+          var honey=form.querySelector('[name="_honey"]');
+          if(honey&&honey.value) return;
+          var nome=q('nome'),attivita=q('attivita'),email=q('email');
+          if(!nome||!attivita||!email){show('err',L.req);return;}
+          if(btn){btn.disabled=true;btn.textContent=L.sending;}
+          fetch(API,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({site:'emcdigitalsolutions',name:nome+(attivita?' ('+attivita+')':''),email:email,phone:q('telefono'),message:'['+plan+'] '+(q('messaggio')||'Richiesta informazioni')})})
+          .then(function(){show('ok',L.ok);form.reset();})
+          .catch(function(){show('err',L.err);})
+          .finally(function(){if(btn){btn.disabled=false;btn.textContent=L.send;}});
+        });
+      }
+      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+    })();
+    </script>
 </body>
+
 </html>
