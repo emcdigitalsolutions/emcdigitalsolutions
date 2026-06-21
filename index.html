@@ -891,6 +891,77 @@
         .service-card--app .service-icon {
             background: rgba(52,211,153,0.1);
         }
+        .service-card--ecommerce::before {
+            background: radial-gradient(circle at 85% 20%, rgba(224,122,95,0.14) 0%, transparent 50%),
+                        radial-gradient(circle at 15% 80%, rgba(199,97,62,0.08) 0%, transparent 40%);
+        }
+        .service-card--ecommerce:hover {
+            border-color: rgba(224,122,95,0.35);
+            box-shadow: 0 20px 50px var(--shadow-lg), 0 0 30px rgba(224,122,95,0.12);
+        }
+        .service-card--ecommerce .service-icon {
+            background: rgba(224,122,95,0.12);
+            color: #e07a5f;
+        }
+
+        /* ===== E-commerce highlight banner ===== */
+        .ecom-highlight { padding: clamp(40px,7vw,90px) 0; }
+        .ecom-card {
+            background: linear-gradient(135deg, #fff8f4 0%, #fdeee5 100%);
+            border: 1px solid rgba(224,122,95,0.20);
+            border-radius: 28px;
+            padding: clamp(30px,5vw,56px);
+            position: relative;
+            overflow: hidden;
+        }
+        .ecom-card::after {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 280px; height: 280px;
+            background: radial-gradient(circle, rgba(224,122,95,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .ecom-grid {
+            position: relative; z-index: 1;
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: clamp(28px,4vw,48px);
+            align-items: center;
+        }
+        .ecom-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            color: #c7613e; margin-bottom: 16px;
+        }
+        .ecom-title { color: #1a2238; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.12; margin-bottom: 16px; }
+        .ecom-lead { color: #5a6573; font-size: 1.05rem; line-height: 1.6; margin-bottom: 22px; }
+        .ecom-pricetag {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, #e07a5f 0%, #c7613e 100%);
+            color: #fff; font-weight: 600; font-size: 0.98rem;
+            padding: 12px 22px; border-radius: 999px;
+            box-shadow: 0 10px 26px rgba(199,97,62,0.28);
+            margin-bottom: 26px;
+        }
+        .ecom-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--ink, #1a2238); color: #fff;
+            padding: 14px 30px; border-radius: 999px; font-weight: 600; text-decoration: none;
+            transition: transform .15s ease, box-shadow .2s ease;
+        }
+        .ecom-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.18); }
+        .ecom-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 22px; }
+        .ecom-feat { display: flex; gap: 11px; align-items: flex-start; }
+        .ecom-feat svg { width: 22px; height: 22px; color: #e07a5f; flex-shrink: 0; margin-top: 2px; }
+        .ecom-feat strong { display: block; color: #1a2238; font-size: 0.96rem; margin-bottom: 2px; }
+        .ecom-feat span { font-size: 0.84rem; color: #6a7585; line-height: 1.45; }
+        @media (max-width: 860px) {
+            .ecom-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .ecom-feats { grid-template-columns: 1fr; }
+        }
 
         .service-card:hover .service-icon {
             transform: scale(1.12);
@@ -2007,6 +2078,20 @@
             </div>
             <div class="services-grid">
 
+                <!-- E-commerce -->
+                <div class="service-card service-card--ecommerce fade-in stagger-1" data-href="#ecommerce">
+                    <div class="service-card-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#e07a5f" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    </div>
+                    <div class="service-card-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        </div>
+                        <h3 data-i18n="services.ecommerce.title">E-commerce su misura</h3>
+                        <p data-i18n="services.ecommerce.desc">Negozi online completi e multilingua: catalogo prodotti, pagamenti sicuri, gestione ordini e magazzino, email automatiche e SEO. Qualità professionale a prezzi imbattibili.</p>
+                    </div>
+                </div>
+
                 <!-- Web -->
                 <div class="service-card service-card--web fade-in stagger-1" data-href="servizio-web.html">
                     <div class="service-card-bg">
@@ -2069,6 +2154,57 @@
 
     <div class="section-divider fade-in"></div>
 
+    <!-- ========== E-COMMERCE HIGHLIGHT ========== -->
+    <section class="ecom-highlight" id="ecommerce">
+        <div class="container">
+            <div class="ecom-card fade-in">
+                <div class="ecom-grid">
+                    <div>
+                        <div class="ecom-eyebrow">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            <span data-i18n="ecom.eyebrow">E-commerce chiavi in mano</span>
+                        </div>
+                        <h2 class="ecom-title" data-i18n="ecom.title">Vuoi vendere online? Ti costruiamo il negozio completo.</h2>
+                        <p class="ecom-lead" data-i18n="ecom.lead">Un e-commerce professionale, veloce e curato in ogni dettaglio &mdash; multilingua, con pagamenti sicuri e gestione ordini. Esattamente come quello che abbiamo realizzato per La Compagnia del Gluten Free.</p>
+                        <div class="ecom-pricetag">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span data-i18n="ecom.price">Qualità e professionalità elevatissime, a un prezzo imbattibile</span>
+                        </div>
+                        <div>
+                            <a href="#contatti" class="ecom-cta" data-i18n="ecom.cta">Richiedi un preventivo gratuito <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="ecom-feats">
+                        <div class="ecom-feat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            <div><strong data-i18n="ecom.f1.t">Catalogo multilingua</strong><span data-i18n="ecom.f1.d">Prodotti, categorie e contenuti in più lingue, pronti per vendere ovunque.</span></div>
+                        </div>
+                        <div class="ecom-feat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                            <div><strong data-i18n="ecom.f2.t">Pagamenti sicuri</strong><span data-i18n="ecom.f2.d">Carte, Stripe e PayPal con checkout protetto e affidabile.</span></div>
+                        </div>
+                        <div class="ecom-feat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.5 4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                            <div><strong data-i18n="ecom.f3.t">Ordini &amp; magazzino</strong><span data-i18n="ecom.f3.d">Gestione ordini, scorte e spedizioni sempre sotto controllo.</span></div>
+                        </div>
+                        <div class="ecom-feat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+                            <div><strong data-i18n="ecom.f4.t">Email professionali</strong><span data-i18n="ecom.f4.d">Conferme d'ordine e notifiche dal tuo dominio, brandizzate.</span></div>
+                        </div>
+                        <div class="ecom-feat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            <div><strong data-i18n="ecom.f5.t">SEO &amp; velocità</strong><span data-i18n="ecom.f5.d">Ottimizzato per Google e per il mobile, veloce a caricare.</span></div>
+                        </div>
+                        <div class="ecom-feat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                            <div><strong data-i18n="ecom.f6.t">Assistenza inclusa</strong><span data-i18n="ecom.f6.d">Ti seguiamo dal lancio in poi, con supporto continuo.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== PORTFOLIO ========== -->
     <section class="portfolio" id="portfolio">
         <div class="container">
@@ -2087,6 +2223,79 @@
             </div>
 
             <div class="portfolio-grid">
+
+                <!-- La Compagnia del Gluten Free (E-commerce) -->
+                <div class="portfolio-card fade-in stagger-1" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/lacompagniadelglutenfree.png" alt="La Compagnia del Gluten Free" loading="lazy">
+                        <span class="portfolio-badge">E-commerce</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>La Compagnia del Gluten Free</h3>
+                        <p data-i18n="portfolio.lcgf.desc">E-commerce completo per prodotti senza glutine: catalogo multilingua (IT/EN/FR/DE), pagamenti online, gestione ordini e spedizioni, email transazionali brandizzate.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">WooCommerce</span>
+                            <span class="portfolio-tag">Multilingua</span>
+                            <span class="portfolio-tag">Pagamenti</span>
+                            <span class="portfolio-tag">SEO</span>
+                        </div>
+                        <a href="https://www.lacompagniadelglutenfree.it" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- La Valle Incantata -->
+                <div class="portfolio-card fade-in stagger-2" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/lavalleincantata.png" alt="La Valle Incantata" loading="lazy">
+                        <span class="portfolio-badge">Web</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>La Valle Incantata</h3>
+                        <p data-i18n="portfolio.lavalleincantata.desc">Sito vetrina bilingue (IT/EN) per casa vacanze nel Parco della Divina Commedia. Gallerie, pagine dedicate ai dintorni, mappa e modulo richiesta disponibilità.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5</span>
+                            <span class="portfolio-tag">Bilingue</span>
+                            <span class="portfolio-tag">SEO locale</span>
+                        </div>
+                        <a href="https://emcdigitalsolutions.github.io/lavalleincantata/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- Terre di Miele -->
+                <div class="portfolio-card fade-in stagger-3" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/terredimiele.png" alt="Terre di Miele" loading="lazy">
+                        <span class="portfolio-badge">Web</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>Terre di Miele</h3>
+                        <p data-i18n="portfolio.terredimiele.desc">Sito vetrina per apicoltura artigianale siciliana. Presentazione dei mieli, listino, modulo contatti e gestione social integrata.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5</span>
+                            <span class="portfolio-tag">SEO</span>
+                            <span class="portfolio-tag">Social</span>
+                        </div>
+                        <a href="https://www.terredimiele.it" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
+
+                <!-- MegaService -->
+                <div class="portfolio-card fade-in stagger-4" data-category="web">
+                    <div class="portfolio-card-img">
+                        <img src="images/megaservice.png" alt="MegaService SAS" loading="lazy">
+                        <span class="portfolio-badge">Web</span>
+                    </div>
+                    <div class="portfolio-card-body">
+                        <h3>MegaService SAS</h3>
+                        <p data-i18n="portfolio.megaservice.desc">Sito vetrina per stazione di servizio Q8 e fornitura AdBlue. Servizi, sedi con mappa interattiva e contatti dei responsabili.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5</span>
+                            <span class="portfolio-tag">SEO</span>
+                            <span class="portfolio-tag">Maps</span>
+                        </div>
+                        <a href="https://emcdigitalsolutions.github.io/megaservicesas/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                    </div>
+                </div>
 
                 <!-- StockflowERP -->
                 <div class="portfolio-card fade-in stagger-1" data-category="saas">
@@ -2626,6 +2835,25 @@
                 'services.subtitle': "Dall'idea alla realizzazione, affianchiamo ogni progetto con competenza e attenzione ai dettagli.",
                 'services.web.title': 'Sviluppo Web a 360°',
                 'services.web.desc': 'Siti vetrina, e-commerce e web app con SEO avanzato, Google Analytics, Google Business Profile, inserimento su Google Maps e posizionamento sui motori di ricerca.',
+                'services.ecommerce.title': 'E-commerce su misura',
+                'services.ecommerce.desc': 'Negozi online completi e multilingua: catalogo prodotti, pagamenti sicuri, gestione ordini e magazzino, email automatiche e SEO. Qualità professionale a prezzi imbattibili.',
+                'ecom.eyebrow': 'E-commerce chiavi in mano',
+                'ecom.title': 'Vuoi vendere online? Ti costruiamo il negozio completo.',
+                'ecom.lead': 'Un e-commerce professionale, veloce e curato in ogni dettaglio — multilingua, con pagamenti sicuri e gestione ordini. Esattamente come quello che abbiamo realizzato per La Compagnia del Gluten Free.',
+                'ecom.price': 'Qualità e professionalità elevatissime, a un prezzo imbattibile',
+                'ecom.cta': 'Richiedi un preventivo gratuito',
+                'ecom.f1.t': 'Catalogo multilingua',
+                'ecom.f1.d': 'Prodotti, categorie e contenuti in più lingue, pronti per vendere ovunque.',
+                'ecom.f2.t': 'Pagamenti sicuri',
+                'ecom.f2.d': 'Carte, Stripe e PayPal con checkout protetto e affidabile.',
+                'ecom.f3.t': 'Ordini & magazzino',
+                'ecom.f3.d': 'Gestione ordini, scorte e spedizioni sempre sotto controllo.',
+                'ecom.f4.t': 'Email professionali',
+                'ecom.f4.d': 'Conferme d\'ordine e notifiche dal tuo dominio, brandizzate.',
+                'ecom.f5.t': 'SEO & velocità',
+                'ecom.f5.d': 'Ottimizzato per Google e per il mobile, veloce a caricare.',
+                'ecom.f6.t': 'Assistenza inclusa',
+                'ecom.f6.d': 'Ti seguiamo dal lancio in poi, con supporto continuo.',
                 'services.saas.title': 'Software SaaS',
                 'services.saas.desc': 'Gestionali cloud multi-tenant, ERP e piattaforme SaaS con architettura scalabile e sicura.',
                 'services.social.title': 'Social Media Management',
@@ -2641,6 +2869,10 @@
                 'portfolio.filter.app': 'App',
                 'portfolio.filter.social': 'Social',
                 'portfolio.viewProject': 'Visita il sito',
+                'portfolio.lcgf.desc': 'E-commerce completo per prodotti senza glutine: catalogo multilingua (IT/EN/FR/DE), pagamenti online, gestione ordini e spedizioni, email transazionali brandizzate.',
+                'portfolio.lavalleincantata.desc': 'Sito vetrina bilingue (IT/EN) per casa vacanze nel Parco della Divina Commedia. Gallerie, pagine dedicate ai dintorni, mappa e modulo richiesta disponibilità.',
+                'portfolio.terredimiele.desc': 'Sito vetrina per apicoltura artigianale siciliana. Presentazione dei mieli, listino, modulo contatti e gestione social integrata.',
+                'portfolio.megaservice.desc': 'Sito vetrina per stazione di servizio Q8 e fornitura AdBlue. Servizi, sedi con mappa interattiva e contatti dei responsabili.',
 'portfolio.stockflow.desc': 'Gestionale cloud multi-tenant per il retail. Magazzino, vendite, fatturazione elettronica e analytics integrati.',
                 'portfolio.grandifirme.desc': 'Sito vetrina per outlet di abbigliamento bambini. Catalogo prodotti integrato con gestionale StockflowERP.',
                 'portfolio.prenoty.desc': 'Piattaforma SaaS per la gestione prenotazioni e appuntamenti, con calendario intelligente e notifiche automatiche.',
@@ -2764,6 +2996,25 @@
                 'services.subtitle': 'From concept to delivery, we support every project with expertise and attention to detail.',
                 'services.web.title': '360° Web Development',
                 'services.web.desc': 'Business websites, e-commerce, and web apps with advanced SEO, Google Analytics, Google Business Profile, Google Maps listing, and search engine positioning.',
+                'services.ecommerce.title': 'Custom E-commerce',
+                'services.ecommerce.desc': 'Complete, multilingual online stores: product catalog, secure payments, order & inventory management, automated emails and SEO. Professional quality at unbeatable prices.',
+                'ecom.eyebrow': 'Turnkey e-commerce',
+                'ecom.title': 'Want to sell online? We build your complete store.',
+                'ecom.lead': 'A professional e-commerce, fast and crafted in every detail — multilingual, with secure payments and order management. Exactly like the one we built for La Compagnia del Gluten Free.',
+                'ecom.price': 'Top-tier quality and professionalism, at an unbeatable price',
+                'ecom.cta': 'Request a free quote',
+                'ecom.f1.t': 'Multilingual catalog',
+                'ecom.f1.d': 'Products, categories and content in multiple languages, ready to sell anywhere.',
+                'ecom.f2.t': 'Secure payments',
+                'ecom.f2.d': 'Cards, Stripe and PayPal with a protected, reliable checkout.',
+                'ecom.f3.t': 'Orders & inventory',
+                'ecom.f3.d': 'Orders, stock and shipping always under control.',
+                'ecom.f4.t': 'Professional emails',
+                'ecom.f4.d': 'Order confirmations and notifications from your own branded domain.',
+                'ecom.f5.t': 'SEO & speed',
+                'ecom.f5.d': 'Optimized for Google and mobile, fast to load.',
+                'ecom.f6.t': 'Support included',
+                'ecom.f6.d': 'We support you from launch onwards, continuously.',
                 'services.saas.title': 'SaaS Software',
                 'services.saas.desc': 'Multi-tenant cloud management systems, ERP, and SaaS platforms with scalable, secure architecture.',
                 'services.social.title': 'Social Media Management',
@@ -2779,6 +3030,10 @@
                 'portfolio.filter.app': 'App',
                 'portfolio.filter.social': 'Social',
                 'portfolio.viewProject': 'Visit website',
+                'portfolio.lcgf.desc': 'Full e-commerce for gluten-free products: multilingual catalog (IT/EN/FR/DE), online payments, order & shipping management, branded transactional emails.',
+                'portfolio.lavalleincantata.desc': 'Bilingual (IT/EN) showcase site for a holiday home in the Divine Comedy Park. Galleries, nearby-attractions pages, map and availability request form.',
+                'portfolio.terredimiele.desc': 'Showcase site for an artisan Sicilian apiary. Honey presentation, price list, contact form and integrated social management.',
+                'portfolio.megaservice.desc': 'Showcase site for a Q8 service station and AdBlue supply. Services, locations with interactive map and managers contacts.',
 'portfolio.stockflow.desc': 'Multi-tenant cloud ERP for retail. Inventory, sales, electronic invoicing, and integrated analytics.',
                 'portfolio.grandifirme.desc': "Business website for children's clothing outlet. Product catalog integrated with StockflowERP.",
                 'portfolio.prenoty.desc': 'SaaS platform for booking and appointment management, with smart calendar and automatic notifications.',
