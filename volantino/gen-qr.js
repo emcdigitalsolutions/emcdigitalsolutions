@@ -1,8 +1,9 @@
 const QR = require('C:/workspace/sortino/node_modules/qrcode');
 const fs = require('fs');
 const opts = { type:'svg', errorCorrectionLevel:'M', margin:1, color:{ dark:'#15306b', light:'#ffffff' } };
+const waMsg = encodeURIComponent('Ciao! Vorrei lo schizzo gratuito del mio sito.');
 const jobs = [
-  ['qr-schizzo.svg', 'https://www.emcdigitalsolutions.it/?utm_source=volantino&utm_medium=qr&utm_campaign=schizzo-gratis#contatti'],
+  ['qr-schizzo.svg', 'https://wa.me/393294348075?text=' + waMsg],
   ['qr-sito.svg',    'https://www.emcdigitalsolutions.it/?utm_source=volantino&utm_medium=qr&utm_campaign=brochure#portfolio'],
 ];
 (async () => {
