@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Volantino A5 — EMC Digital Solutions (fronte/retro, bleed 3mm)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blu:#15306b; --blu-deep:#060f2b; --blu-2:#11254f; --blu-3:#1d3d7d; --blu-bright:#2b4f9e;
+  --oro:#E3BE78; --oro-2:#f4e6c6; --oro-deep:#c79a4e;
+  --ink:#0B1330; --paper:#F7F9FF; --mut:rgba(214,224,245,.78);
+  --f-disp:'Fraunces',Georgia,serif; --f-body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:152mm 214mm;margin:0}  /* A5 148x210 + abbondanza VistaPrint 2mm/lato */
+html,body{background:#aab1c2}
+body{font-family:var(--f-body);display:flex;flex-direction:column;align-items:center;gap:8mm;padding:8mm 0}
+@media print{ html,body{background:#fff} body{padding:0;gap:0;display:block} }
+
+/* A5 148x210 + abbondanza 3mm = documento 154x216 (sfondo a vivo, niente crocini) */
+.page{
+  width:152mm;height:214mm;position:relative;overflow:hidden;color:#fff;
+  background:linear-gradient(155deg,#060f2b 0%,#0c1b3d 38%,#11254f 70%,#1a356f 100%);
+  box-shadow:0 14px 50px rgba(6,14,46,.45);
+  page-break-after:always;break-after:page;
+}
+.page:last-child{page-break-after:auto;break-after:auto}
+.bg-lines{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.glow{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  radial-gradient(60% 40% at 84% 6%,rgba(227,190,120,.16),transparent 55%),
+  radial-gradient(70% 50% at 4% 102%,rgba(43,79,158,.42),transparent 55%)}
+/* cornice oro interna sottile, dentro l'area di taglio */
+.frame{position:absolute;left:8mm;top:8mm;right:8mm;bottom:8mm;z-index:2;border:.3mm solid rgba(227,190,120,.2);border-radius:2mm;pointer-events:none}
+.wrap{position:relative;z-index:5;height:100%;padding:11mm 13mm;display:flex;flex-direction:column}
+#retro .wrap{padding-bottom:12mm}  /* piu' respiro in basso */
+#fronte .wrap{padding-bottom:13mm}  /* footer + riga garanzie */
+
+/* ---------- LOGO ---------- */
+.logo{display:flex;align-items:center;gap:3.4mm}
+.logo .chev{width:11mm;height:11mm;flex-shrink:0}
+.logo .lt{display:flex;flex-direction:column;line-height:1}
+.logo .emc{font-family:var(--f-body);font-weight:700;font-size:20pt;letter-spacing:.14em;
+  background:linear-gradient(100deg,var(--oro-2),var(--oro) 45%,var(--oro-deep));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.logo .ds{font-size:7.4pt;font-weight:600;letter-spacing:.42em;color:var(--mut);text-transform:uppercase;margin-top:1.6mm}
+
+/* ---------- FRONTE ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:2.4mm;font-size:8pt;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--oro)}
+.eyebrow::before{content:"";width:9mm;height:.4mm;background:linear-gradient(90deg,var(--oro),transparent)}
+.h1{font-family:var(--f-disp);font-weight:500;font-size:33pt;line-height:1.04;letter-spacing:-.005em;color:#fff}
+.h1 .au{font-style:italic;font-weight:500;
+  background:linear-gradient(100deg,var(--oro-2),var(--oro));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lead{font-size:11.5pt;font-weight:400;line-height:1.55;color:#e9eefb;max-width:108mm}
+.lead b{color:#fff;font-weight:600}
+.pills{display:flex;flex-wrap:wrap;gap:2.4mm}
+.pill{display:inline-flex;align-items:center;gap:2mm;font-size:8.6pt;font-weight:600;letter-spacing:.02em;color:#eaf0fc;
+  border:.3mm solid rgba(227,190,120,.45);background:rgba(255,255,255,.04);border-radius:30px;padding:2mm 4.4mm}
+.pill .d{width:1.5mm;height:1.5mm;border-radius:50%;background:var(--oro)}
+
+/* blocco centrale del fronte: occupa lo spazio e si centra, niente vuoti */
+.hero-mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:4mm;padding:2.5mm 0}
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-top:1mm;
+  border-top:.3mm solid rgba(255,255,255,.14);padding-top:5mm}
+.promise{display:flex;flex-direction:column;gap:2.4mm}
+.promise .pi{width:9mm;height:9mm;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 35% 30%,rgba(227,190,120,.3),rgba(227,190,120,.06));border:.35mm solid rgba(227,190,120,.55)}
+.promise .pi svg{width:4.8mm;height:4.8mm;color:var(--oro)}
+.promise .pt{font-family:var(--f-disp);font-size:11pt;font-weight:600;color:#fff;line-height:1.1}
+.promise .ps{font-size:8.2pt;color:var(--mut);line-height:1.34}
+
+.front-cta{display:flex;align-items:stretch;gap:4mm}
+.front-cta .badge{flex:1}
+.front-cta .qrf{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4mm;flex-shrink:0}
+.front-cta .qrf .tile{width:17mm;height:17mm;background:#fff;border-radius:2.4mm;padding:1.4mm;box-shadow:0 6px 16px rgba(0,0,0,.28)}
+.front-cta .qrf .tile img{width:100%;height:100%;display:block}
+.front-cta .qrf .cap{font-size:6.8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--oro)}
+.badge{display:inline-flex;align-items:center;gap:3.2mm;background:linear-gradient(100deg,var(--oro),var(--oro-deep));color:#21160a;
+  letter-spacing:.005em;padding:3.6mm 6.4mm;border-radius:4mm;box-shadow:0 6px 18px rgba(227,190,120,.28)}
+.badge svg{width:5.4mm;height:5.4mm;flex-shrink:0}
+.badge .bt{display:flex;flex-direction:column;text-align:left;line-height:1.12}
+.badge .bt b{font-size:10.4pt;font-weight:700}
+.badge .bt small{font-size:7.6pt;font-weight:600;opacity:.82;margin-top:.7mm}
+.front-foot{display:flex;align-items:center;justify-content:space-between;gap:4mm;border-top:.3mm solid rgba(255,255,255,.16);padding-top:5mm;margin-top:5.5mm}
+.front-foot .site{font-weight:700;font-size:11pt;letter-spacing:.01em;color:#fff}
+.front-foot .loc{font-size:8.6pt;color:var(--mut);text-align:right}
+.front-foot .loc b{color:var(--oro);font-weight:600}
+.trust{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:2.4mm 7mm;margin-top:6mm}
+.trust .ti{display:inline-flex;align-items:center;gap:2mm;font-size:8.8pt;font-weight:600;color:#eaf0fc;letter-spacing:.01em}
+.trust .ti svg{width:3.9mm;height:3.9mm;color:var(--oro);flex-shrink:0}
+.trust-r{margin-top:3.5mm;padding-top:3mm;border-top:.3mm solid rgba(255,255,255,.12)}
+
+/* ---------- RETRO ---------- */
+.r-head{display:flex;align-items:flex-end;justify-content:space-between;gap:5mm}
+.r-title{font-family:var(--f-disp);font-weight:500;font-size:21pt;line-height:1.05;color:#fff}
+.r-title .au{font-style:italic;background:linear-gradient(100deg,var(--oro-2),var(--oro));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.r-sub{font-size:9.4pt;color:var(--mut);line-height:1.5;max-width:62mm;text-align:right}
+
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:3.2mm;margin-top:2.5mm}
+.card{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  border:.3mm solid rgba(227,190,120,.22);border-radius:2.6mm;padding:3.2mm 4.2mm 3.4mm}
+.card .ic{width:7.4mm;height:7.4mm;border-radius:50%;display:grid;place-items:center;margin-bottom:1.8mm;
+  background:radial-gradient(circle at 35% 30%,rgba(227,190,120,.28),rgba(227,190,120,.06));border:.35mm solid rgba(227,190,120,.5)}
+.card .ic svg{width:4.8mm;height:4.8mm;color:var(--oro)}
+.card h3{font-family:var(--f-disp);font-weight:600;font-size:11.4pt;color:#fff;margin-bottom:1.3mm;letter-spacing:.002em}
+.card p{font-size:8.3pt;line-height:1.4;color:#dbe3f4}
+
+.why{margin-top:2.5mm;background:rgba(255,255,255,.035);border:.3mm solid rgba(255,255,255,.12);border-radius:2.6mm;padding:3.2mm 5mm}
+.why h4{font-size:7.8pt;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--oro);margin-bottom:2.8mm}
+.why .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8mm 6mm}
+.why .it{display:flex;align-items:flex-start;gap:2.4mm;font-size:8.6pt;line-height:1.36;color:#eaf0fc}
+.why .it svg{width:3.6mm;height:3.6mm;color:var(--oro);flex-shrink:0;margin-top:.4mm}
+.why .it b{color:#fff;font-weight:600}
+
+.stats{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1.4mm 3.4mm;margin-top:2.8mm;font-size:9pt;color:var(--mut)}
+.stats span b{font-family:var(--f-disp);font-weight:600;color:var(--oro);font-size:10.5pt}
+.stats .dot{color:rgba(227,190,120,.55);font-size:8pt}
+
+.cta{display:flex;align-items:center;gap:5mm;margin-top:2mm;
+  background:linear-gradient(120deg,rgba(227,190,120,.16),rgba(227,190,120,.04));
+  border:.3mm solid rgba(227,190,120,.5);border-radius:3mm;padding:3.8mm 5.5mm}
+.cta .txt{flex:1}
+.cta .k{font-family:var(--f-disp);font-weight:600;font-size:14pt;color:#fff;line-height:1.12}
+.cta .k em{font-style:italic;color:var(--oro)}
+.cta .c{margin-top:3mm;display:flex;flex-direction:column;gap:1.6mm}
+.cta .c .ci{display:flex;align-items:center;gap:2.6mm;font-size:9.2pt;font-weight:500;color:#eaf0fc}
+.cta .c .ci svg{width:4mm;height:4mm;color:var(--oro);flex-shrink:0}
+.cta .qr{display:flex;flex-direction:column;align-items:center;gap:1.6mm;flex-shrink:0}
+.cta .qr-tile{width:22mm;height:22mm;background:#fff;border-radius:2mm;padding:1.5mm;box-shadow:0 6px 16px rgba(0,0,0,.28)}
+.cta .qr-tile img{width:100%;height:100%;display:block}
+.cta .qr-cap{font-size:7pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+
+.r-foot{display:flex;align-items:center;justify-content:space-between;margin-top:3mm;padding-top:3mm;border-top:.3mm solid rgba(255,255,255,.14)}
+.r-foot .mini{display:flex;align-items:center;gap:2.4mm}
+.r-foot .mini .chev{width:6.4mm;height:6.4mm}
+.r-foot .mini .t{font-weight:700;font-size:8pt;letter-spacing:.05em;white-space:nowrap;
+  background:linear-gradient(100deg,var(--oro-2),var(--oro));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.r-foot .tl{font-size:6.8pt;color:var(--mut);white-space:nowrap}
+.r-foot .tl b{color:var(--oro);font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- ============================ FRONTE ============================ -->
+<div class="page" id="fronte">
+  <svg class="bg-lines" viewBox="0 0 308 432" preserveAspectRatio="xMidYMid slice" fill="none">
+    <path d="M150 -15 C235 18 285 42 430 40" stroke="rgba(227,190,120,.13)" stroke-width="1"/>
+    <path d="M185 -15 C265 24 312 56 440 62" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <path d="M220 -15 C296 30 338 70 450 84" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+    <path d="M255 -15 C324 36 360 84 455 104" stroke="rgba(227,190,120,.07)" stroke-width="1"/>
+  </svg>
+  <div class="glow"></div>
+  <div class="frame"></div>
+  <div class="wrap">
+    <div class="logo">
+      <svg class="chev" viewBox="0 0 36 38" fill="none">
+        <defs><linearGradient id="bar1" x1="0" y1="0" x2="36" y2="38" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#f4e6c6"/><stop offset="1" stop-color="#c79a4e"/></linearGradient></defs>
+        <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#bar1)"/>
+        <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#bar1)" opacity=".82"/>
+        <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#bar1)"/>
+      </svg>
+      <div class="lt"><span class="emc">EMC</span><span class="ds">Digital Solutions</span></div>
+    </div>
+
+    <div class="hero-mid">
+      <span class="eyebrow">Soluzioni digitali su misura</span>
+      <h1 class="h1">Il digitale che fa<br>crescere la tua <span class="au">attività.</span></h1>
+      <p class="lead">Siti web, e-commerce, app e gestionali su misura. <b>Progettati e sviluppati da chi parla direttamente con te</b> — senza intermediari, senza tempi infiniti.</p>
+      <div class="pills">
+        <span class="pill"><span class="d"></span>Siti Web</span>
+        <span class="pill"><span class="d"></span>E-commerce</span>
+        <span class="pill"><span class="d"></span>App Mobile</span>
+        <span class="pill"><span class="d"></span>Gestionali</span>
+        <span class="pill"><span class="d"></span>Social &amp; SEO</span>
+        <span class="pill"><span class="d"></span>Branding &amp; Logo</span>
+        <span class="pill"><span class="d"></span>Google Business</span>
+        <span class="pill"><span class="d"></span>Grafica &amp; Stampa</span>
+        <span class="pill"><span class="d"></span>Landing Page</span>
+      </div>
+      <div class="promises">
+        <div class="promise">
+          <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></span>
+          <span class="pt">Filo diretto</span>
+          <span class="ps">Parli sempre con chi sviluppa, mai con un call center.</span>
+        </div>
+        <div class="promise">
+          <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0l-7.2-7.2A2 2 0 0 1 2.8 12V4a1.2 1.2 0 0 1 1.2-1.2h8a2 2 0 0 1 1.4.6l7.2 7.2a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></span>
+          <span class="pt">Prezzi chiari</span>
+          <span class="ps">Fissi e dichiarati prima di iniziare. Nessuna sorpresa.</span>
+        </div>
+        <div class="promise">
+          <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span>
+          <span class="pt">Sempre veloci</span>
+          <span class="ps">Risposte in giornata e tempi di consegna rapidi.</span>
+        </div>
+      </div>
+    </div>
+	
+    <div class="front-cta">
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3Z"/><path d="m15 5 4 4"/></svg>
+        <span class="bt"><b>Ricevi lo schizzo del tuo sito, gratis</b><small>Inquadra il QR o scrivici · senza impegno</small></span>
+      </span>
+      <span class="qrf">
+        <span class="tile"><img src="qr-emc.svg" alt="QR: vai al sito EMC e richiedi il tuo schizzo gratuito"></span>
+        <span class="cap">Scopri di più</span>
+      </span>
+    </div>
+    <div class="front-foot">
+      <span class="site">www.emcdigitalsolutions.it</span>
+      <span class="loc"><b>Sicilia</b> · operiamo in tutta Italia</span>
+    </div>
+    <div class="trust">
+      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Preventivo gratuito</span>
+      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Soluzioni su misura</span>
+      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Assistenza continua</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ RETRO ============================ -->
+<div class="page" id="retro">
+  <svg class="bg-lines" viewBox="0 0 308 432" preserveAspectRatio="xMidYMid slice" fill="none">
+    <path d="M255 -15 C326 30 360 78 452 96" stroke="rgba(227,190,120,.10)" stroke-width="1"/>
+    <path d="M288 -15 C350 36 384 92 470 116" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+  </svg>
+  <div class="glow"></div>
+  <div class="frame"></div>
+  <div class="wrap">
+    <div class="r-head">
+      <h2 class="r-title">Cosa possiamo<br>fare <span class="au">per te</span></h2>
+      <p class="r-sub">Un unico partner per tutta la tua presenza digitale, dalla prima idea alla pubblicazione.</p>
+    </div>
+
+    <div class="svc">
+      <div class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+        <h3>Siti Web &amp; E-commerce</h3>
+        <p>Vetrine eleganti e negozi online curati nei dettagli e pronti a vendere.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
+        <h3>App Mobile</h3>
+        <p>App Android e iOS su misura, pensate per i tuoi clienti.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+        <h3>Gestionali &amp; SaaS</h3>
+        <p>Magazzino, ordini, clienti e report: il tuo lavoro sempre sotto controllo.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v3a1 1 0 0 0 1 1h3l4 4V7L7 11H4a1 1 0 0 0-1 1Z"/><path d="M16 8a5 5 0 0 1 0 8"/><path d="M19.5 5a9 9 0 0 1 0 14"/></svg></span>
+        <h3>Social &amp; Visibilità</h3>
+        <p>Social, Google Business e SEO locale per farti trovare e scegliere.</p>
+      </div>
+    </div>
+
+    <div class="why">
+      <h4>Perché EMC Digital Solutions</h4>
+      <div class="grid">
+        <span class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Rapporto diretto:</b> parli con chi sviluppa, nessun intermediario.</span></span>
+        <span class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Prezzi chiari e fissi,</b> dichiarati prima di iniziare.</span></span>
+        <span class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Risposte in giornata</b> e tempi di consegna rapidi.</span></span>
+        <span class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Design su misura</b> per la tua identità, mai template anonimi.</span></span>
+      </div>
+    </div>
+
+    <div class="stats">
+      <span><b>15+</b> anni di esperienza</span><span class="dot">●</span>
+      <span><b>50+</b> progetti consegnati</span><span class="dot">●</span>
+      <span><b>100%</b> seguito da noi</span><span class="dot">●</span>
+      <span><b>Tutta Italia</b>, da remoto</span>
+    </div>
+
+    <div class="cta">
+      <div class="txt">
+        <div class="k">Parliamo del tuo progetto.<br><em>La prima consulenza è gratuita.</em></div>
+        <div class="c">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>www.emcdigitalsolutions.it</span>
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>emcdigitalsolution@gmail.com</span>
+        </div>
+      </div>
+      <div class="qr">
+        <span class="qr-tile"><img src="qr-emc.svg" alt="QR: vai al sito EMC Digital Solutions"></span>
+        <span class="qr-cap">Scopri di più</span>
+      </div>
+    </div>
+
+    <div class="trust trust-r">
+      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Consegna nei tempi</span>
+      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pagamenti concordati</span>
+      <span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Supporto dedicato</span>
+    </div>
+    <div class="r-foot">
+      <div class="mini">
+        <svg class="chev" viewBox="0 0 36 38" fill="none">
+          <defs><linearGradient id="bar2" x1="0" y1="0" x2="36" y2="38" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#f4e6c6"/><stop offset="1" stop-color="#c79a4e"/></linearGradient></defs>
+          <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#bar2)"/>
+          <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#bar2)" opacity=".82"/>
+          <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#bar2)"/>
+        </svg>
+        <span class="t">EMC DIGITAL SOLUTIONS</span>
+      </div>
+      <span class="tl"><b>Sicilia</b> · in tutta Italia &nbsp;·&nbsp; Sviluppo software &amp; soluzioni digitali</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
