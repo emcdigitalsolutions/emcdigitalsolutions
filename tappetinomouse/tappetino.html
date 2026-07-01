@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Tappetino mouse — EMC Digital Solutions (242×202mm full-bleed)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nav0:#0b1122; --nav1:#0e1529; --nav2:#131b2e; --nav3:#0f1728;
+  --blu:#6b9ef7; --blu2:#93b8fc; --oro:#f5c542; --oro2:#d4b84a;
+  --ink:#e8e4dc; --mut:#8a92a3;
+  --f:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:242mm 202mm;margin:0}
+html,body{background:#aab1c2}
+body{font-family:var(--f);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:10mm}
+@media print{ html,body{background:#fff} body{padding:0;display:block} }
+
+.mat{
+  width:242mm;height:202mm;position:relative;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(120% 90% at 18% 8%, rgba(107,158,247,.12), transparent 46%),
+    radial-gradient(120% 100% at 88% 96%, rgba(245,197,66,.10), transparent 50%),
+    linear-gradient(150deg,#0b1122 0%,#0e1529 38%,#131b2e 68%,#0f1728 100%);
+  box-shadow:0 20px 60px rgba(6,14,46,.45);
+}
+
+/* trama tecnica: griglia di punti tenue */
+.grid{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(147,184,252,.10) .6px, transparent .7px);
+  background-size:7mm 7mm;
+  -webkit-mask-image:radial-gradient(120% 100% at 50% 45%,#000 55%,transparent 92%);
+  mask-image:radial-gradient(120% 100% at 50% 45%,#000 55%,transparent 92%)}
+
+/* archi chevron decorativi negli angoli liberi */
+.arcs{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
+/* alone morbido dietro il logo */
+.halo{position:absolute;left:50%;top:39%;transform:translate(-50%,-50%);
+  width:150mm;height:110mm;z-index:1;pointer-events:none;
+  background:radial-gradient(closest-side, rgba(107,158,247,.10), transparent 72%)}
+
+/* cornice hairline arrotondata, ben dentro l'area di sicurezza */
+.frame{position:absolute;left:16mm;top:16mm;right:16mm;bottom:16mm;z-index:2;
+  border:.3mm solid rgba(245,197,66,.16);border-radius:6mm;pointer-events:none;
+  box-shadow:inset 0 0 30mm rgba(11,17,34,.35)}
+
+.content{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;padding:26mm 24mm}
+
+.logo-area{display:flex;align-items:center;justify-content:center;gap:8mm}
+.logo-svg{width:30mm;height:30mm;flex-shrink:0;filter:drop-shadow(0 3mm 8mm rgba(107,158,247,.18))}
+.company-text{display:flex;flex-direction:column;align-items:flex-start;gap:1mm}
+.company-emc{font-size:22mm;font-weight:700;line-height:.92;letter-spacing:5.5mm;
+  background:linear-gradient(135deg,#6b9ef7 0%,#93b8fc 40%,#c8d89e 70%,#f5c542 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.company-sub{font-size:5.6mm;font-weight:400;color:var(--mut);letter-spacing:3.4mm;
+  text-transform:uppercase;padding-left:1mm}
+
+.separator{width:64mm;height:.3mm;margin:11mm 0 8.5mm;
+  background:linear-gradient(90deg,transparent,rgba(245,197,66,.55) 28%,var(--oro) 50%,rgba(245,197,66,.55) 72%,transparent)}
+
+.person-name{font-size:9mm;font-weight:600;color:var(--ink);letter-spacing:1.4mm}
+.person-title{font-size:5mm;font-weight:300;color:#7a8296;letter-spacing:1.2mm;margin-top:2.6mm}
+
+.tagline{margin-top:9mm;display:inline-flex;align-items:center;gap:3mm;
+  font-size:3.9mm;font-weight:600;letter-spacing:2.4mm;text-transform:uppercase;color:var(--oro)}
+.tagline::before,.tagline::after{content:"";width:12mm;height:.35mm;
+  background:linear-gradient(90deg,transparent,var(--oro))}
+.tagline::after{background:linear-gradient(90deg,var(--oro),transparent)}
+
+/* riga contatti in basso, dentro l'area di sicurezza */
+.contacts{position:absolute;left:0;right:0;bottom:24mm;z-index:5;
+  display:flex;justify-content:center;align-items:center;gap:9mm;flex-wrap:wrap}
+.ci{display:inline-flex;align-items:center;gap:2.6mm;font-size:4.1mm;font-weight:500;color:#c3cbdb;letter-spacing:.3mm}
+.ci svg{width:4.6mm;height:4.6mm;flex-shrink:0;color:var(--blu2)}
+.ci.wa svg{color:#e8e4dc}
+.dot{width:1.4mm;height:1.4mm;border-radius:50%;background:rgba(245,197,66,.5)}
+
+/* riga accento inferiore a tutta larghezza (bleed) */
+.accent{position:absolute;left:0;right:0;bottom:0;height:2.4mm;z-index:4;
+  background:linear-gradient(90deg,#4a7fd4,#6b9ef7,#93b8fc,#c8d89e,#d4b84a,#f5c542)}
+</style>
+</head>
+<body>
+<div class="mat">
+  <div class="grid"></div>
+  <div class="halo"></div>
+  <svg class="arcs" viewBox="0 0 484 404" preserveAspectRatio="xMidYMid slice" fill="none">
+    <!-- angolo alto-destra -->
+    <path d="M300 -20 C380 30 430 70 520 90"  stroke="rgba(107,158,247,.14)" stroke-width="1.1"/>
+    <path d="M340 -20 C412 34 458 82 540 108" stroke="rgba(147,184,252,.08)" stroke-width="1.1"/>
+    <path d="M380 -20 C444 40 486 96 556 128" stroke="rgba(245,197,66,.08)"  stroke-width="1.1"/>
+    <!-- angolo basso-sinistra -->
+    <path d="M-40 320 C60 372 120 392 210 420" stroke="rgba(245,197,66,.08)"  stroke-width="1.1"/>
+    <path d="M-40 356 C50 400 108 420 190 442" stroke="rgba(107,158,247,.10)" stroke-width="1.1"/>
+  </svg>
+  <div class="frame"></div>
+
+  <div class="content">
+    <div class="logo-area">
+      <svg class="logo-svg" viewBox="0 0 40 38" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="logoG" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#6b9ef7"/><stop offset="60%" stop-color="#93b8fc"/><stop offset="100%" stop-color="#f5c542"/>
+        </linearGradient></defs>
+        <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#logoG)"/>
+        <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#logoG)" opacity="0.8"/>
+        <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#logoG)"/>
+      </svg>
+      <div class="company-text">
+        <span class="company-emc">EMC</span>
+        <span class="company-sub">Digital Solutions</span>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="person-name">ENRICO MARIA CARUSO</div>
+    <div class="person-title">Founder &amp; Software Developer</div>
+
+    <div class="tagline">Soluzioni digitali su misura</div>
+  </div>
+
+  <div class="contacts">
+    <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg>www.emcdigitalsolutions.it</span>
+    <span class="dot"></span>
+    <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>emcdigitalsolution@gmail.com</span>
+    <span class="dot"></span>
+    <span class="ci wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>+39 329 434 8075</span>
+  </div>
+
+  <div class="accent"></div>
+</div>
+</body>
+</html>
