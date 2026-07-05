@@ -1048,6 +1048,24 @@
         .service-card--social::after { background: linear-gradient(90deg, #f5c542, #d4a017); }
         .service-card--app::after { background: linear-gradient(90deg, #34d399, #10b981); }
 
+        /* ===== Biglietti da visita (cartacei + digitali) ===== */
+        .service-card--card::before {
+            background: radial-gradient(circle at 82% 22%, rgba(167,139,250,0.13) 0%, transparent 50%),
+                        radial-gradient(circle at 15% 80%, rgba(139,92,246,0.08) 0%, transparent 40%);
+        }
+        .service-card--card:hover {
+            border-color: rgba(167,139,250,0.32);
+            box-shadow: 0 20px 50px var(--shadow-lg), 0 0 30px rgba(167,139,250,0.12);
+        }
+        .service-card--card .service-icon { background: rgba(167,139,250,0.1); }
+        .service-card--card:hover .service-icon {
+            background: rgba(167,139,250,0.18);
+            box-shadow: 0 0 20px rgba(167,139,250,0.15);
+        }
+        .service-card--card .service-icon svg { color: #a78bfa; }
+        .service-card--card:hover h3 { color: #c4b5fd; }
+        .service-card--card::after { background: linear-gradient(90deg, #a78bfa, #8b5cf6); }
+
         /* Last row centering for items in grid */
         .services-grid {
             justify-items: center;
@@ -2161,6 +2179,20 @@
                     </div>
                 </div>
 
+                <!-- Biglietti da visita -->
+                <div class="service-card service-card--card fade-in stagger-1" data-href="#contatti">
+                    <div class="service-card-bg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><line x1="14" y1="10" x2="18" y2="10"/><line x1="14" y1="13" x2="18" y2="13"/><line x1="5" y1="16" x2="19" y2="16" opacity="0.4"/></svg>
+                    </div>
+                    <div class="service-card-content">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><line x1="14" y1="10" x2="18" y2="10"/><line x1="14" y1="13" x2="18" y2="13"/></svg>
+                        </div>
+                        <h3 data-i18n="services.card.title">Biglietti da visita &amp; QR</h3>
+                        <p data-i18n="services.card.desc">Biglietti da visita cartacei e digitali per aziende, professionisti e privati: design personalizzato, file pronti per la stampa e versione digitale con QR code e pagina profilo online.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -2774,6 +2806,7 @@
                         <li><a href="servizio-saas.html" data-i18n="services.saas.title">Software SaaS</a></li>
                         <li><a href="proposta-commerciale.html" data-i18n="services.social.title">Social Media</a></li>
                         <li><a href="servizio-app.html" data-i18n="services.app.title">Sviluppo App</a></li>
+                        <li><a href="#servizi" data-i18n="services.card.title">Biglietti da visita & QR</a></li>
                     </ul>
                 </div>
                 <div>
@@ -2860,6 +2893,8 @@
                 'services.social.desc': 'Strategia social completa: gestione pagine, creazione contenuti, piani editoriali, campagne sponsorizzate geolocalizzate, reportistica e analisi delle performance.',
                 'services.app.title': 'Sviluppo App',
                 'services.app.desc': 'App native e cross-platform per Android e iOS. UX design, notifiche push e rilascio sugli store.',
+                'services.card.title': 'Biglietti da visita & QR',
+                'services.card.desc': 'Biglietti da visita cartacei e digitali per aziende, professionisti e privati: design personalizzato, file pronti per la stampa e versione digitale con QR code e pagina profilo online.',
                 'portfolio.label': 'I nostri lavori',
                 'portfolio.title': 'Portfolio',
                 'portfolio.subtitle': 'Una selezione di progetti realizzati per clienti in diversi settori.',
@@ -3023,6 +3058,8 @@
                 'services.social.desc': 'Complete social strategy: page management, content creation, editorial planning, geo-targeted sponsored campaigns, reporting, and performance analysis.',
                 'services.app.title': 'App Development',
                 'services.app.desc': 'Native and cross-platform apps for Android and iOS. UX design, push notifications, and store release.',
+                'services.card.title': 'Business Cards & QR',
+                'services.card.desc': 'Printed and digital business cards for companies, professionals and individuals: custom design, print-ready files and a digital version with QR code and online profile page.',
                 'portfolio.label': 'Our work',
                 'portfolio.title': 'Portfolio',
                 'portfolio.subtitle': 'A selection of projects delivered for clients across different industries.',
