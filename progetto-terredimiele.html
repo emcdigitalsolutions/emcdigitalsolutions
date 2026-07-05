@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNWXL8RZ4Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MNWXL8RZ4Z');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case study: Terre di Miele — EMC Digital Solutions</title>
+    <meta name="description" content="Case study Terre di Miele: sito web, catalogo PDF, biglietti da visita con QR, foglio A4 da banco, t-shirt brandizzata e gestione social. Un progetto a 360° firmato EMC Digital Solutions.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.emcdigitalsolutions.it/progetto-terredimiele.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#0c1120">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Case study: Terre di Miele — EMC Digital Solutions">
+    <meta property="og:description" content="Sito web, catalogo, biglietti da visita, materiali per lo stand, t-shirt e social: un progetto di brand identity a 360°.">
+    <meta property="og:image" content="https://www.emcdigitalsolutions.it/images/casestudy-terredimiele/sito.png">
+    <meta property="og:url" content="https://www.emcdigitalsolutions.it/progetto-terredimiele.html">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0c1120;
+            --bg-secondary: #131b2e;
+            --bg-card: #172035;
+            --accent: #6b9ef7;
+            --accent-light: #93b8fc;
+            --accent-vivid: #f5c542;
+            --accent-vivid-hover: #ffd666;
+            --honey: #e6a417;
+            --honey-light: #f5c542;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9ca3b0;
+            --border: #263354;
+            --shadow: rgba(0,0,0,0.2);
+            --shadow-lg: rgba(0,0,0,0.35);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --nav-height: 72px;
+            --theme-color: #6b9ef7;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            height: var(--nav-height); z-index: 1000;
+            background: rgba(12, 17, 32, 0.88);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 12px var(--shadow);
+        }
+        .navbar .container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+        .nav-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.1rem; color: var(--accent); position: relative; }
+        .nav-logo::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 90px;
+            background: linear-gradient(90deg, transparent 30%, rgba(212, 160, 23, 0.08) 50%, transparent 70%);
+            background-size: 200% 100%; animation: shimmer 4s ease-in-out infinite; pointer-events: none; border-radius: 8px;
+        }
+        .nav-logo svg { width: 128px; height: 128px; }
+        .nav-logo span { white-space: nowrap; }
+        .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent-vivid); transition: width 0.2s; }
+        .nav-links a:hover::after { width: 100%; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-menu {
+            display: none; position: fixed; top: var(--nav-height); left: 0; right: 0;
+            background: rgba(19, 27, 46, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 24px; box-shadow: 0 8px 32px var(--shadow-lg); z-index: 999;
+        }
+        .mobile-menu.open { display: block; }
+        .mobile-menu a { display: block; padding: 14px 0; font-size: 1rem; font-weight: 500; color: var(--text-primary); border-bottom: 1px solid var(--border); }
+        .mobile-menu a:last-child { border-bottom: none; }
+        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+
+        .lang-toggle {
+            display: flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 600;
+            color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border);
+            border-radius: 20px; padding: 6px 14px; cursor: pointer; transition: all 0.2s;
+        }
+        .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+        .mobile-menu .lang-toggle { margin-top: 16px; justify-content: center; }
+
+        /* ========== BREADCRUMB ========== */
+        .breadcrumb { padding: calc(var(--nav-height) + 28px) 0 0; }
+        .breadcrumb a, .breadcrumb span { font-size: 0.82rem; color: var(--text-secondary); }
+        .breadcrumb a:hover { color: var(--accent-vivid); }
+        .breadcrumb .sep { margin: 0 8px; opacity: 0.5; }
+
+        /* ========== CASE STUDY HERO ========== */
+        .cs-hero { padding: 40px 0 64px; position: relative; overflow: hidden; }
+        .cs-hero::before {
+            content: ''; position: absolute; top: -35%; right: -12%; width: 62%; height: 130%;
+            background: radial-gradient(circle, rgba(230, 164, 23, 0.14) 0%, transparent 60%); pointer-events: none;
+        }
+        .cs-hero::after {
+            content: ''; position: absolute; bottom: -25%; left: -12%; width: 50%; height: 100%;
+            background: radial-gradient(circle, rgba(107, 158, 247, 0.06) 0%, transparent 60%); pointer-events: none;
+        }
+        .cs-hero .container { position: relative; z-index: 1; }
+        .cs-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.16em; text-transform: uppercase; color: var(--honey-light); margin-bottom: 18px;
+        }
+        .cs-eyebrow svg { width: 15px; height: 15px; }
+        .cs-hero h1 {
+            font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(2.4rem, 6vw, 4rem);
+            line-height: 1.05; margin-bottom: 20px;
+            background: linear-gradient(135deg, #f7ead0 0%, #e6a417 55%, #f5c542 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .cs-hero h1 em { font-style: italic; }
+        .cs-lead { font-size: clamp(1.05rem, 2.2vw, 1.28rem); color: var(--text-secondary); max-width: 720px; line-height: 1.7; }
+
+        /* Meta bar */
+        .cs-meta {
+            display: flex; flex-wrap: wrap; gap: 14px 40px; margin-top: 40px;
+            padding-top: 28px; border-top: 1px solid var(--border);
+        }
+        .cs-meta-item { display: flex; flex-direction: column; gap: 4px; }
+        .cs-meta-item .l { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary); }
+        .cs-meta-item .v { font-size: 0.98rem; font-weight: 600; color: var(--text-primary); }
+
+        /* ========== OVERVIEW ========== */
+        .cs-overview { padding: 64px 0; background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .cs-overview-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: start; }
+        .cs-section-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--honey-light); margin-bottom: 14px; }
+        .cs-overview h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.6vw, 2.5rem); line-height: 1.15; font-weight: 600; }
+        .cs-overview p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 16px; }
+        .cs-overview p:last-child { margin-bottom: 0; }
+
+        /* ========== DELIVERABLES SHOWCASE ========== */
+        .showcase { padding: 84px 0; }
+        .cs-head { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+        .cs-head .cs-section-label { margin-bottom: 10px; }
+        .cs-head h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 600; margin-bottom: 12px; }
+        .cs-head p { color: var(--text-secondary); font-size: 1.02rem; }
+
+        .show-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 96px; }
+        .show-row:last-child { margin-bottom: 0; }
+        .show-row.reverse .show-media { order: 2; }
+
+        .show-media { position: relative; }
+        .show-frame {
+            background: linear-gradient(160deg, #1d2740 0%, #131a2b 100%);
+            border: 1px solid var(--border); border-radius: 18px; padding: 22px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.45); position: relative; overflow: hidden;
+        }
+        .show-frame::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100%;
+            background: radial-gradient(circle at 80% 0%, rgba(230,164,23,0.10) 0%, transparent 55%); pointer-events: none;
+        }
+        .show-frame img { border-radius: 10px; box-shadow: 0 12px 30px rgba(0,0,0,0.35); position: relative; z-index: 1; }
+        .show-frame.plain { background: #fff; }
+        .show-frame.plain img { box-shadow: none; }
+        .show-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .show-trio { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .show-trio img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1 / 1; }
+        .show-trio img:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+
+        .show-num {
+            font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em;
+            color: var(--honey-light); margin-bottom: 14px; display: inline-flex; align-items: center; gap: 10px;
+        }
+        .show-num::before { content: ''; width: 28px; height: 2px; background: linear-gradient(90deg, var(--honey), var(--honey-light)); display: inline-block; }
+        .show-body h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 600; margin-bottom: 14px; line-height: 1.2; }
+        .show-body p { color: var(--text-secondary); font-size: 1.02rem; line-height: 1.8; margin-bottom: 22px; }
+        .show-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .show-tag {
+            font-size: 0.8rem; font-weight: 500; color: var(--honey-light);
+            background: rgba(230,164,23,0.10); border: 1px solid rgba(230,164,23,0.22);
+            padding: 6px 14px; border-radius: 999px;
+        }
+
+        /* ========== PACKAGE STRIP ========== */
+        .cs-package { padding: 70px 0; background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .cs-package .cs-head { margin-bottom: 40px; }
+        .pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .pkg-item {
+            display: flex; align-items: center; gap: 12px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+        .pkg-item:hover { border-color: rgba(230,164,23,0.35); transform: translateY(-3px); }
+        .pkg-item svg { width: 22px; height: 22px; color: var(--honey-light); flex-shrink: 0; }
+        .pkg-item span { font-size: 0.98rem; font-weight: 600; }
+
+        /* ========== CTA ========== */
+        .cta-section { padding: 90px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(230,164,23,0.10) 0%, transparent 55%); pointer-events: none;
+        }
+        .cta-section .container { position: relative; z-index: 1; }
+        .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 600; margin-bottom: 16px; }
+        .cta-section p { font-size: 1.08rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 34px; line-height: 1.7; }
+        .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .cta-btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 16px 38px;
+            background: linear-gradient(135deg, #e6a417, #f5c542); color: #1a1206; font-weight: 700; font-size: 1rem;
+            border-radius: 50px; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(230,164,23,0.4); }
+        .cta-ghost {
+            display: inline-flex; align-items: center; gap: 8px; padding: 16px 34px;
+            border: 1px solid var(--border); border-radius: 50px; color: var(--text-primary); font-weight: 600; font-size: 1rem;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .cta-ghost:hover { border-color: var(--honey-light); color: var(--honey-light); }
+        .cta-ghost svg { width: 16px; height: 16px; }
+
+        /* ========== FOOTER ========== */
+        .footer { background: #080d1a; color: #fff; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .footer-brand p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-top: 16px; max-width: 340px; }
+        .footer-logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.1rem; }
+        .footer-logo svg { width: 96px; height: 96px; }
+        .footer h4 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; color: rgba(255,255,255,0.4); }
+        .footer-links { list-style: none; }
+        .footer-links a { display: block; padding: 6px 0; font-size: 0.9rem; color: rgba(255,255,255,0.7); transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent-vivid); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+        .footer-credit { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; opacity: 0.4; transition: opacity 0.2s; }
+        .footer-credit:hover { opacity: 0.85; }
+        .footer-credit span { font-size: 11px; letter-spacing: 0.5px; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+        @media (max-width: 860px) {
+            .cs-overview-grid { grid-template-columns: 1fr; gap: 24px; }
+            .show-row { grid-template-columns: 1fr; gap: 32px; margin-bottom: 64px; }
+            .show-row.reverse .show-media { order: 0; }
+            .pkg-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .cs-meta { gap: 14px 28px; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .pkg-grid { grid-template-columns: 1fr; }
+            .cta-actions { flex-direction: column; }
+            .cta-btn, .cta-ghost { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="128">
+                    <defs>
+                        <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#d4a017"/>
+                        </linearGradient>
+                        <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="45%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#0f172a"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
+                    <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#navBarG)" opacity="0.85"/>
+                    <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#navBarG)"/>
+                    <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#navTxtG)" letter-spacing="3">EMC</text>
+                </svg>
+                <span>Digital Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
+                <li><a href="index.html#servizi" data-i18n="nav.services">Servizi</a></li>
+                <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                <li><a href="index.html#social" data-i18n="nav.social">Social</a></li>
+                <li><a href="news.html" data-i18n="nav.news">News</a></li>
+                <li><a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="index.html#contatti" data-i18n="nav.contact">Contatti</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="langLabel">EN</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="index.html#social" data-i18n="nav.social">Social</a>
+        <a href="news.html" data-i18n="nav.news">News</a>
+        <a href="proposta-commerciale.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+        <button class="lang-toggle" id="langToggleMobile" aria-label="Cambia lingua">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langLabelMobile">EN</span>
+        </button>
+    </div>
+
+    <!-- ========== BREADCRUMB ========== -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html" data-i18n="nav.home">Home</a><span class="sep">/</span>
+            <a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a><span class="sep">/</span>
+            <span>Terre di Miele</span>
+        </div>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <header class="cs-hero">
+        <div class="container">
+            <div class="cs-eyebrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <span data-i18n="cs.eyebrow">Case study</span>
+            </div>
+            <h1>Terre <em>di</em> Miele</h1>
+            <p class="cs-lead" data-i18n="cs.lead">Dal sito web al banco di vendita: un progetto a 360° che ha dato all'apicoltura artigianale di Salvatore La Greca un'identità digitale e cartacea completa, calda e coerente.</p>
+
+            <div class="cs-meta">
+                <div class="cs-meta-item"><span class="l" data-i18n="cs.meta.client.l">Cliente</span><span class="v" data-i18n="cs.meta.client.v">Apicoltura La Greca</span></div>
+                <div class="cs-meta-item"><span class="l" data-i18n="cs.meta.sector.l">Settore</span><span class="v" data-i18n="cs.meta.sector.v">Apicoltura artigianale</span></div>
+                <div class="cs-meta-item"><span class="l" data-i18n="cs.meta.place.l">Luogo</span><span class="v">Campobello di Licata (AG)</span></div>
+                <div class="cs-meta-item"><span class="l" data-i18n="cs.meta.year.l">Anno</span><span class="v">2026</span></div>
+                <div class="cs-meta-item"><span class="l" data-i18n="cs.meta.services.l">Servizi</span><span class="v" data-i18n="cs.meta.services.v">Web · Branding · Stampa · Social</span></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== OVERVIEW ========== -->
+    <section class="cs-overview">
+        <div class="container">
+            <div class="cs-overview-grid">
+                <div>
+                    <div class="cs-section-label" data-i18n="cs.overview.label">Il progetto</div>
+                    <h2 data-i18n="cs.overview.title">Un'unica identità, su ogni canale</h2>
+                </div>
+                <div>
+                    <p data-i18n="cs.overview.p1">Terre di Miele è il marchio di miele siciliano di Salvatore La Greca. L'obiettivo era dare al brand una presenza professionale e riconoscibile — online e dal vivo, sui banchi di fiere e sagre.</p>
+                    <p data-i18n="cs.overview.p2">Abbiamo costruito un ecosistema coordinato: un sito vetrina che racconta i mieli, un catalogo scaricabile, i materiali di stampa per la vendita diretta e la gestione dei canali social. Ogni elemento condivide la stessa palette calda, lo stesso logo e lo stesso tono di voce.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DELIVERABLES SHOWCASE ========== -->
+    <section class="showcase">
+        <div class="container">
+            <div class="cs-head">
+                <div class="cs-section-label" data-i18n="cs.deliv.label">Cosa abbiamo realizzato</div>
+                <h2 data-i18n="cs.deliv.title">I materiali del progetto</h2>
+                <p data-i18n="cs.deliv.subtitle">Ogni deliverable è pensato per lavorare in coordinato con gli altri.</p>
+            </div>
+
+            <!-- 01 · Sito web -->
+            <div class="show-row">
+                <div class="show-media">
+                    <div class="show-frame"><img src="images/casestudy-terredimiele/sito.png" alt="Sito web Terre di Miele" loading="lazy"></div>
+                </div>
+                <div class="show-body">
+                    <div class="show-num" data-i18n="cs.r1.k">01 — Sito web</div>
+                    <h3 data-i18n="cs.r1.t">Sito vetrina responsive</h3>
+                    <p data-i18n="cs.r1.d">Un sito veloce e curato che presenta i mieli, la storia dell'apicoltura e i contatti. Ottimizzato per Google (SEO locale), con Analytics, form contatti e sezione news: pronto per essere trovato da chi cerca miele siciliano.</p>
+                    <div class="show-tags"><span class="show-tag">HTML5</span><span class="show-tag" data-i18n="cs.r1.tag2">SEO locale</span><span class="show-tag" data-i18n="cs.r1.tag3">Form contatti</span></div>
+                </div>
+            </div>
+
+            <!-- 02 · Catalogo PDF -->
+            <div class="show-row reverse">
+                <div class="show-media">
+                    <div class="show-frame plain"><img src="images/casestudy-terredimiele/listino.png" alt="Catalogo e listino PDF Terre di Miele" loading="lazy"></div>
+                </div>
+                <div class="show-body">
+                    <div class="show-num" data-i18n="cs.r2.k">02 — Catalogo prodotti</div>
+                    <h3 data-i18n="cs.r2.t">Listino PDF scaricabile</h3>
+                    <p data-i18n="cs.r2.d">Un catalogo elegante con tutti i mieli, i formati e i prezzi, pronto da scaricare dal sito o da inviare via WhatsApp. Stesso stile del sito e aggiornabile a ogni stagione.</p>
+                    <div class="show-tags"><span class="show-tag" data-i18n="cs.r2.tag1">PDF stampabile</span><span class="show-tag" data-i18n="cs.r2.tag2">Impaginazione</span><span class="show-tag" data-i18n="cs.r2.tag3">Prezzi</span></div>
+                </div>
+            </div>
+
+            <!-- 03 · Biglietti da visita -->
+            <div class="show-row">
+                <div class="show-media">
+                    <div class="show-frame">
+                        <div class="show-duo">
+                            <img src="images/casestudy-terredimiele/biglietto-fronte.png" alt="Biglietto da visita Terre di Miele — fronte" loading="lazy">
+                            <img src="images/casestudy-terredimiele/biglietto-retro.png" alt="Biglietto da visita Terre di Miele — retro con QR code" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="show-body">
+                    <div class="show-num" data-i18n="cs.r3.k">03 — Biglietti da visita</div>
+                    <h3 data-i18n="cs.r3.t">Biglietti fronte-retro con QR</h3>
+                    <p data-i18n="cs.r3.d">Biglietti da visita professionali, cartacei e digitali. Sul retro due QR code: uno porta al sito, l'altro invita a lasciare una recensione su Google. Un piccolo strumento che trasforma ogni cliente in visibilità online.</p>
+                    <div class="show-tags"><span class="show-tag" data-i18n="cs.r3.tag1">Fronte-retro</span><span class="show-tag">QR code</span><span class="show-tag" data-i18n="cs.r3.tag3">Recensioni Google</span></div>
+                </div>
+            </div>
+
+            <!-- 04 · Foglio A4 stand -->
+            <div class="show-row reverse">
+                <div class="show-media">
+                    <div class="show-frame plain"><img src="images/casestudy-terredimiele/stand-a4.png" alt="Foglio A4 da banco per lo stand Terre di Miele" loading="lazy"></div>
+                </div>
+                <div class="show-body">
+                    <div class="show-num" data-i18n="cs.r4.k">04 — Materiali per lo stand</div>
+                    <h3 data-i18n="cs.r4.t">Foglio A4 da banco</h3>
+                    <p data-i18n="cs.r4.d">Un espositore A4 da tenere sul banco durante fiere e sagre: invita i clienti a visitare il sito e a lasciare una recensione, con QR code ben visibili. Progettato per farsi leggere a colpo d'occhio.</p>
+                    <div class="show-tags"><span class="show-tag">A4</span><span class="show-tag" data-i18n="cs.r4.tag2">Espositore</span><span class="show-tag">QR code</span></div>
+                </div>
+            </div>
+
+            <!-- 05 · T-shirt -->
+            <div class="show-row">
+                <div class="show-media">
+                    <div class="show-frame plain"><img src="images/casestudy-terredimiele/tshirt.png" alt="T-shirt brandizzata Terre di Miele — fronte e retro" loading="lazy"></div>
+                </div>
+                <div class="show-body">
+                    <div class="show-num" data-i18n="cs.r5.k">05 — Abbigliamento brandizzato</div>
+                    <h3 data-i18n="cs.r5.t">T-shirt personalizzata</h3>
+                    <p data-i18n="cs.r5.d">La divisa per le giornate di vendita: logo sul petto e marchio completo sul retro. Rende riconoscibile lo stand a distanza e comunica cura e professionalità.</p>
+                    <div class="show-tags"><span class="show-tag" data-i18n="cs.r5.tag1">Fronte + retro</span><span class="show-tag">Brand</span><span class="show-tag" data-i18n="cs.r5.tag3">Merchandising</span></div>
+                </div>
+            </div>
+
+            <!-- 06 · Social -->
+            <div class="show-row reverse">
+                <div class="show-media">
+                    <div class="show-frame">
+                        <div class="show-trio">
+                            <img src="images/casestudy-terredimiele/stand-foto.jpg" alt="Stand Terre di Miele alle sagre" loading="lazy">
+                            <img src="images/casestudy-terredimiele/prodotto.jpg" alt="Barattoli di miele Terre di Miele" loading="lazy">
+                            <img src="images/casestudy-terredimiele/favo.jpg" alt="Favo d'api — produzione del miele" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="show-body">
+                    <div class="show-num" data-i18n="cs.r6.k">06 — Social media</div>
+                    <h3 data-i18n="cs.r6.t">Contenuti e gestione social</h3>
+                    <p data-i18n="cs.r6.d">Gestione dei canali Facebook e Instagram con contenuti coordinati: foto prodotto, presentazione dei mieli e presenza alle sagre. Una voce costante che tiene vivo il rapporto con i clienti e porta traffico al sito.</p>
+                    <div class="show-tags"><span class="show-tag">Facebook</span><span class="show-tag">Instagram</span><span class="show-tag" data-i18n="cs.r6.tag3">Piano editoriale</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========== PACKAGE STRIP ========== -->
+    <section class="cs-package">
+        <div class="container">
+            <div class="cs-head">
+                <div class="cs-section-label" data-i18n="cs.pkg.label">Il risultato</div>
+                <h2 data-i18n="cs.pkg.title">Un pacchetto completo</h2>
+            </div>
+            <div class="pkg-grid">
+                <div class="pkg-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cs.pkg.1">Sito web</span></div>
+                <div class="pkg-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cs.pkg.2">Catalogo PDF</span></div>
+                <div class="pkg-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cs.pkg.3">Biglietti da visita</span></div>
+                <div class="pkg-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cs.pkg.4">Foglio A4 da banco</span></div>
+                <div class="pkg-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cs.pkg.5">T-shirt brandizzata</span></div>
+                <div class="pkg-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cs.pkg.6">Gestione social</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-i18n="cs.cta.title">Vuoi un progetto coordinato come questo?</h2>
+            <p data-i18n="cs.cta.desc">Sito, materiali di stampa e social che parlano la stessa lingua. Raccontaci la tua attività e ricevi un preventivo su misura, senza impegno.</p>
+            <div class="cta-actions">
+                <a href="index.html#contatti" class="cta-btn" data-i18n="cs.cta.btn">Richiedi un preventivo</a>
+                <a href="https://www.terredimiele.it" target="_blank" rel="noopener" class="cta-ghost"><span data-i18n="cs.cta.visit">Visita terredimiele.it</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
+                            <defs>
+                                <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#d4a017"/>
+                                </linearGradient>
+                                <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#6b9ef7"/><stop offset="45%" stop-color="#93b8fc"/><stop offset="100%" stop-color="#ffffff"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>
+                            <path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#ftBarG)" opacity="0.85"/>
+                            <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#ftBarG)"/>
+                            <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#ftTxtG)" letter-spacing="3">EMC</text>
+                        </svg>
+                        <span>Digital Solutions</span>
+                    </div>
+                    <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.quicklinks">Link Rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#chi-siamo" data-i18n="footer.link.about">Chi Siamo</a></li>
+                        <li><a href="index.html#servizi" data-i18n="footer.link.services">Servizi</a></li>
+                        <li><a href="index.html#portfolio" data-i18n="footer.link.portfolio">Portfolio</a></li>
+                        <li><a href="news.html" data-i18n="footer.link.news">News</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.pricing">Pricing</a></li>
+                        <li><a href="index.html#contatti" data-i18n="footer.link.contact">Contatti</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.services">Servizi</h4>
+                    <ul class="footer-links">
+                        <li><a href="servizio-web.html" data-i18n="footer.link.web">Sviluppo Web</a></li>
+                        <li><a href="servizio-saas.html" data-i18n="footer.link.saas">Software SaaS</a></li>
+                        <li><a href="proposta-commerciale.html" data-i18n="footer.link.social">Social Media</a></li>
+                        <li><a href="servizio-app.html" data-i18n="footer.link.app">Sviluppo App</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.legal">Legale</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html" data-i18n="footer.cookie">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <script>document.write(new Date().getFullYear())</script> <span data-i18n="footer.rights">EMC Digital Solutions. Tutti i diritti riservati.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+    (function() {
+        'use strict';
+        var hamburger = document.getElementById('hamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        var translations = {
+            it: {
+                'nav.home': 'Home',
+                'nav.about': 'Chi Siamo', 'nav.services': 'Servizi', 'nav.portfolio': 'Portfolio',
+                'nav.social': 'Social', 'nav.news': 'News', 'nav.pricing': 'Pricing', 'nav.contact': 'Contatti',
+                'cs.eyebrow': 'Case study',
+                'cs.lead': "Dal sito web al banco di vendita: un progetto a 360° che ha dato all'apicoltura artigianale di Salvatore La Greca un'identità digitale e cartacea completa, calda e coerente.",
+                'cs.meta.client.l': 'Cliente', 'cs.meta.client.v': 'Apicoltura La Greca',
+                'cs.meta.sector.l': 'Settore', 'cs.meta.sector.v': 'Apicoltura artigianale',
+                'cs.meta.place.l': 'Luogo', 'cs.meta.year.l': 'Anno',
+                'cs.meta.services.l': 'Servizi', 'cs.meta.services.v': 'Web · Branding · Stampa · Social',
+                'cs.overview.label': 'Il progetto',
+                'cs.overview.title': "Un'unica identità, su ogni canale",
+                'cs.overview.p1': "Terre di Miele è il marchio di miele siciliano di Salvatore La Greca. L'obiettivo era dare al brand una presenza professionale e riconoscibile — online e dal vivo, sui banchi di fiere e sagre.",
+                'cs.overview.p2': 'Abbiamo costruito un ecosistema coordinato: un sito vetrina che racconta i mieli, un catalogo scaricabile, i materiali di stampa per la vendita diretta e la gestione dei canali social. Ogni elemento condivide la stessa palette calda, lo stesso logo e lo stesso tono di voce.',
+                'cs.deliv.label': 'Cosa abbiamo realizzato',
+                'cs.deliv.title': 'I materiali del progetto',
+                'cs.deliv.subtitle': 'Ogni deliverable è pensato per lavorare in coordinato con gli altri.',
+                'cs.r1.k': '01 — Sito web', 'cs.r1.t': 'Sito vetrina responsive',
+                'cs.r1.d': "Un sito veloce e curato che presenta i mieli, la storia dell'apicoltura e i contatti. Ottimizzato per Google (SEO locale), con Analytics, form contatti e sezione news: pronto per essere trovato da chi cerca miele siciliano.",
+                'cs.r1.tag2': 'SEO locale', 'cs.r1.tag3': 'Form contatti',
+                'cs.r2.k': '02 — Catalogo prodotti', 'cs.r2.t': 'Listino PDF scaricabile',
+                'cs.r2.d': 'Un catalogo elegante con tutti i mieli, i formati e i prezzi, pronto da scaricare dal sito o da inviare via WhatsApp. Stesso stile del sito e aggiornabile a ogni stagione.',
+                'cs.r2.tag1': 'PDF stampabile', 'cs.r2.tag2': 'Impaginazione', 'cs.r2.tag3': 'Prezzi',
+                'cs.r3.k': '03 — Biglietti da visita', 'cs.r3.t': 'Biglietti fronte-retro con QR',
+                'cs.r3.d': "Biglietti da visita professionali, cartacei e digitali. Sul retro due QR code: uno porta al sito, l'altro invita a lasciare una recensione su Google. Un piccolo strumento che trasforma ogni cliente in visibilità online.",
+                'cs.r3.tag1': 'Fronte-retro', 'cs.r3.tag3': 'Recensioni Google',
+                'cs.r4.k': '04 — Materiali per lo stand', 'cs.r4.t': 'Foglio A4 da banco',
+                'cs.r4.d': "Un espositore A4 da tenere sul banco durante fiere e sagre: invita i clienti a visitare il sito e a lasciare una recensione, con QR code ben visibili. Progettato per farsi leggere a colpo d'occhio.",
+                'cs.r4.tag2': 'Espositore',
+                'cs.r5.k': '05 — Abbigliamento brandizzato', 'cs.r5.t': 'T-shirt personalizzata',
+                'cs.r5.d': 'La divisa per le giornate di vendita: logo sul petto e marchio completo sul retro. Rende riconoscibile lo stand a distanza e comunica cura e professionalità.',
+                'cs.r5.tag1': 'Fronte + retro', 'cs.r5.tag3': 'Merchandising',
+                'cs.r6.k': '06 — Social media', 'cs.r6.t': 'Contenuti e gestione social',
+                'cs.r6.d': 'Gestione dei canali Facebook e Instagram con contenuti coordinati: foto prodotto, presentazione dei mieli e presenza alle sagre. Una voce costante che tiene vivo il rapporto con i clienti e porta traffico al sito.',
+                'cs.r6.tag3': 'Piano editoriale',
+                'cs.pkg.label': 'Il risultato', 'cs.pkg.title': 'Un pacchetto completo',
+                'cs.pkg.1': 'Sito web', 'cs.pkg.2': 'Catalogo PDF', 'cs.pkg.3': 'Biglietti da visita',
+                'cs.pkg.4': 'Foglio A4 da banco', 'cs.pkg.5': 'T-shirt brandizzata', 'cs.pkg.6': 'Gestione social',
+                'cs.cta.title': 'Vuoi un progetto coordinato come questo?',
+                'cs.cta.desc': 'Sito, materiali di stampa e social che parlano la stessa lingua. Raccontaci la tua attività e ricevi un preventivo su misura, senza impegno.',
+                'cs.cta.btn': 'Richiedi un preventivo', 'cs.cta.visit': 'Visita terredimiele.it',
+                'footer.quicklinks': 'Link Rapidi', 'footer.services': 'Servizi', 'footer.legal': 'Legale',
+                'footer.desc': 'Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.',
+                'footer.rights': 'EMC Digital Solutions. Tutti i diritti riservati.',
+                'footer.link.about': 'Chi Siamo', 'footer.link.services': 'Servizi', 'footer.link.portfolio': 'Portfolio',
+                'footer.link.pricing': 'Pricing', 'footer.link.news': 'News', 'footer.link.contact': 'Contatti',
+                'footer.link.web': 'Sviluppo Web', 'footer.link.saas': 'Software SaaS', 'footer.link.social': 'Social Media', 'footer.link.app': 'Sviluppo App',
+                'footer.privacy': 'Privacy Policy', 'footer.cookie': 'Cookie Policy'
+            },
+            en: {
+                'nav.home': 'Home',
+                'nav.about': 'About Us', 'nav.services': 'Services', 'nav.portfolio': 'Portfolio',
+                'nav.social': 'Social', 'nav.news': 'News', 'nav.pricing': 'Pricing', 'nav.contact': 'Contact',
+                'cs.eyebrow': 'Case study',
+                'cs.lead': 'From the website to the market stall: an end-to-end project that gave Salvatore La Greca’s artisan apiary a complete, warm and consistent identity — both digital and printed.',
+                'cs.meta.client.l': 'Client', 'cs.meta.client.v': 'Apicoltura La Greca',
+                'cs.meta.sector.l': 'Sector', 'cs.meta.sector.v': 'Artisan beekeeping',
+                'cs.meta.place.l': 'Location', 'cs.meta.year.l': 'Year',
+                'cs.meta.services.l': 'Services', 'cs.meta.services.v': 'Web · Branding · Print · Social',
+                'cs.overview.label': 'The project',
+                'cs.overview.title': 'One identity, on every channel',
+                'cs.overview.p1': 'Terre di Miele is Salvatore La Greca’s Sicilian honey brand. The goal was to give it a professional, recognisable presence — both online and in person, at fairs and local markets.',
+                'cs.overview.p2': 'We built a coordinated ecosystem: a showcase website telling the story of the honeys, a downloadable catalog, print materials for direct selling and social media management. Every element shares the same warm palette, the same logo and the same tone of voice.',
+                'cs.deliv.label': 'What we delivered',
+                'cs.deliv.title': 'The project’s materials',
+                'cs.deliv.subtitle': 'Every deliverable is designed to work in coordination with the others.',
+                'cs.r1.k': '01 — Website', 'cs.r1.t': 'Responsive showcase site',
+                'cs.r1.d': 'A fast, polished site presenting the honeys, the story of the apiary and the contacts. Optimised for Google (local SEO), with Analytics, a contact form and a news section: ready to be found by anyone looking for Sicilian honey.',
+                'cs.r1.tag2': 'Local SEO', 'cs.r1.tag3': 'Contact form',
+                'cs.r2.k': '02 — Product catalog', 'cs.r2.t': 'Downloadable PDF price list',
+                'cs.r2.d': 'An elegant catalog with all the honeys, sizes and prices, ready to download from the site or send via WhatsApp. Same style as the website and updatable every season.',
+                'cs.r2.tag1': 'Print-ready PDF', 'cs.r2.tag2': 'Layout', 'cs.r2.tag3': 'Pricing',
+                'cs.r3.k': '03 — Business cards', 'cs.r3.t': 'Double-sided cards with QR',
+                'cs.r3.d': 'Professional business cards, printed and digital. On the back, two QR codes: one leads to the website, the other invites customers to leave a Google review. A small tool that turns every customer into online visibility.',
+                'cs.r3.tag1': 'Double-sided', 'cs.r3.tag3': 'Google reviews',
+                'cs.r4.k': '04 — Stand materials', 'cs.r4.t': 'A4 counter sheet',
+                'cs.r4.d': 'An A4 display to keep on the counter during fairs and markets: it invites customers to visit the site and leave a review, with clearly visible QR codes. Designed to be read at a glance.',
+                'cs.r4.tag2': 'Display',
+                'cs.r5.k': '05 — Branded apparel', 'cs.r5.t': 'Custom t-shirt',
+                'cs.r5.d': 'The uniform for selling days: logo on the chest and full brand mark on the back. It makes the stand recognisable from a distance and conveys care and professionalism.',
+                'cs.r5.tag1': 'Front + back', 'cs.r5.tag3': 'Merchandising',
+                'cs.r6.k': '06 — Social media', 'cs.r6.t': 'Social content & management',
+                'cs.r6.d': 'Management of the Facebook and Instagram channels with coordinated content: product photos, honey presentations and presence at local fairs. A consistent voice that keeps the relationship with customers alive and drives traffic to the site.',
+                'cs.r6.tag3': 'Content plan',
+                'cs.pkg.label': 'The result', 'cs.pkg.title': 'A complete package',
+                'cs.pkg.1': 'Website', 'cs.pkg.2': 'PDF catalog', 'cs.pkg.3': 'Business cards',
+                'cs.pkg.4': 'A4 counter sheet', 'cs.pkg.5': 'Branded t-shirt', 'cs.pkg.6': 'Social management',
+                'cs.cta.title': 'Want a coordinated project like this?',
+                'cs.cta.desc': 'A website, print materials and social channels that speak the same language. Tell us about your business and get a tailored quote, no commitment.',
+                'cs.cta.btn': 'Request a quote', 'cs.cta.visit': 'Visit terredimiele.it',
+                'footer.quicklinks': 'Quick Links', 'footer.services': 'Services', 'footer.legal': 'Legal',
+                'footer.desc': 'Tailored digital solutions for businesses that want to grow. Software development, SaaS and digital strategies from Sicily.',
+                'footer.rights': 'EMC Digital Solutions. All rights reserved.',
+                'footer.link.about': 'About Us', 'footer.link.services': 'Services', 'footer.link.portfolio': 'Portfolio',
+                'footer.link.pricing': 'Pricing', 'footer.link.news': 'News', 'footer.link.contact': 'Contact',
+                'footer.link.web': 'Web Development', 'footer.link.saas': 'SaaS Software', 'footer.link.social': 'Social Media', 'footer.link.app': 'App Development',
+                'footer.privacy': 'Privacy Policy', 'footer.cookie': 'Cookie Policy'
+            }
+        };
+
+        var currentLang = localStorage.getItem('emc-lang') || 'it';
+
+        function applyTranslations(lang) {
+            currentLang = lang;
+            localStorage.setItem('emc-lang', lang);
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            var nextLang = lang === 'it' ? 'EN' : 'IT';
+            var labelEl = document.getElementById('langLabel');
+            var labelMobileEl = document.getElementById('langLabelMobile');
+            if (labelEl) labelEl.textContent = nextLang;
+            if (labelMobileEl) labelMobileEl.textContent = nextLang;
+        }
+        function toggleLang() { applyTranslations(currentLang === 'it' ? 'en' : 'it'); }
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click', toggleLang);
+        if (currentLang !== 'it') { applyTranslations(currentLang); }
+    })();
+    </script>
+</body>
+</html>
