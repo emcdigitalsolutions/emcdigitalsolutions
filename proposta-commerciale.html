@@ -1032,6 +1032,39 @@
             margin-bottom: 40px;
         }
 
+        /* ========== CASE STUDY CALLOUT ========== */
+        .case-callout { padding: 80px 0; }
+        .case-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .case-card:hover { border-color: rgba(107,158,247,0.3); box-shadow: 0 20px 50px var(--shadow-lg); }
+        .case-media { position: relative; overflow: hidden; background: #0f1728; }
+        .case-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+        .case-card:hover .case-media img { transform: scale(1.05); }
+        .case-body { padding: clamp(32px, 4vw, 52px); display: flex; flex-direction: column; justify-content: center; text-align: left; }
+        .case-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-vivid); margin-bottom: 14px; }
+        .case-body h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
+        .case-body p { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 26px; }
+        .case-btn {
+            display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+            padding: 14px 30px; border-radius: 50px; font-weight: 600; font-size: 0.98rem;
+            background: linear-gradient(135deg, #6b9ef7, #3b6dd4); color: #fff;
+            transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
+        }
+        .case-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(107,158,247,0.35); }
+        .case-btn svg { width: 17px; height: 17px; }
+        @media (max-width: 768px) {
+            .case-callout { padding: 60px 0; }
+            .case-card { grid-template-columns: 1fr; }
+            .case-media { min-height: 220px; }
+        }
+
         .contact-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -2156,6 +2189,23 @@
 
     <div class="section-divider"></div>
 
+    <!-- ========== CASE STUDY CALLOUT ========== -->
+    <section class="case-callout">
+        <div class="container">
+            <div class="case-card fade-in">
+                <div class="case-media">
+                    <img src="images/casestudy-terredimiele/sito.png" alt="Case study Terre di Miele" loading="lazy">
+                </div>
+                <div class="case-body">
+                    <div class="case-label" data-i18n="case.label">Caso studio</div>
+                    <h2 data-i18n="case.title">Un progetto reale, dall'inizio alla fine</h2>
+                    <p data-i18n="case.desc">Per Terre di Miele abbiamo curato tutto: sito web, catalogo, biglietti da visita, materiali per lo stand e gestione social. Un esempio concreto di come lavoriamo, con la stessa cura che dedicheremo alla tua attività.</p>
+                    <a href="progetto-terredimiele.html" class="case-btn" data-i18n="case.btn">Scopri il progetto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== CTA / CONTATTO ========== -->
     <section class="cta-section" id="contatto">
         <div class="container">
@@ -2451,6 +2501,10 @@
                 'vs.r9': 'Strategia multi-canale',
 
                 /* CTA */
+                'case.label': 'Caso studio',
+                'case.title': "Un progetto reale, dall'inizio alla fine",
+                'case.desc': 'Per Terre di Miele abbiamo curato tutto: sito web, catalogo, biglietti da visita, materiali per lo stand e gestione social. Un esempio concreto di come lavoriamo, con la stessa cura che dedicheremo alla tua attività.',
+                'case.btn': 'Scopri il progetto',
                 'cta.title': 'Prossimi Passi',
                 'cta.subtitle': 'Iniziamo insieme a costruire il futuro digitale della tua Azienda.',
                 'cta.calendly': 'Prenota una Consulenza Gratuita',
@@ -2661,6 +2715,10 @@
                 'vs.r9': 'Multi-channel strategy',
 
                 /* CTA */
+                'case.label': 'Case study',
+                'case.title': 'A real project, from start to finish',
+                'case.desc': 'For Terre di Miele we handled everything: website, catalog, business cards, stand materials and social media management. A concrete example of how we work, with the same care we\'ll dedicate to your business.',
+                'case.btn': 'View the project',
                 'cta.title': 'Next Steps',
                 'cta.subtitle': 'Let\'s start building the digital future of your Business together.',
                 'cta.calendly': 'Book a Free Consultation',
