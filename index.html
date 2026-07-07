@@ -2027,19 +2027,6 @@
       .scroll-progress{ position:fixed; top:0; left:0; height:3px; width:0; z-index:2000;
         background:var(--grad-brand); box-shadow:0 0 14px var(--glow-violet); transition:width .1s linear; }
 
-      /* spotlight cursor follower */
-      .cursor-dot,.cursor-ring{ position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
-        border-radius:50%; transform:translate(-50%,-50%); opacity:0; transition:opacity .3s; }
-      .cursor-dot{ width:7px; height:7px; background:var(--accent-vivid);
-        box-shadow:0 0 12px var(--glow-gold); }
-      .cursor-ring{ width:38px; height:38px; border:1.5px solid rgba(169,196,255,.5);
-        transition:width .25s ease,height .25s ease,border-color .25s ease,background .25s ease,opacity .3s;
-        background:radial-gradient(circle,rgba(107,158,247,.10),transparent 70%); }
-      .cursor-ring.hovering{ width:66px; height:66px; border-color:rgba(245,197,66,.7);
-        background:radial-gradient(circle,rgba(245,197,66,.10),transparent 70%); }
-      body.cursor-on .cursor-dot,body.cursor-on .cursor-ring{ opacity:1; }
-      @media (hover:none),(pointer:coarse){ .cursor-dot,.cursor-ring{ display:none!important; } }
-
       /* ---------- TYPOGRAPHY ---------- */
       .section-title,.hero h1,.hero-stat .number,.term-title,
       .value-card h4,.service-card h3,.portfolio-card h3{
@@ -2167,7 +2154,6 @@
       /* ---------- REDUCED MOTION ---------- */
       @media (prefers-reduced-motion:reduce){
         .aurora-blob,.term,.hero h1 .accent,.hero-scroll svg{ animation:none!important; }
-        .cursor-dot,.cursor-ring{ display:none!important; }
       }
     </style>
 </head>
@@ -2181,8 +2167,6 @@
     <div class="grid-overlay" aria-hidden="true"></div>
     <div class="noise-overlay" aria-hidden="true"></div>
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
-    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
     <!-- ========== NAVBAR ========== -->
     <nav class="navbar" id="navbar">
@@ -3693,28 +3677,8 @@
       window.addEventListener('scroll', onScrollBar, {passive:true});
       window.addEventListener('resize', onScrollBar); onScrollBar();
 
-      /* ---------- spotlight cursor + magnetic ---------- */
+      /* ---------- magnetic CTAs (native cursor kept) ---------- */
       if(fine && !reduce){
-        var dot = document.getElementById('cursorDot');
-        var ring = document.getElementById('cursorRing');
-        var mx=innerWidth/2, my=innerHeight/2, rx=mx, ry=my, on=false;
-        window.addEventListener('mousemove', function(e){
-          mx=e.clientX; my=e.clientY;
-          if(!on){ document.body.classList.add('cursor-on'); on=true; }
-          dot.style.left=mx+'px'; dot.style.top=my+'px';
-        });
-        window.addEventListener('mouseout', function(e){ if(!e.relatedTarget){ document.body.classList.remove('cursor-on'); on=false; } });
-        (function ringLoop(){
-          rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
-          ring.style.left=rx+'px'; ring.style.top=ry+'px';
-          requestAnimationFrame(ringLoop);
-        })();
-        var hoverSel = 'a,button,.service-card,.portfolio-card,.value-card,.tech-badge,input,textarea,summary,[data-magnetic]';
-        document.querySelectorAll(hoverSel).forEach(function(el){
-          el.addEventListener('mouseenter', function(){ ring.classList.add('hovering'); });
-          el.addEventListener('mouseleave', function(){ ring.classList.remove('hovering'); });
-        });
-        /* magnetic pull on CTAs */
         document.querySelectorAll('[data-magnetic]').forEach(function(el){
           el.addEventListener('mousemove', function(e){
             var r=el.getBoundingClientRect();
