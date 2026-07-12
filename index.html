@@ -162,7 +162,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet">
 
     <!-- Calendly -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -502,6 +502,22 @@
 
         .nav-logo span {
             white-space: nowrap;
+        }
+
+        .nav-logo .brand-stack {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .brand-firma {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 0.78rem;
+            color: var(--accent-vivid, #f5c542);
+            letter-spacing: .02em;
+            opacity: .92;
         }
 
         .nav-links {
@@ -1982,7 +1998,7 @@
                     <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#navBarG)"/>
                     <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#navTxtG)" letter-spacing="3">EMC</text>
                 </svg>
-                <span>Digital Solutions</span>
+                <span class="brand-stack"><span>Digital Solutions</span><span class="brand-firma">di Enrico Maria Caruso</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="#chi-siamo" data-i18n="nav.about">Chi Siamo</a></li>
@@ -2829,7 +2845,7 @@
                             <path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#ftBarG)"/>
                             <text x="46" y="27" font-family="'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#ftTxtG)" letter-spacing="3">EMC</text>
                         </svg>
-                        <span>Digital Solutions</span>
+                        <span class="brand-stack" style="display:flex;flex-direction:column;line-height:1.25"><span>Digital Solutions</span><span class="brand-firma">di Enrico Maria Caruso</span></span>
                     </div>
                     <p data-i18n="footer.desc">Soluzioni digitali su misura per aziende che vogliono crescere. Sviluppo software, SaaS e strategie digitali dalla Sicilia.</p>
                 </div>
