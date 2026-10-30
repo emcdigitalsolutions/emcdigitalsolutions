@@ -631,6 +631,43 @@ section {
     background: var(--off-white);
 }
 
+.features-docs {
+    margin-top: 48px;
+    text-align: center;
+}
+
+.features-docs p {
+    max-width: 640px;
+    margin: 0 auto 20px;
+    color: var(--text-muted);
+}
+
+.features-docs-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn-docs-outline {
+    background: transparent;
+    color: var(--primary-dark);
+    border: 2px solid var(--primary);
+}
+
+.btn-docs-outline:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+@media (max-width: 480px) {
+    .features-docs-actions .btn {
+        width: 100%;
+        justify-content: center;
+        white-space: normal;
+    }
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1721,5 +1758,14 @@ button:disabled {
     .client-info {
         flex-direction: column;
         gap: 8px;
+    }
+}
+
+/* Tabelle delle pagine legali: scorrono dentro il riquadro su telefono invece di uscire dalla pagina */
+@media (max-width: 600px) {
+    .policy-content table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
     }
 }

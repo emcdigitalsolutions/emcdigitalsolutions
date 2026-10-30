@@ -19,19 +19,20 @@
 
     <style>
         :root {
+            /* Palette allineata a css/style.css (oro/ambra su carbone) */
             --primary: #C07821;
             --primary-light: #E5AB3E;
             --primary-dark: #9F5B1E;
             --teal: #B8860B;
-            --teal-light: #2DD4BF;
+            --teal-light: #D4A84B;
             --accent: #D4912A;
-            --accent-light: #FB923C;
+            --accent-light: #EDC871;
             --success: #22C55E;
             --danger: #EF4444;
             --purple: #8B5CF6;
-            --dark: #0F172A;
-            --dark-lighter: #1E293B;
-            --dark-card: #1a2332;
+            --dark: #1A1A1A;
+            --dark-lighter: #2E2E2E;
+            --dark-card: #252525;
             --gray-400: #9CA3AF;
             --gray-500: #6B7280;
             --gray-600: #4B5563;
@@ -46,7 +47,7 @@
             font-family: var(--font);
             font-size: 16px;
             line-height: 1.7;
-            color: #CBD5E1;
+            color: #D6D3CD;
             background: var(--dark);
             -webkit-font-smoothing: antialiased;
         }
@@ -57,7 +58,7 @@
         /* ---- Navbar ---- */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px);
+            background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.06);
             padding: 0 24px; height: 64px;
             display: flex; align-items: center;
@@ -89,7 +90,7 @@
             border-left: 2px solid transparent;
         }
         .sidebar a:hover { color: #fff; background: rgba(255,255,255,0.04); }
-        .sidebar a.active { color: var(--primary-light); background: rgba(37, 99, 235, 0.08); border-left-color: var(--primary); }
+        .sidebar a.active { color: var(--primary-light); background: rgba(192, 120, 33, 0.08); border-left-color: var(--primary); }
 
         /* ---- Content ---- */
         .content { flex: 1; min-width: 0; padding: 24px 0 80px; }
@@ -129,11 +130,11 @@
             font-size: 14px; line-height: 1.6;
             display: flex; gap: 12px; align-items: flex-start;
         }
-        .tip { background: rgba(13, 148, 136, 0.1); border: 1px solid rgba(13, 148, 136, 0.2); }
+        .tip { background: rgba(184, 134, 11, 0.1); border: 1px solid rgba(184, 134, 11, 0.2); }
         .tip i { color: var(--teal-light); margin-top: 2px; }
         .warning { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); }
         .warning i { color: var(--accent-light); margin-top: 2px; }
-        .info { background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.2); }
+        .info { background: rgba(192, 120, 33, 0.1); border: 1px solid rgba(192, 120, 33, 0.2); }
         .info i { color: var(--primary-light); margin-top: 2px; }
 
         /* Tables */
@@ -148,8 +149,8 @@
             display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
             padding: 2px 8px; border-radius: 6px; letter-spacing: 0.5px;
         }
-        .tag-blue { background: rgba(37,99,235,0.15); color: var(--primary-light); }
-        .tag-teal { background: rgba(13,148,136,0.15); color: var(--teal-light); }
+        .tag-blue { background: rgba(192,120,33,0.15); color: var(--primary-light); }
+        .tag-teal { background: rgba(184,134,11,0.15); color: var(--teal-light); }
         .tag-orange { background: rgba(249,115,22,0.15); color: var(--accent-light); }
         .tag-green { background: rgba(34,197,94,0.15); color: #4ADE80; }
         .tag-red { background: rgba(239,68,68,0.15); color: #F87171; }
@@ -161,7 +162,7 @@
         .step-flow { display: flex; flex-direction: column; gap: 0; margin: 24px 0; }
         .step {
             display: flex; gap: 16px; padding: 16px 0;
-            border-left: 2px solid rgba(37,99,235,0.3); margin-left: 15px; padding-left: 24px;
+            border-left: 2px solid rgba(192,120,33,0.3); margin-left: 15px; padding-left: 24px;
             position: relative;
         }
         .step:last-child { border-left-color: transparent; }
@@ -189,7 +190,7 @@
             display: none; position: fixed; bottom: 24px; right: 24px; z-index: 99;
             width: 48px; height: 48px; border-radius: 50%;
             background: var(--primary); color: #fff; border: none;
-            font-size: 18px; cursor: pointer; box-shadow: 0 4px 20px rgba(37,99,235,0.4);
+            font-size: 18px; cursor: pointer; box-shadow: 0 4px 20px rgba(192,120,33,0.4);
         }
 
         /* Footer */
@@ -297,7 +298,7 @@
 
                 <div class="tip">
                     <i class="fas fa-lightbulb"></i>
-                    <span>Il piano <strong>Free</strong> include 1 negozio e 1 utente. Puoi fare upgrade in qualsiasi momento dalle Impostazioni.</span>
+                    <span>Altri negozi, brand e categorie si aggiungono quando vuoi dalle <strong>Impostazioni</strong>. Tutti i passaggi sono spiegati nel <a href="manuale.html">Manuale d'uso</a>.</span>
                 </div>
             </section>
 
@@ -327,7 +328,7 @@
 
             <!-- =============== PRODOTTI =============== -->
             <section id="prodotti">
-                <h2><span class="icon" style="background: rgba(37,99,235,0.15); color: var(--primary-light);"><i class="fas fa-tags"></i></span> Aggiungere Prodotti</h2>
+                <h2><span class="icon" style="background: rgba(192,120,33,0.15); color: var(--primary-light);"><i class="fas fa-tags"></i></span> Aggiungere Prodotti</h2>
 
                 <h3>Singolo prodotto</h3>
                 <p>Dal menu laterale: <strong>Prodotti</strong> &rarr; <strong>Nuovo Prodotto</strong></p>
@@ -350,7 +351,7 @@
                 </div>
 
                 <h3>Varianti (taglie e colori)</h3>
-                <p>Ogni prodotto pu&ograve; avere pi&ugrave; <strong>varianti</strong>, ovvero combinazioni di taglia e colore. Per ogni variante puoi assegnare un <strong>codice a barre</strong> (barcode) che verr&agrave; usato nella scansione in cassa.</p>
+                <p>Ogni prodotto pu&ograve; avere pi&ugrave; <strong>varianti</strong>, ovvero combinazioni di taglia e colore. Ogni variante pu&ograve; avere il suo <strong>codice a barre</strong> (barcode), caricato con l'import CSV o con l'aggiunta rapida dalla cassa, che verr&agrave; usato nella scansione in cassa.</p>
 
                 <div class="table-wrap">
                     <table>
@@ -369,7 +370,7 @@
 
                 <div class="tip">
                     <i class="fas fa-lightbulb"></i>
-                    <span>Dopo aver creato i prodotti, ricorda di <strong>caricare lo stock</strong> tramite Movimenti &rarr; Movimento Rapido.</span>
+                    <span>Dopo aver creato i prodotti, ricorda di <strong>caricare lo stock</strong> tramite Movimenti &rarr; Carico/Scarico.</span>
                 </div>
             </section>
 
@@ -532,7 +533,7 @@
                 <h3>Carico merce</h3>
                 <p>Quando arriva nuova merce in negozio:</p>
                 <ol>
-                    <li>Vai su <strong>Movimenti</strong> &rarr; <strong>Movimento Rapido</strong></li>
+                    <li>Vai su <strong>Movimenti</strong> &rarr; <strong>Carico/Scarico</strong></li>
                     <li>Scansiona il barcode o cerca il prodotto</li>
                     <li>Inserisci la quantit&agrave;</li>
                     <li>Seleziona il tipo: <strong>CARICO</strong></li>
@@ -598,7 +599,7 @@
 
             <!-- =============== FLUSSO =============== -->
             <section id="flusso">
-                <h2><span class="icon" style="background: rgba(13,148,136,0.15); color: var(--teal-light);"><i class="fas fa-route"></i></span> Flusso Giornaliero</h2>
+                <h2><span class="icon" style="background: rgba(184,134,11,0.15); color: var(--teal-light);"><i class="fas fa-route"></i></span> Flusso Giornaliero</h2>
 
                 <p>Schema rapido di una giornata tipo:</p>
 
@@ -620,7 +621,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="flow-arrow">&rarr;</span> Scegli motivo <span class="flow-arrow">&rarr;</span> Registra Reso<br><br>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;<span class="flow-arrow">&rarr;</span> <strong>Carico Merce</strong> (quando arriva nuova merce)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="flow-arrow">&rarr;</span> Movimento Rapido<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="flow-arrow">&rarr;</span> Carico/Scarico<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="flow-arrow">&rarr;</span> Scansiona barcode <span class="flow-arrow">&rarr;</span> Inserisci quantit&agrave;<br><br>
 
                     <strong>CHIUSURA</strong><br>
@@ -630,7 +631,7 @@
 
             <!-- =============== FAQ =============== -->
             <section id="faq">
-                <h2><span class="icon" style="background: rgba(37,99,235,0.15); color: var(--primary-light);"><i class="fas fa-circle-question"></i></span> Domande Frequenti</h2>
+                <h2><span class="icon" style="background: rgba(192,120,33,0.15); color: var(--primary-light);"><i class="fas fa-circle-question"></i></span> Domande Frequenti</h2>
 
                 <h3>&quot;Non trovo dove cambiare lo sconto in vendita&quot;</h3>
                 <p>Lo sconto &egrave; <strong>per ogni singolo articolo</strong> nel carrello. Accanto alla colonna della quantit&agrave; c'&egrave; il campo &quot;Sconto %&quot; editabile. Se non riesci a modificarlo, controlla:</p>
@@ -656,7 +657,7 @@
                 <h3>&quot;Come carico la merce iniziale?&quot;</h3>
                 <ol>
                     <li>Crea i prodotti (<strong>Prodotti</strong> &rarr; <strong>Nuovo Prodotto</strong>)</li>
-                    <li>Vai su <strong>Movimenti</strong> &rarr; <strong>Movimento Rapido</strong></li>
+                    <li>Vai su <strong>Movimenti</strong> &rarr; <strong>Carico/Scarico</strong></li>
                     <li>Scansiona ogni barcode e inserisci la quantit&agrave; come <strong>CARICO</strong></li>
                 </ol>
 
@@ -672,7 +673,7 @@
 
     <!-- Footer -->
     <footer class="manual-footer">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> StockFlow ERP &mdash; <a href="index.html">Torna al sito</a> &middot; <a href="manuale.html">Manuale d'Uso</a></p>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> StockFlow ERP &mdash; <a href="index.html">Torna al sito</a> &middot; <a href="manuale.html">Manuale d'uso</a> &middot; <a href="stockflow-caratteristiche.pdf" download>Caratteristiche (PDF)</a></p>
     </footer>
 
     <!-- Mobile TOC button -->

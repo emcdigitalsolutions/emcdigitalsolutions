@@ -205,13 +205,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const nome = document.getElementById('nome').value.trim();
             const email = document.getElementById('email').value.trim();
             const negozio = document.getElementById('negozio').value.trim();
-            const piano = document.getElementById('piano').value;
+            const punti = document.getElementById('punti').value;
             const messaggio = document.getElementById('messaggio').value.trim();
 
             const dettagli = [
                 messaggio,
                 `\n— Negozio: ${negozio || 'Non specificato'}`,
-                `Piano richiesto: ${piano || 'Non specificato'}`
+                `Punti vendita: ${punti || 'Non specificato'}`
             ].join('\n');
 
             const data = {

@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuale d'Uso - StockFlow ERP</title>
-    <meta name="description" content="Guida completa all'utilizzo di StockFlow ERP: magazzino, vendite, gift card, trasferimenti, clienti, report, SMS e pannello SuperAdmin.">
+    <title>Manuale d'uso di StockFlow ERP: cassa, magazzino, clienti</title>
+    <meta name="description" content="Manuale d'uso di StockFlow ERP passo per passo: cassa e vendite anche offline, resi e cambi, merce da parte, gift card, buoni sconto, fedeltà, magazzino multi-negozio, chiusura giornata e report.">
+    <meta name="author" content="StockFlow ERP">
+    <link rel="canonical" href="https://www.emcdigitalsolutions.it/stockflowERP/manuale.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Manuale d'uso di StockFlow ERP">
+    <meta property="og:description" content="Come si usa StockFlow ERP in negozio: cassa, resi, gift card, buoni sconto, fedeltà, magazzino, chiusura giornata e report.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.emcdigitalsolutions.it/stockflowERP/manuale.html">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -17,176 +25,254 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Manuale d'uso di StockFlow ERP",
+        "description": "Guida passo per passo al gestionale StockFlow ERP per negozi: cassa, resi, gift card, buoni sconto, fedeltà, magazzino multi-negozio, chiusura giornata e report.",
+        "inLanguage": "it-IT",
+        "url": "https://www.emcdigitalsolutions.it/stockflowERP/manuale.html",
+        "about": { "@type": "SoftwareApplication", "name": "StockFlow ERP", "applicationCategory": "BusinessApplication", "operatingSystem": "Web" },
+        "publisher": { "@type": "Organization", "name": "EMC Digital Solutions", "url": "https://www.emcdigitalsolutions.it" }
+    }
+    </script>
+
     <style>
+        /* Palette allineata a css/style.css (oro/ambra su carbone, come l'app reale) */
         :root {
             --primary: #C07821;
             --primary-light: #E5AB3E;
             --primary-dark: #9F5B1E;
-            --teal: #B8860B;
-            --teal-light: #2DD4BF;
-            --accent: #D4912A;
-            --accent-light: #FB923C;
+            --primary-rgb: 192, 120, 33;
+            --gold: #D4A84B;
+            --gold-soft: #EDC871;
             --success: #22C55E;
             --danger: #EF4444;
-            --purple: #8B5CF6;
-            --dark: #0F172A;
-            --dark-lighter: #1E293B;
-            --dark-card: #1a2332;
-            --gray-400: #9CA3AF;
-            --gray-500: #6B7280;
-            --gray-600: #4B5563;
+            --dark: #1A1A1A;
+            --dark-lighter: #2E2E2E;
+            --dark-card: #252525;
+            --line: rgba(255,255,255,0.08);
+            --text: #D6D3CD;
+            --text-strong: #F5F2EA;
+            --gray-400: #A8A39A;
+            --gray-500: #8A857C;
             --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --radius: 12px;
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 
         body {
             font-family: var(--font);
             font-size: 16px;
             line-height: 1.7;
-            color: #CBD5E1;
+            color: var(--text);
             background: var(--dark);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         a { color: var(--primary-light); text-decoration: none; transition: color 0.2s; }
-        a:hover { color: var(--teal-light); }
+        a:hover { color: var(--gold-soft); }
 
         /* ---- Navbar ---- */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
             padding: 0 24px; height: 64px;
             display: flex; align-items: center;
         }
-        .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
         .nav-brand { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; font-size: 18px; }
-        .nav-logo { background: linear-gradient(135deg, var(--primary), var(--teal)); color: #fff; font-weight: 800; font-size: 14px; width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-        .nav-back { color: var(--gray-400); font-size: 14px; transition: color 0.2s; }
+        .nav-logo { background: linear-gradient(135deg, var(--primary), #B8860B); color: #fff; font-weight: 800; font-size: 14px; width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .nav-actions { display: flex; align-items: center; gap: 18px; }
+        .nav-back { color: var(--gray-400); font-size: 14px; transition: color 0.2s; white-space: nowrap; }
         .nav-back:hover { color: #fff; }
         .nav-back i { margin-right: 6px; }
+        .nav-pdf {
+            display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+            padding: 8px 14px; border-radius: 8px; font-size: 13.5px; font-weight: 600;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff;
+        }
+        .nav-pdf:hover { color: #fff; filter: brightness(1.08); }
 
         /* ---- Layout ---- */
         .page { display: flex; max-width: 1200px; margin: 80px auto 0; padding: 0 24px; gap: 48px; }
 
-        /* ---- Sidebar / TOC ---- */
+        /* ---- Sidebar / indice ---- */
         .sidebar {
-            width: 260px; flex-shrink: 0; position: sticky; top: 80px;
+            width: 270px; flex-shrink: 0; position: sticky; top: 80px;
             max-height: calc(100vh - 96px); overflow-y: auto;
             padding: 24px 0;
         }
         .sidebar::-webkit-scrollbar { width: 3px; }
         .sidebar::-webkit-scrollbar-thumb { background: var(--dark-lighter); border-radius: 3px; }
         .sidebar h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-500); margin-bottom: 12px; padding-left: 12px; }
-        .sidebar ul { list-style: none; }
+        .sidebar ol { list-style: none; counter-reset: toc; }
         .sidebar li { margin-bottom: 2px; }
         .sidebar a {
-            display: block; padding: 7px 12px; border-radius: 8px;
+            display: flex; gap: 8px; padding: 6px 12px; border-radius: 8px;
             font-size: 13.5px; color: var(--gray-400); transition: all 0.2s;
             border-left: 2px solid transparent;
         }
+        .sidebar a .n { color: var(--gray-500); font-variant-numeric: tabular-nums; min-width: 18px; }
         .sidebar a:hover { color: #fff; background: rgba(255,255,255,0.04); }
-        .sidebar a.active { color: var(--primary-light); background: rgba(37, 99, 235, 0.08); border-left-color: var(--primary); }
-        .sidebar .sub { padding-left: 20px; }
-        .sidebar .sub a { font-size: 12.5px; }
+        .sidebar a.active { color: var(--primary-light); background: rgba(var(--primary-rgb), 0.10); border-left-color: var(--primary); }
 
-        /* ---- Content ---- */
+        /* ---- Contenuto ---- */
         .content { flex: 1; min-width: 0; padding: 24px 0 80px; }
 
         .content h1 {
-            font-size: 32px; font-weight: 800; color: #fff;
-            margin-bottom: 8px;
+            font-size: 34px; font-weight: 800; line-height: 1.2; color: #fff;
+            margin-bottom: 10px;
             background: linear-gradient(135deg, #fff, var(--primary-light));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .content .subtitle { color: var(--gray-500); font-size: 16px; margin-bottom: 48px; }
+        .content .subtitle { color: var(--gray-400); font-size: 17px; margin-bottom: 28px; max-width: 760px; }
 
         .content h2 {
-            font-size: 22px; font-weight: 700; color: #fff;
-            margin-top: 56px; margin-bottom: 16px; padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            display: flex; align-items: center; gap: 10px;
+            font-size: 23px; font-weight: 700; color: #fff; line-height: 1.3;
+            margin-top: 60px; margin-bottom: 16px; padding-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            display: flex; align-items: center; gap: 12px;
         }
         .content h2 .icon {
-            width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center;
             font-size: 14px; flex-shrink: 0;
+            background: rgba(var(--primary-rgb), 0.15); color: var(--primary-light);
         }
+        .content h2 .chap { color: var(--gray-500); font-weight: 600; font-size: 15px; margin-right: -4px; }
 
-        .content h3 { font-size: 17px; font-weight: 600; color: #E2E8F0; margin-top: 32px; margin-bottom: 10px; }
-        .content h4 { font-size: 15px; font-weight: 600; color: #CBD5E1; margin-top: 24px; margin-bottom: 8px; }
+        .content h3 { font-size: 18px; font-weight: 650; color: var(--text-strong); margin-top: 34px; margin-bottom: 10px; }
+        .content h4 { font-size: 15.5px; font-weight: 600; color: var(--text-strong); margin-top: 22px; margin-bottom: 8px; }
 
         .content p { margin-bottom: 14px; }
-        .content ul, .content ol { margin-bottom: 14px; padding-left: 20px; }
+        .content ul { margin-bottom: 14px; padding-left: 22px; list-style: disc; }
         .content li { margin-bottom: 6px; }
-        .content ul { list-style: disc; }
-        .content ol { list-style: decimal; }
+        .content strong { color: var(--text-strong); font-weight: 600; }
+        .content ul li::marker { color: var(--primary); }
 
-        /* Callouts */
+        /* Passi numerati */
+        ol.steps { list-style: none; counter-reset: step; margin: 16px 0 20px; padding: 0; }
+        ol.steps > li {
+            counter-increment: step; position: relative;
+            padding: 12px 16px 12px 58px; margin-bottom: 8px;
+            background: var(--dark-card); border: 1px solid var(--line); border-radius: 10px;
+        }
+        ol.steps > li::before {
+            content: counter(step);
+            position: absolute; left: 14px; top: 11px;
+            width: 30px; height: 30px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff; font-weight: 700; font-size: 14px;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Riquadri */
         .tip, .warning, .info {
             padding: 14px 18px; border-radius: var(--radius); margin: 18px 0;
-            font-size: 14px; line-height: 1.6;
+            font-size: 14.5px; line-height: 1.6;
             display: flex; gap: 12px; align-items: flex-start;
         }
-        .tip { background: rgba(13, 148, 136, 0.1); border: 1px solid rgba(13, 148, 136, 0.2); }
-        .tip i { color: var(--teal-light); margin-top: 2px; }
-        .warning { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); }
-        .warning i { color: var(--accent-light); margin-top: 2px; }
-        .info { background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.2); }
-        .info i { color: var(--primary-light); margin-top: 2px; }
+        .tip i, .warning i, .info i { margin-top: 3px; }
+        .tip { background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.22); }
+        .tip i { color: #4ADE80; }
+        .warning { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.22); }
+        .warning i { color: #F87171; }
+        .info { background: rgba(var(--primary-rgb), 0.10); border: 1px solid rgba(var(--primary-rgb), 0.28); }
+        .info i { color: var(--primary-light); }
 
-        /* Tables */
-        .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.06); }
+        /* Percorso nel menu */
+        .path {
+            display: inline-block; font-size: 13px; font-weight: 600; color: var(--gold-soft);
+            background: rgba(var(--primary-rgb), 0.12); border: 1px solid rgba(var(--primary-rgb), 0.25);
+            padding: 1px 8px; border-radius: 6px; white-space: nowrap;
+        }
+
+        /* Tabelle */
+        .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: var(--radius); border: 1px solid var(--line); }
         table { width: 100%; border-collapse: collapse; font-size: 14px; }
         thead { background: var(--dark-lighter); }
-        th { padding: 10px 16px; text-align: left; font-weight: 600; color: #E2E8F0; white-space: nowrap; }
-        td { padding: 10px 16px; border-top: 1px solid rgba(255,255,255,0.04); }
+        th { padding: 10px 14px; text-align: left; font-weight: 600; color: var(--text-strong); }
+        td { padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+        td.c, th.c { text-align: center; }
+        .yes { color: var(--success); }
+        th .short { display: none; }
+        .no { color: #6B6B6B; }
 
-        /* Tags */
-        .tag {
-            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            padding: 2px 8px; border-radius: 6px; letter-spacing: 0.5px;
+        /* Box download PDF */
+        .download-box {
+            display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+            background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.18), rgba(var(--primary-rgb), 0.05));
+            border: 1px solid rgba(var(--primary-rgb), 0.35); border-radius: 16px;
+            padding: 20px 22px; margin: 8px 0 34px;
         }
-        .tag-blue { background: rgba(37,99,235,0.15); color: var(--primary-light); }
-        .tag-teal { background: rgba(13,148,136,0.15); color: var(--teal-light); }
-        .tag-orange { background: rgba(249,115,22,0.15); color: var(--accent-light); }
-        .tag-purple { background: rgba(139,92,246,0.15); color: #A78BFA; }
-        .tag-green { background: rgba(34,197,94,0.15); color: #4ADE80; }
-        .tag-red { background: rgba(239,68,68,0.15); color: #F87171; }
+        .download-box .dl-icon { font-size: 30px; color: var(--primary-light); }
+        .download-box .dl-text { flex: 1; min-width: 220px; }
+        .download-box .dl-text strong { display: block; color: #fff; font-size: 16px; }
+        .download-box .dl-text span { font-size: 14px; color: var(--gray-400); }
+        .btn-dl {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 11px 18px; border-radius: 10px; font-weight: 600; font-size: 14.5px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff;
+        }
+        .btn-dl:hover { color: #fff; filter: brightness(1.08); }
 
-        /* Key shortcuts */
-        kbd { background: var(--dark-lighter); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 1px 6px; font-size: 12px; font-family: var(--font); color: #E2E8F0; }
+        /* Indice rapido nel corpo */
+        .quick-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; margin: 14px 0 10px; }
+        .quick-grid a {
+            display: flex; align-items: center; gap: 10px; padding: 11px 14px;
+            background: var(--dark-card); border: 1px solid var(--line); border-radius: 10px;
+            color: var(--text); font-size: 14px; font-weight: 500;
+        }
+        .quick-grid a i { color: var(--primary-light); width: 18px; text-align: center; }
+        .quick-grid a:hover { border-color: rgba(var(--primary-rgb), 0.5); color: #fff; }
 
-        /* Code */
-        code { background: var(--dark-lighter); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: var(--teal-light); }
+        kbd { background: var(--dark-lighter); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 1px 6px; font-size: 12.5px; font-family: var(--font); color: var(--text-strong); }
 
-        /* Mobile hamburger TOC */
+        .soon { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 6px; background: rgba(var(--primary-rgb), 0.18); color: var(--gold-soft); vertical-align: middle; }
+
+        /* Pulsante indice su telefono */
         .mobile-toc-btn {
-            display: none; position: fixed; bottom: 24px; right: 24px; z-index: 99;
-            width: 48px; height: 48px; border-radius: 50%;
+            display: none; position: fixed; bottom: 22px; right: 22px; z-index: 99;
+            width: 50px; height: 50px; border-radius: 50%;
             background: var(--primary); color: #fff; border: none;
-            font-size: 18px; cursor: pointer; box-shadow: 0 4px 20px rgba(37,99,235,0.4);
+            font-size: 18px; cursor: pointer; box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.45);
         }
 
         /* Footer */
         .manual-footer {
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid var(--line);
             text-align: center; padding: 32px 24px; color: var(--gray-500); font-size: 13px;
         }
+        .manual-footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; margin-bottom: 10px; }
         .manual-footer a { color: var(--primary-light); }
 
         /* ---- Responsive ---- */
         @media (max-width: 900px) {
-            .sidebar { display: none; position: fixed; top: 0; left: 0; bottom: 0; z-index: 200; width: 280px; background: var(--dark); padding: 80px 16px 24px; border-right: 1px solid rgba(255,255,255,0.06); }
+            .sidebar { display: none; position: fixed; top: 0; left: 0; bottom: 0; z-index: 200; width: 290px; max-width: 85vw; max-height: none; background: var(--dark); padding: 80px 16px 24px; border-right: 1px solid var(--line); }
             .sidebar.open { display: block; }
             .mobile-toc-btn { display: flex; align-items: center; justify-content: center; }
-            .page { gap: 0; }
-            .content h1 { font-size: 26px; }
-            .content h2 { font-size: 19px; }
-            .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 199; }
+            .page { gap: 0; padding: 0 16px; }
+            .content h1 { font-size: 27px; }
+            .content h2 { font-size: 20px; }
+            .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 199; }
             .overlay.open { display: block; }
+        }
+        @media (max-width: 560px) {
+            .navbar { padding: 0 16px; }
+            .nav-pdf .lbl-long { display: none; }
+            .nav-back .lbl { display: none; }
+            .nav-back i { margin-right: 0; }
+            ol.steps > li { padding-left: 52px; }
+            ol.steps > li::before { left: 11px; }
+            th, td { padding: 8px 10px; }
+            th .full { display: none; }
+            th .short { display: inline; }
+            td.c, th.c { width: 46px; padding-left: 4px; padding-right: 4px; }
         }
     </style>
 </head>
@@ -199,683 +285,602 @@
                 <span class="nav-logo">SF</span>
                 <span>StockFlow</span>
             </a>
-            <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Torna al sito</a>
+            <div class="nav-actions">
+                <a href="stockflow-caratteristiche.pdf" class="nav-pdf" download><i class="fas fa-file-pdf"></i><span><span class="lbl-long">Caratteristiche </span>PDF</span></a>
+                <a href="index.html" class="nav-back" aria-label="Torna al sito"><i class="fas fa-arrow-left"></i><span class="lbl"> Torna al sito</span></a>
+            </div>
         </div>
     </nav>
 
-    <!-- Overlay mobile -->
+    <!-- Overlay telefono -->
     <div class="overlay" id="overlay" onclick="toggleToc()"></div>
 
     <div class="page">
-        <!-- Sidebar TOC -->
-        <aside class="sidebar" id="sidebar">
-            <h4>Manuale d'uso</h4>
-            <ul>
-                <li><a href="#intro">Introduzione</a></li>
-                <li><a href="#primi-passi">Primi Passi</a></li>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#magazzino">Magazzino</a></li>
-                <li><a href="#pos">Punto Cassa (POS)</a></li>
-                <li><a href="#gift-card">Gift Card</a></li>
-                <li><a href="#trasferimenti">Trasferimenti</a></li>
-                <li><a href="#clienti">Clienti e Fidelity</a></li>
-                <li><a href="#report">Report</a></li>
-                <li><a href="#sms">SMS Marketing</a></li>
-                <li><a href="#sconti">Politica Sconti</a></li>
-                <li><a href="#utenti">Gestione Utenti</a></li>
-                <li><a href="#export-utenti">Export Utenti CSV</a></li>
-                <li><a href="#import-utenti">Import Utenti CSV</a></li>
-                <li><a href="#analytics">Analytics</a></li>
-                <ul class="sub">
-                    <li><a href="#perf-dipendenti">Performance Dipendenti</a></li>
-                    <li><a href="#perf-negozi">Performance Negozi</a></li>
-                </ul>
-                <li><a href="#webhooks">Webhook</a></li>
-                <li><a href="#assistenza">Assistenza</a></li>
-                <li><a href="#impostazioni">Impostazioni Tenant</a></li>
-                <li><a href="#superadmin" style="color: var(--accent-light); font-weight: 600;">SuperAdmin</a></li>
-                <ul class="sub">
-                    <li><a href="#sa-tenants">Gestione Tenant</a></li>
-                    <li><a href="#sa-impersonation">Impersonation</a></li>
-                    <li><a href="#sa-config">Configurazione</a></li>
-                    <li><a href="#sa-stats">Statistiche</a></li>
-                </ul>
-                <li><a href="#ruoli">Ruoli e Permessi</a></li>
-                <li><a href="#faq-manuale">FAQ</a></li>
-            </ul>
+        <!-- Indice -->
+        <aside class="sidebar" id="sidebar" aria-label="Indice del manuale">
+            <h4>Indice</h4>
+            <ol>
+                <li><a href="#introduzione"><span class="n">1</span> Introduzione</a></li>
+                <li><a href="#primo-accesso"><span class="n">2</span> Primo accesso e negozi</a></li>
+                <li><a href="#dashboard"><span class="n">3</span> Dashboard</a></li>
+                <li><a href="#prodotti"><span class="n">4</span> Prodotti e varianti</a></li>
+                <li><a href="#magazzino"><span class="n">5</span> Magazzino</a></li>
+                <li><a href="#trasferimenti"><span class="n">6</span> Trasferimenti tra negozi</a></li>
+                <li><a href="#cassa"><span class="n">7</span> Cassa: nuova vendita</a></li>
+                <li><a href="#scontrino"><span class="n">8</span> Scontrino e scontrino regalo</a></li>
+                <li><a href="#offline"><span class="n">9</span> Vendere senza connessione</a></li>
+                <li><a href="#resi"><span class="n">10</span> Resi, cambi e buono reso</a></li>
+                <li><a href="#merce-da-parte"><span class="n">11</span> Merce da parte</a></li>
+                <li><a href="#gift-card"><span class="n">12</span> Gift card</a></li>
+                <li><a href="#buoni-sconto"><span class="n">13</span> Buoni sconto</a></li>
+                <li><a href="#saldi"><span class="n">14</span> Saldi e politica sconti</a></li>
+                <li><a href="#clienti"><span class="n">15</span> Clienti e consenso privacy</a></li>
+                <li><a href="#fedelta"><span class="n">16</span> Programma fedeltà</a></li>
+                <li><a href="#locandine"><span class="n">17</span> Materiale da stampare</a></li>
+                <li><a href="#chiusura"><span class="n">18</span> Chiusura giornata</a></li>
+                <li><a href="#report"><span class="n">19</span> Report e analisi</a></li>
+                <li><a href="#utenti"><span class="n">20</span> Utenti, commesse e ruoli</a></li>
+                <li><a href="#impostazioni"><span class="n">21</span> Impostazioni</a></li>
+                <li><a href="#dati"><span class="n">22</span> I tuoi dati e sicurezza</a></li>
+                <li><a href="#in-arrivo"><span class="n">23</span> In arrivo</a></li>
+                <li><a href="#assistenza"><span class="n">24</span> Assistenza e domande</a></li>
+            </ol>
         </aside>
 
-        <!-- Main content -->
+        <!-- Contenuto -->
         <main class="content">
-            <h1>Manuale d'Uso</h1>
-            <p class="subtitle">Guida completa a tutte le funzionalit&agrave; di StockFlow ERP</p>
+            <h1>Manuale d'uso di StockFlow ERP</h1>
+            <p class="subtitle">Come si usa il gestionale in negozio, capitolo per capitolo: dalla prima vendita alla chiusura di fine giornata. Ogni operazione è descritta con passi numerati e con il percorso da seguire nel menu.</p>
 
-            <!-- =============== INTRO =============== -->
-            <section id="intro">
-                <h2><span class="icon" style="background: rgba(37,99,235,0.15); color: var(--primary-light);"><i class="fas fa-book"></i></span> Introduzione</h2>
-                <p>StockFlow ERP &egrave; un gestionale cloud multi-tenant pensato per negozi retail. Permette di gestire magazzino, vendite, gift card, clienti, trasferimenti tra sedi e molto altro, tutto dal browser.</p>
-                <p>La piattaforma supporta pi&ugrave; negozi, pi&ugrave; utenti con ruoli differenziati, e offre funzionalit&agrave; avanzate come branding personalizzato, SMS marketing e integrazione con Stripe per i pagamenti online.</p>
-                <div class="info">
-                    <i class="fas fa-circle-info"></i>
-                    <span>StockFlow funziona interamente nel browser. Non serve installare software, basta una connessione internet.</span>
+            <div class="download-box">
+                <i class="fas fa-file-pdf dl-icon" aria-hidden="true"></i>
+                <div class="dl-text">
+                    <strong>Caratteristiche di StockFlow ERP in PDF</strong>
+                    <span>Tutte le funzioni in un documento da stampare o da inoltrare (PDF, Portable Document Format).</span>
+                </div>
+                <a href="stockflow-caratteristiche.pdf" class="btn-dl" download><i class="fas fa-download"></i> Scarica il PDF</a>
+            </div>
+
+            <!-- ============ 1. INTRODUZIONE ============ -->
+            <section id="introduzione">
+                <h2><span class="icon"><i class="fas fa-book-open"></i></span><span class="chap">1.</span> Introduzione</h2>
+                <p>StockFlow ERP è il gestionale per negozi che tiene insieme cassa, magazzino, clienti e incassi di uno o più punti vendita. Funziona dal browser (Chrome, Edge, Safari) su computer, tablet e telefono: non serve installare programmi, basta una connessione a internet. Se la connessione cade, la cassa continua a vendere (vedi il <a href="#offline">capitolo 9</a>).</p>
+
+                <h3>Cosa serve in negozio</h3>
+                <ul>
+                    <li><strong>Un computer o un tablet</strong> con un browser aggiornato.</li>
+                    <li><strong>Un lettore di codici a barre</strong> (la «pistola»): legge le etichette degli articoli, gli scontrini, le gift card e i buoni. Senza lettore si può scrivere il codice o cercare l'articolo per nome.</li>
+                    <li><strong>Una stampante per scontrini</strong> (facoltativa) per lo scontrino di cortesia, lo scontrino regalo, i buoni e le ricevute.</li>
+                </ul>
+
+                <h3>Il menu</h3>
+                <p>Il menu laterale è diviso in gruppi: <strong>Vendite</strong>, <strong>Catalogo</strong>, <strong>Magazzino</strong>, <strong>Clienti</strong>, <strong>Analisi</strong>, <strong>Amministrazione</strong> e <strong>Supporto</strong>. Ognuno vede solo le voci adatte al proprio ruolo (vedi il <a href="#utenti">capitolo 20</a>). Anche dentro il gestionale, alla voce <span class="path">Supporto › Manuale</span>, trovi una guida rapida filtrata per il tuo ruolo.</p>
+
+                <div class="quick-grid">
+                    <a href="#cassa"><i class="fas fa-cash-register"></i> Fare una vendita</a>
+                    <a href="#resi"><i class="fas fa-rotate-left"></i> Fare un reso o un cambio</a>
+                    <a href="#gift-card"><i class="fas fa-gift"></i> Vendere una gift card</a>
+                    <a href="#merce-da-parte"><i class="fas fa-box-archive"></i> Mettere da parte la merce</a>
+                    <a href="#chiusura"><i class="fas fa-clipboard-check"></i> Chiudere la giornata</a>
+                    <a href="#prodotti"><i class="fas fa-tags"></i> Caricare un articolo</a>
                 </div>
             </section>
 
-            <!-- =============== PRIMI PASSI =============== -->
-            <section id="primi-passi">
-                <h2><span class="icon" style="background: rgba(34,197,94,0.15); color: #4ADE80;"><i class="fas fa-rocket"></i></span> Primi Passi</h2>
+            <!-- ============ 2. PRIMO ACCESSO ============ -->
+            <section id="primo-accesso">
+                <h2><span class="icon"><i class="fas fa-right-to-bracket"></i></span><span class="chap">2.</span> Primo accesso e negozi</h2>
 
-                <h3>Registrazione</h3>
-                <ol>
-                    <li>Vai alla pagina di registrazione e inserisci il <strong>nome della tua azienda</strong>.</li>
-                    <li>Compila nome, cognome, email e scegli una password sicura (minimo 8 caratteri, una maiuscola, un numero, un carattere speciale).</li>
-                    <li>Clicca <strong>Registrati</strong>. Il sistema crea automaticamente il tuo tenant (spazio aziendale isolato) e ti reindirizza alla configurazione iniziale.</li>
+                <h3>Entrare nel gestionale</h3>
+                <ol class="steps">
+                    <li>Apri l'indirizzo del gestionale che ti è stato consegnato e inserisci <strong>email</strong> e <strong>password</strong>.</li>
+                    <li>Se hai dimenticato la password premi <strong>«Password dimenticata?»</strong>: ricevi per email un link per sceglierne una nuova.</li>
+                    <li>Dopo l'accesso si apre la <a href="#dashboard">Dashboard</a>.</li>
                 </ol>
+                <p>Le password devono avere almeno <strong>8 caratteri</strong>, con almeno una lettera maiuscola, un numero e un carattere speciale (per esempio <kbd>!</kbd>, <kbd>#</kbd>, <kbd>@</kbd>).</p>
 
-                <h3>Login</h3>
-                <p>Accedi con email e password dalla pagina di login. Dopo l'autenticazione verrai reindirizzato alla <strong>Dashboard</strong>.</p>
+                <h3>Il primo negozio</h3>
+                <p>Al primissimo accesso, se l'azienda non ha ancora un punto vendita, il gestionale chiede di crearlo:</p>
+                <ol class="steps">
+                    <li>Scrivi un <strong>codice</strong> breve del negozio (per esempio le iniziali della città) e il <strong>nome</strong> del negozio.</li>
+                    <li>Aggiungi, se vuoi, città, indirizzo e telefono.</li>
+                    <li>Scegli subito i <strong>brand</strong> e le <strong>categorie</strong> che vendi (si possono aggiungere anche dopo) e conferma.</li>
+                </ol>
+                <p>Altri punti vendita si aggiungono in <span class="path">Impostazioni › Negozi</span>.</p>
 
-                <div class="tip">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Il piano <strong>Free</strong> include 1 negozio, 1 utente e fino a 50 prodotti. Puoi fare upgrade in qualsiasi momento.</span>
-                </div>
+                <h3>Il selettore del negozio</h3>
+                <p>In alto c'è il <strong>selettore del negozio</strong>: vendite, resi, chiusura, giacenze e report si riferiscono sempre al negozio scelto lì. Chi lavora in un solo negozio vede solo quello.</p>
+                <ul>
+                    <li><strong>Commesse e responsabili</strong> vedono e lavorano solo sui negozi a cui sono assegnati: le vendite di un altro negozio non sono mai visibili.</li>
+                    <li><strong>Giacenze degli altri negozi</strong>: si possono consultare in sola lettura, per dire al cliente se un articolo è disponibile nell'altra sede.</li>
+                    <li><strong>Gift card</strong>: valgono in tutti i negozi.</li>
+                    <li><strong>Cambi e resi</strong>: un articolo comprato in un negozio si può rendere o cambiare in un altro.</li>
+                    <li><strong>L'amministratore</strong> vede sempre tutti i negozi.</li>
+                </ul>
             </section>
 
-            <!-- =============== DASHBOARD =============== -->
+            <!-- ============ 3. DASHBOARD ============ -->
             <section id="dashboard">
-                <h2><span class="icon" style="background: rgba(37,99,235,0.15); color: var(--primary-light);"><i class="fas fa-chart-line"></i></span> Dashboard</h2>
-                <p>La dashboard mostra una panoramica immediata dell'attivit&agrave;:</p>
+                <h2><span class="icon"><i class="fas fa-gauge-high"></i></span><span class="chap">3.</span> Dashboard</h2>
+                <p>La Dashboard è la pagina iniziale e riassume la situazione del negozio selezionato:</p>
                 <ul>
-                    <li><strong>Vendite del mese</strong> &mdash; totale e variazione percentuale</li>
-                    <li><strong>Prodotti in magazzino</strong> &mdash; conteggio totale</li>
-                    <li><strong>Gift Card attive</strong> &mdash; numero e valore</li>
-                    <li><strong>Prodotti sotto scorta</strong> &mdash; lista con quantit&agrave; minima non raggiunta</li>
-                    <li><strong>Ultimi movimenti</strong> &mdash; carico, scarico, trasferimenti recenti</li>
-                    <li><strong>Trasferimenti in sospeso</strong> &mdash; richiedono azione</li>
+                    <li><strong>Numeri principali</strong>: totale prodotti, valore del magazzino, articoli sotto-scorta.</li>
+                    <li><strong>Sotto-scorta</strong>: gli articoli che hanno raggiunto la quantità minima e vanno riordinati.</li>
+                    <li><strong>Movimenti recenti</strong>: gli ultimi carichi e scarichi.</li>
+                    <li><strong>Trasferimenti in attesa</strong>: le richieste tra negozi che aspettano un'azione.</li>
                 </ul>
-                <p>Seleziona il <strong>negozio attivo</strong> dal selettore in alto a destra per filtrare i dati per punto vendita.</p>
             </section>
 
-            <!-- =============== MAGAZZINO =============== -->
+            <!-- ============ 4. PRODOTTI ============ -->
+            <section id="prodotti">
+                <h2><span class="icon"><i class="fas fa-tags"></i></span><span class="chap">4.</span> Prodotti e varianti</h2>
+                <p>Il catalogo si trova in <span class="path">Catalogo › Prodotti</span>. Ogni prodotto ha nome, brand, categoria, genere, fascia d'età, stagione, prezzo di vendita, prezzo di acquisto (facoltativo), aliquota IVA (Imposta sul Valore Aggiunto: 0%, 4%, 5%, 10% o 22%) e, se vuoi, una foto per riconoscerlo a colpo d'occhio.</p>
+
+                <h3>Creare un prodotto con taglie e colori</h3>
+                <ol class="steps">
+                    <li>Apri <span class="path">Catalogo › Prodotti</span> e premi <strong>«Nuovo prodotto»</strong>.</li>
+                    <li>Compila i dati principali: <strong>SKU</strong> (Stock Keeping Unit, il codice dell'articolo: puoi leggere con la pistola il codice a barre dell'etichetta direttamente in questo campo), nome, brand, categoria, prezzo e aliquota IVA.</li>
+                    <li>Nel riquadro <strong>«Varianti (Taglia + Colore)»</strong> premi <strong>«Aggiungi»</strong> per ogni combinazione: per esempio «Tg. 6 anni – Rosa», «Tg. 8 anni – Rosa».</li>
+                    <li>Per ogni variante puoi indicare la quantità iniziale e la <strong>scorta minima</strong> sotto la quale l'articolo viene segnalato.</li>
+                    <li>Salva. Ogni variante ha la sua giacenza in ogni negozio.</li>
+                </ol>
+
+                <h3>Codici a barre</h3>
+                <p>In cassa e nei movimenti basta leggere con la pistola il <strong>codice a barre</strong> dell'etichetta: il gestionale riconosce sia lo SKU del prodotto sia il codice della singola variante (taglia e colore). I codici delle varianti si caricano con l'import da file CSV (colonna «Barcode») oppure con l'aggiunta rapida dalla cassa. Nella scheda prodotto trovi la giacenza per negozio e lo storico dei movimenti.</p>
+
+                <h3>Aggiunta rapida dalla cassa</h3>
+                <p>Se in cassa leggi un codice a barre che non è ancora in catalogo, il pulsante <strong>«+»</strong> apre l'<strong>Aggiunta rapida prodotto</strong>: crei l'articolo (brand, categoria, taglia, colore e prezzo) e lo aggiungi al carrello senza uscire dalla vendita.</p>
+
+                <h3>Importare il catalogo da file CSV</h3>
+                <p>Per caricare molti articoli insieme si usa un file CSV (Comma-Separated Values: un file di testo a colonne che si apre e si salva con Excel). Funzione riservata ad amministratore e responsabile.</p>
+                <ol class="steps">
+                    <li>Apri <span class="path">Catalogo › Import Prodotti</span> e scarica il <strong>modello</strong>.</li>
+                    <li>Compilalo con Excel, una riga per ogni variante: SKU, nome, brand, categoria, fascia d'età, genere, stagione, prezzo di acquisto e di vendita, taglia, colore, codice a barre e quantità. Il separatore delle colonne è il punto e virgola (<kbd>;</kbd>).</li>
+                    <li>Carica il file: compare un'<strong>anteprima</strong> con le colonne riconosciute e gli eventuali errori riga per riga.</li>
+                    <li>Conferma. Brand e categorie che non esistono ancora vengono creati da soli; le righe con errori vengono saltate e riepilogate.</li>
+                </ol>
+            </section>
+
+            <!-- ============ 5. MAGAZZINO ============ -->
             <section id="magazzino">
-                <h2><span class="icon" style="background: rgba(13,148,136,0.15); color: var(--teal-light);"><i class="fas fa-warehouse"></i></span> Magazzino</h2>
+                <h2><span class="icon"><i class="fas fa-warehouse"></i></span><span class="chap">5.</span> Magazzino</h2>
 
-                <h3>Prodotti</h3>
-                <p>La sezione prodotti permette di creare e gestire il catalogo. Ogni prodotto ha:</p>
+                <h3>Inventario e sotto-scorta</h3>
+                <p>In <span class="path">Magazzino › Inventario</span> vedi la giacenza di ogni prodotto e variante nel negozio selezionato. Gli articoli sotto la soglia minima sono evidenziati in rosso.</p>
                 <ul>
-                    <li><strong>Nome, SKU, Barcode</strong> &mdash; identificativi univoci</li>
-                    <li><strong>Brand e Categoria</strong> &mdash; per organizzazione e filtri</li>
-                    <li><strong>Prezzo di acquisto e vendita</strong> &mdash; con calcolo margine automatico</li>
-                    <li><strong>Varianti</strong> &mdash; combinazioni di taglia, colore, fascia d'et&agrave;, stagione, genere</li>
+                    <li><strong>«Min Stock»</strong>: imposta la scorta minima di un articolo.</li>
+                    <li><strong>«Correzione»</strong>: corregge la giacenza dopo un conteggio fisico. Ogni correzione chiede una motivazione e resta registrata nei movimenti.</li>
                 </ul>
+                <p>Scorta minima e correzioni sono riservate ad amministratore e responsabile.</p>
 
-                <h3>Varianti</h3>
-                <p>Ogni prodotto pu&ograve; avere pi&ugrave; varianti (es. "T-shirt Rossa Tg. M", "T-shirt Blu Tg. L"). Ogni variante ha il proprio barcode e la propria giacenza per negozio.</p>
-
-                <h3>Giacenze</h3>
-                <p>La sezione <strong>Inventario</strong> mostra la giacenza per ogni variante in ogni negozio. Puoi:</p>
-                <ul>
-                    <li><strong>Regolare la quantit&agrave;</strong> &mdash; aggiungere o togliere pezzi con motivazione</li>
-                    <li><strong>Impostare la scorta minima</strong> &mdash; ricevi avvisi in dashboard quando la quantit&agrave; scende sotto la soglia</li>
-                    <li><strong>Filtrare per negozio</strong> &mdash; vedi le giacenze del punto vendita selezionato</li>
-                </ul>
-
-                <h3>Movimenti</h3>
-                <p>Ogni variazione di giacenza genera un <strong>movimento</strong> tracciato (carico, scarico, rettifica, trasferimento, vendita, reso). Puoi cercare e filtrare i movimenti per data, tipo e prodotto.</p>
-
-                <h3>Import CSV</h3>
-                <p>Puoi importare prodotti in blocco da un file CSV (separatore punto e virgola, formato italiano). Il sistema rileva automaticamente le colonne e crea prodotti e varianti.</p>
-
-                <div class="tip">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Usa la <strong>ricerca per barcode</strong> (icona scanner) per trovare prodotti e varianti in modo istantaneo.</span>
-                </div>
-            </section>
-
-            <!-- =============== SCONTI =============== -->
-            <section id="sconti">
-                <h2><span class="icon" style="background: rgba(239,68,68,0.15); color: #F87171;"><i class="fas fa-tags"></i></span> Politica Sconti</h2>
-                <p>La sezione <strong>Sconti</strong> (<code>/discounts</code>) permette ad Admin e Manager di gestire gli sconti sui prodotti in modo centralizzato.</p>
-
-                <h3>Come funzionano gli sconti</h3>
-                <p>Il sistema prevede <strong>due livelli di sconto</strong> che lavorano insieme:</p>
-                <ol>
-                    <li><strong>Sconto prodotto</strong> (da Politica Sconti) &mdash; l'Admin/Manager imposta una percentuale di sconto su uno o pi&ugrave; prodotti. Il prezzo scontato viene pre-calcolato e mostrato ovunque nel catalogo.</li>
-                    <li><strong>Sconto manuale in cassa</strong> &mdash; il cassiere pu&ograve; applicare un ulteriore sconto al momento della vendita (10%, 20%, 30%, ecc.).</li>
+                <h3>Caricare la merce arrivata</h3>
+                <ol class="steps">
+                    <li>Apri <span class="path">Magazzino › Movimenti</span> e premi <strong>«Carico/Scarico»</strong>.</li>
+                    <li>Seleziona il tipo <strong>CARICO</strong> (merce in entrata) oppure <strong>SCARICO</strong> (merce in uscita).</li>
+                    <li>Leggi con la pistola i codici degli articoli e indica le quantità: puoi registrare più articoli in una volta sola.</li>
+                    <li>Conferma: la giacenza del negozio si aggiorna subito.</li>
                 </ol>
 
-                <h3>Applicare sconti in blocco</h3>
-                <ol>
-                    <li>Vai alla sezione <strong>Sconti</strong> dal menu laterale.</li>
-                    <li>Filtra i prodotti per <strong>brand</strong> o <strong>categoria</strong>.</li>
-                    <li>Seleziona i prodotti e imposta la <strong>percentuale di sconto</strong>.</li>
-                    <li>Puoi anche impostare <strong>date di inizio e fine</strong> per promozioni temporanee.</li>
-                </ol>
-
-                <h3>Attivare e disattivare singoli sconti</h3>
-                <p>Ogni prodotto con uno sconto impostato pu&ograve; essere <strong>attivato o disattivato</strong> individualmente tramite il toggle nella lista sconti. Un prodotto disattivato mantiene lo sconto configurato ma lo mostra a prezzo pieno in cassa.</p>
-
-                <h3>Protezioni</h3>
-                <ul>
-                    <li><strong>Sconto massimo consentito</strong>: percentuale massima applicabile manualmente in cassa (default: 50%). Configurabile nelle <a href="#impostazioni">Impostazioni Tenant</a>.</li>
-                    <li><strong>Blocco doppio sconto</strong>: se abilitato (default), il cassiere <strong>non pu&ograve;</strong> applicare uno sconto manuale aggiuntivo su un articolo gi&agrave; in saldo.</li>
-                </ul>
-
-                <div class="info">
-                    <i class="fas fa-circle-info"></i>
-                    <span>Gli sconti vengono applicati automaticamente al momento della vendita. Il cassiere vede il prezzo gi&agrave; scontato nel carrello e riceve avvisi visivi in caso di violazioni della politica.</span>
-                </div>
-
-                <h4>Chi pu&ograve; gestire gli sconti</h4>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>Azione</th><th><span class="tag tag-red">ADMIN</span></th><th><span class="tag tag-purple">MANAGER</span></th><th><span class="tag tag-blue">EMPLOYEE</span></th></tr></thead>
-                        <tbody>
-                            <tr><td>Applicare sconti in blocco</td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-xmark" style="color:var(--danger)"></i></td></tr>
-                            <tr><td>Attivare/disattivare sconti</td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-xmark" style="color:var(--danger)"></i></td></tr>
-                            <tr><td>Rimuovere sconti</td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-xmark" style="color:var(--danger)"></i></td></tr>
-                            <tr><td>Sconto manuale in cassa</td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h3>Storico movimenti</h3>
+                <p>Ogni variazione di giacenza diventa un <strong>movimento</strong>: carico, scarico, vendita, reso, correzione, trasferimento. Per ciascuno restano data, utente, prodotto, variante, quantità e note. Lo storico si filtra per data, tipo, prodotto e utente.</p>
             </section>
 
-            <!-- =============== POS =============== -->
-            <section id="pos">
-                <h2><span class="icon" style="background: rgba(249,115,22,0.15); color: var(--accent-light);"><i class="fas fa-cash-register"></i></span> Punto Cassa (POS)</h2>
-                <p>Il modulo vendite permette di registrare le vendite dal browser come un registratore di cassa digitale.</p>
-
-                <h3>Creare una vendita</h3>
-                <ol>
-                    <li>Seleziona il <strong>negozio</strong> da cui stai vendendo.</li>
-                    <li>Cerca i prodotti per nome, SKU o barcode e aggiungili al carrello.</li>
-                    <li>Puoi applicare <strong>sconti</strong> (percentuale o importo fisso) per riga o sull'intero totale.</li>
-                    <li>Associa un <strong>cliente</strong> (opzionale) per accumulare punti fidelity.</li>
-                    <li>Scegli il metodo di pagamento (contanti, carta, gift card, misto).</li>
-                    <li>Conferma la vendita. La giacenza viene scalata automaticamente.</li>
-                </ol>
-
-                <h3>Resi</h3>
-                <p>Per effettuare un reso, trova la vendita originale e crea un <strong>reso parziale o totale</strong>. La giacenza viene ripristinata e l'importo viene registrato come credito.</p>
-
-                <h3>Gift Card come pagamento</h3>
-                <p>&Egrave; possibile utilizzare una gift card come metodo di pagamento. Inserisci il codice della gift card e il sistema scala automaticamente il saldo disponibile.</p>
-            </section>
-
-            <!-- =============== GIFT CARD =============== -->
-            <section id="gift-card">
-                <h2><span class="icon" style="background: rgba(139,92,246,0.15); color: #A78BFA;"><i class="fas fa-gift"></i></span> Gift Card</h2>
-                <p>Le gift card digitali permettono ai clienti di acquistare buoni regalo online o in negozio.</p>
-
-                <h3>Creare una Gift Card</h3>
-                <ul>
-                    <li><strong>In negozio</strong>: dall'area Gift Card del gestionale, crea una nuova card indicando importo e destinatario.</li>
-                    <li><strong>Online</strong>: i clienti possono acquistare gift card dal sito web del negozio con pagamento Stripe.</li>
-                </ul>
-
-                <h3>Funzionamento</h3>
-                <ul>
-                    <li>Ogni gift card ha un <strong>codice univoco</strong> (es. <code>GC-XXXX-XXXX-XXXX</code>).</li>
-                    <li>Il destinatario riceve un <strong>PDF personalizzato</strong> via email con il branding del negozio.</li>
-                    <li>La gift card pu&ograve; essere usata come <strong>metodo di pagamento</strong> al POS.</li>
-                    <li>Il saldo viene scalato parzialmente (pu&ograve; essere usata in pi&ugrave; acquisti).</li>
-                    <li>Storico transazioni visibile per ogni gift card.</li>
-                </ul>
-
-                <div class="info">
-                    <i class="fas fa-circle-info"></i>
-                    <span>Senza chiavi Stripe configurate, le gift card funzionano in <strong>modalit&agrave; test</strong> (creazione diretta senza pagamento online).</span>
-                </div>
-            </section>
-
-            <!-- =============== TRASFERIMENTI =============== -->
+            <!-- ============ 6. TRASFERIMENTI ============ -->
             <section id="trasferimenti">
-                <h2><span class="icon" style="background: rgba(37,99,235,0.15); color: var(--primary-light);"><i class="fas fa-truck"></i></span> Trasferimenti</h2>
-                <p>I trasferimenti permettono di spostare merce tra i punti vendita con un flusso controllato.</p>
-
-                <h3>Workflow</h3>
+                <h2><span class="icon"><i class="fas fa-truck"></i></span><span class="chap">6.</span> Trasferimenti tra negozi</h2>
+                <p>Con più punti vendita la merce si sposta da un negozio all'altro con un percorso controllato, in <span class="path">Magazzino › Trasferimenti</span> (amministratore e responsabile).</p>
+                <ol class="steps">
+                    <li>Premi <strong>«Nuovo»</strong> e scegli negozio di <strong>origine</strong> e di <strong>destinazione</strong>.</li>
+                    <li>Aggiungi articoli e quantità. Puoi salvarlo come <strong>bozza</strong> e modificarlo, poi inviare la <strong>richiesta</strong>.</li>
+                    <li>Il negozio di origine <strong>spedisce</strong>: solo in quel momento la merce esce dalla sua giacenza.</li>
+                    <li>Il negozio di destinazione <strong>riceve</strong>: la merce entra nella sua giacenza. Se arriva meno merce (per esempio un capo danneggiato) si conferma una <strong>ricezione parziale</strong> con le quantità reali.</li>
+                </ol>
                 <div class="table-wrap">
                     <table>
-                        <thead><tr><th>Stato</th><th>Descrizione</th><th>Azione stock</th></tr></thead>
+                        <thead><tr><th>Stato</th><th>Significato</th><th>Effetto sulla giacenza</th></tr></thead>
                         <tbody>
-                            <tr><td><span class="tag tag-blue">BOZZA</span></td><td>Trasferimento creato, modificabile</td><td>Nessuna</td></tr>
-                            <tr><td><span class="tag tag-orange">RICHIESTO</span></td><td>Inviato per approvazione</td><td>Nessuna</td></tr>
-                            <tr><td><span class="tag tag-purple">IN TRANSITO</span></td><td>Merce spedita</td><td>Stock scalato dall'origine</td></tr>
-                            <tr><td><span class="tag tag-green">RICEVUTO</span></td><td>Merce ricevuta a destinazione</td><td>Stock aggiunto a destinazione</td></tr>
-                            <tr><td><span class="tag tag-teal">PARZ. RICEVUTO</span></td><td>Ricezione parziale</td><td>Stock parziale aggiunto</td></tr>
+                            <tr><td>Bozza</td><td>In preparazione, modificabile</td><td>Nessuno</td></tr>
+                            <tr><td>Richiesto</td><td>Inviato al negozio di origine</td><td>Nessuno</td></tr>
+                            <tr><td>In transito</td><td>Merce spedita</td><td>Esce dal negozio di origine</td></tr>
+                            <tr><td>Ricevuto / Parzialmente ricevuto</td><td>Merce arrivata</td><td>Entra nel negozio di destinazione</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <p>Un trasferimento si può anche annullare o rifiutare indicando il motivo.</p>
+            </section>
 
-                <h3>Come creare un trasferimento</h3>
-                <ol>
-                    <li>Seleziona <strong>negozio di origine</strong> e <strong>negozio di destinazione</strong>.</li>
-                    <li>Aggiungi i prodotti/varianti con le quantit&agrave; da trasferire.</li>
-                    <li>Salva come bozza o invia direttamente la richiesta.</li>
-                    <li>Il negozio di origine <strong>spedisce</strong> &rarr; lo stock viene scalato.</li>
-                    <li>Il negozio di destinazione <strong>riceve</strong> &rarr; lo stock viene aggiunto.</li>
+            <!-- ============ 7. CASSA ============ -->
+            <section id="cassa">
+                <h2><span class="icon"><i class="fas fa-cash-register"></i></span><span class="chap">7.</span> Cassa: nuova vendita</h2>
+                <p>La cassa si apre da <span class="path">Vendite › Vendite</span> con il pulsante <strong>«Nuova vendita»</strong>. Controlla sempre in alto che sia selezionato il negozio giusto.</p>
+
+                <h3>Fare una vendita passo per passo</h3>
+                <ol class="steps">
+                    <li><strong>Aggiungi gli articoli</strong>: leggi il codice a barre con la pistola nel campo <strong>Barcode</strong>. Se ci sono più taglie o colori si apre la scelta della variante. Leggendo due volte lo stesso codice la quantità aumenta.</li>
+                    <li><strong>Articoli senza etichetta</strong>: usa <strong>«Cerca articolo per nome»</strong> e scrivi almeno 2 lettere di nome, brand, colore o taglia (anche più parole insieme, per esempio «body rosa 6»). Compaiono solo gli articoli disponibili nel negozio, con prezzo, eventuale saldo e pezzi disponibili.</li>
+                    <li><strong>Scegli la commessa</strong> che ha seguito la vendita, se il negozio le usa (vedi il <a href="#utenti">capitolo 20</a>).</li>
+                    <li><strong>Collega il cliente</strong> (facoltativo): cercalo per nome e cognome, telefono o tessera. Se non c'è, scrivi nome e cognome e premi <strong>«+ Nuovo cliente»</strong>: viene creato e collegato alla vendita.</li>
+                    <li><strong>Sconti</strong>: puoi applicare uno sconto in percentuale o in euro sul singolo articolo o sull'intero scontrino, entro i limiti della <a href="#saldi">politica sconti</a>.</li>
+                    <li><strong>Gift card, buono reso, buono sconto, premio fedeltà</strong>: se il cliente ne ha uno, inseriscilo o leggilo con la pistola nel riquadro corrispondente; l'importo viene scalato dal totale.</li>
+                    <li><strong>Scegli il pagamento</strong>: contanti, carta o misto (vedi sotto).</li>
+                    <li>Premi <strong>«Registra vendita»</strong>: la giacenza viene scalata e si apre la scheda della vendita, da cui stampi lo scontrino.</li>
                 </ol>
 
-                <div class="warning">
-                    <i class="fas fa-triangle-exclamation"></i>
-                    <span>Lo stock viene scalato <strong>solo alla spedizione</strong>, non alla richiesta. Questo evita blocchi su merce ancora disponibile.</span>
-                </div>
+                <h3>Pagamenti</h3>
+                <ul>
+                    <li><strong>Contanti</strong>: nel campo facoltativo <strong>«Ricevuto €»</strong> scrivi la banconota ricevuta e il gestionale mostra il resto da dare.</li>
+                    <li><strong>Carta</strong>: il totale viene registrato come pagamento elettronico.</li>
+                    <li><strong>Misto</strong>: scrivi quanto paga il cliente in contanti e la parte con carta si calcola da sola (o viceversa). La ripartizione finisce nello scontrino e nella chiusura giornata.</li>
+                    <li>Gift card, buono reso e buoni sconto si combinano con il pagamento del residuo.</li>
+                </ul>
+                <div class="info"><i class="fas fa-circle-info"></i><span>I prezzi esposti sono IVA inclusa: lo scontrino calcola imponibile e imposta per ogni aliquota con il metodo dello scorporo.</span></div>
+
+                <h3>Elenco vendite</h3>
+                <p>In <span class="path">Vendite › Vendite</span> filtri per periodo (dal/al) e cerchi per codice. Se leggi con la pistola il codice a barre di uno scontrino nel campo di ricerca, si apre direttamente quella vendita.</p>
             </section>
 
-            <!-- =============== CLIENTI =============== -->
+            <!-- ============ 8. SCONTRINO ============ -->
+            <section id="scontrino">
+                <h2><span class="icon"><i class="fas fa-receipt"></i></span><span class="chap">8.</span> Scontrino e scontrino regalo</h2>
+
+                <h3>Scontrino di cortesia</h3>
+                <p>Dopo la registrazione si apre la scheda della vendita: premi <strong>«Stampa scontrino»</strong>. Se l'amministratore ha attivato la stampa automatica, lo scontrino parte da solo. Lo scontrino stampato dal gestionale è un documento <strong>di cortesia, non fiscale</strong>: il collegamento al registratore telematico è descritto nel <a href="#in-arrivo">capitolo 23</a>.</p>
+
+                <h3>Scontrino regalo</h3>
+                <p>È uno scontrino <strong>senza prezzi</strong>, totali, sconti, pagamento né dati del cliente, da mettere nel pacco.</p>
+                <ol class="steps">
+                    <li>Prima di registrare la vendita spunta <strong>«Stampa anche scontrino regalo»</strong>, oppure dopo, dalla scheda della vendita, premi <strong>«Scontrino regalo»</strong>.</li>
+                    <li>Togli la spunta agli articoli che non sono un regalo.</li>
+                    <li>Premi <strong>«Stampa scontrino regalo»</strong>: escono gli articoli (marca, nome, taglia, colore, quantità), la frase con i giorni per cambi e resi e il codice a barre della vendita.</li>
+                </ol>
+                <p>Quando torna chi ha ricevuto il regalo, basta leggere il codice dello scontrino regalo in cassa per avviare il cambio o il reso (vedi il <a href="#resi">capitolo 10</a>). I giorni validi e un testo facoltativo si impostano in <span class="path">Impostazioni › Scontrino regalo</span> (30 giorni se non indicato).</p>
+            </section>
+
+            <!-- ============ 9. OFFLINE ============ -->
+            <section id="offline">
+                <h2><span class="icon"><i class="fas fa-wifi"></i></span><span class="chap">9.</span> Vendere senza connessione</h2>
+                <p>Se internet manca (anche con il Wi-Fi acceso ma senza rete), la cassa <strong>continua a vendere</strong>:</p>
+                <ul>
+                    <li>le vendite vengono messe <strong>in coda</strong> sul dispositivo e inviate da sole appena la rete torna (il gestionale riprova ogni minuto);</li>
+                    <li>un indicatore in alto mostra quante vendite sono in attesa;</li>
+                    <li>una vendita <strong>non viene mai registrata due volte</strong>, anche se la connessione cade a metà;</li>
+                    <li>la vendita mantiene l'<strong>ora reale</strong>: una vendita della sera inviata il mattino dopo finisce nella chiusura del giorno giusto, con la nota «Registrata senza connessione»;</li>
+                    <li>la ricerca per nome funziona sul catalogo salvato nel dispositivo, aggiornato a ogni accesso e a ogni cambio di negozio.</li>
+                </ul>
+                <div class="warning"><i class="fas fa-triangle-exclamation"></i><span>Il <strong>reso</strong> richiede la connessione. Se la chiusura di un giorno era già stata inviata prima che arrivassero vendite in coda, un avviso ricorda di rimandarla.</span></div>
+            </section>
+
+            <!-- ============ 10. RESI ============ -->
+            <section id="resi">
+                <h2><span class="icon"><i class="fas fa-rotate-left"></i></span><span class="chap">10.</span> Resi, cambi e buono reso</h2>
+
+                <h3>Reso al banco</h3>
+                <ol class="steps">
+                    <li>Apri <span class="path">Vendite › Resi</span> e premi <strong>«Nuovo reso»</strong>.</li>
+                    <li>Leggi con la pistola il codice a barre dello scontrino (anche dello scontrino regalo) oppure cerca la vendita per numero o data: si apre con gli articoli ancora restituibili.</li>
+                    <li>Scegli gli articoli e le quantità da rendere (reso <strong>totale</strong> o <strong>parziale</strong>) e il motivo.</li>
+                    <li>Conferma: la merce rientra nella giacenza del negozio e il reso finisce nello storico movimenti.</li>
+                    <li>Se rimborsi con un <strong>buono reso</strong>, dalla scheda del reso premi <strong>«Stampa buono reso»</strong> e consegnalo al cliente.</li>
+                </ol>
+
+                <h3>Cambio in cassa</h3>
+                <p>Per un cambio merce si lavora direttamente nella nuova vendita: leggi il codice dello scontrino (o dello scontrino regalo) nel campo Barcode, spunta gli articoli da rendere e premi <strong>«Aggiungi al reso»</strong>; poi aggiungi i nuovi articoli. La differenza viene calcolata nello stesso scontrino e il reso non genera un buono spendibile, perché è già compensato.</p>
+
+                <h3>Il buono reso (credito reso)</h3>
+                <ul>
+                    <li>Il valore del reso può diventare un <strong>buono a scalare</strong>: il cliente lo spende in uno o più acquisti fino a esaurire il saldo.</li>
+                    <li>In cassa, nel riquadro <strong>«Credito reso»</strong>, leggi il codice del buono, premi <strong>«Verifica»</strong> e poi <strong>«Usa tutto il reso»</strong> oppure scrivi l'importo (anche con la virgola, per esempio 25,50).</li>
+                    <li>Il buono scade dopo <strong>15 giorni</strong> (fino a fine giornata); l'amministratore può cambiare i giorni in <span class="path">Impostazioni › Buono reso e merce da parte</span>.</li>
+                    <li>Nella scheda del reso trovi saldo residuo e utilizzi.</li>
+                </ul>
+
+                <h3>Resi tra negozi</h3>
+                <p>Un articolo comprato in un altro negozio si può rendere o cambiare qui: compare l'avviso «Vendita effettuata a …», vedi solo articoli, quantità e prezzi pagati (nessun dato del cliente o del pagamento) e il reso si registra nel negozio corrente, dove rientra la merce.</p>
+                <div class="info"><i class="fas fa-circle-info"></i><span>Se la vendita aveva dato punti fedeltà, questi vengono tolti in proporzione. Se l'articolo era stato pagato in parte con un buono sconto, il reso vale quanto pagato davvero.</span></div>
+            </section>
+
+            <!-- ============ 11. MERCE DA PARTE ============ -->
+            <section id="merce-da-parte">
+                <h2><span class="icon"><i class="fas fa-box-archive"></i></span><span class="chap">11.</span> Merce da parte con acconto</h2>
+                <p>Il cliente lascia un acconto e ritira la merce entro un certo periodo: nel frattempo nessuno può venderla.</p>
+                <ol class="steps">
+                    <li>In cassa aggiungi gli articoli al carrello, seleziona il cliente (e la commessa) e premi <strong>«Metti da parte con acconto»</strong>.</li>
+                    <li>Indica l'<strong>acconto</strong> (minimo 10 €, oppure il valore della merce se è più basso) e come paga il cliente.</li>
+                    <li>La merce esce subito dalla disponibilità e viene stampata una <strong>ricevuta</strong> con il codice PRE… e il codice a barre da consegnare al cliente.</li>
+                    <li>Altri acconti si registrano dalla scheda con <strong>«Nuovo acconto»</strong>, senza superare il saldo.</li>
+                    <li>Al ritiro apri <span class="path">Vendite › Merce da parte</span> (oppure leggi il codice della ricevuta) e premi <strong>«Ritira e incassa il saldo»</strong>: diventa una vendita normale, con scontrino e punti fedeltà, e si paga solo il saldo.</li>
+                </ol>
+                <p>Dopo <strong>15 giorni</strong> la merce risulta «Scaduta» ma non si annulla da sola: puoi <strong>prorogarla</strong>, farla ritirare oppure <strong>annullarla</strong>. Annullando, la merce torna disponibile e scegli cosa fare dell'acconto: trasformarlo in un buono del cliente, restituirlo in contanti o su carta, oppure trattenerlo. Giorni e acconto minimo si cambiano in <span class="path">Impostazioni › Buono reso e merce da parte</span>.</p>
+                <div class="info"><i class="fas fa-circle-info"></i><span>Gli acconti sono incassi del giorno in cui vengono versati e compaiono nella chiusura giornata; al ritiro non vengono contati una seconda volta.</span></div>
+            </section>
+
+            <!-- ============ 12. GIFT CARD ============ -->
+            <section id="gift-card">
+                <h2><span class="icon"><i class="fas fa-gift"></i></span><span class="chap">12.</span> Gift card</h2>
+                <p>Le gift card sono buoni regalo con un valore precaricato, spendibili in più acquisti e <strong>in tutti i negozi</strong>.</p>
+
+                <h3>Vendere una gift card al banco</h3>
+                <ol class="steps">
+                    <li>In cassa premi <strong>«Vendi gift card»</strong> (in alto a destra) oppure apri <span class="path">Vendite › Gift Card</span>.</li>
+                    <li>Scegli l'importo e indica come ha pagato il cliente (contanti o carta, obbligatorio). Se vuoi aggiungi destinatario, chi la regala e una dedica.</li>
+                    <li>Incassa l'importo e conferma: si apre il PDF della gift card con il codice a barre, da stampare e consegnare.</li>
+                </ol>
+                <div class="warning"><i class="fas fa-triangle-exclamation"></i><span>La gift card <strong>non</strong> va aggiunta al carrello come un articolo. È un buono multiuso: l'IVA si applica quando il cliente la usa per comprare merce.</span></div>
+
+                <h3>Ricarica, saldo e utilizzo</h3>
+                <ul>
+                    <li><strong>Ricarica</strong>: cerca la card nella lista, premi «Ricarica», indica importo e metodo di pagamento.</li>
+                    <li><strong>Verifica saldo</strong>: in cima alla pagina Gift Card, scrivi o leggi il codice.</li>
+                    <li><strong>Pagare con la gift card</strong>: in cassa leggi il codice nel riquadro Gift Card; il saldo residuo si aggiorna da solo.</li>
+                    <li>La commessa vende e ricarica card da <strong>5 € a 500 €</strong>, valide <strong>12 mesi</strong>. Importi più alti, scadenze diverse e la disattivazione di una card smarrita sono riservati al titolare o al responsabile.</li>
+                </ul>
+
+                <h3>Gift card online</h3>
+                <p>Le gift card si possono vendere anche <strong>dal sito web del negozio</strong>, con pagamento con carta online: il destinatario riceve per email un PDF con i colori e il logo del negozio. Nell'elenco del gestionale compaiono con origine «Sito».</p>
+
+                <h3>Registro gift card</h3>
+                <p>In <span class="path">Vendite › Registro gift card</span> (titolare e responsabile) trovi insieme le card vendute in negozio, quelle vendute dal sito e il loro utilizzo in cassa, con il saldo ancora da spendere. Scegli negozio e periodo e scarica il PDF da dare al commercialista.</p>
+            </section>
+
+            <!-- ============ 13. BUONI SCONTO ============ -->
+            <section id="buoni-sconto">
+                <h2><span class="icon"><i class="fas fa-ticket"></i></span><span class="chap">13.</span> Buoni sconto</h2>
+                <p>I buoni sconto sono un regalo al cliente da usare in un acquisto successivo: <strong>in euro</strong> (un credito che si scala anche in più acquisti) oppure <strong>in percentuale</strong> (valido per un solo acquisto). Il modulo si attiva e si regola in <span class="path">Impostazioni › Buoni sconto</span>.</p>
+                <ul>
+                    <li><strong>Emissione automatica</strong>: se attiva, a fine vendita il cliente riceve il buono della soglia di spesa più alta raggiunta (per esempio da 100 € di spesa un buono da 10 €). Un riquadro in cassa avvisa prima di registrare.</li>
+                    <li><strong>Emissione a mano</strong>: dalla scheda vendita («Emetti buono sconto») o dalla pagina <span class="path">Vendite › Buoni sconto</span>, solo per i ruoli autorizzati ed entro il valore massimo deciso dall'amministratore.</li>
+                    <li><strong>Consegna</strong>: si stampa un biglietto da 80 mm con codice a barre, oppure parte per email ai clienti che hanno dato il consenso privacy.</li>
+                </ul>
+                <h3>Usare un buono in cassa</h3>
+                <ol class="steps">
+                    <li>Leggi il codice del buono (BS-…) nel campo Barcode, oppure scrivilo nel riquadro <strong>«Buono sconto»</strong> e premi <strong>«Verifica»</strong>.</li>
+                    <li>Il gestionale controlla scadenza, spesa minima, cliente intestatario e con cosa si può usare insieme.</li>
+                    <li>Lo sconto compare nel totale e sullo scontrino come riga «BUONO SCONTO».</li>
+                </ol>
+                <p>Se la vendita che ha generato un buono viene resa, il buono non ancora usato si annulla (se previsto nelle impostazioni). Titolare e responsabile possono annullarlo anche a mano, indicando il motivo. La pagina Buoni sconto contiene il registro completo, con filtri ed esportazione per Excel.</p>
+            </section>
+
+            <!-- ============ 14. SALDI ============ -->
+            <section id="saldi">
+                <h2><span class="icon"><i class="fas fa-percent"></i></span><span class="chap">14.</span> Saldi e politica sconti</h2>
+                <h3>Mettere in saldo più articoli insieme</h3>
+                <ol class="steps">
+                    <li>Apri <span class="path">Catalogo › Saldi/Sconti</span> (amministratore e responsabile).</li>
+                    <li>Filtra per <strong>brand</strong> o <strong>categoria</strong>, oppure scegli i singoli prodotti.</li>
+                    <li>Imposta la <strong>percentuale</strong> di sconto e, se è una promozione a tempo, le date di <strong>inizio</strong> e <strong>fine</strong>.</li>
+                    <li>Conferma: in cassa il prezzo scontato compare accanto al prezzo originale.</li>
+                </ol>
+                <p>Ogni saldo si può sospendere o togliere in qualsiasi momento per tornare al prezzo pieno.</p>
+                <h3>Politica sconti</h3>
+                <p>In <span class="path">Impostazioni › Politica Sconti</span> l'amministratore decide:</p>
+                <ul>
+                    <li>lo <strong>sconto massimo</strong> che si può applicare a mano in cassa;</li>
+                    <li>se è permesso un <strong>secondo sconto</strong> su un articolo già in saldo.</li>
+                </ul>
+                <p>La cassa applica queste regole a tutti e avvisa la commessa quando uno sconto non è ammesso.</p>
+            </section>
+
+            <!-- ============ 15. CLIENTI ============ -->
             <section id="clienti">
-                <h2><span class="icon" style="background: rgba(236,72,153,0.15); color: #F472B6;"><i class="fas fa-users"></i></span> Clienti e Fidelity</h2>
-
-                <h3>Anagrafica Clienti</h3>
-                <p>Registra i clienti con nome, cognome, email, telefono e note. I clienti possono essere associati alle vendite per tracciare lo storico acquisti.</p>
-
-                <h3>Programma Fidelity</h3>
-                <p>Il sistema fidelity permette di accumulare punti ad ogni acquisto:</p>
+                <h2><span class="icon"><i class="fas fa-users"></i></span><span class="chap">15.</span> Clienti e consenso privacy</h2>
+                <h3>Anagrafica</h3>
                 <ul>
-                    <li><strong>Configurazione</strong>: imposta quanti punti per euro speso e il valore del premio.</li>
-                    <li><strong>Accumulo automatico</strong>: ad ogni vendita associata al cliente, i punti vengono aggiunti.</li>
-                    <li><strong>Riscatto</strong>: i punti possono essere convertiti in sconti al POS.</li>
-                    <li><strong>Storico punti</strong>: ogni transazione di punti &egrave; tracciata.</li>
+                    <li>In <span class="path">Clienti › Clienti</span> crei un cliente con nome, cognome, telefono, email e data di nascita. Obbligatori solo <strong>nome e cognome</strong>.</li>
+                    <li>Se esiste già un cliente con lo stesso nome compare un avviso: aggiungi telefono o una nota per distinguerli. L'email, se c'è, deve essere unica.</li>
+                    <li>Ogni cliente riceve una <strong>tessera fedeltà</strong> con un codice univoco.</li>
+                    <li>Nella scheda cliente trovi lo storico degli acquisti, i punti accumulati e i premi riscattati.</li>
+                    <li>La ricerca trova i clienti per nome e cognome (anche insieme, per esempio «Anna Rossi»), telefono, note o codice tessera.</li>
+                </ul>
+
+                <h3>Consenso privacy dato dal cliente</h3>
+                <p>Il consenso al trattamento dei dati personali, come richiede il GDPR (General Data Protection Regulation, il Regolamento europeo sulla protezione dei dati), lo dà <strong>il cliente in prima persona</strong>, dal proprio telefono: la commessa non può spuntarlo al suo posto.</p>
+                <ol class="steps">
+                    <li>Per un cliente già in anagrafica premi <strong>«QR consenso»</strong> (nella scheda cliente, nella scheda vendita o in cassa).</li>
+                    <li>Il cliente inquadra il codice QR con la fotocamera del telefono.</li>
+                    <li>Legge l'informativa e conferma: il consenso viene registrato con la data.</li>
+                </ol>
+                <p>I nuovi clienti possono iscriversi da soli, inquadrando il QR della locandina «Iscriviti alla Carta Fedeltà» (vedi il <a href="#locandine">capitolo 17</a>): compilano il modulo, accettano l'informativa e ricevono subito il codice della tessera.</p>
+            </section>
+
+            <!-- ============ 16. FEDELTÀ ============ -->
+            <section id="fedelta">
+                <h2><span class="icon"><i class="fas fa-star"></i></span><span class="chap">16.</span> Programma fedeltà a punti</h2>
+                <p>Il programma si configura in <span class="path">Clienti › Fedeltà</span> (solo amministratore):</p>
+                <ol class="steps">
+                    <li>Imposta quanti <strong>punti per ogni euro</strong> speso.</li>
+                    <li>Imposta la <strong>soglia premio</strong>: i punti necessari per ottenere un premio.</li>
+                    <li>Scegli il <strong>tipo di premio</strong> (sconto in percentuale, sconto fisso o buono) e il suo valore.</li>
+                    <li>Scegli il prefisso del codice tessera e attiva il programma.</li>
+                </ol>
+                <ul>
+                    <li>I punti si accumulano da soli a ogni vendita collegata al cliente.</li>
+                    <li>In cassa, con il cliente selezionato, il gestionale propone il <strong>premio</strong> quando la soglia è raggiunta.</li>
+                    <li>In caso di reso i punti vengono tolti in proporzione.</li>
+                    <li>Il cliente può vedere la sua <strong>tessera digitale</strong> con i punti dal telefono.</li>
+                    <li>La pagina Fedeltà mostra anche i <strong>compleanni della settimana</strong>.</li>
                 </ul>
             </section>
 
-            <!-- =============== REPORT =============== -->
+            <!-- ============ 17. LOCANDINE ============ -->
+            <section id="locandine">
+                <h2><span class="icon"><i class="fas fa-print"></i></span><span class="chap">17.</span> Materiale da stampare</h2>
+                <p>In <span class="path">Clienti › Materiale da stampare</span> si stampano tre locandine A4 con codice QR da appendere in negozio o tenere sul bancone:</p>
+                <ul>
+                    <li><strong>«Lasciaci una recensione»</strong>: porta alla scheda Google del negozio;</li>
+                    <li><strong>«Regala una Gift Card»</strong>: porta all'acquisto della gift card sul sito;</li>
+                    <li><strong>«Iscriviti alla Carta Fedeltà»</strong>: porta al modulo di iscrizione.</li>
+                </ul>
+                <ol class="steps">
+                    <li>Scegli il negozio (ogni punto vendita ha la sua scheda Google).</li>
+                    <li>Scegli lo stile: <strong>Scuro</strong> (elegante, ideale per la tipografia) o <strong>Chiaro</strong> (consuma meno inchiostro).</li>
+                    <li>Prova il QR inquadrandolo dallo schermo e stampa.</li>
+                </ol>
+                <p>Il link delle recensioni si incolla, per ogni negozio, in <span class="path">Impostazioni › Recensioni Google</span>: finché manca, la stampa di quella locandina resta disattivata.</p>
+            </section>
+
+            <!-- ============ 18. CHIUSURA ============ -->
+            <section id="chiusura">
+                <h2><span class="icon"><i class="fas fa-clipboard-check"></i></span><span class="chap">18.</span> Chiusura giornata</h2>
+                <ol class="steps">
+                    <li>A fine giornata apri <span class="path">Vendite › Chiusura giornata</span>: vedi subito il riepilogo del negozio selezionato.</li>
+                    <li>Controlla vendite, pezzi, incassi per metodo di pagamento (contanti e carta, con la ripartizione dei pagamenti misti), resi e <strong>netto di cassa</strong>.</li>
+                    <li>Premi <strong>«Invia via email»</strong>: il report in PDF arriva al titolare, con allegato il file del venduto da aprire con Excel.</li>
+                    <li>Se serve, <strong>«Scarica PDF»</strong> salva il report A4 e <strong>«Stampa»</strong> lo manda alla stampante.</li>
+                </ol>
+                <h3>Cosa contiene il report</h3>
+                <ul>
+                    <li>Riepilogo, elenco delle vendite (con ora e cliente), elenco dei resi e totali per commessa.</li>
+                    <li><strong>Articoli venduti</strong> nel giorno (articolo, marca, taglia, colore, pezzi, totale), con riepilogo per categoria e per marca. Il file del venduto si scarica anche dal pulsante <strong>«Venduto (Excel)»</strong>.</li>
+                    <li><strong>Gift card vendute o ricaricate</strong> e <strong>acconti della merce da parte</strong>, sommati al netto di cassa.</li>
+                    <li>Buono reso usato, buoni sconto usati ed emessi nel giorno.</li>
+                </ul>
+                <p>Con <strong>«Ieri»</strong> o con il calendario rivedi una giornata precedente. La giornata va dalla mezzanotte alla mezzanotte, ora italiana.</p>
+                <div class="tip"><i class="fas fa-lightbulb"></i><span><strong>Invio automatico</strong>: in <span class="path">Impostazioni › Chiusura giornata</span> l'amministratore sceglie i destinatari (anche in copia) e può far partire la chiusura di ogni negozio da sola, ogni giorno all'orario scelto, anche solo nei giorni con movimenti.</span></div>
+                <p><strong>Netto di cassa</strong> = totale incassato (contanti, carta, misto) meno i resi al banco. I resi fatti in cassa durante un cambio sono già compensati nello scontrino e non vengono sottratti due volte.</p>
+            </section>
+
+            <!-- ============ 19. REPORT ============ -->
             <section id="report">
-                <h2><span class="icon" style="background: rgba(37,99,235,0.15); color: var(--primary-light);"><i class="fas fa-chart-bar"></i></span> Report</h2>
-                <p>La sezione report offre analisi dettagliate sull'attivit&agrave;:</p>
-                <ul>
-                    <li><strong>Report Stock</strong> &mdash; giacenza attuale per negozio, brand, categoria</li>
-                    <li><strong>Report Movimenti</strong> &mdash; storico movimenti filtrato per data e tipo</li>
-                    <li><strong>Vendite</strong> &mdash; totali, per periodo, per negozio</li>
-                </ul>
+                <h2><span class="icon"><i class="fas fa-chart-column"></i></span><span class="chap">19.</span> Report e analisi</h2>
 
-                <h3>Export CSV</h3>
-                <p>Tutti i report possono essere esportati in formato <strong>CSV</strong> (separatore punto e virgola, ideale per Excel in italiano). Utile per il commercialista o per analisi esterne.</p>
+                <h3>Vendite e resi di un periodo</h3>
+                <ol class="steps">
+                    <li>In <span class="path">Vendite › Vendite</span> (o <span class="path">Vendite › Resi</span>) imposta le date dal/al.</li>
+                    <li>Premi <strong>«Scarica PDF»</strong>: ottieni un report A4 con esattamente le vendite (o i resi) filtrati, tutte le pagine comprese.</li>
+                    <li>Oppure premi <strong>«Invia all'amministratore»</strong>: lo stesso PDF parte per email ai destinatari della chiusura, dopo una conferma che mostra a chi e per quale periodo.</li>
+                </ol>
+                <p>Il report delle vendite riporta pezzi, sconti, incassi per metodo di pagamento, gift card e buono reso usati, IVA, il riepilogo per giorno e per commessa e l'elenco delle vendite. Quello dei resi riporta resi al banco e in cassa, riepilogo per motivo e saldo residuo dei buoni.</p>
+
+                <h3>Report di magazzino</h3>
+                <p>In <span class="path">Analisi › Report</span> (amministratore e responsabile):</p>
+                <ul>
+                    <li><strong>Report stock</strong>: giacenze per prodotto, brand e categoria, con il valore;</li>
+                    <li><strong>Report movimenti</strong>: movimenti per periodo, tipo e negozio;</li>
+                    <li><strong>Report commesse</strong>: vendite attribuite a ciascuna commessa.</li>
+                </ul>
+                <p>Ogni report si esporta in file CSV da aprire con Excel, utile per i riordini, per l'inventario e per il commercialista.</p>
+
+                <h3>Analisi per dipendente e per negozio</h3>
+                <p>Riservate all'amministratore, in <span class="path">Analisi</span>:</p>
+                <ul>
+                    <li><strong>Performance dipendenti</strong>: classifica per ricavo netto con numero di vendite, importo, scontrino medio, articoli venduti, resi e suddivisione per metodo di pagamento.</li>
+                    <li><strong>Performance negozi</strong>: confronto tra punti vendita (vendite, scontrino medio, articoli, valore dello stock, resi, ricavo netto) con la variazione rispetto al periodo precedente e i migliori dipendenti di ogni negozio.</li>
+                </ul>
+                <p>Entrambe si filtrano per negozio e per periodo.</p>
+
+                <h3>Registro attività</h3>
+                <p>In <span class="path">Amministrazione › Registro Attività</span> l'amministratore vede chi ha fatto cosa e quando (vendite, movimenti, modifiche…), con filtri per data, utente e tipo di azione. Le voci del registro non si possono modificare né cancellare.</p>
             </section>
 
-            <!-- =============== SMS =============== -->
-            <section id="sms">
-                <h2><span class="icon" style="background: rgba(34,197,94,0.15); color: #4ADE80;"><i class="fas fa-sms"></i></span> SMS Marketing</h2>
-                <p>Invia SMS promozionali ai tuoi clienti tramite integrazione <strong>Twilio</strong>.</p>
-                <ul>
-                    <li><strong>Template</strong>: crea modelli di messaggio riutilizzabili con variabili (nome cliente, negozio, ecc.).</li>
-                    <li><strong>Invio singolo o massivo</strong>: seleziona uno o pi&ugrave; clienti e invia il messaggio.</li>
-                    <li><strong>Log SMS</strong>: traccia ogni SMS inviato con stato di consegna.</li>
-                </ul>
-
-                <div class="warning">
-                    <i class="fas fa-triangle-exclamation"></i>
-                    <span>Per utilizzare gli SMS &egrave; necessario configurare le credenziali Twilio. Senza configurazione, il servizio non &egrave; disponibile.</span>
-                </div>
-            </section>
-
-            <!-- =============== UTENTI =============== -->
+            <!-- ============ 20. UTENTI ============ -->
             <section id="utenti">
-                <h2><span class="icon" style="background: rgba(13,148,136,0.15); color: var(--teal-light);"><i class="fas fa-user-gear"></i></span> Gestione Utenti</h2>
-                <p>L'amministratore del tenant pu&ograve; creare, modificare e disattivare utenti.</p>
+                <h2><span class="icon"><i class="fas fa-user-shield"></i></span><span class="chap">20.</span> Utenti, commesse e ruoli</h2>
 
                 <h3>Creare un utente</h3>
-                <ol>
-                    <li>Vai alla sezione <strong>Utenti</strong> dal menu laterale.</li>
-                    <li>Clicca <strong>Nuovo Utente</strong>.</li>
-                    <li>Inserisci email, password (requisiti: min 8 caratteri, maiuscola, numero, carattere speciale), nome, cognome.</li>
-                    <li>Seleziona il <strong>ruolo</strong> (Admin, Manager, Dipendente).</li>
-                    <li>Assegna i <strong>negozi</strong> a cui l'utente pu&ograve; accedere.</li>
+                <ol class="steps">
+                    <li>Apri <span class="path">Amministrazione › Utenti</span> e premi <strong>«Nuovo utente»</strong>.</li>
+                    <li>Inserisci nome, cognome, email e password.</li>
+                    <li>Scegli il <strong>ruolo</strong> (vedi la tabella) e assegna <strong>almeno un negozio</strong>: un utente senza negozi non vede alcun dato.</li>
                 </ol>
+                <p>L'amministratore può reimpostare la password di qualsiasi utente. Un utente che non lavora più si <strong>disattiva</strong> invece di eliminarlo, così resta lo storico delle sue operazioni. Per inserire tutto il personale in una volta c'è <span class="path">Amministrazione › Import Utenti</span>, con un file CSV (colonne email, nome, cognome, ruolo, negozi), anteprima degli errori e password generate in automatico.</p>
 
-                <p>Ogni utente pu&ograve; essere <strong>disattivato</strong> senza eliminarlo, mantenendo lo storico delle sue operazioni.</p>
-            </section>
+                <h3>Commesse</h3>
+                <p>Le <strong>commesse</strong> (in <span class="path">Amministrazione › Commesse</span>) servono ad attribuire ogni vendita alla persona che l'ha seguita, anche se la cassa usa un unico accesso. Se un negozio ha commesse configurate, in cassa la scelta della commessa è obbligatoria. I totali per commessa compaiono nella chiusura giornata e nei report.</p>
 
-            <!-- =============== EXPORT UTENTI =============== -->
-            <section id="export-utenti">
-                <h2><span class="icon" style="background: rgba(13,148,136,0.15); color: var(--teal-light);"><i class="fas fa-file-export"></i></span> Export Utenti CSV</h2>
-                <p>L'amministratore pu&ograve; esportare l'elenco completo degli utenti in formato CSV, utile per <strong>backup</strong> o per re-importare dopo un reset del sistema.</p>
-
-                <h3>Come esportare</h3>
-                <ol>
-                    <li>Vai alla sezione <strong>Utenti</strong> dal menu laterale.</li>
-                    <li>Clicca il pulsante <strong>Esporta CSV</strong> (icona download).</li>
-                    <li>Il file <code>utenti_AAAA-MM-GG.csv</code> viene scaricato automaticamente.</li>
-                </ol>
-
-                <h3>Formato del file</h3>
-                <p>Il CSV esportato usa lo <strong>stesso formato dell'import</strong>, quindi pu&ograve; essere re-importato direttamente:</p>
+                <h3>Ruoli e permessi</h3>
                 <div class="table-wrap">
                     <table>
-                        <thead><tr><th>Colonna</th><th>Descrizione</th></tr></thead>
+                        <thead><tr><th>Funzione</th><th class="c"><span class="full">Amministratore</span><span class="short" aria-hidden="true">Amm.</span></th><th class="c"><span class="full">Responsabile</span><span class="short" aria-hidden="true">Resp.</span></th><th class="c"><span class="full">Dipendente</span><span class="short" aria-hidden="true">Dip.</span></th></tr></thead>
                         <tbody>
-                            <tr><td><code>email</code></td><td>Email dell'utente</td></tr>
-                            <tr><td><code>nome</code></td><td>Nome</td></tr>
-                            <tr><td><code>cognome</code></td><td>Cognome</td></tr>
-                            <tr><td><code>ruolo</code></td><td>ADMIN, MANAGER o EMPLOYEE</td></tr>
-                            <tr><td><code>negozi</code></td><td>Codici negozio separati da virgola</td></tr>
+                            <tr><td>Cassa, resi, merce da parte, chiusura giornata</td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td></tr>
+                            <tr><td>Gift card (vendita e ricarica), buoni sconto in cassa</td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td></tr>
+                            <tr><td>Clienti, materiale da stampare, carico e scarico merce</td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td></tr>
+                            <tr><td>Creare e modificare prodotti, import da CSV</td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c no"><i class="fas fa-minus" aria-label="no"></i></td></tr>
+                            <tr><td>Saldi, correzioni di giacenza, scorta minima</td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c no"><i class="fas fa-minus" aria-label="no"></i></td></tr>
+                            <tr><td>Trasferimenti, report, registro gift card</td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c no"><i class="fas fa-minus" aria-label="no"></i></td></tr>
+                            <tr><td>Programma fedeltà, analisi dipendenti e negozi</td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c no"><i class="fas fa-minus" aria-label="no"></i></td><td class="c no"><i class="fas fa-minus" aria-label="no"></i></td></tr>
+                            <tr><td>Utenti, commesse, registro attività, impostazioni, export dei dati</td><td class="c yes"><i class="fas fa-check" aria-label="sì"></i></td><td class="c no"><i class="fas fa-minus" aria-label="no"></i></td><td class="c no"><i class="fas fa-minus" aria-label="no"></i></td></tr>
                         </tbody>
                     </table>
                 </div>
-
-                <div class="tip">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Esporta regolarmente gli utenti come backup. Dopo un reset del database, potrai reimportarli dalla funzione <a href="#import-utenti">Import Utenti CSV</a>. Le password verranno rigenerate automaticamente.</span>
-                </div>
+                <p>Responsabili e dipendenti lavorano solo sui negozi assegnati; l'amministratore vede tutti i negozi.</p>
             </section>
 
-            <!-- =============== IMPORT UTENTI =============== -->
-            <section id="import-utenti">
-                <h2><span class="icon" style="background: rgba(13,148,136,0.15); color: var(--teal-light);"><i class="fas fa-user-plus"></i></span> Import Utenti CSV</h2>
-                <p>L'amministratore pu&ograve; importare utenti in blocco da un file CSV, utile per caricare rapidamente l'intero team.</p>
-
-                <h3>Formato CSV</h3>
-                <p>Il file CSV deve utilizzare il separatore <strong>punto e virgola</strong> (;) con le seguenti colonne:</p>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>Colonna</th><th>Obbligatoria</th><th>Descrizione</th></tr></thead>
-                        <tbody>
-                            <tr><td><code>email</code></td><td>S&igrave;</td><td>Email univoca dell'utente</td></tr>
-                            <tr><td><code>nome</code></td><td>S&igrave;</td><td>Nome</td></tr>
-                            <tr><td><code>cognome</code></td><td>S&igrave;</td><td>Cognome</td></tr>
-                            <tr><td><code>ruolo</code></td><td>S&igrave;</td><td>ADMIN, MANAGER o EMPLOYEE</td></tr>
-                            <tr><td><code>negozi</code></td><td>No</td><td>Codici negozio separati da virgola (es. RAC,GRO)</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Procedura</h3>
-                <ol>
-                    <li>Scarica il <strong>template CSV</strong> dalla pagina Import Utenti.</li>
-                    <li>Compilalo con i dati del team e caricalo.</li>
-                    <li>Il sistema mostra un'<strong>anteprima</strong> con eventuali errori per riga.</li>
-                    <li>Conferma l'import. Le <strong>password vengono generate automaticamente</strong> e mostrate una sola volta.</li>
-                </ol>
-
-                <div class="warning">
-                    <i class="fas fa-triangle-exclamation"></i>
-                    <span>L'import rispetta i <strong>limiti del piano</strong>. Se il numero di utenti importati supera il limite, le righe in eccesso vengono scartate.</span>
-                </div>
-            </section>
-
-            <!-- =============== ANALYTICS =============== -->
-            <section id="analytics">
-                <h2><span class="icon" style="background: rgba(37,99,235,0.15); color: var(--primary-light);"><i class="fas fa-chart-line"></i></span> Analytics</h2>
-                <p>Le dashboard di analytics offrono metriche avanzate sulle performance di dipendenti e negozi. Disponibili solo per il ruolo <span class="tag tag-red">ADMIN</span>.</p>
-
-                <h3 id="perf-dipendenti">Performance Dipendenti</h3>
-                <p>Classifica dei dipendenti per ricavo netto, con le seguenti metriche:</p>
-                <ul>
-                    <li><strong>Numero vendite</strong> e <strong>importo totale</strong></li>
-                    <li><strong>Scontrino medio</strong> (valore medio per transazione)</li>
-                    <li><strong>Articoli venduti</strong> (quantit&agrave; totale)</li>
-                    <li><strong>Resi</strong> (numero e importo)</li>
-                    <li><strong>Ricavo netto</strong> (vendite meno resi)</li>
-                    <li><strong>Breakdown pagamenti</strong>: contanti, carta, gift card</li>
-                </ul>
-                <p>Espandi ogni dipendente per vedere le vendite e i resi recenti. Filtra per <strong>negozio</strong> e <strong>periodo temporale</strong>.</p>
-
-                <h3 id="perf-negozi">Performance Negozi</h3>
-                <p>Confronto tra i punti vendita con le stesse metriche pi&ugrave;:</p>
-                <ul>
-                    <li><strong>Variazione percentuale</strong> rispetto al periodo precedente (es. mese scorso)</li>
-                    <li><strong>Top dipendenti</strong> per ogni negozio</li>
-                </ul>
-                <p>Utile per identificare trend, confrontare le sedi e premiare i migliori risultati.</p>
-            </section>
-
-            <!-- =============== WEBHOOKS =============== -->
-            <section id="webhooks">
-                <h2><span class="icon" style="background: rgba(139,92,246,0.15); color: #A78BFA;"><i class="fas fa-plug"></i></span> Webhook</h2>
-                <p>I webhook permettono di notificare sistemi esterni in tempo reale quando avvengono eventi nel gestionale.</p>
-
-                <h3>Eventi supportati</h3>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>Evento</th><th>Descrizione</th></tr></thead>
-                        <tbody>
-                            <tr><td><code>sale.created</code></td><td>Nuova vendita registrata</td></tr>
-                            <tr><td><code>return.created</code></td><td>Nuovo reso registrato</td></tr>
-                            <tr><td><code>transfer.completed</code></td><td>Trasferimento ricevuto a destinazione</td></tr>
-                            <tr><td><code>customer.created</code></td><td>Nuovo cliente creato</td></tr>
-                            <tr><td><code>stock.low</code></td><td>Prodotto sotto scorta minima</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Configurazione</h3>
-                <ol>
-                    <li>Vai alla sezione <strong>Webhook</strong> dal menu laterale.</li>
-                    <li>Clicca <strong>Nuovo Webhook</strong> e inserisci l'URL di destinazione.</li>
-                    <li>Seleziona gli <strong>eventi</strong> che vuoi ricevere.</li>
-                    <li>Il sistema genera automaticamente un <strong>secret HMAC</strong> per la firma delle richieste.</li>
-                    <li>Usa il pulsante <strong>Test</strong> per verificare la connessione.</li>
-                </ol>
-
-                <div class="tip">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Ogni richiesta webhook include un header <code>X-Webhook-Signature</code> con firma HMAC-SHA256 per verificare l'autenticit&agrave; del payload.</span>
-                </div>
-            </section>
-
-            <!-- =============== ASSISTENZA =============== -->
-            <section id="assistenza">
-                <h2><span class="icon" style="background: rgba(34,197,94,0.15); color: #4ADE80;"><i class="fas fa-headset"></i></span> Assistenza</h2>
-                <p>Il sistema di assistenza in-app permette di aprire ticket direttamente dal gestionale.</p>
-
-                <h3>Aprire un ticket</h3>
-                <ol>
-                    <li>Vai alla sezione <strong>Assistenza</strong> dal menu laterale (disponibile per tutti i ruoli).</li>
-                    <li>Clicca <strong>Nuovo Ticket</strong>.</li>
-                    <li>Seleziona la <strong>categoria</strong>: Malfunzionamento, Nuova funzionalit&agrave;, Domanda o Urgente.</li>
-                    <li>Inserisci titolo e descrizione del problema.</li>
-                    <li>Invia. Il ticket viene creato e tracciato.</li>
-                </ol>
-
-                <h3>Seguire lo stato</h3>
-                <p>Dalla lista ticket puoi vedere lo stato (aperto/chiuso) e i commenti di risposta del team di supporto. Espandi un ticket per leggere i dettagli completi.</p>
-            </section>
-
-            <!-- =============== IMPOSTAZIONI =============== -->
+            <!-- ============ 21. IMPOSTAZIONI ============ -->
             <section id="impostazioni">
-                <h2><span class="icon" style="background: rgba(139,92,246,0.15); color: #A78BFA;"><i class="fas fa-cog"></i></span> Impostazioni Tenant</h2>
-                <p>Ogni tenant (azienda) pu&ograve; personalizzare la propria configurazione:</p>
-
-                <h3>Brand e Negozi</h3>
-                <ul>
-                    <li><strong>Nome azienda e logo</strong>: visibili su gift card, email e documenti.</li>
-                    <li><strong>Gestione negozi</strong>: aggiungi, modifica o disattiva punti vendita con nome, codice e citt&agrave;.</li>
-                </ul>
-
-                <h3>Brand e Categorie</h3>
-                <p>Gestisci i brand (marchi) e le categorie dei prodotti dalla sezione dedicata. Questi vengono usati come filtri nella ricerca prodotti e nei report.</p>
-
-                <h3>Politica Sconti</h3>
-                <p>Configura le regole per l'applicazione degli sconti:</p>
-                <ul>
-                    <li><strong>Sconto massimo consentito</strong>: percentuale massima applicabile a qualsiasi articolo (default: 50%).</li>
-                    <li><strong>Doppio sconto</strong>: se disabilitato, non &egrave; possibile applicare uno sconto aggiuntivo su articoli gi&agrave; in saldo.</li>
-                </ul>
-                <p>Queste impostazioni vengono applicate automaticamente al momento della vendita, con avvisi visivi al POS.</p>
+                <h2><span class="icon"><i class="fas fa-gear"></i></span><span class="chap">21.</span> Impostazioni</h2>
+                <p>La pagina <span class="path">Supporto › Impostazioni</span> è riservata all'amministratore. Le sezioni principali:</p>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Sezione</th><th>A cosa serve</th></tr></thead>
+                        <tbody>
+                            <tr><td>Dati azienda</td><td>Nome, logo, indirizzo e contatti, usati su documenti, email e gift card.</td></tr>
+                            <tr><td>Negozi</td><td>Aggiungere, modificare o disattivare i punti vendita.</td></tr>
+                            <tr><td>Politica Sconti</td><td>Sconto massimo in cassa e doppio sconto sugli articoli in saldo.</td></tr>
+                            <tr><td>Chiusura giornata</td><td>Destinatari del report, indirizzi in copia e invio automatico.</td></tr>
+                            <tr><td>Recensioni Google</td><td>Link della scheda Google di ogni negozio per la locandina recensioni.</td></tr>
+                            <tr><td>Scontrino regalo</td><td>Giorni validi per cambi e resi e testo in fondo allo scontrino.</td></tr>
+                            <tr><td>Buono reso e merce da parte</td><td>Validità del buono reso, giorni della merce da parte e acconto minimo.</td></tr>
+                            <tr><td>Buoni sconto</td><td>Attivazione, soglie di spesa, valore massimo, scadenze e combinazioni ammesse.</td></tr>
+                            <tr><td>I tuoi dati</td><td>Export completo di tutti i dati (vedi il <a href="#dati">capitolo 22</a>).</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
-            <!-- =============== SUPERADMIN =============== -->
-            <section id="superadmin">
-                <h2><span class="icon" style="background: rgba(249,115,22,0.15); color: var(--accent-light);"><i class="fas fa-shield-halved"></i></span> Pannello SuperAdmin</h2>
-                <p>Il SuperAdmin &egrave; l'amministratore globale della piattaforma. Ha accesso a <strong>tutti i tenant</strong> e pu&ograve; gestire l'intera infrastruttura di StockFlow ERP.</p>
+            <!-- ============ 22. DATI ============ -->
+            <section id="dati">
+                <h2><span class="icon"><i class="fas fa-shield-halved"></i></span><span class="chap">22.</span> I tuoi dati e sicurezza</h2>
 
-                <div class="warning">
-                    <i class="fas fa-triangle-exclamation"></i>
-                    <span>Le funzionalit&agrave; SuperAdmin sono riservate all'amministratore della piattaforma. Gli utenti normali non hanno accesso a questa sezione.</span>
-                </div>
-
-                <!-- SA TENANTS -->
-                <h3 id="sa-tenants">Gestione Tenant</h3>
-                <p>Dalla pagina <strong>Tenant</strong> (<code>/superadmin/tenants</code>) visualizzi l'elenco di tutti i tenant registrati con:</p>
-                <ul>
-                    <li><strong>Nome e slug</strong> dell'azienda</li>
-                    <li><strong>Piano</strong> attuale (Free, Starter, Business, Enterprise)</li>
-                    <li><strong>Utilizzo</strong>: negozi, utenti e prodotti creati vs. limiti</li>
-                    <li><strong>Stato</strong>: Attivo o Sospeso</li>
-                </ul>
-
-                <h4>Creare un nuovo tenant</h4>
-                <p>Clicca il pulsante <strong>Nuovo Tenant</strong> per aprire il form di creazione. Compila:</p>
-                <ol>
-                    <li><strong>Nome Azienda</strong>: il nome del cliente (es. "Grandi Firme di Fuca"). Lo slug viene generato automaticamente.</li>
-                    <li><strong>Piano</strong>: Free, Starter, Business o Enterprise. I limiti (negozi, utenti, prodotti) si adattano automaticamente al piano scelto.</li>
-                    <li><strong>Dominio</strong> (opzionale): il dominio del sito del cliente.</li>
-                    <li><strong>Dati Admin</strong>: nome, cognome, email e password dell'utente amministratore del tenant.</li>
-                </ol>
-                <p>Alla creazione, il sistema genera automaticamente <strong>30 brand</strong> e <strong>29 categorie</strong> predefinite per il nuovo tenant.</p>
-
-                <h4>Azioni disponibili per ogni tenant</h4>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>Azione</th><th>Icona</th><th>Descrizione</th></tr></thead>
-                        <tbody>
-                            <tr><td>Dettaglio</td><td><i class="fas fa-eye"></i></td><td>Apre la pagina di dettaglio completa</td></tr>
-                            <tr><td>Modifica rapida</td><td><i class="fas fa-pen"></i></td><td>Modifica nome, slug, piano, dominio e limiti</td></tr>
-                            <tr><td>Impersona</td><td><i class="fas fa-user-check"></i></td><td>Accede al gestionale come Admin del tenant</td></tr>
-                            <tr><td>Sospendi / Riattiva</td><td><i class="fas fa-power-off"></i></td><td>Disattiva o riattiva il tenant</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h4>Dettaglio Tenant</h4>
-                <p>La pagina di dettaglio (<code>/superadmin/tenants/:id</code>) mostra tutto sul tenant:</p>
-                <ul>
-                    <li><strong>Informazioni generali</strong>: negozi, utenti, prodotti, dominio, data creazione</li>
-                    <li><strong>Lista utenti</strong> con ruolo e stato, e possibilit&agrave; di <strong>resettare le password</strong></li>
-                    <li><strong>Lista negozi</strong> con codice, citt&agrave; e stato</li>
-                    <li><strong>Statistiche d'utilizzo</strong>: prodotti, vendite, clienti</li>
-                    <li><strong>Piano e limiti</strong>: modifica piano e personalizza limiti</li>
-                    <li><strong>Configurazione avanzata</strong>: SMTP, branding, Stripe</li>
-                </ul>
-
-                <h4>Piani e limiti</h4>
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>Piano</th><th>Negozi</th><th>Utenti</th><th>Prodotti</th><th>Gift Card</th><th>Fidelity</th><th>SMTP</th><th>Branding</th></tr></thead>
-                        <tbody>
-                            <tr><td><span class="tag tag-blue">FREE</span></td><td>1</td><td>1</td><td>50</td><td><i class="fas fa-xmark" style="color:var(--danger)"></i></td><td><i class="fas fa-xmark" style="color:var(--danger)"></i></td><td><i class="fas fa-xmark" style="color:var(--danger)"></i></td><td><i class="fas fa-xmark" style="color:var(--danger)"></i></td></tr>
-                            <tr><td><span class="tag tag-teal">STARTER</span></td><td>1</td><td>3</td><td>500</td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-xmark" style="color:var(--danger)"></i></td></tr>
-                            <tr><td><span class="tag tag-purple">BUSINESS</span></td><td>3</td><td>10</td><td>Illimitati</td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td></tr>
-                            <tr><td><span class="tag tag-orange">ENTERPRISE</span></td><td>Illimitati</td><td>Illimitati</td><td>Illimitati</td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td><td><i class="fas fa-check" style="color:var(--success)"></i></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>I limiti vengono aggiornati automaticamente quando cambi piano, ma puoi personalizzarli manualmente per ogni tenant.</p>
-
-                <!-- SA IMPERSONATION -->
-                <h3 id="sa-impersonation">Impersonation</h3>
-                <p>L'<strong>impersonation</strong> permette al SuperAdmin di accedere al gestionale come se fosse l'amministratore di un tenant specifico.</p>
-                <ol>
-                    <li>Clicca il pulsante <strong>Impersona</strong> sul tenant desiderato.</li>
-                    <li>Il sistema genera un token JWT come Admin del tenant e ti reindirizza alla dashboard.</li>
-                    <li>Un <strong>banner ambra</strong> in alto indica: <em>"Stai operando come tenant impersonato"</em>.</li>
-                    <li>Per tornare, clicca <strong>Torna a SuperAdmin</strong> nel banner.</li>
+                <h3>Scaricare tutti i dati</h3>
+                <p>I dati restano del negozio e si possono portare via in qualsiasi momento.</p>
+                <ol class="steps">
+                    <li>Apri <span class="path">Impostazioni › I tuoi dati</span>.</li>
+                    <li>Premi <strong>«Scarica tutti i dati (ZIP)»</strong>.</li>
+                    <li>Ottieni un unico file ZIP (archivio compresso) con un file CSV per ogni tipo di dato: prodotti, giacenze, vendite, resi, clienti, gift card, buoni, movimenti e registro attività, apribili con Excel. Password e chiavi di accesso non sono mai incluse.</li>
                 </ol>
 
-                <div class="tip">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>L'impersonation &egrave; utile per risolvere problemi tecnici o verificare la configurazione di un tenant senza richiedere le credenziali dell'utente.</span>
-                </div>
-
-                <!-- SA CONFIG -->
-                <h3 id="sa-config">Configurazione per Tenant</h3>
-                <p>Dalla pagina di dettaglio tenant, la sezione <strong>Configurazione</strong> permette di personalizzare tre aree:</p>
-
-                <h4>SMTP (Email personalizzate)</h4>
-                <p>Configura un server SMTP dedicato per il tenant, cos&igrave; le email (ricevute gift card, notifiche) arrivano dal dominio del negozio:</p>
+                <h3>Sicurezza</h3>
                 <ul>
-                    <li><strong>Host</strong>: indirizzo del server SMTP (es. <code>smtps.aruba.it</code>)</li>
-                    <li><strong>Porta</strong>: solitamente 465 (SSL) o 587 (TLS)</li>
-                    <li><strong>Utente e Password</strong>: credenziali di accesso SMTP</li>
-                    <li><strong>Mittente</strong>: nome e email del mittente (es. <code>Klein Baby &lt;noreply@kleinbaby.it&gt;</code>)</li>
-                </ul>
-
-                <h4>Branding Gift Card</h4>
-                <p>Personalizza i colori delle gift card PDF generate per il tenant:</p>
-                <ul>
-                    <li><strong>Colore primario</strong> e <strong>secondario</strong></li>
-                    <li><strong>Sfondo, testo, accento</strong></li>
-                    <li>Un'<strong>anteprima live</strong> mostra il risultato in tempo reale</li>
-                </ul>
-
-                <h4>Stripe (Pagamenti online)</h4>
-                <p>Abilita i pagamenti reali per le gift card online:</p>
-                <ul>
-                    <li><strong>Secret Key</strong>: chiave segreta Stripe (<code>sk_live_...</code> o <code>sk_test_...</code>)</li>
-                    <li><strong>Webhook Secret</strong>: per la verifica degli eventi (<code>whsec_...</code>)</li>
-                </ul>
-                <p>Senza configurazione Stripe, le gift card vengono create in <strong>modalit&agrave; test</strong> (nessun pagamento reale).</p>
-
-                <!-- SA STATS -->
-                <h3 id="sa-stats">Statistiche Piattaforma</h3>
-                <p>La pagina <strong>Statistiche</strong> (<code>/superadmin/stats</code>) mostra una panoramica globale:</p>
-                <ul>
-                    <li><strong>Tenant totali</strong> con conteggio attivi</li>
-                    <li><strong>Utenti, negozi e prodotti</strong> totali della piattaforma</li>
-                    <li><strong>Distribuzione per piano</strong>: grafico a barre con percentuali Free/Starter/Business/Enterprise</li>
-                    <li><strong>Tenant recenti</strong>: ultimi 5 tenant creati con link al dettaglio</li>
+                    <li><strong>Connessione cifrata</strong> tra il negozio e il gestionale.</li>
+                    <li><strong>Password protette</strong>: conservate solo in forma cifrata e mai esportate; regole minime di robustezza per tutti.</li>
+                    <li><strong>Ruoli e negozi assegnati</strong>: ognuno vede e fa solo ciò che gli compete.</li>
+                    <li><strong>Dati separati</strong> per ogni azienda.</li>
+                    <li><strong>Registro attività</strong> non modificabile.</li>
+                    <li><strong>Backup automatico ogni notte</strong>, verificato e conservato per 30 giorni, più una copia mensile conservata per un anno.</li>
                 </ul>
             </section>
 
-            <!-- =============== RUOLI =============== -->
-            <section id="ruoli">
-                <h2><span class="icon" style="background: rgba(13,148,136,0.15); color: var(--teal-light);"><i class="fas fa-user-shield"></i></span> Ruoli e Permessi</h2>
-
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th>Ruolo</th><th>Descrizione</th><th>Permessi principali</th></tr></thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="tag tag-orange">SUPERADMIN</span></td>
-                                <td>Amministratore piattaforma</td>
-                                <td>Creazione e gestione tenant, impersonation, statistiche globali, configurazione SMTP/branding/Stripe, feature flags</td>
-                            </tr>
-                            <tr>
-                                <td><span class="tag tag-red">ADMIN</span></td>
-                                <td>Amministratore del tenant</td>
-                                <td>Tutto all'interno del proprio tenant: utenti (export/import CSV), negozi, prodotti, politica sconti, vendite, gift card, report, impostazioni, analytics</td>
-                            </tr>
-                            <tr>
-                                <td><span class="tag tag-purple">MANAGER</span></td>
-                                <td>Responsabile negozio</td>
-                                <td>Prodotti, politica sconti, movimenti, trasferimenti, vendite, report, clienti</td>
-                            </tr>
-                            <tr>
-                                <td><span class="tag tag-blue">EMPLOYEE</span></td>
-                                <td>Dipendente</td>
-                                <td>Visualizzazione prodotti, carico/scarico, vendite (con sconti manuali entro i limiti della politica)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info">
-                    <i class="fas fa-circle-info"></i>
-                    <span>Il <strong>SuperAdmin</strong> non appartiene a nessun tenant. Accede a un pannello dedicato separato dalla dashboard normale.</span>
-                </div>
+            <!-- ============ 23. IN ARRIVO ============ -->
+            <section id="in-arrivo">
+                <h2><span class="icon"><i class="fas fa-hourglass-half"></i></span><span class="chap">23.</span> In arrivo</h2>
+                <h3>Collegamento al registratore telematico <span class="soon">In arrivo</span></h3>
+                <p>Il collegamento diretto tra la cassa e il registratore telematico (la stampante fiscale che invia i corrispettivi all'Agenzia delle Entrate), con emissione dello scontrino fiscale e del documento di reso dal gestionale, è in fase di collaudo e non è ancora disponibile. Nel frattempo lo scontrino fiscale si emette con il proprio registratore e il gestionale stampa lo scontrino di cortesia.</p>
             </section>
 
-            <!-- =============== FAQ =============== -->
-            <section id="faq-manuale">
-                <h2><span class="icon" style="background: rgba(37,99,235,0.15); color: var(--primary-light);"><i class="fas fa-circle-question"></i></span> FAQ</h2>
+            <!-- ============ 24. ASSISTENZA ============ -->
+            <section id="assistenza">
+                <h2><span class="icon"><i class="fas fa-headset"></i></span><span class="chap">24.</span> Assistenza e domande frequenti</h2>
+                <h3>Aprire una richiesta di assistenza</h3>
+                <ol class="steps">
+                    <li>Apri <span class="path">Supporto › Assistenza</span> (disponibile per tutti) e premi <strong>«Nuovo ticket»</strong>.</li>
+                    <li>Scegli la categoria: Malfunzionamento, Nuova funzionalità, Domanda o Urgente.</li>
+                    <li>Descrivi il problema con i passaggi per ripeterlo e invia.</li>
+                    <li>Segui lo stato (aperto o chiuso) e leggi le risposte direttamente nella scheda del ticket.</li>
+                </ol>
 
-                <h4>Posso usare StockFlow da tablet?</h4>
-                <p>S&igrave;, l'interfaccia &egrave; completamente responsive. Funziona da qualsiasi browser su desktop, tablet e smartphone.</p>
-
-                <h4>Come faccio il backup dei dati?</h4>
-                <p>I dati sono nel cloud con backup automatici. Puoi anche esportare i report in CSV in qualsiasi momento.</p>
-
-                <h4>Posso avere pi&ugrave; negozi?</h4>
-                <p>S&igrave;, a partire dal piano Business (3 negozi) e Enterprise (illimitati). Ogni negozio ha le proprie giacenze e i trasferimenti sono tracciati.</p>
-
-                <h4>Come funziona la password policy?</h4>
-                <p>Tutte le password devono avere almeno <strong>8 caratteri</strong>, una <strong>lettera maiuscola</strong>, un <strong>numero</strong> e un <strong>carattere speciale</strong> (es. @, #, !).</p>
-
-                <h4>Cosa succede se un tenant viene sospeso?</h4>
-                <p>Gli utenti del tenant non possono pi&ugrave; accedere. I dati vengono mantenuti e il tenant pu&ograve; essere riattivato in qualsiasi momento dal SuperAdmin.</p>
-
-                <h4>Le gift card hanno una scadenza?</h4>
-                <p>Le gift card non scadono. Il saldo rimane disponibile fino al completo utilizzo.</p>
+                <h3>Domande frequenti</h3>
+                <h4>Posso usare StockFlow ERP dal tablet o dal telefono?</h4>
+                <p>Sì. L'interfaccia si adatta a computer, tablet e telefono e funziona da qualsiasi browser aggiornato.</p>
+                <h4>Cosa succede se cade internet mentre vendo?</h4>
+                <p>La cassa continua a vendere e invia le vendite appena la rete torna, senza doppioni (vedi il <a href="#offline">capitolo 9</a>).</p>
+                <h4>Le gift card scadono?</h4>
+                <p>Sì: la validità standard è di 12 mesi. Titolare e responsabile possono impostare scadenze diverse.</p>
+                <h4>Posso rendere in un negozio un articolo comprato nell'altro?</h4>
+                <p>Sì. Basta leggere il codice dello scontrino: il reso si registra nel negozio dove ti trovi e la merce rientra lì.</p>
+                <h4>Come porto i miei dati al commercialista?</h4>
+                <p>Con il PDF delle vendite di un periodo, il registro gift card, il file del venduto della chiusura giornata o l'export completo in <span class="path">Impostazioni › I tuoi dati</span>.</p>
+                <h4>Dove trovo una guida per il primo giorno?</h4>
+                <p>Nella <a href="training.html">Guida al primo utilizzo</a>, un percorso breve per iniziare.</p>
             </section>
 
         </main>
@@ -883,44 +888,49 @@
 
     <!-- Footer -->
     <footer class="manual-footer">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> StockFlow ERP &mdash; <a href="index.html">Torna al sito</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="cookie-policy.html">Cookie Policy</a></p>
-        <a href="https://www.emcdigitalsolutions.it" target="_blank" rel="noopener" title="Sviluppato da EMC Digital Solutions" style="margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;opacity:0.4;font-size:11px;text-decoration:none;color:inherit;"><span>Sviluppato da</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="18"><defs><linearGradient id="emcG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#7c5cfc"/><stop offset="45%" stop-color="#667eea"/><stop offset="100%" stop-color="#06d6a0"/></linearGradient><linearGradient id="emcIG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#7c5cfc"/><stop offset="100%" stop-color="#06d6a0"/></linearGradient></defs><path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#emcIG)"/><path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#emcIG)" opacity="0.85"/><path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#emcIG)"/><text x="46" y="27" font-family="'Space Grotesk','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#emcG)" letter-spacing="3">EMC</text></svg></a>
+        <nav aria-label="Collegamenti">
+            <a href="index.html">Torna al sito</a>
+            <a href="training.html">Guida al primo utilizzo</a>
+            <a href="stockflow-caratteristiche.pdf" download>Caratteristiche (PDF)</a>
+            <a href="changelog.html">Changelog</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="cookie-policy.html">Cookie Policy</a>
+        </nav>
+        <p>&copy; <span id="year"></span> StockFlow ERP</p>
+        <a href="https://www.emcdigitalsolutions.it" target="_blank" rel="noopener" title="Sviluppato da EMC Digital Solutions" style="margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;opacity:0.4;font-size:11px;text-decoration:none;color:inherit;"><span>Sviluppato da</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="18"><defs><linearGradient id="emcG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D4A84B"/><stop offset="45%" stop-color="#B8860B"/><stop offset="100%" stop-color="#f0ece2"/></linearGradient><linearGradient id="emcIG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#D4A84B"/><stop offset="100%" stop-color="#B8860B"/></linearGradient></defs><path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#emcIG)"/><path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#emcIG)" opacity="0.85"/><path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#emcIG)"/><text x="46" y="27" font-family="'Space Grotesk','Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="700" fill="url(#emcG)" letter-spacing="3">EMC</text></svg></a>
     </footer>
 
-    <!-- Mobile TOC Button -->
-    <button class="mobile-toc-btn" id="mobileTocBtn" onclick="toggleToc()" aria-label="Indice">
+    <!-- Pulsante indice su telefono -->
+    <button class="mobile-toc-btn" id="mobileTocBtn" onclick="toggleToc()" aria-label="Apri l'indice">
         <i class="fas fa-list"></i>
     </button>
 
     <script>
-        // Mobile TOC toggle
+        document.getElementById('year').textContent = new Date().getFullYear();
+
         function toggleToc() {
             document.getElementById('sidebar').classList.toggle('open');
             document.getElementById('overlay').classList.toggle('open');
         }
 
-        // Close TOC on link click (mobile)
-        document.querySelectorAll('.sidebar a').forEach(link => {
-            link.addEventListener('click', () => {
+        document.querySelectorAll('.sidebar a').forEach(function (link) {
+            link.addEventListener('click', function () {
                 if (window.innerWidth <= 900) toggleToc();
             });
         });
 
-        // Active section tracking
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.sidebar a');
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
+        // Evidenzia nell'indice il capitolo in lettura
+        var navLinks = document.querySelectorAll('.sidebar a');
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
+                    navLinks.forEach(function (link) {
                         link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
                     });
                 }
             });
         }, { rootMargin: '-20% 0px -70% 0px' });
-
-        sections.forEach(section => observer.observe(section));
+        document.querySelectorAll('main section[id]').forEach(function (s) { observer.observe(s); });
     </script>
 </body>
 </html>
