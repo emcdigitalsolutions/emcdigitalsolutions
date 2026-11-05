@@ -14,5 +14,10 @@
 - Contattaci
 - Sviluppo App
 
+## Prodotti
+- Sartonero — gestionale per negozi di abbigliamento (cassa, magazzino per taglie e colori, più punti vendita, gift card, fidelity card), sviluppato da EMC Digital Solutions: https://sartonero.it/
+  - Manuale: https://sartonero.it/manuale.html
+  - Nota: in passato era chiamato "StockFlow ERP"; le vecchie pagine /stockflowERP/ rimandano ora a sartonero.it.
+
 ## Note
 Questo documento riepiloga il sito per assistenti AI e motori di ricerca. Per informazioni sempre aggiornate fare riferimento al sito ufficiale indicato sopra.

@@ -126,6 +126,18 @@
                         "name": "Sviluppo App Mobile",
                         "description": "Applicazioni native e cross-platform per Android e iOS. UX design, notifiche push, rilascio sugli store."
                     }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "SoftwareApplication",
+                        "name": "Sartonero",
+                        "url": "https://sartonero.it/",
+                        "applicationCategory": "BusinessApplication",
+                        "applicationSubCategory": "Gestionale per negozi di abbigliamento",
+                        "operatingSystem": "Web",
+                        "description": "Gestionale per negozi di abbigliamento: cassa, magazzino per taglie e colori, più punti vendita, gift card e fidelity card."
+                    }
                 }
             ]
         }
@@ -1201,6 +1213,17 @@
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 16px;
+        }
+
+        .portfolio-card-body p a {
+            color: var(--text-primary, inherit);
+            text-decoration: underline;
+            text-decoration-color: rgba(245, 197, 66, 0.6);
+            text-underline-offset: 3px;
+        }
+
+        .portfolio-card-body p a:hover {
+            text-decoration-color: currentColor;
         }
 
         .portfolio-tags {
@@ -2429,22 +2452,22 @@
                     </div>
                 </div>
 
-                <!-- StockflowERP -->
+                <!-- Sartonero (ex StockflowERP) -->
                 <div class="portfolio-card fade-in stagger-1" data-category="saas">
                     <div class="portfolio-card-img">
-                        <img src="images/stockflow-erp.png" alt="StockflowERP" loading="lazy">
+                        <img src="images/sartonero.png" alt="Sartonero, gestionale per negozi di abbigliamento: schermata della dashboard" loading="lazy">
                         <span class="portfolio-badge">SaaS</span>
                     </div>
                     <div class="portfolio-card-body">
-                        <h3>StockflowERP</h3>
-                        <p data-i18n="portfolio.stockflow.desc">Gestionale cloud multi-tenant per il retail. Magazzino, vendite, fatturazione elettronica e analytics integrati.</p>
+                        <h3>Sartonero</h3>
+                        <p data-i18n="portfolio.sartonero.desc">Il nostro gestionale per negozi di abbigliamento: cassa, magazzino per taglie e colori, più punti vendita, gift card e fidelity. Già in uso in due punti vendita.</p>
                         <div class="portfolio-tags">
                             <span class="portfolio-tag">React</span>
                             <span class="portfolio-tag">TypeScript</span>
                             <span class="portfolio-tag">Prisma</span>
                             <span class="portfolio-tag">MySQL</span>
                         </div>
-                        <a href="https://www.emcdigitalsolutions.it/stockflowERP/" target="_blank" rel="noopener" class="portfolio-link" data-i18n="portfolio.viewProject">Visita il sito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+                        <a href="https://sartonero.it/" target="_blank" rel="noopener" class="portfolio-link"><span data-i18n="portfolio.sartonero.link">Scopri Sartonero</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
                     </div>
                 </div>
 
@@ -2456,7 +2479,7 @@
                     </div>
                     <div class="portfolio-card-body">
                         <h3>Grandi Firme di Fuc&agrave;</h3>
-                        <p data-i18n="portfolio.grandifirme.desc">Sito vetrina per outlet di abbigliamento bambini. Catalogo prodotti integrato con gestionale StockflowERP.</p>
+                        <p data-i18n-html="portfolio.grandifirme.desc">Sito vetrina per outlet di abbigliamento bambini. Catalogo prodotti collegato al gestionale <a href="https://sartonero.it/" target="_blank" rel="noopener">Sartonero</a>.</p>
                         <div class="portfolio-tags">
                             <span class="portfolio-tag">React</span>
                             <span class="portfolio-tag">Express</span>
@@ -2996,8 +3019,9 @@
                 'portfolio.terredimiele.desc': 'Progetto a 360° per un\'apicoltura artigianale siciliana: sito vetrina con presentazione dei mieli, catalogo/listino PDF scaricabile, biglietti da visita, foglio A4 da banco per lo stand, t-shirt brandizzata e gestione dei canali social.',
                 'portfolio.badge.full': 'Progetto completo',
                 'portfolio.megaservice.desc': 'Sito vetrina per stazione di servizio Q8 e fornitura AdBlue. Servizi, sedi con mappa interattiva e contatti dei responsabili.',
-'portfolio.stockflow.desc': 'Gestionale cloud multi-tenant per il retail. Magazzino, vendite, fatturazione elettronica e analytics integrati.',
-                'portfolio.grandifirme.desc': 'Sito vetrina per outlet di abbigliamento bambini. Catalogo prodotti integrato con gestionale StockflowERP.',
+'portfolio.sartonero.desc': 'Il nostro gestionale per negozi di abbigliamento: cassa, magazzino per taglie e colori, più punti vendita, gift card e fidelity. Già in uso in due punti vendita.',
+                'portfolio.sartonero.link': 'Scopri Sartonero',
+                'portfolio.grandifirme.desc': 'Sito vetrina per outlet di abbigliamento bambini. Catalogo prodotti collegato al gestionale <a href="https://sartonero.it/" target="_blank" rel="noopener">Sartonero</a>.',
                 'portfolio.giulianalagreca.desc': 'Sito vetrina per onoranze funebri: presentazione dei servizi, reperibilità 24 ore su 24, contatti e mappa. Design sobrio e rispettoso.',
                 'portfolio.fratellidirosa.desc': 'Sito vetrina per agenzia funebre: servizi offerti, assistenza 24 ore su 24, contatti e posizione. Impostazione elegante e discreta.',
                 'portfolio.prenoty.desc': 'Piattaforma SaaS per la gestione prenotazioni e appuntamenti, con calendario intelligente e notifiche automatiche.',
@@ -3170,8 +3194,9 @@
                 'portfolio.terredimiele.desc': 'End-to-end project for an artisan Sicilian apiary: showcase website with honey presentation, downloadable PDF catalog/price list, business cards, A4 counter/stand sheet, branded t-shirt and social media management.',
                 'portfolio.badge.full': 'Full project',
                 'portfolio.megaservice.desc': 'Showcase site for a Q8 service station and AdBlue supply. Services, locations with interactive map and managers contacts.',
-'portfolio.stockflow.desc': 'Multi-tenant cloud ERP for retail. Inventory, sales, electronic invoicing, and integrated analytics.',
-                'portfolio.grandifirme.desc': "Business website for children's clothing outlet. Product catalog integrated with StockflowERP.",
+'portfolio.sartonero.desc': 'Our management software for clothing stores: point of sale, stock by size and colour, multiple shops, gift cards and loyalty cards. Already running in two stores.',
+                'portfolio.sartonero.link': 'Discover Sartonero',
+                'portfolio.grandifirme.desc': "Business website for a children's clothing outlet. Product catalogue connected to the <a href=\"https://sartonero.it/\" target=\"_blank\" rel=\"noopener\">Sartonero</a> retail software.",
                 'portfolio.giulianalagreca.desc': 'Business website for a funeral home: services overview, 24/7 availability, contacts and map. Sober, respectful design.',
                 'portfolio.fratellidirosa.desc': 'Business website for a funeral agency: services offered, 24/7 assistance, contacts and location. Elegant, discreet layout.',
                 'portfolio.prenoty.desc': 'SaaS platform for booking and appointment management, with smart calendar and automatic notifications.',
