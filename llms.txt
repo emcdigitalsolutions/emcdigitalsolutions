@@ -19,5 +19,8 @@
   - Manuale: https://sartonero.it/manuale.html
   - Nota: in passato era chiamato "StockFlow ERP"; le vecchie pagine /stockflowERP/ rimandano ora a sartonero.it.
 
+## Risorse didattiche
+- Il viaggio del pacchetto — lezione interattiva e animata (IT/EN) su pila ISO/OSI, incapsulamento, handshake TCP, richiesta e risposta HTTP, HTTPS con TLS 1.3 e attacco man-in-the-middle, con verifica finale: https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/
+
 ## Note
 Questo documento riepiloga il sito per assistenti AI e motori di ricerca. Per informazioni sempre aggiornate fare riferimento al sito ufficiale indicato sopra.

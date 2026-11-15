@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il viaggio del pacchetto: pila ISO/OSI, TCP, HTTP e HTTPS animati | EMC Digital Solutions</title>
+<meta name="description" content="Lezione interattiva e animata per le classi di Sistemi informativi aziendali: la pila ISO/OSI, l'incapsulamento, l'handshake TCP, la richiesta HTTP GET e la risposta, HTTPS con TLS 1.3 contro l'attacco man-in-the-middle. Con verifica finale.">
+<meta name="keywords" content="pila ISO OSI animata, modello OSI spiegato, incapsulamento, three-way handshake TCP, richiesta HTTP GET, risposta HTTP 200, HTTPS TLS 1.3, attacco man in the middle, Diffie-Hellman, architettura client server, lezione reti, Sistemi informativi aziendali, SIA">
+<meta name="author" content="Enrico Maria Caruso">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="geo.region" content="IT-82"><meta name="geo.placename" content="Sicilia">
+<meta name="theme-color" content="#0b1428">
+<link rel="canonical" href="https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/">
+<link rel="alternate" hreflang="it" href="https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/">
+<link rel="alternate" hreflang="en" href="https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/">
+<link rel="alternate" hreflang="x-default" href="https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT"><meta property="og:locale:alternate" content="en_GB">
+<meta property="og:url" content="https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/">
+<meta property="og:title" content="Il viaggio del pacchetto — la pila ISO/OSI animata">
+<meta property="og:description" content="Dal browser al server e ritorno: incapsulamento, handshake TCP, HTTP GET, HTTPS e man-in-the-middle in animazioni passo passo.">
+<meta property="og:image" content="https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/anteprima.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Il viaggio del pacchetto — la pila ISO/OSI animata">
+<meta name="twitter:description" content="Incapsulamento, handshake TCP, HTTP GET, HTTPS e man-in-the-middle in animazioni passo passo.">
+<meta name="twitter:image" content="https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/anteprima.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"LearningResource",
+  "name":"Il viaggio del pacchetto",
+  "alternateName":"The journey of a packet",
+  "description":"Lezione interattiva e animata sulla pila ISO/OSI nell'architettura client-server: incapsulamento, router, handshake TCP, richiesta HTTP GET e risposta, chiusura della connessione, HTTPS con TLS 1.3, scambio Diffie-Hellman, certificati e attacco man-in-the-middle. Con verifica a risposta multipla.",
+  "url":"https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/",
+  "image":"https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/anteprima.png",
+  "inLanguage":["it","en"],
+  "learningResourceType":["Interactive resource","Simulation","Quiz"],
+  "interactivityType":"active",
+  "isAccessibleForFree":true,
+  "educationalLevel":"Scuola secondaria di secondo grado, classi 4ª e 5ª",
+  "audience":{"@type":"EducationalAudience","educationalRole":"student"},
+  "teaches":["Modello ISO/OSI","Incapsulamento e decapsulamento","Three-way handshake TCP","Protocollo HTTP","HTTPS e TLS 1.3","Attacco man-in-the-middle","Scambio di chiavi Diffie-Hellman"],
+  "about":[{"@type":"Thing","name":"Modello OSI"},{"@type":"Thing","name":"Transmission Control Protocol"},{"@type":"Thing","name":"Transport Layer Security"}],
+  "author":{"@type":"Person","name":"Enrico Maria Caruso","url":"https://enricomariacaruso.it/"},
+  "publisher":{"@type":"Organization","name":"EMC Digital Solutions","url":"https://www.emcdigitalsolutions.it/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"EMC Digital Solutions","item":"https://www.emcdigitalsolutions.it/"},
+    {"@type":"ListItem","position":2,"name":"Il viaggio del pacchetto","item":"https://www.emcdigitalsolutions.it/didattica/viaggio-del-pacchetto/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Perché il MAC di destinazione del frame è quello del router e non del server?","acceptedAnswer":{"@type":"Answer","text":"Perché il server si trova in un'altra rete: il frame Ethernet vale solo per il tratto locale e va consegnato al gateway predefinito. A ogni router i MAC cambiano, mentre gli indirizzi IP di sorgente e destinazione restano gli stessi."}},
+    {"@type":"Question","name":"Come funziona il three-way handshake di TCP?","acceptedAnswer":{"@type":"Answer","text":"Il client invia SYN con un numero di sequenza iniziale, il server risponde SYN-ACK confermando quel numero più uno e proponendo il proprio, il client chiude con ACK. Da quel momento entrambi sono in stato ESTABLISHED."}},
+    {"@type":"Question","name":"Come fa HTTPS a impedire l'attacco man-in-the-middle?","acceptedAnswer":{"@type":"Answer","text":"TLS cifra i dati con una chiave concordata con lo scambio Diffie-Hellman, che l'attaccante non può calcolare; ogni record ha un tag di autenticazione che rivela le modifiche; il certificato firmato da una Certificate Authority fidata dimostra l'identità del server."}}
+  ]
+}
+</script>
+<style>
+/* Layout: una lezione in quattro tappe; ogni tappa = palco animato + pannello di spiegazione, comandi da lettore multimediale. Colori per livello OSI usati ovunque. */
+:root{
+  --bg:#edf0f3; --surface:#ffffff; --surface-2:#f5f7f9; --ink:#14202b; --muted:#55626e; --line:#d3dae1;
+  --accent:#1c5cc0; --accent-ink:#ffffff; --danger:#c12d2d; --ok:#22804a;
+  --l7:#c03f69; --l6:#cc5b20; --l5:#a07800; --l4:#28874a; --l3:#1675a0; --l2:#5850c4; --l1:#5d6976;
+  --f-display:"Archivo","Segoe UI",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --r:10px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0e1318; --surface:#161e26; --surface-2:#1b242e; --ink:#e4ebf2; --muted:#94a2b0; --line:#2a3642;
+  --accent:#6ea6ff; --accent-ink:#0b1520; --danger:#ff6f6f; --ok:#5cc47e;
+  --l7:#f27ca2; --l6:#f59c64; --l5:#e1b83c; --l4:#5ec47d; --l3:#52b4de; --l2:#9890f2; --l1:#9ba7b3;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0e1318; --surface:#161e26; --surface-2:#1b242e; --ink:#e4ebf2; --muted:#94a2b0; --line:#2a3642;
+  --accent:#6ea6ff; --accent-ink:#0b1520; --danger:#ff6f6f; --ok:#5cc47e;
+  --l7:#f27ca2; --l6:#f59c64; --l5:#e1b83c; --l4:#5ec47d; --l3:#52b4de; --l2:#9890f2; --l1:#9ba7b3;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.1rem,5.2vw,3.6rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.18rem;font-weight:700}
+p{margin:0}
+code,.mono{font-family:var(--f-mono);font-size:.92em}
+code{background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:0 .3em}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Barra EMC (colori fissi del marchio, uguali nei due temi) */
+.emcbar{background:#0b1428;border-bottom:1px solid rgba(255,255,255,.08)}
+.emcbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;flex-wrap:wrap}
+.emcbar .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.emcbar .logo .nm{color:#fff;font-family:Inter,system-ui,sans-serif;font-weight:800;font-size:14.5px;letter-spacing:.02em;line-height:1.2}
+.emcbar .logo .nm small{display:block;color:#aebee6;font-size:10.5px;font-weight:600;letter-spacing:.06em}
+.emcbar .links{display:flex;align-items:center;gap:14px}
+.emcbar .links a{color:#cdd6ec;font-size:13.5px;font-weight:600;text-decoration:none}
+.emcbar .links a:hover{color:#fff}
+.langbtn{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;font-weight:800;font-size:12.5px;letter-spacing:.05em;border-radius:9px;padding:6px 11px;cursor:pointer}
+.langbtn:hover{background:rgba(255,255,255,.1)}
+
+/* Testata */
+header.hero{padding-block:40px 28px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:32px;align-items:end}
+.hero .lead{font-size:1.12rem;color:var(--muted);max-width:60ch;margin-top:14px}
+.stackmark{display:flex;gap:4px;margin-top:18px}
+.stackmark span{height:8px;flex:1;border-radius:3px;background:var(--c)}
+.scenario{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+.host h3{font-size:1rem}
+.host dl{margin:6px 0 0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:.82rem}
+.host dt{color:var(--muted)}
+.host dd{margin:0;font-family:var(--f-mono);overflow-wrap:anywhere}
+.arrow-ab{font-family:var(--f-mono);color:var(--muted);font-size:.8rem;text-align:center}
+.arrow-ab b{display:block;font-size:1.4rem;color:var(--ink);line-height:1}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+nav.toc a{display:flex;gap:8px;align-items:baseline;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:500;font-size:.92rem}
+nav.toc a span{font-family:var(--f-mono);color:var(--muted);font-size:.8rem}
+nav.toc a:hover{border-color:var(--accent)}
+.keys{margin-top:12px;font-size:.85rem;color:var(--muted)}
+kbd{font-family:var(--f-mono);font-size:.8rem;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--surface)}
+
+/* Sezioni */
+section.lesson{padding-block:34px;border-top:1px solid var(--line)}
+section.lesson:fullscreen{background:var(--bg);overflow:auto;padding:24px max(16px,env(safe-area-inset-left,0px))}
+.sec-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:18px}
+.sec-head .intro{max-width:72ch;color:var(--muted);margin-top:8px}
+.fs{background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:.85rem;cursor:pointer;color:var(--muted)}
+.fs:hover{border-color:var(--accent);color:var(--ink)}
+
+/* Tabella OSI */
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table.osi{border-collapse:collapse;width:100%;min-width:820px;font-size:.92rem}
+.osi th,.osi td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.osi thead th{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--surface-2)}
+.osi tbody tr td:first-child{border-left:6px solid var(--c);font-family:var(--f-display);font-weight:800;font-size:1.2rem;color:var(--c);width:44px}
+.osi .nm{font-weight:600;white-space:nowrap}
+.osi .pdu{font-family:var(--f-mono);font-size:.85rem;white-space:nowrap}
+.osi td.tcpip{background:var(--surface-2);font-weight:600;border-left:1px solid var(--line);vertical-align:middle;text-align:center;white-space:nowrap}
+.osi tbody tr:last-child td{border-bottom:0}
+.note-box{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.note-box p{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;font-size:.93rem}
+.note-box b{display:block;font-family:var(--f-display);margin-bottom:2px}
+
+/* Comandi del lettore */
+.ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;margin-bottom:14px}
+.ctrl .ib,.ctrl .play{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;border-radius:8px;border:1px solid var(--line);background:var(--surface-2);cursor:pointer}
+.ctrl .ib{width:38px}
+.ctrl .play{padding:0 16px;background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600;min-width:110px}
+.ctrl .ib:hover{border-color:var(--accent)}
+.ctrl svg{width:18px;height:18px;fill:currentColor}
+.prog{display:flex;gap:3px;flex:1 1 180px;min-width:140px}
+.prog button{flex:1;height:10px;border:0;border-radius:3px;background:var(--line);cursor:pointer;padding:0}
+.prog button.done{background:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.prog button.cur{background:var(--accent)}
+.count{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.speed{font-size:.82rem;color:var(--muted);display:flex;gap:6px;align-items:center}
+.speed select{font:inherit;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:4px 6px}
+
+/* Pannello spiegazione */
+.explain{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.explain .where{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.chipL{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:.76rem;font-weight:600;padding:3px 9px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 13%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 35%,var(--surface))}
+.chipL.host{--c:var(--muted)}
+.explain h3{margin-bottom:8px}
+.explain .body{display:grid;gap:10px;font-size:.98rem;max-width:72ch}
+.ask{border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--surface));padding:8px 12px;border-radius:0 8px 8px 0;font-size:.93rem}
+.ask b{font-family:var(--f-display)}
+.ask details{margin-top:4px}
+.ask summary{cursor:pointer;color:var(--accent);font-weight:500}
+pre.raw{margin:0;font-family:var(--f-mono);font-size:.82rem;line-height:1.5;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto;white-space:pre}
+pre.raw.wrapme{white-space:pre-wrap;overflow-wrap:anywhere}
+mark.bad{background:color-mix(in srgb,var(--danger) 22%,transparent);color:inherit;border-radius:3px;padding:0 2px}
+mark.add{background:color-mix(in srgb,var(--ok) 22%,transparent);color:inherit;border-radius:3px;padding:0 2px}
+.fields{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;font-size:.88rem;margin:0}
+.fields dt{color:var(--muted)}
+.fields dd{margin:0;font-family:var(--f-mono);overflow-wrap:anywhere}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.two h4{margin:0 0 4px;font-size:.8rem;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.checks{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:.93rem}
+.checks li{display:grid;grid-template-columns:22px 1fr;gap:6px}
+.checks li::before{content:"✓";color:var(--ok);font-weight:700}
+.checks.x li::before{content:"✗";color:var(--danger)}
+.tri{display:flex;flex-wrap:wrap;gap:6px}
+.tri span{font-family:var(--f-mono);font-size:.8rem;padding:3px 10px;border-radius:999px;border:1px solid var(--line)}
+.tri .y{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,var(--surface))}
+.tri .n{color:var(--danger);border-color:color-mix(in srgb,var(--danger) 45%,var(--surface))}
+
+/* Palco OSI */
+.osi-layout{display:grid;gap:14px}
+.stage-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.stage{position:relative;display:grid;grid-template-columns:minmax(250px,1.2fr) minmax(56px,.45fr) minmax(220px,1fr) minmax(56px,.45fr) minmax(250px,1.2fr);grid-template-rows:auto repeat(7,46px);gap:6px 0;min-width:840px;padding:16px}
+.hosthead{padding:0 2px 6px;display:flex;flex-direction:column}
+.hosthead strong{font-family:var(--f-display);font-size:1.02rem}
+.hosthead span{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.hosthead.router{justify-content:flex-end;align-items:center;text-align:center;padding-bottom:4px}
+.cell{display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:8px;border:1px solid color-mix(in srgb,var(--c) 30%,var(--surface));background:color-mix(in srgb,var(--c) 9%,var(--surface));transition:background .35s,box-shadow .35s}
+.cell .n{font-family:var(--f-display);font-weight:800;color:var(--c);width:16px}
+.cell .t{font-weight:600;font-size:.9rem}
+.cell .p{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);margin-right:auto}
+.cell .slot{width:96px;flex:none}
+.cell.on{background:color-mix(in srgb,var(--c) 24%,var(--surface));box-shadow:0 0 0 2px var(--c)}
+.cable{align-self:center;height:4px;border-radius:2px;background:var(--line);position:relative;margin:0 4px}
+.cable.on{background:repeating-linear-gradient(90deg,var(--l1) 0 10px,transparent 10px 18px);background-size:36px 4px;animation:flow .6s linear infinite}
+@keyframes flow{to{background-position:36px 0}}
+.chip{position:absolute;left:0;top:0;transform:translate(-50%,-50%);display:flex;align-items:stretch;height:28px;border-radius:6px;overflow:hidden;box-shadow:0 2px 8px rgb(0 0 0 / .18);border:1px solid var(--ink);background:var(--surface);transition:left .7s cubic-bezier(.5,0,.3,1),top .7s cubic-bezier(.5,0,.3,1);pointer-events:none;z-index:2}
+.chip i{display:block;width:12px;background:var(--c)}
+.chip i.d{width:auto;padding:0 6px;font-style:normal;font-family:var(--f-mono);font-size:.66rem;font-weight:600;display:flex;align-items:center;color:var(--ink);background:color-mix(in srgb,var(--c) 22%,var(--surface))}
+.chip i.f{width:7px}
+.chip.bits{padding:0 8px;align-items:center;font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.06em;color:var(--ink)}
+.insp{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:14px;align-items:start}
+.pdubox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0}
+.pdubox .lbl{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.pdubox .lbl b{font-family:var(--f-display)}
+.pdu{display:flex;gap:6px;flex-wrap:wrap;align-items:stretch}
+.blk{flex:1 1 150px;min-width:0;border:1px solid color-mix(in srgb,var(--c) 40%,var(--surface));border-top:5px solid var(--c);border-radius:6px;background:color-mix(in srgb,var(--c) 8%,var(--surface));padding:7px 9px;font-size:.78rem}
+.blk.small{flex:0 1 96px}
+.blk.data{flex:2 1 200px}
+.blk h5{margin:0 0 4px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.blk div{font-family:var(--f-mono);overflow-wrap:anywhere;line-height:1.45}
+.blk.new{animation:pop .7s ease}
+.blk.strip{opacity:.45;border-style:dashed;text-decoration:line-through;text-decoration-color:var(--danger)}
+@keyframes pop{0%{transform:translateY(-10px) scale(.96);box-shadow:0 0 0 4px var(--c)}100%{transform:none;box-shadow:none}}
+.wirebits{margin-top:10px;font-family:var(--f-mono);font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+.wirebits b{color:var(--ink)}
+
+/* Diagramma di sequenza */
+.seq-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;align-items:start}
+.seq-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+svg.seq{display:block;width:100%;min-width:620px;height:auto}
+.seq .life{stroke:var(--line);stroke-width:2;stroke-dasharray:4 6}
+.seq .lane-box{fill:var(--surface-2);stroke:var(--line);stroke-width:1.5}
+.seq .lane-bad .lane-box{fill:color-mix(in srgb,var(--danger) 10%,var(--surface));stroke:color-mix(in srgb,var(--danger) 50%,var(--surface))}
+.seq .lane-t{font-family:var(--f-display);font-weight:800;font-size:18px;fill:var(--ink)}
+.seq .lane-s{font-family:var(--f-mono);font-size:12.5px;fill:var(--muted)}
+.seq .lane-state{font-family:var(--f-mono);font-size:12.5px;font-weight:600;fill:var(--accent)}
+.seq .m line{stroke-width:2.5}
+.seq .m polygon{stroke:none}
+.seq .m .ml{font-family:var(--f-mono);font-size:14px;font-weight:600}
+.seq .m text.ml{stroke:none}
+.seq .m .ms{font-family:var(--f-mono);font-size:11.5px;fill:var(--muted)}
+.seq .m.past{opacity:.42}
+.seq .m.cur line{stroke-width:3.5}
+.seq .tap{fill:var(--surface);stroke:var(--muted);stroke-width:2}
+.seq .tap.bad{stroke:var(--danger);fill:color-mix(in srgb,var(--danger) 25%,var(--surface))}
+.seq .env rect{stroke:var(--ink);stroke-width:1.2}
+.seq .env text{font-family:var(--f-mono);font-size:12px;font-weight:600;fill:var(--ink)}
+.seq .nt rect{stroke-width:1.5}
+.seq .nt text{font-family:var(--f-body);font-size:13.5px;font-weight:600;fill:var(--ink)}
+.seq .nt.info rect{fill:color-mix(in srgb,var(--accent) 10%,var(--surface));stroke:color-mix(in srgb,var(--accent) 50%,var(--surface))}
+.seq .nt.ok rect{fill:color-mix(in srgb,var(--ok) 13%,var(--surface));stroke:var(--ok)}
+.seq .nt.bad rect{fill:color-mix(in srgb,var(--danger) 13%,var(--surface));stroke:var(--danger)}
+.seq .nt.past{opacity:.5}
+.k-l7{stroke:var(--l7);fill:var(--l7)} .k-l6{stroke:var(--l6);fill:var(--l6)} .k-l5{stroke:var(--l5);fill:var(--l5)}
+.k-l4{stroke:var(--l4);fill:var(--l4)} .k-l3{stroke:var(--l3);fill:var(--l3)} .k-bad{stroke:var(--danger);fill:var(--danger)}
+.e-l7{fill:color-mix(in srgb,var(--l7) 25%,var(--surface))} .e-l6{fill:color-mix(in srgb,var(--l6) 25%,var(--surface))}
+.e-l5{fill:color-mix(in srgb,var(--l5) 25%,var(--surface))} .e-l4{fill:color-mix(in srgb,var(--l4) 25%,var(--surface))}
+.e-bad{fill:color-mix(in srgb,var(--danger) 30%,var(--surface))}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;padding:3px;background:var(--surface);margin-bottom:12px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:8px 14px;border-radius:7px;cursor:pointer;font-weight:600;font-size:.92rem;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+
+/* Finti browser e certificati */
+.browser{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.browser .bar{display:flex;gap:8px;align-items:center;padding:6px 10px;background:var(--surface-2);border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:.78rem;color:var(--muted);flex-wrap:wrap}
+.browser .bar .ns{color:var(--danger);font-weight:600}
+.browser .bar .sc{color:var(--ok);font-weight:600}
+.browser .pg{padding:14px 16px}
+.browser .pg h1{font-size:1.4rem;font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:0}
+.browser .pg p{font-family:Georgia,"Times New Roman",serif;font-size:.95rem;margin-top:6px}
+.browser.warn .pg{background:color-mix(in srgb,var(--danger) 10%,var(--surface))}
+.browser.warn h1{font-family:var(--f-body);font-size:1.2rem;color:var(--danger)}
+.browser.warn p{font-family:var(--f-body)}
+.fakebtn{display:inline-block;margin-top:10px;padding:5px 12px;border-radius:6px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:.85rem}
+.cert{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--surface-2)}
+.cert.bad{border-color:var(--danger)}
+.cert h4{margin:0 0 6px;font-family:var(--f-display);font-size:.95rem}
+.paint{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;text-align:center;font-size:.8rem}
+.paint .col{display:grid;gap:6px;justify-items:center;align-content:start;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 4px}
+.paint .col b{font-family:var(--f-display);font-size:.88rem}
+.pot{width:34px;height:34px;border-radius:50%;border:2px solid var(--ink);display:inline-block;vertical-align:middle}
+.mix{display:flex;align-items:center;gap:3px;justify-content:center;flex-wrap:wrap}
+.mix small{color:var(--muted)}
+
+/* Verifica */
+.quiz{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:8px;align-content:start}
+.q h3{font-size:1rem;font-family:var(--f-body);font-weight:600}
+.q h3 span{font-family:var(--f-mono);color:var(--muted);font-weight:400;margin-right:6px}
+.opts{display:grid;gap:6px}
+.opts button{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px;cursor:pointer;font-size:.92rem}
+.opts button:hover:not(:disabled){border-color:var(--accent)}
+.opts button:disabled{cursor:default}
+.opts button.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--surface))}
+.opts button.wrong{border-color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,var(--surface))}
+.q .why{font-size:.88rem;color:var(--muted)}
+.score{margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.score b{font-family:var(--f-display);font-size:1.3rem}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 14px;cursor:pointer;font-weight:600}
+.btn:hover{border-color:var(--accent)}
+.notes{padding-block:24px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+footer.emcfoot{background:#0b1428;color:#aebee6;font-size:.85rem}
+footer.emcfoot .wrap{padding-block:22px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;align-items:center}
+footer.emcfoot a{color:#fff}
+
+@media (max-width:900px){
+  .hero-grid,.seq-layout,.insp{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){
+  .scenario{grid-template-columns:1fr}
+  .arrow-ab b{transform:rotate(90deg)}
+  .ctrl .play{min-width:0}
+  .speed{width:100%}
+  .emcbar .links a{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="emcbar"><div class="wrap">
+  <a class="logo" href="../../index.html" aria-label="EMC Digital Solutions">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="28" aria-hidden="true">
+      <defs><linearGradient id="nb" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#d4a017"/></linearGradient>
+      <linearGradient id="nt" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6b9ef7"/><stop offset="100%" stop-color="#ffffff"/></linearGradient></defs>
+      <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#nb)"/><path d="M4,15 H20 L28,19 L20,23 H4 A4,4 0 0,1 4,15Z" fill="url(#nb)" opacity="0.85"/><path d="M4,26 H24 L32,30 L24,34 H4 A4,4 0 0,1 4,26Z" fill="url(#nb)"/>
+      <text x="46" y="27" font-family="Inter,sans-serif" font-size="20" font-weight="800" fill="url(#nt)" letter-spacing="3">EMC</text>
+    </svg>
+    <span class="nm"><span data-i18n="bar.name">Didattica</span><small>EMC Digital Solutions</small></span>
+  </a>
+  <div class="links">
+    <a href="../../index.html" data-i18n="bar.back">Torna al sito</a>
+    <button type="button" id="langToggle" class="langbtn" aria-label="Language / Lingua"><span id="langLabel">EN</span></button>
+  </div>
+</div></div>
+
+<div class="wrap">
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow" data-i18n="hero.eyebrow">SIA · Sistemi informativi aziendali</p>
+      <h1 data-i18n="hero.title">Il viaggio del pacchetto</h1>
+      <p class="lead" data-i18n="hero.lead">Dal browser al server e ritorno. Segui una richiesta web attraverso i sette livelli della pila ISO/OSI, la connessione TCP, la richiesta HTTP e la cifratura TLS che ferma l'attacco man-in-the-middle.</p>
+      <div class="stackmark" aria-hidden="true"><span style="--c:var(--l7)"></span><span style="--c:var(--l6)"></span><span style="--c:var(--l5)"></span><span style="--c:var(--l4)"></span><span style="--c:var(--l3)"></span><span style="--c:var(--l2)"></span><span style="--c:var(--l1)"></span></div>
+    </div>
+    <div class="scenario">
+      <div class="host">
+        <p class="eyebrow" data-i18n="hero.a">Host A · client</p>
+        <h3 data-i18n="hero.a.t">Browser dello studente</h3>
+        <dl><dt>IP</dt><dd>198.51.100.23</dd><dt>MAC</dt><dd>3c:22:fb:1a:07:9e</dd><dt data-i18n="hero.port">Porta</dt><dd data-i18n="hero.a.port">52344 (temporanea)</dd></dl>
+      </div>
+      <div class="arrow-ab"><b>⇄</b>Internet</div>
+      <div class="host">
+        <p class="eyebrow" data-i18n="hero.b">Host B · server</p>
+        <h3>www.example.com</h3>
+        <dl><dt>IP</dt><dd>203.0.113.10</dd><dt>MAC</dt><dd>52:54:00:6f:a3:21</dd><dt data-i18n="hero.ports">Porte</dt><dd>80 HTTP · 443 HTTPS</dd></dl>
+      </div>
+    </div>
+  </div>
+  <nav class="toc" aria-label="Indice">
+    <a href="#pila"><span>1</span><b data-i18n="toc.1" style="font-weight:500">La pila ISO/OSI</b></a>
+    <a href="#incapsulamento"><span>2</span><b data-i18n="toc.2" style="font-weight:500">Incapsulamento</b></a>
+    <a href="#tcp-http"><span>3</span><b data-i18n="toc.3" style="font-weight:500">TCP e HTTP</b></a>
+    <a href="#https-mitm"><span>4</span><b data-i18n="toc.4" style="font-weight:500">HTTPS e man-in-the-middle</b></a>
+    <a href="#verifica"><span>5</span><b data-i18n="toc.5" style="font-weight:500">Verifica</b></a>
+  </nav>
+  <p class="keys" data-i18n-html="hero.keys">Comandi da tastiera sull'animazione visibile: <kbd>←</kbd> <kbd>→</kbd> passo indietro e avanti, <kbd>P</kbd> avvia o ferma, <kbd>Home</kbd> torna all'inizio.</p>
+</header>
+
+<section class="lesson" id="pila">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow" data-i18n="p1.ey">Parte 1</p>
+      <h2 data-i18n="p1.t">La pila ISO/OSI in una pagina</h2>
+      <p class="intro" data-i18n="p1.i">Sette livelli, ognuno con un compito preciso. Ogni livello parla con lo stesso livello dell'altro host e usa i servizi del livello sotto. A destra, come gli stessi compiti sono raggruppati nel modello TCP/IP, quello che usa davvero Internet.</p>
+    </div>
+  </div>
+  <div class="tscroll">
+    <table class="osi">
+      <thead><tr><th data-i18n="th.n">N°</th><th data-i18n="th.l">Livello</th><th data-i18n="th.w">Cosa fa</th><th>PDU</th><th data-i18n="th.e">Esempi</th><th data-i18n="th.d">Dispositivi</th><th>TCP/IP</th></tr></thead>
+      <tbody>
+        <tr style="--c:var(--l7)"><td>7</td><td class="nm" data-i18n="L7">Applicazione</td><td data-i18n="t7.w">Offre i servizi di rete ai programmi: il browser chiede pagine in HTTP.</td><td class="pdu" data-i18n="pduD">Dati</td><td>HTTP, HTTPS, DNS, SMTP, FTP</td><td>Host</td><td class="tcpip" rowspan="3" data-i18n="tc.app">Applicazione</td></tr>
+        <tr style="--c:var(--l6)"><td>6</td><td class="nm" data-i18n="L6">Presentazione</td><td data-i18n="t6.w">Decide come sono rappresentati i dati: codifica dei caratteri, compressione, cifratura.</td><td class="pdu" data-i18n="pduD">Dati</td><td data-i18n="t6.e">UTF-8, JPEG, gzip, cifratura TLS</td><td>Host</td></tr>
+        <tr style="--c:var(--l5)"><td>5</td><td class="nm" data-i18n="L5">Sessione</td><td data-i18n="t5.w">Apre, mantiene e chiude il dialogo fra le due applicazioni.</td><td class="pdu" data-i18n="pduD">Dati</td><td data-i18n="t5.e">Sessione TLS, RPC, NetBIOS</td><td>Host</td></tr>
+        <tr style="--c:var(--l4)"><td>4</td><td class="nm" data-i18n="L4">Trasporto</td><td data-i18n="t4.w">Collega i processi tramite le porte. TCP garantisce dati completi e in ordine.</td><td class="pdu" data-i18n="pdu4">Segmento</td><td>TCP, UDP</td><td>Host, firewall</td><td class="tcpip" data-i18n="tc.tr">Trasporto</td></tr>
+        <tr style="--c:var(--l3)"><td>3</td><td class="nm" data-i18n="L3">Rete</td><td data-i18n="t3.w">Indirizzi IP e instradamento: sceglie la strada fra reti diverse.</td><td class="pdu" data-i18n="pdu3">Pacchetto</td><td>IPv4, IPv6, ICMP</td><td>Router</td><td class="tcpip">Internet</td></tr>
+        <tr style="--c:var(--l2)"><td>2</td><td class="nm" data-i18n="L2f">Collegamento dati</td><td data-i18n="t2.w">Consegna dentro la stessa rete locale con gli indirizzi MAC e scopre gli errori.</td><td class="pdu">Frame</td><td>Ethernet, Wi-Fi 802.11</td><td>Switch, access point</td><td class="tcpip" rowspan="2" data-i18n-html="tc.na">Accesso<br>alla rete</td></tr>
+        <tr style="--c:var(--l1)"><td>1</td><td class="nm" data-i18n="L1">Fisico</td><td data-i18n="t1.w">Trasmette i bit come segnali elettrici, luminosi o radio.</td><td class="pdu">Bit</td><td data-i18n="t1.e">Cavo UTP, fibra ottica, onde radio</td><td data-i18n="t1.d">Hub, ripetitore, scheda di rete</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note-box">
+    <p><b data-i18n="nb1.t">Incapsulamento</b><span data-i18n="nb1">Scendendo la pila del mittente, ogni livello aggiunge la sua intestazione davanti ai dati, come una busta dentro un'altra busta.</span></p>
+    <p><b data-i18n="nb2.t">Decapsulamento</b><span data-i18n="nb2">Salendo la pila del destinatario, ogni livello legge la sua intestazione, la toglie e passa il resto al livello sopra.</span></p>
+    <p><b>PDU</b><span data-i18n="nb3">Protocol Data Unit: il nome del «pacchetto» cambia a ogni livello. Dati, segmento, pacchetto, frame, bit.</span></p>
+  </div>
+</section>
+
+<section class="lesson" id="incapsulamento">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow" data-i18n="p2.ey">Parte 2</p>
+      <h2 data-i18n="p2.t">Incapsulamento: la richiesta scende, viaggia, risale</h2>
+      <p class="intro" data-i18n-html="p2.i">Il browser invia <code>GET /index.html</code>. Guarda come la richiesta scende la pila del client, attraversa un router e risale la pila del server. In basso compare la PDU completa, intestazione per intestazione.</p>
+    </div>
+    <button type="button" class="fs" data-fs="incapsulamento" data-i18n="fs">Schermo intero</button>
+  </div>
+  <div id="ctrl-a"></div>
+  <div class="osi-layout">
+    <div class="stage-scroll"><div class="stage" id="stage"><div class="chip" id="chip" aria-hidden="true"></div></div></div>
+    <div class="insp">
+      <div class="explain" id="explain-a" aria-live="polite"></div>
+      <div class="pdubox">
+        <div class="lbl"><b data-i18n="pdu.now">La PDU in questo momento</b><span class="eyebrow" id="pdu-name"></span></div>
+        <div class="pdu" id="pdu"></div>
+        <div class="wirebits" id="wire"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="tcp-http">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow" data-i18n="p3.ey">Parte 3</p>
+      <h2 data-i18n="p3.t">TCP e HTTP: dalla stretta di mano alla pagina</h2>
+      <p class="intro" data-i18n="p3.i">Prima di chiedere la pagina, client e server aprono una connessione TCP con il three-way handshake. Poi arrivano la richiesta GET e la risposta HTTP. Alla fine la connessione si chiude. Sotto ogni host vedi il suo stato TCP.</p>
+    </div>
+    <button type="button" class="fs" data-fs="tcp-http" data-i18n="fs">Schermo intero</button>
+  </div>
+  <div id="ctrl-b"></div>
+  <div class="seq-layout">
+    <div class="seq-scroll"><svg class="seq" id="seq-b" role="img" aria-label="Browser ↔ server"></svg></div>
+    <div class="explain" id="explain-b" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="lesson" id="https-mitm">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow" data-i18n="p4.ey">Parte 4</p>
+      <h2 data-i18n="p4.t">HTTPS contro l'uomo nel mezzo</h2>
+      <p class="intro" data-i18n="p4.i">Lo studente si collega a un Wi-Fi gratuito messo in piedi da Mallory, l'attaccante. Tutto il traffico passa da lei. Confronta i due scenari: con HTTP in chiaro Mallory legge e modifica; con HTTPS (TLS 1.3) vede solo dati cifrati e non può fingersi il server.</p>
+    </div>
+    <button type="button" class="fs" data-fs="https-mitm" data-i18n="fs">Schermo intero</button>
+  </div>
+  <div class="seg" role="group" aria-label="Scenario">
+    <button type="button" id="sc-http" aria-pressed="true" data-i18n="sc.http">HTTP in chiaro</button>
+    <button type="button" id="sc-https" aria-pressed="false" data-i18n="sc.https">HTTPS con TLS 1.3</button>
+  </div>
+  <div id="ctrl-c"></div>
+  <div class="seq-layout">
+    <div class="seq-scroll"><svg class="seq" id="seq-c" role="img" aria-label="Browser ↔ Mallory ↔ server"></svg></div>
+    <div class="explain" id="explain-c" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="lesson" id="verifica">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow" data-i18n="p5.ey">Parte 5</p>
+      <h2 data-i18n="p5.t">Mettiti alla prova</h2>
+      <p class="intro" data-i18n="p5.i">Dieci domande sulle animazioni. Ogni risposta mostra subito la spiegazione.</p>
+    </div>
+  </div>
+  <div class="quiz" id="quiz"></div>
+  <div class="score"><span data-i18n="score">Punteggio</span><b id="score">0 / 10</b><button type="button" class="btn" id="quiz-reset" data-i18n="again">Ricomincia</button></div>
+</section>
+
+<p class="notes" data-i18n="notes">Indirizzi IP e nomi di dominio dell'esempio sono riservati alla documentazione (RFC 5737 ed example.com): non appartengono a nessun host reale. I numeri di sequenza, le porte e le lunghezze in byte sono coerenti fra loro e calcolati dalla pagina.</p>
+</div>
+
+<footer class="emcfoot"><div class="wrap">
+  <span>© <span id="yr"></span> EMC Digital Solutions · <span data-i18n="foot.tag">Software, SaaS e soluzioni digitali dalla Sicilia</span></span>
+  <a href="../../index.html" data-i18n="bar.back">Torna al sito</a>
+</div></footer>
+
+<script>
+(function(){
+"use strict";
+document.getElementById('yr').textContent = new Date().getFullYear();
+const RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const NS = 'http://www.w3.org/2000/svg';
+let LANG = 'it'; try{ LANG = localStorage.getItem('emc-lang')==='en' ? 'en' : 'it'; }catch(e){}
+const t = (it,en) => LANG==='en' ? en : it;
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const enc = new TextEncoder();
+const blen = s => enc.encode(s).length;
+const show = s => s.replace(/\r\n/g,'\n');
+const toHex = (s,n) => Array.from(enc.encode(s).slice(0,n)).map(b=>b.toString(16).padStart(2,'0')).join(' ');
+function pseudoHex(n, seed){ let x = seed>>>0; const out=[]; for(let i=0;i<n;i++){ x = (Math.imul(x,1103515245)+12345)>>>0; out.push(((x>>>16)&255).toString(16).padStart(2,'0')); } return out.join(' '); }
+function macBits(m){ return m.split(':').slice(0,3).map(h=>parseInt(h,16).toString(2).padStart(8,'0')).join(' '); }
+
+/* ---------- Testi statici ---------- */
+const I18N = {
+ it:{},
+ en:{
+  'bar.name':'Teaching','bar.back':'Back to the site','foot.tag':'Software, SaaS and digital solutions from Sicily',
+  'hero.eyebrow':'SIA · Business information systems','hero.title':'The journey of a packet',
+  'hero.lead':'From the browser to the server and back. Follow a web request through the seven layers of the ISO/OSI stack, the TCP connection, the HTTP request and the TLS encryption that stops the man-in-the-middle attack.',
+  'hero.a':'Host A · client','hero.a.t':'Student\'s browser','hero.port':'Port','hero.a.port':'52344 (ephemeral)','hero.b':'Host B · server','hero.ports':'Ports',
+  'toc.1':'The ISO/OSI stack','toc.2':'Encapsulation','toc.3':'TCP and HTTP','toc.4':'HTTPS and man-in-the-middle','toc.5':'Quiz',
+  'hero.keys':'Keyboard controls on the visible animation: <kbd>←</kbd> <kbd>→</kbd> step back and forward, <kbd>P</kbd> play or pause, <kbd>Home</kbd> back to the start.',
+  'p1.ey':'Part 1','p1.t':'The ISO/OSI stack on one page','p1.i':'Seven layers, each with a precise job. Each layer talks to the same layer on the other host and uses the services of the layer below. On the right, how the same jobs are grouped in the TCP/IP model, the one the Internet really uses.',
+  'th.n':'No.','th.l':'Layer','th.w':'What it does','th.e':'Examples','th.d':'Devices',
+  'L7':'Application','L6':'Presentation','L5':'Session','L4':'Transport','L3':'Network','L2f':'Data link','L1':'Physical',
+  't7.w':'Provides network services to programs: the browser asks for pages over HTTP.','t6.w':'Decides how data is represented: character encoding, compression, encryption.','t6.e':'UTF-8, JPEG, gzip, TLS encryption',
+  't5.w':'Opens, maintains and closes the dialogue between the two applications.','t5.e':'TLS session, RPC, NetBIOS','t4.w':'Connects processes through ports. TCP guarantees complete, ordered data.',
+  't3.w':'IP addresses and routing: chooses the path between different networks.','t2.w':'Delivers inside the same local network using MAC addresses and detects errors.','t1.w':'Transmits bits as electrical, light or radio signals.',
+  't1.e':'UTP cable, optical fibre, radio waves','t1.d':'Hub, repeater, network card','pduD':'Data','pdu4':'Segment','pdu3':'Packet',
+  'tc.app':'Application','tc.tr':'Transport','tc.na':'Network<br>access',
+  'nb1.t':'Encapsulation','nb1':'Going down the sender\'s stack, each layer adds its header in front of the data, like an envelope inside another envelope.',
+  'nb2.t':'Decapsulation','nb2':'Going up the receiver\'s stack, each layer reads its header, removes it and passes the rest to the layer above.',
+  'nb3':'Protocol Data Unit: the name of the "packet" changes at each layer. Data, segment, packet, frame, bit.',
+  'p2.ey':'Part 2','p2.t':'Encapsulation: the request goes down, travels, goes up','p2.i':'The browser sends <code>GET /index.html</code>. Watch the request go down the client\'s stack, cross a router and go up the server\'s stack. Below, the complete PDU appears header by header.',
+  'fs':'Full screen','pdu.now':'The PDU right now',
+  'p3.ey':'Part 3','p3.t':'TCP and HTTP: from the handshake to the page','p3.i':'Before asking for the page, client and server open a TCP connection with the three-way handshake. Then come the GET request and the HTTP response. Finally the connection is closed. Under each host you see its TCP state.',
+  'p4.ey':'Part 4','p4.t':'HTTPS against the man in the middle','p4.i':'The student connects to a free Wi-Fi set up by Mallory, the attacker. All traffic goes through her. Compare the two scenarios: with plain HTTP Mallory reads and modifies; with HTTPS (TLS 1.3) she only sees encrypted data and cannot pretend to be the server.',
+  'sc.http':'Plain HTTP','sc.https':'HTTPS with TLS 1.3',
+  'p5.ey':'Part 5','p5.t':'Test yourself','p5.i':'Ten questions on the animations. Every answer shows the explanation straight away.','score':'Score','again':'Start again',
+  'notes':'The IP addresses and domain names in the example are reserved for documentation (RFC 5737 and example.com): they do not belong to any real host. Sequence numbers, ports and byte lengths are consistent with each other and computed by the page.'
+ }
+};
+document.querySelectorAll('[data-i18n],[data-i18n-html]').forEach(e=>{ const k=e.dataset.i18n||e.dataset.i18nHtml; if(!(k in I18N.it)) I18N.it[k] = e.dataset.i18n ? e.textContent : e.innerHTML; });
+function applyStatic(){
+  document.documentElement.lang = LANG;
+  document.querySelectorAll('[data-i18n]').forEach(e=>{ const v=I18N[LANG][e.dataset.i18n]; if(v!==undefined) e.textContent=v; });
+  document.querySelectorAll('[data-i18n-html]').forEach(e=>{ const v=I18N[LANG][e.dataset.i18nHtml]; if(v!==undefined) e.innerHTML=v; });
+  document.getElementById('langLabel').textContent = LANG==='it' ? 'EN' : 'IT';
+  document.title = t('Il viaggio del pacchetto: pila ISO/OSI, TCP, HTTP e HTTPS animati | EMC Digital Solutions','The journey of a packet: ISO/OSI stack, TCP, HTTP and HTTPS animated | EMC Digital Solutions');
+}
+
+/* ---------- Dati della lezione (dipendono dalla lingua) ---------- */
+const C0 = 4021, S0 = 8800;
+const MAC = {c:'3c:22:fb:1a:07:9e', rl:'a4:91:b1:00:2c:01', rw:'00:1b:21:8e:44:10', s:'52:54:00:6f:a3:21'};
+const REQ = "GET /index.html HTTP/1.1\r\nHost: www.example.com\r\nUser-Agent: Mozilla/5.0\r\nAccept: text/html\r\nConnection: keep-alive\r\n\r\n";
+const N = blen(REQ);
+const POSTBODY = 'utente=mario.rossi&password=Gatto2026!';
+const POST = 'POST /login HTTP/1.1\r\nHost: www.example.com\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: '+blen(POSTBODY)+'\r\n\r\n'+POSTBODY;
+const CHIP = {dataText:['d',7,'DATI'],dataHex:['d',6,'DATI'],tcp:['',4],ip64:['',3],ip63:['',3],eth1:['',2],eth2:['',2],fcs:['f',2]};
+const SIZE = {dataText:N,dataHex:N,tcp:20,ip64:20,ip63:20,eth1:14,eth2:14,fcs:4};
+let D = null;
+function build(){
+  const LNAME = {7:t('Applicazione','Application'),6:t('Presentazione','Presentation'),5:t('Sessione','Session'),4:t('Trasporto','Transport'),3:t('Rete','Network'),2:t('Collegamento','Data link'),1:t('Fisico','Physical')};
+  const LPDU = {7:t('Dati','Data'),6:t('Dati','Data'),5:t('Dati','Data'),4:t('Segmento','Segment'),3:t('Pacchetto','Packet'),2:'Frame',1:'Bit'};
+  const ask = (q,a) => `<div class="ask"><b>${t('Domanda alla classe.','Question for the class.')}</b> ${q}<details><summary>${t('Risposta','Answer')}</summary>${a}</details></div>`;
+  const fields = rows => `<dl class="fields">${rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl>`;
+  const tcpFields = (sp,dp,seq,ack,flags,len) => fields([[t('Porta sorgente','Source port'),sp],[t('Porta destinazione','Destination port'),dp],[t('Numero di sequenza','Sequence number'),seq],[t('Numero di conferma (Ack)','Acknowledgement number (Ack)'),ack===null?'—':ack],['Flag',flags],[t('Dati','Data'),len+' byte']]);
+  const BODY = t('<!doctype html>\n<html lang="it">\n<head><title>Benvenuti</title></head>\n<body>\n  <h1>Benvenuti nella 4ª A</h1>\n  <p>Pagina statica servita dal server web.</p>\n</body>\n</html>\n',
+                 '<!doctype html>\n<html lang="en">\n<head><title>Welcome</title></head>\n<body>\n  <h1>Welcome to class 4A</h1>\n  <p>Static page served by the web server.</p>\n</body>\n</html>\n');
+  const RESP = 'HTTP/1.1 200 OK\r\nDate: Mon, 16 Nov 2026 09:30:00 GMT\r\nServer: nginx\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: '+blen(BODY)+'\r\nConnection: keep-alive\r\n\r\n'+BODY;
+  const M = blen(RESP), nAck = C0+1+N, mAck = S0+1+M;
+  const HA = t('Host A · client','Host A · client'), HB = t('Host B · server','Host B · server'), HR = 'Router', HM = t('Mezzo trasmissivo','Transmission medium');
+
+  const BLK = {
+    dataText:{l:7,cls:'data',t:t('Dati HTTP','HTTP data'),f:['GET /index.html HTTP/1.1','Host: www.example.com','Accept: text/html','Connection: keep-alive']},
+    dataHex:{l:6,cls:'data',t:t('Dati in byte (UTF-8)','Data as bytes (UTF-8)'),f:[toHex(REQ,16)+' …', N+t(' byte in tutto',' bytes in total')]},
+    tcp:{l:4,t:t('Intestazione TCP','TCP header'),f:[t('Porta sorg. 52344','Src port 52344'),t('Porta dest. 80','Dst port 80'),'Seq '+(C0+1)+' · Ack '+(S0+1),'Flag PSH, ACK','20 byte']},
+    ip64:{l:3,t:t('Intestazione IP','IP header'),f:[t('Sorg. ','Src ')+'198.51.100.23',t('Dest. ','Dst ')+'203.0.113.10','TTL 64',t('Protocollo 6 = TCP','Protocol 6 = TCP'),'20 byte']},
+    ip63:{l:3,t:t('Intestazione IP','IP header'),f:[t('Sorg. ','Src ')+'198.51.100.23',t('Dest. ','Dst ')+'203.0.113.10','TTL 63',t('Protocollo 6 = TCP','Protocol 6 = TCP'),'20 byte']},
+    eth1:{l:2,t:t('Intestazione Ethernet','Ethernet header'),f:[t('Dest. ','Dst ')+MAC.rl+' (router)',t('Sorg. ','Src ')+MAC.c+' (client)',t('Tipo 0x0800 = IPv4','Type 0x0800 = IPv4'),'14 byte']},
+    eth2:{l:2,t:t('Intestazione Ethernet','Ethernet header'),f:[t('Dest. ','Dst ')+MAC.s+' (server)',t('Sorg. ','Src ')+MAC.rw+' (router)',t('Tipo 0x0800 = IPv4','Type 0x0800 = IPv4'),'14 byte']},
+    fcs:{l:2,cls:'small',t:t('Coda FCS','FCS trailer'),f:['CRC-32','4 byte']}
+  };
+  const F1 = ['eth1','ip64','tcp','dataHex','fcs'], F2 = ['eth2','ip63','tcp','dataHex','fcs'];
+  const A = [
+    {at:'c7',pdu:['dataText'],add:['dataText'],host:HA,l:[7],title:t('Il browser scrive la richiesta HTTP','The browser writes the HTTP request'),
+     html:t(`<p>Lo studente scrive <code>http://www.example.com/index.html</code>. Il browser, al livello Applicazione, prepara un messaggio HTTP che significa «mandami il file <code>/index.html</code>».</p><p>Il DNS ha già tradotto il nome del sito nell'indirizzo IP <code>203.0.113.10</code>.</p>`+ask('Quale protocollo, anche lui di livello 7, traduce un nome come www.example.com in un indirizzo IP?','Il DNS (Domain Name System). Anche lui è un protocollo applicativo e di solito viaggia su UDP, porta 53.'),
+            `<p>The student types <code>http://www.example.com/index.html</code>. At the Application layer the browser prepares an HTTP message meaning "send me the file <code>/index.html</code>".</p><p>DNS has already translated the site name into the IP address <code>203.0.113.10</code>.</p>`+ask('Which protocol, also at layer 7, translates a name like www.example.com into an IP address?','DNS (Domain Name System). It is an application protocol too and usually travels over UDP, port 53.'))},
+    {at:'c6',pdu:['dataHex'],add:['dataHex'],host:HA,l:[6],title:t('Presentazione: i caratteri diventano byte','Presentation: characters become bytes'),
+     html:t(`<p>Il testo viene codificato in UTF-8: ogni carattere diventa uno o più byte. In esadecimale <code>G</code> = 47, <code>E</code> = 45, <code>T</code> = 54. La richiesta occupa ${N} byte.</p><p>Questo livello si occupa anche di compressione e cifratura. Con HTTP la richiesta resta leggibile da chiunque; con HTTPS verrebbe cifrata (lo vediamo nella parte 4).</p>`,
+            `<p>The text is encoded in UTF-8: each character becomes one or more bytes. In hexadecimal <code>G</code> = 47, <code>E</code> = 45, <code>T</code> = 54. The request takes ${N} bytes.</p><p>This layer also handles compression and encryption. With HTTP the request stays readable by anyone; with HTTPS it would be encrypted (we see it in part 4).</p>`)},
+    {at:'c5',pdu:['dataHex'],host:HA,l:[5],title:t('Sessione: il dialogo resta aperto','Session: the dialogue stays open'),
+     html:t(`<p>Il livello Sessione organizza il dialogo: questa richiesta fa parte della conversazione fra questo browser e questo server. Con <code>Connection: keep-alive</code> la stessa connessione servirà anche per le immagini e i fogli di stile della pagina.</p><p>Attenzione: nel modello TCP/IP i livelli 5, 6 e 7 li svolge l'applicazione stessa. Per questo qui non compare un'intestazione in più.</p>`,
+            `<p>The Session layer organises the dialogue: this request is part of the conversation between this browser and this server. With <code>Connection: keep-alive</code> the same connection will also carry the page's images and style sheets.</p><p>Note: in the TCP/IP model layers 5, 6 and 7 are handled by the application itself. That is why no extra header appears here.</p>`)},
+    {at:'c4',pdu:['tcp','dataHex'],add:['tcp'],host:HA,l:[4],title:t('Trasporto: nasce il segmento TCP','Transport: the TCP segment is born'),
+     html:t(`<p>TCP mette davanti ai dati la sua intestazione. Le <b>porte</b> dicono quale programma sta parlando: il browser usa una porta temporanea (52344), il server web ascolta sulla porta 80.</p><p>I numeri di <b>sequenza</b> e di <b>conferma</b> (Ack) servono a rimettere i byte in ordine e a ritrasmettere quelli persi. Da qui in poi la PDU si chiama <b>segmento</b>.</p>`+ask('Perché servono le porte, se c\'è già l\'indirizzo IP?','L\'indirizzo IP identifica il computer, la porta identifica il programma (il processo) dentro quel computer. Sullo stesso server possono girare insieme un server web (80/443), uno di posta (25) e altri.'),
+            `<p>TCP puts its header in front of the data. <b>Ports</b> say which program is talking: the browser uses an ephemeral port (52344), the web server listens on port 80.</p><p><b>Sequence</b> and <b>acknowledgement</b> (Ack) numbers are used to put bytes back in order and to resend lost ones. From here on the PDU is called a <b>segment</b>.</p>`+ask('Why do we need ports if there is already an IP address?','The IP address identifies the computer, the port identifies the program (the process) inside that computer. The same server can run a web server (80/443), a mail server (25) and more at the same time.'))},
+    {at:'c3',pdu:['ip64','tcp','dataHex'],add:['ip64'],host:HA,l:[3],title:t('Rete: nasce il pacchetto IP','Network: the IP packet is born'),
+     html:t(`<p>IP aggiunge l'indirizzo del mittente e quello del <b>destinatario finale</b>. Questi due indirizzi restano uguali per tutto il viaggio.</p><p>Il <b>TTL</b> (Time To Live) parte da 64 e cala di 1 a ogni router. Se arriva a 0 il pacchetto viene scartato: così un errore di instradamento non lo fa girare all'infinito. Da qui la PDU si chiama <b>pacchetto</b>.</p>`,
+            `<p>IP adds the sender's address and the <b>final destination</b> address. These two addresses stay the same for the whole journey.</p><p>The <b>TTL</b> (Time To Live) starts at 64 and drops by 1 at every router. If it reaches 0 the packet is discarded, so a routing error cannot make it loop forever. From here the PDU is called a <b>packet</b>.</p>`)},
+    {at:'c2',pdu:F1,add:['eth1','fcs'],host:HA,l:[2],title:t('Collegamento: nasce il frame Ethernet','Data link: the Ethernet frame is born'),
+     html:t(`<p>Il server non è nella stessa rete locale del client, quindi il frame va consegnato al <b>router</b>, il gateway predefinito. Per questo il MAC di destinazione è quello del router, non quello del server.</p><p>In coda si aggiunge l'<b>FCS</b>, un codice di controllo (CRC) per scoprire errori di trasmissione. La PDU ora è un <b>frame</b>.</p>`+ask('Come fa il client a conoscere il MAC del router?','Con il protocollo ARP: chiede in broadcast «chi ha l\'IP del gateway?» e il router risponde con il suo MAC. La risposta resta per un po\' nella cache ARP.'),
+            `<p>The server is not on the client's local network, so the frame must be delivered to the <b>router</b>, the default gateway. That is why the destination MAC is the router's, not the server's.</p><p>At the end the <b>FCS</b> is added, a check code (CRC) to detect transmission errors. The PDU is now a <b>frame</b>.</p>`+ask('How does the client know the router\'s MAC address?','With the ARP protocol: it broadcasts "who has the gateway\'s IP?" and the router answers with its MAC. The answer stays in the ARP cache for a while.'))},
+    {at:'c1',pdu:F1,bits:true,host:HA,l:[1],title:t('Fisico: tutto diventa bit','Physical: everything becomes bits'),
+     html:t(`<p>La scheda di rete trasforma il frame in segnali: impulsi elettrici sul cavo, luce nella fibra, onde radio nel Wi-Fi.</p><p>Il livello Fisico non sa cosa trasporta. Vede solo una lunga sequenza di 0 e 1.</p>`,
+            `<p>The network card turns the frame into signals: electrical pulses on the cable, light in the fibre, radio waves in Wi-Fi.</p><p>The Physical layer does not know what it carries. It only sees a long sequence of 0s and 1s.</p>`)},
+    {at:'link1',pdu:F1,bits:true,host:HM,l:[1],title:t('I bit viaggiano sul cavo','The bits travel on the cable'),
+     html:t(`<p>Prima del frame la scheda invia un <b>preambolo</b> (1010…1011) che serve al ricevitore per sincronizzarsi. Poi passano i bit del frame, uno dopo l'altro.</p>`,
+            `<p>Before the frame the card sends a <b>preamble</b> (1010…1011) that lets the receiver synchronise. Then the frame's bits pass, one after the other.</p>`)},
+    {at:'r2',pdu:F1,strip:['eth1','fcs'],host:HR,l:[1,2],title:t('Il router legge il frame','The router reads the frame'),
+     html:t(`<p>Il router ricompone il frame dai bit, controlla l'FCS (nessun errore) e verifica che il MAC di destinazione sia il suo.</p><p>Poi toglie intestazione e coda Ethernet: il suo lavoro vero è al livello 3.</p>`,
+            `<p>The router rebuilds the frame from the bits, checks the FCS (no errors) and verifies that the destination MAC is its own.</p><p>Then it removes the Ethernet header and trailer: its real work is at layer 3.</p>`)},
+    {at:'r3',pdu:['ip63','tcp','dataHex'],host:HR,l:[3],title:t('Il router sceglie la strada','The router chooses the path'),
+     html:t(`<p>Il router legge l'IP di destinazione <code>203.0.113.10</code> e consulta la <b>tabella di instradamento</b>: la rete <code>203.0.113.0/24</code> si raggiunge dall'interfaccia verso Internet. Abbassa il TTL da 64 a 63.</p><p>Il router si ferma al livello 3: non guarda le porte e non legge il contenuto HTTP.</p>`,
+            `<p>The router reads the destination IP <code>203.0.113.10</code> and looks up the <b>routing table</b>: the network <code>203.0.113.0/24</code> is reached through the Internet-facing interface. It lowers the TTL from 64 to 63.</p><p>The router stops at layer 3: it does not look at ports and does not read the HTTP content.</p>`)},
+    {at:'r2',pdu:F2,add:['eth2','fcs'],host:HR,l:[2],title:t('Un frame nuovo per il tratto successivo','A new frame for the next hop'),
+     html:t(`<p>Per il tratto successivo il router costruisce un frame nuovo: MAC sorgente = la sua interfaccia verso Internet, MAC destinazione = il server.</p><p>Regola da ricordare: <b>i MAC cambiano a ogni tratto, gli IP restano gli stessi da un capo all'altro.</b></p>`+ask('Confronta il frame di prima con questo: cosa è cambiato e cosa è rimasto uguale?','Cambiano i MAC di sorgente e destinazione, il TTL (64 → 63) e quindi anche l\'FCS. Restano uguali gli IP, le porte, i numeri di sequenza e i dati.'),
+            `<p>For the next hop the router builds a new frame: source MAC = its Internet-facing interface, destination MAC = the server.</p><p>Rule to remember: <b>MAC addresses change at every hop, IP addresses stay the same from end to end.</b></p>`+ask('Compare the previous frame with this one: what changed and what stayed the same?','The source and destination MACs change, the TTL (64 → 63) and therefore the FCS too. The IPs, the ports, the sequence numbers and the data stay the same.'))},
+    {at:'link2',pdu:F2,bits:true,host:HM,l:[1],title:t('Di nuovo bit sul mezzo trasmissivo','Bits on the medium again'),
+     html:t(`<p>In Internet i tratti sono molti: un pacchetto attraversa spesso 10–20 router, e ognuno ripete lo stesso lavoro. Qui ne abbiamo disegnato uno solo.</p>`,
+            `<p>On the Internet there are many hops: a packet often crosses 10–20 routers, and each repeats the same work. Here we drew only one.</p>`)},
+    {at:'s2',pdu:F2,strip:['eth2','fcs'],host:HB,l:[1,2],title:t('Il server riceve il frame','The server receives the frame'),
+     html:t(`<p>La scheda di rete del server ricompone il frame, controlla l'FCS e riconosce il proprio MAC. Il campo Tipo <code>0x0800</code> dice che dentro c'è un pacchetto IPv4: intestazione e coda vengono tolte.</p>`,
+            `<p>The server's network card rebuilds the frame, checks the FCS and recognises its own MAC. The Type field <code>0x0800</code> says there is an IPv4 packet inside: header and trailer are removed.</p>`)},
+    {at:'s3',pdu:['ip63','tcp','dataHex'],strip:['ip63'],host:HB,l:[3],title:t('Il pacchetto è arrivato a destinazione','The packet has reached its destination'),
+     html:t(`<p>L'IP di destinazione è proprio quello del server. Il campo Protocollo = 6 indica che dentro c'è un segmento TCP. Il livello Rete toglie la sua intestazione.</p>`,
+            `<p>The destination IP is the server's own. The Protocol field = 6 shows that a TCP segment is inside. The Network layer removes its header.</p>`)},
+    {at:'s4',pdu:['tcp','dataHex'],strip:['tcp'],host:HB,l:[4],title:t('TCP consegna i dati al programma giusto','TCP delivers the data to the right program'),
+     html:t(`<p>La porta di destinazione 80 indica il server web (per esempio Apache o nginx). TCP controlla il numero di sequenza e conferma la ricezione con un ACK. Poi passa i dati al livello sopra.</p>`,
+            `<p>Destination port 80 points to the web server (for example Apache or nginx). TCP checks the sequence number and confirms receipt with an ACK. Then it passes the data to the layer above.</p>`)},
+    {at:'s5',pdu:['dataHex'],host:HB,l:[5],title:t('Sessione','Session'),
+     html:t(`<p>Il server associa la richiesta alla connessione già aperta con questo browser: le prossime richieste della stessa pagina useranno lo stesso canale.</p>`,
+            `<p>The server links the request to the connection already open with this browser: the next requests for the same page will use the same channel.</p>`)},
+    {at:'s6',pdu:['dataText'],add:['dataText'],host:HB,l:[6],title:t('Presentazione: i byte tornano testo','Presentation: bytes become text again'),
+     html:t(`<p>I byte UTF-8 vengono decodificati e tornano caratteri leggibili.</p>`,`<p>The UTF-8 bytes are decoded and become readable characters again.</p>`)},
+    {at:'s7',pdu:['dataText'],host:HB,l:[7],title:t('Il server web legge la richiesta','The web server reads the request'),
+     html:t(`<p>Il server legge <code>GET /index.html</code>, trova il file sul disco e prepara la risposta <code>HTTP/1.1 200 OK</code>.</p><p>La risposta fa lo stesso viaggio al contrario: scende la pila del server (incapsulamento) e risale quella del client (decapsulamento).</p>`,
+            `<p>The server reads <code>GET /index.html</code>, finds the file on disk and prepares the response <code>HTTP/1.1 200 OK</code>.</p><p>The response makes the same journey in reverse: it goes down the server's stack (encapsulation) and up the client's (decapsulation).</p>`)}
+  ];
+
+  const B = [
+    {l:[4],title:t('Prima di parlare bisogna connettersi','Before talking you must connect'),states:{c:'CLOSED',s:'LISTEN'},
+     html:t(`<p>HTTP si appoggia su TCP. Prima di inviare la richiesta, client e server aprono una connessione con il <b>three-way handshake</b>, una stretta di mano in tre passi.</p><p>Il server è in stato <code>LISTEN</code>: sta ascoltando sulla porta 80. Il client è ancora <code>CLOSED</code>.</p>`,
+            `<p>HTTP runs on top of TCP. Before sending the request, client and server open a connection with the <b>three-way handshake</b>.</p><p>The server is in the <code>LISTEN</code> state: it is listening on port 80. The client is still <code>CLOSED</code>.</p>`)},
+    {l:[4],title:t('Passo 1: SYN','Step 1: SYN'),states:{c:'SYN_SENT'},vis:[{from:'c',to:'s',label:'SYN',sub:'seq='+C0,c:'l4'}],
+     html:t(`<p>Il client invia un segmento con il flag <b>SYN</b> (synchronize) e sceglie un numero di sequenza iniziale casuale: ${C0}. Significa: «voglio parlarti, e i miei byte partiranno da qui».</p>`,
+            `<p>The client sends a segment with the <b>SYN</b> (synchronize) flag and picks a random initial sequence number: ${C0}. It means: "I want to talk to you, and my bytes will start from here".</p>`)+tcpFields(52344,80,C0,null,'SYN',0)},
+    {l:[4],title:t('Passo 2: SYN-ACK','Step 2: SYN-ACK'),states:{s:'SYN_RECEIVED'},vis:[{from:'s',to:'c',label:'SYN, ACK',tag:'SYN-ACK',sub:'seq='+S0+'  ack='+(C0+1),c:'l4'}],
+     html:t(`<p>Il server accetta. Con <b>ACK = ${C0+1}</b> conferma il SYN del client (${C0} + 1) e con <b>SYN</b> propone il proprio numero iniziale, ${S0}.</p>`,
+            `<p>The server accepts. With <b>ACK = ${C0+1}</b> it confirms the client's SYN (${C0} + 1) and with <b>SYN</b> it proposes its own initial number, ${S0}.</p>`)+tcpFields(80,52344,S0,C0+1,'SYN, ACK',0)+
+            ask(t('Perché l\'ACK vale '+(C0+1)+' se il SYN non conteneva dati?','Why is the ACK '+(C0+1)+' if the SYN carried no data?'),t('Per convenzione il flag SYN «consuma» un numero di sequenza. L\'ACK indica sempre il prossimo byte che ci si aspetta di ricevere.','By convention the SYN flag "uses up" one sequence number. The ACK always indicates the next byte expected.'))},
+    {l:[4],title:t('Passo 3: ACK','Step 3: ACK'),states:{c:'ESTABLISHED',s:'ESTABLISHED'},vis:[{from:'c',to:'s',label:'ACK',sub:'seq='+(C0+1)+'  ack='+(S0+1),c:'l4'}],
+     html:t(`<p>Il client conferma con <b>ACK = ${S0+1}</b>. Ora tutti e due sono in stato <code>ESTABLISHED</code>: la connessione è aperta in entrambe le direzioni.</p>`,
+            `<p>The client confirms with <b>ACK = ${S0+1}</b>. Now both are in the <code>ESTABLISHED</code> state: the connection is open in both directions.</p>`)+tcpFields(52344,80,C0+1,S0+1,'ACK',0)},
+    {l:[5,4],title:t('La sessione è aperta','The session is open'),vis:[{note:true,at:'cs',text:t('Connessione TCP stabilita · inizia il dialogo HTTP','TCP connection established · the HTTP dialogue begins'),tone:'ok'}],
+     html:t(`<p>Da qui in poi browser e server dialogano dentro questa connessione: nel modello OSI è il compito del livello Sessione.</p><p>Con <code>Connection: keep-alive</code> la stessa connessione può servire più richieste (la pagina, poi le immagini e i fogli di stile) senza rifare ogni volta l'handshake.</p>`,
+            `<p>From here on browser and server talk inside this connection: in the OSI model this is the Session layer's job.</p><p>With <code>Connection: keep-alive</code> the same connection can serve several requests (the page, then images and style sheets) without repeating the handshake each time.</p>`)},
+    {l:[7,4],title:t('La richiesta HTTP GET','The HTTP GET request'),vis:[{from:'c',to:'s',label:'GET /index.html',tag:'GET',sub:'seq='+(C0+1)+'  len='+N,c:'l7'}],
+     html:t(`<p>Il browser invia la richiesta. È testo semplice: una riga con <b>metodo</b>, percorso e versione, poi le intestazioni, poi una riga vuota.</p>`,`<p>The browser sends the request. It is plain text: a line with <b>method</b>, path and version, then the headers, then an empty line.</p>`)+
+          `<pre class="raw">${esc(show(REQ))}</pre>`+t(`<p>Viaggia dentro un segmento TCP con <code>seq=${C0+1}</code> e ${N} byte di dati.</p>`,`<p>It travels inside a TCP segment with <code>seq=${C0+1}</code> and ${N} bytes of data.</p>`)},
+    {l:[7,4],title:t('La risposta HTTP 200 OK','The HTTP 200 OK response'),vis:[{from:'s',to:'c',label:'HTTP/1.1 200 OK',tag:'200 OK',sub:'seq='+(S0+1)+'  ack='+nAck+'  len='+M,c:'l7'}],
+     html:t(`<p>Il server risponde con la <b>riga di stato</b>, le intestazioni e il <b>corpo</b> HTML. L'ACK = ${nAck} (= ${C0+1} + ${N}) conferma di aver ricevuto tutti i byte della richiesta.</p>`,`<p>The server answers with the <b>status line</b>, the headers and the HTML <b>body</b>. ACK = ${nAck} (= ${C0+1} + ${N}) confirms it received every byte of the request.</p>`)+
+          `<pre class="raw">${esc(show(RESP))}</pre>`+t(`<p>Altri codici di stato: <code>301</code> spostato, <code>404</code> non trovato, <code>500</code> errore del server.</p>`,`<p>Other status codes: <code>301</code> moved, <code>404</code> not found, <code>500</code> server error.</p>`)},
+    {l:[7,4],title:t('Il browser disegna la pagina','The browser renders the page'),vis:[{from:'c',to:'s',label:'ACK',sub:'seq='+nAck+'  ack='+mAck,c:'l4'}],
+     html:t(`<p>Il client conferma la ricezione (ACK = ${S0+1} + ${M} = ${mAck}) e il browser disegna l'HTML.</p>`,`<p>The client confirms receipt (ACK = ${S0+1} + ${M} = ${mAck}) and the browser renders the HTML.</p>`)+
+          `<div class="browser"><div class="bar"><span class="ns">${t('Non sicuro','Not secure')}</span><span>www.example.com/index.html</span></div><div class="pg"><h1>${t('Benvenuti nella 4ª A','Welcome to class 4A')}</h1><p>${t('Pagina statica servita dal server web.','Static page served by the web server.')}</p></div></div>`+
+          t(`<p>Una pagina <b>statica</b> è un file già pronto sul disco del server: viene inviata così com'è, uguale per tutti. Una pagina dinamica (PHP, Node.js…) viene invece generata a ogni richiesta.</p>`,`<p>A <b>static</b> page is a file already stored on the server's disk: it is sent as it is, the same for everyone. A dynamic page (PHP, Node.js…) is instead generated at every request.</p>`)},
+    {l:[4],title:t('Chiusura: FIN','Closing: FIN'),states:{c:'FIN_WAIT_1'},vis:[{from:'c',to:'s',label:'FIN, ACK',tag:'FIN',sub:'seq='+nAck+'  ack='+mAck,c:'l4'}],
+     html:t(`<p>Quando il browser ha finito (o dopo un po' di inattività), una delle due parti chiede di chiudere con il flag <b>FIN</b> (finish). Qui comincia il client.</p>`,`<p>When the browser has finished (or after some idle time), one of the two sides asks to close with the <b>FIN</b> (finish) flag. Here the client starts.</p>`)},
+    {l:[4],title:t('Il server accetta e chiude anche lui','The server agrees and closes too'),states:{s:'LAST_ACK',c:'TIME_WAIT'},vis:[{from:'s',to:'c',label:'FIN, ACK',tag:'FIN',sub:'seq='+mAck+'  ack='+(nAck+1),c:'l4'}],
+     html:t(`<p>Il server conferma il FIN del client e invia il suo FIN nello stesso segmento. Ogni direzione della connessione si chiude separatamente.</p>`,`<p>The server acknowledges the client's FIN and sends its own FIN in the same segment. Each direction of the connection is closed separately.</p>`)},
+    {l:[4],title:t('Ultimo ACK: connessione chiusa','Last ACK: connection closed'),states:{s:'CLOSED',c:'TIME_WAIT'},vis:[{from:'c',to:'s',label:'ACK',sub:'seq='+(nAck+1)+'  ack='+(mAck+1),c:'l4'}],
+     html:t(`<p>Con l'ultimo ACK il server passa a <code>CLOSED</code>. Il client resta qualche istante in <code>TIME_WAIT</code>, per sicurezza, nel caso l'ultimo ACK andasse perso.</p>`,`<p>With the last ACK the server moves to <code>CLOSED</code>. The client stays in <code>TIME_WAIT</code> for a short while, just in case the last ACK gets lost.</p>`)+
+          ask(t('Quanti segmenti sono serviti per aprire e quanti per chiudere?','How many segments were needed to open and how many to close?'),t('Tre per aprire (SYN, SYN-ACK, ACK). Per chiudere ne servono tre o quattro: qui tre, perché il server ha unito il suo ACK e il suo FIN.','Three to open (SYN, SYN-ACK, ACK). Closing takes three or four: here three, because the server combined its ACK and its FIN.'))}
+  ];
+
+  const hs3 = port => [
+    {from:'c',to:'s',via:'a',label:'SYN',sub:t('porta ','port ')+port,c:'l4'},
+    {from:'s',to:'c',via:'a',label:'SYN, ACK',tag:'SYN-ACK',c:'l4'},
+    {from:'c',to:'s',via:'a',label:'ACK',c:'l4'}];
+  const CH = (n,s) => '17 03 03 '+n.toString(16).padStart(4,'0').replace(/(..)(..)/,'$1 $2')+' '+pseudoHex(28,s)+' …';
+  const encLen = blen(POST)+17;
+  const postHi = cls => esc(show(POST)).replace('password=Gatto2026!','<mark class="'+cls+'">password=Gatto2026!</mark>');
+  const WIFI = t('Wi-Fi «WiFi_Gratis»','Wi-Fi "Free_WiFi"');
+  const C_HTTP = [
+    {hosts:[WIFI],l:[],title:t('Una rete Wi-Fi troppo comoda','A Wi-Fi network that is too convenient'),states:{c:t('in chiaro','plain text'),a:t('in ascolto','listening'),s:t('porta 80','port 80')},
+     html:t(`<p>In biblioteca lo studente trova la rete aperta «WiFi_Gratis» e si collega. In realtà l'access point è il portatile di Mallory: tutto il traffico passa da lei.</p><p>Questo è un attacco <b>man-in-the-middle</b> (uomo nel mezzo): l'attaccante si mette fra le due parti, che credono di parlarsi direttamente.</p>`,
+            `<p>In the library the student finds the open network "Free_WiFi" and connects. Actually the access point is Mallory's laptop: all traffic goes through her.</p><p>This is a <b>man-in-the-middle</b> attack: the attacker sits between the two parties, who believe they are talking directly.</p>`)+
+          ask(t('Oltre al Wi-Fi finto, in che altro modo un attaccante può mettersi nel mezzo in una rete locale?','Apart from a fake Wi-Fi, how else can an attacker get in the middle on a local network?'),t('Con l\'ARP spoofing: invia risposte ARP false e fa credere al client che il MAC del gateway sia il suo.','With ARP spoofing: it sends fake ARP replies and makes the client believe that the gateway\'s MAC is its own.'))},
+    {l:[4],title:t('L\'handshake TCP passa da Mallory','The TCP handshake goes through Mallory'),vis:hs3(80),
+     html:t(`<p>SYN, SYN-ACK e ACK attraversano il portatile di Mallory, che li inoltra senza cambiarli. Client e server non si accorgono di nulla.</p>`,`<p>SYN, SYN-ACK and ACK cross Mallory's laptop, which forwards them unchanged. Client and server notice nothing.</p>`)},
+    {l:[7],title:t('Il login viaggia in chiaro','The login travels in plain text'),vis:[{from:'c',to:'s',via:'a',read:true,label:'POST /login',tag:'POST',c:'l7'},{note:true,at:'a',text:t('Mallory legge la password','Mallory reads the password'),tone:'bad'}],
+     html:t(`<p>Lo studente inserisce nome utente e password. Con HTTP la richiesta è testo leggibile: Mallory la copia mentre la inoltra.</p>`,`<p>The student enters username and password. With HTTP the request is readable text: Mallory copies it while forwarding it.</p>`)+`<pre class="raw">${postHi('bad')}</pre>`},
+    {l:[7],title:t('Mallory modifica la risposta','Mallory modifies the response'),vis:[{from:'s',to:'c',via:'a',tamper:true,label:'200 OK',label2:t('200 OK (alterata)','200 OK (altered)'),tag:'200 OK',tag2:t('ALTERATA','ALTERED'),c:'l7'},{note:true,at:'c',text:t('Pagina falsa','Fake page'),tone:'bad'}],
+     html:t(`<p>La risposta del server passa da Mallory, che aggiunge un link a un finto aggiornamento. Il browser non ha modo di accorgersene.</p>`,`<p>The server's response goes through Mallory, who adds a link to a fake update. The browser has no way to notice.</p>`)+
+          `<div class="two"><div><h4>${t('Inviata dal server','Sent by the server')}</h4><pre class="raw wrapme">${esc(t('<h1>Area riservata</h1>\n<p>Benvenuto, Mario.</p>','<h1>Private area</h1>\n<p>Welcome, Mario.</p>'))}</pre></div><div><h4>${t('Ricevuta dal browser','Received by the browser')}</h4><pre class="raw wrapme">${esc(t('<h1>Area riservata</h1>\n<p>Benvenuto, Mario.</p>\n','<h1>Private area</h1>\n<p>Welcome, Mario.</p>\n'))}<mark class="bad">${esc(t('<a href="http://mallory.example/aggiornamento.exe">Scarica l\'aggiornamento obbligatorio</a>','<a href="http://mallory.example/update.exe">Download the mandatory update</a>'))}</mark></pre></div></div>`},
+    {l:[7,6],title:t('Esito: tutto compromesso','Outcome: everything compromised'),vis:[{note:true,at:'cs',text:t('Riservatezza ✗   Integrità ✗   Autenticità ✗','Confidentiality ✗   Integrity ✗   Authenticity ✗'),tone:'bad'}],
+     html:t(`<div class="tri"><span class="n">Riservatezza ✗</span><span class="n">Integrità ✗</span><span class="n">Autenticità ✗</span></div><ul class="checks x"><li>Riservatezza: Mallory ha letto la password.</li><li>Integrità: Mallory ha cambiato la pagina senza che nessuno se ne accorgesse.</li><li>Autenticità: il browser non può sapere se sta davvero parlando con www.example.com.</li></ul><p>Ora passa allo scenario <b>HTTPS con TLS 1.3</b> con il pulsante sopra il lettore.</p>`,
+            `<div class="tri"><span class="n">Confidentiality ✗</span><span class="n">Integrity ✗</span><span class="n">Authenticity ✗</span></div><ul class="checks x"><li>Confidentiality: Mallory read the password.</li><li>Integrity: Mallory changed the page without anyone noticing.</li><li>Authenticity: the browser cannot know whether it is really talking to www.example.com.</li></ul><p>Now switch to the <b>HTTPS with TLS 1.3</b> scenario with the button above the player.</p>`)}
+  ];
+  const pot = (c,ti) => `<span class="pot" style="background:${c}"${ti?` title="${ti}"`:''}></span>`;
+  const C_HTTPS = [
+    {hosts:[WIFI],l:[],title:t('Stessa trappola, ma ora c\'è HTTPS','Same trap, but now there is HTTPS'),states:{c:'',a:t('in ascolto','listening'),s:t('porta 443','port 443')},
+     html:t(`<p>Stessa biblioteca, stesso Wi-Fi di Mallory. Questa volta il sito usa <b>HTTPS</b>: HTTP dentro un canale cifrato <b>TLS</b>, sulla porta 443.</p><p>Nel modello OSI TLS si colloca fra Sessione (apre e gestisce la sessione sicura) e Presentazione (cifra i dati).</p>`,
+            `<p>Same library, same Wi-Fi run by Mallory. This time the site uses <b>HTTPS</b>: HTTP inside an encrypted <b>TLS</b> channel, on port 443.</p><p>In the OSI model TLS sits between Session (it opens and manages the secure session) and Presentation (it encrypts the data).</p>`)},
+    {l:[4],title:t('Handshake TCP sulla porta 443','TCP handshake on port 443'),vis:hs3(443),
+     html:t(`<p>Come prima, la connessione TCP si apre passando da Mallory. TCP da solo non protegge niente: la protezione arriva adesso, con TLS.</p>`,`<p>As before, the TCP connection opens through Mallory. TCP alone protects nothing: protection comes now, with TLS.</p>`)},
+    {l:[5,6],title:'ClientHello',vis:[{from:'c',to:'s',via:'a',label:'ClientHello',tag:'Hello',sub:t('TLS 1.3 · chiave pubblica','TLS 1.3 · public key'),c:'l6'}],
+     html:t(`<p>Il browser saluta e propone gli algoritmi che conosce. Mallory vede questo messaggio, ma non contiene segreti: una chiave <b>pubblica</b> si può mostrare a tutti.</p>`,`<p>The browser says hello and offers the algorithms it knows. Mallory sees this message, but it contains no secrets: a <b>public</b> key can be shown to everyone.</p>`)+
+          fields([[t('Versione','Version'),'TLS 1.3'],['Random',t('32 byte casuali','32 random bytes')],[t('Suite di cifratura','Cipher suites'),'TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256'],['key_share',t('chiave pubblica X25519 del client','client\'s X25519 public key')],['SNI',t('www.example.com (in chiaro)','www.example.com (in clear)')]])},
+    {l:[5,6],title:t('ServerHello e certificato','ServerHello and certificate'),vis:[{from:'s',to:'c',via:'a',label:'ServerHello',tag:'Hello',sub:t('+ {Certificato, Firma, Finished}','+ {Certificate, Signature, Finished}'),c:'l6'}],
+     html:t(`<p>Il server sceglie <code>TLS_AES_128_GCM_SHA256</code> e manda la sua chiave pubblica. Da questo momento i due possono calcolare la stessa chiave segreta, quindi il resto viaggia già cifrato (le parentesi graffe { } indicano i messaggi cifrati).</p>`,`<p>The server picks <code>TLS_AES_128_GCM_SHA256</code> and sends its public key. From now on the two can compute the same secret key, so the rest already travels encrypted (curly braces { } mark encrypted messages).</p>`)+
+          `<div class="cert"><h4>${t('Certificato del server','Server certificate')}</h4>`+fields([[t('Rilasciato a','Issued to'),'www.example.com'],[t('Rilasciato da','Issued by'),'Esempio Trust CA'],[t('Valido','Valid'),t('dal 02/09/2026 al 01/12/2026','from 02/09/2026 to 01/12/2026')],[t('Chiave pubblica','Public key'),'ECDSA P-256'],[t('Firma','Signature'),t('della CA, con la sua chiave privata','by the CA, with its private key')]])+`</div>`+
+          t(`<p>Il certificato è la carta d'identità del server: una <b>Certificate Authority</b> (CA) garantisce che quella chiave pubblica appartiene davvero a www.example.com.</p>`,`<p>The certificate is the server's identity card: a <b>Certificate Authority</b> (CA) guarantees that the public key really belongs to www.example.com.</p>`)},
+    {l:[6],title:t('Il segreto condiviso (Diffie-Hellman)','The shared secret (Diffie-Hellman)'),
+     html:t(`<p>Come fanno browser e server ad avere la stessa chiave segreta, se Mallory vede tutto ciò che si scambiano? Con lo scambio <b>Diffie-Hellman</b>. L'analogia classica usa i colori: mescolarli è facile, separarli è impossibile.</p>`,`<p>How can browser and server share the same secret key if Mallory sees everything they exchange? With the <b>Diffie-Hellman</b> exchange. The classic analogy uses paint: mixing colours is easy, separating them is impossible.</p>`)+
+     `<div class="paint">
+      <div class="col"><b>Browser</b><div class="mix">${pot('#f2c230')}+${pot('#d6453d')}</div><small>${t('giallo pubblico + rosso segreto','public yellow + secret red')}</small><div class="mix">${t('invia','sends')} ${pot('#e8843a')}</div><div class="mix">${t('riceve','receives')} ${pot('#4f9a5e')} + ${t('rosso','red')}</div><div class="mix">= ${pot('#6e5236')}</div></div>
+      <div class="col"><b>Mallory</b><small>${t('vede passare','sees passing')}</small><div class="mix">${pot('#e8843a')}${pot('#4f9a5e')}</div><small>${t('mescolandoli ottiene','mixing them gets')}</small><div class="mix">= ${pot('#a0974a')}</div><small>${t('colore sbagliato','wrong colour')}</small></div>
+      <div class="col"><b>Server</b><div class="mix">${pot('#f2c230')}+${pot('#2f6fd6')}</div><small>${t('giallo pubblico + blu segreto','public yellow + secret blue')}</small><div class="mix">${t('invia','sends')} ${pot('#4f9a5e')}</div><div class="mix">${t('riceve','receives')} ${pot('#e8843a')} + ${t('blu','blue')}</div><div class="mix">= ${pot('#6e5236')}</div></div>
+     </div>`+
+     t(`<p>Browser e server arrivano allo stesso colore (giallo + rosso + blu) senza mai spedire i loro colori segreti. Nella realtà i colori sono numeri enormi e il «mescolare» è un calcolo matematico facile da fare e praticamente impossibile da invertire.</p>`,`<p>Browser and server reach the same colour (yellow + red + blue) without ever sending their secret colours. In reality the colours are huge numbers and "mixing" is a calculation that is easy to do and practically impossible to reverse.</p>`)},
+    {l:[6],title:t('Il browser controlla il certificato','The browser checks the certificate'),vis:[{note:true,at:'c',text:t('Certificato valido ✓','Valid certificate ✓'),tone:'ok'}],
+     html:t(`<ul class="checks"><li>La firma della CA è autentica e la CA radice è tra quelle di cui il browser si fida.</li><li>Il nome nel certificato, www.example.com, è proprio quello del sito richiesto.</li><li>Oggi il certificato è nel suo periodo di validità.</li><li>Con il messaggio CertificateVerify il server ha firmato la conversazione con la sua chiave privata: dimostra di possederla davvero.</li></ul>`,
+            `<ul class="checks"><li>The CA's signature is genuine and the root CA is one the browser trusts.</li><li>The name in the certificate, www.example.com, is exactly the site requested.</li><li>Today the certificate is within its validity period.</li><li>With the CertificateVerify message the server signed the conversation with its private key: it proves it really owns it.</li></ul>`)+
+          ask(t('Mallory potrebbe copiare il certificato del server e mandarlo al browser?','Could Mallory copy the server\'s certificate and send it to the browser?'),t('Sì, il certificato è pubblico. Ma senza la chiave privata del server non può produrre la firma CertificateVerify, quindi il controllo fallirebbe.','Yes, the certificate is public. But without the server\'s private key she cannot produce the CertificateVerify signature, so the check would fail.'))},
+    {l:[5,6],title:t('Finished: canale cifrato pronto','Finished: encrypted channel ready'),states:{c:t('canale cifrato','encrypted channel'),s:t('canale cifrato','encrypted channel')},vis:[{from:'c',to:'s',via:'a',label:'{Finished}',tag:'Finished',c:'l6'},{note:true,at:'cs',text:t('Sessione TLS attiva · nel browser compare il lucchetto','TLS session active · the padlock appears in the browser'),tone:'ok'}],
+     html:t(`<p>Il client manda <b>Finished</b>: un riassunto cifrato di tutto l'handshake. Se Mallory avesse cambiato anche un solo byte dei messaggi precedenti, i riassunti non coinciderebbero e la connessione si chiuderebbe.</p>`,`<p>The client sends <b>Finished</b>: an encrypted summary of the whole handshake. If Mallory had changed even one byte of the earlier messages, the summaries would not match and the connection would close.</p>`)+
+          `<div class="browser"><div class="bar"><span class="sc">${t('Lucchetto','Padlock')}</span><span>https://www.example.com/login</span></div><div class="pg"><h1>${t('Area riservata','Private area')}</h1><p>${t('Connessione protetta.','Secure connection.')}</p></div></div>`},
+    {l:[7,6],title:t('Il login ora è illeggibile','The login is now unreadable'),vis:[{from:'c',to:'s',via:'a',label:'{POST /login}',tag:t('cifrato','encrypted'),c:'l7'},{note:true,at:'a',text:t('Vede solo byte casuali','Sees only random bytes'),tone:'info'}],
+     html:t(`<p>La stessa richiesta di prima, ma dentro un record TLS cifrato con AES-GCM. Il server la decifra con la chiave di sessione.</p>`,`<p>The same request as before, but inside a TLS record encrypted with AES-GCM. The server decrypts it with the session key.</p>`)+
+          `<div class="two"><div><h4>${t('Browser e server','Browser and server')}</h4><pre class="raw wrapme">${postHi('add')}</pre></div><div><h4>Mallory</h4><pre class="raw wrapme">${CH(encLen,77)}</pre></div></div>`+
+          t(`<p>I primi byte <code>17 03 03</code> dicono solo «record TLS di dati applicativi», poi viene la lunghezza (${encLen} byte: richiesta + 16 di tag + 1 di tipo).</p>`,`<p>The first bytes <code>17 03 03</code> only say "TLS application data record", then comes the length (${encLen} bytes: request + 16 for the tag + 1 for the type).</p>`)},
+    {l:[6],title:t('Mallory prova a cambiare un byte','Mallory tries to change a byte'),vis:[{from:'c',to:'s',via:'a',tamper:true,label:t('{dati}','{data}'),label2:t('{dati} alterati','{data} altered'),tag:t('cifrato','encrypted'),tag2:t('ALTERATO','ALTERED'),c:'l6'},{note:true,at:'s',text:t('Tag non valido: chiusa','Invalid tag: closed'),tone:'ok'}],
+     html:t(`<p>AES-GCM aggiunge a ogni record un <b>tag di autenticazione</b> di 16 byte, calcolato con la chiave segreta. Il server lo ricalcola: non coincide, quindi scarta il record, invia l'avviso <code>bad_record_mac</code> e chiude la connessione.</p><p>Mallory può interrompere la comunicazione, ma non può modificarla senza farsi scoprire.</p>`,
+            `<p>AES-GCM adds to every record a 16-byte <b>authentication tag</b>, computed with the secret key. The server recomputes it: it does not match, so it discards the record, sends the <code>bad_record_mac</code> alert and closes the connection.</p><p>Mallory can interrupt the communication, but she cannot modify it without being caught.</p>`)},
+    {l:[6],title:t('Mallory prova a fingersi il server','Mallory tries to impersonate the server'),vis:[{from:'a',to:'c',label:t('Certificato falso','Fake certificate'),tag:'Cert',c:'l6'},{note:true,at:'c',text:t('Avviso: non privata','Warning: not private'),tone:'ok'}],
+     html:t(`<p>Mallory prova un'altra strada: intercetta una nuova connessione e risponde lei, con un certificato per www.example.com creato da sé.</p>`,`<p>Mallory tries another way: she intercepts a new connection and answers herself, with a certificate for www.example.com she made herself.</p>`)+
+          `<div class="cert bad"><h4>${t('Certificato presentato da Mallory','Certificate presented by Mallory')}</h4>`+fields([[t('Rilasciato a','Issued to'),'www.example.com'],[t('Rilasciato da','Issued by'),t('Mallory CA (sconosciuta al browser)','Mallory CA (unknown to the browser)')]])+`</div>`+
+          `<div class="browser warn"><div class="bar"><span class="ns">${t('Non sicuro','Not secure')}</span><span>https://www.example.com</span></div><div class="pg"><h1>${t('La connessione non è privata','Your connection is not private')}</h1><p>${t('Qualcuno potrebbe cercare di rubare le tue informazioni su www.example.com. Errore: certificato emesso da un\'autorità non attendibile.','Someone might be trying to steal your information from www.example.com. Error: certificate issued by an untrusted authority.')}</p><span class="fakebtn">${t('Torna indietro (scelta sicura)','Go back (safe choice)')}</span></div></div>`+
+          t(`<p><b>Regola d'oro:</b> davanti a questo avviso non si clicca su «Procedi comunque».</p>`,`<p><b>Golden rule:</b> when you see this warning, never click "Proceed anyway".</p>`)},
+    {l:[7,6,5],title:t('Esito: la comunicazione è protetta','Outcome: the communication is protected'),vis:[{note:true,at:'cs',text:t('Riservatezza ✓   Integrità ✓   Autenticità ✓','Confidentiality ✓   Integrity ✓   Authenticity ✓'),tone:'ok'}],
+     html:t(`<div class="tri"><span class="y">Riservatezza ✓</span><span class="y">Integrità ✓</span><span class="y">Autenticità ✓</span></div><ul class="checks"><li>Riservatezza: la cifratura rende i dati illeggibili a Mallory.</li><li>Integrità: il tag di autenticazione scopre ogni modifica.</li><li>Autenticità: il certificato firmato da una CA fidata dimostra l'identità del server.</li></ul><p><b>Cosa vede ancora Mallory:</b> gli indirizzi IP, il nome del sito (SNI), quanti dati passano e quando. Non vede pagine, password e cookie.</p>`,
+            `<div class="tri"><span class="y">Confidentiality ✓</span><span class="y">Integrity ✓</span><span class="y">Authenticity ✓</span></div><ul class="checks"><li>Confidentiality: encryption makes the data unreadable to Mallory.</li><li>Integrity: the authentication tag reveals any change.</li><li>Authenticity: the certificate signed by a trusted CA proves the server's identity.</li></ul><p><b>What Mallory can still see:</b> the IP addresses, the site name (SNI), how much data passes and when. She does not see pages, passwords or cookies.</p>`)+
+          ask(t('Perché molti siti usano anche HSTS?','Why do many sites also use HSTS?'),t('HSTS dice al browser di usare sempre HTTPS per quel sito. Così Mallory non può far partire la prima connessione in HTTP per poi sostituirla (attacco di SSL stripping).','HSTS tells the browser to always use HTTPS for that site. So Mallory cannot make the first connection start over HTTP and then hijack it (SSL stripping attack).'))}
+  ];
+
+  const Q = LANG==='en' ? [
+    ['At which OSI layer does TCP work?',['Network (3)','Transport (4)','Session (5)','Data link (2)'],1,'TCP is the Transport protocol: it connects processes through ports and guarantees complete, ordered data.'],
+    ['What is the PDU of the Network layer called?',['Frame','Segment','Packet','Bit'],2,'Layer 3 = packet. The segment belongs to layer 4, the frame to layer 2.'],
+    ['In the three-way handshake, what does the server send?',['SYN','ACK','FIN','SYN-ACK'],3,'The server answers the client\'s SYN with a segment that has both the SYN and ACK flags.'],
+    ['The frame leaving the client towards www.example.com has as destination MAC…',['the server\'s','the router\'s (gateway)','a broadcast address','the client\'s'],1,'The server is on another network: the frame must be delivered to the gateway. The MAC only matters on the local hop.'],
+    ['When a router forwards the packet, what stays the same?',['The source and destination IP addresses','The MAC addresses','The TTL','The FCS'],0,'IP addresses stay the same end to end (without NAT). MACs, TTL and therefore FCS change at every router.'],
+    ['Which port does an HTTPS server usually listen on?',['80','21','443','8080'],2,'443 is the standard HTTPS port; 80 is HTTP\'s.'],
+    ['Which code means the page was found and sent?',['404','200','301','500'],1,'200 OK. 404 = not found, 301 = moved permanently, 500 = server error.'],
+    ['According to the OSI model, at which layer is data encrypted?',['Presentation (6)','Network (3)','Physical (1)','Transport (4)'],0,'Encryption is a way of representing data: layer 6. TLS also manages the secure session (layer 5).'],
+    ['With HTTPS, what can Mallory still see?',['The password typed','The page content','The IPs and the site name','The session cookies'],2,'She sees IP addresses, the site name (SNI), amount and timing of traffic. The content is encrypted.'],
+    ['Why can\'t Mallory pretend to be www.example.com?',['She does not know the server\'s IP','She has no valid certificate for that domain signed by a trusted CA','TCP prevents it','The Wi-Fi is slow'],1,'The browser only accepts certificates signed by trusted CAs and with the right name. Without the server\'s private key the signature cannot be forged.']
+  ] : [
+    ['A quale livello OSI lavora TCP?',['Rete (3)','Trasporto (4)','Sessione (5)','Collegamento (2)'],1,'TCP è il protocollo di Trasporto: collega i processi tramite le porte e garantisce dati completi e in ordine.'],
+    ['Come si chiama la PDU del livello Rete?',['Frame','Segmento','Pacchetto','Bit'],2,'Livello 3 = pacchetto. Il segmento è del livello 4, il frame del livello 2.'],
+    ['Nel three-way handshake, cosa invia il server?',['SYN','ACK','FIN','SYN-ACK'],3,'Il server risponde al SYN del client con un segmento che ha entrambi i flag SYN e ACK.'],
+    ['Il frame che esce dal client verso www.example.com ha come MAC di destinazione…',['quello del server','quello del router (gateway)','un indirizzo broadcast','quello del client'],1,'Il server è in un\'altra rete: il frame va consegnato al gateway. Il MAC vale solo per il tratto locale.'],
+    ['Quando un router inoltra il pacchetto, cosa resta uguale?',['Gli indirizzi IP di sorgente e destinazione','Gli indirizzi MAC','Il TTL','L\'FCS'],0,'Gli IP restano da un capo all\'altro (senza NAT). MAC, TTL e quindi FCS cambiano a ogni router.'],
+    ['Su quale porta ascolta di solito un server HTTPS?',['80','21','443','8080'],2,'443 è la porta standard di HTTPS; 80 è quella di HTTP.'],
+    ['Quale codice indica che la pagina è stata trovata e inviata?',['404','200','301','500'],1,'200 OK. 404 = non trovato, 301 = spostato in modo permanente, 500 = errore del server.'],
+    ['Secondo il modello OSI, a quale livello si cifrano i dati?',['Presentazione (6)','Rete (3)','Fisico (1)','Trasporto (4)'],0,'La cifratura è un modo di rappresentare i dati: livello 6. TLS gestisce anche la sessione sicura (livello 5).'],
+    ['Con HTTPS, cosa può ancora vedere Mallory?',['La password inserita','Il contenuto della pagina','Gli IP e il nome del sito','I cookie di sessione'],2,'Vede indirizzi IP, nome del sito (SNI), quantità e orari del traffico. Il contenuto è cifrato.'],
+    ['Perché Mallory non riesce a fingersi www.example.com?',['Perché non conosce l\'IP del server','Perché non ha un certificato valido per quel dominio firmato da una CA fidata','Perché TCP glielo impedisce','Perché il Wi-Fi è lento'],1,'Il browser accetta solo certificati firmati da CA fidate e con il nome giusto. Senza la chiave privata del server la firma non si può falsificare.']
+  ];
+
+  const lanesB = [{id:'c',x:150,title:'Browser',sub:'198.51.100.23:52344'},{id:'s',x:750,title:t('Server web','Web server'),sub:'203.0.113.10:80'}];
+  const lanesC = [{id:'c',x:120,title:'Browser',sub:'198.51.100.23'},{id:'a',x:450,title:'Mallory',sub:t('attaccante nel mezzo','attacker in the middle'),bad:true},{id:'s',x:780,title:t('Server web','Web server'),sub:'www.example.com'}];
+  return {LNAME,LPDU,BLK,A,B,C_HTTP,C_HTTPS,Q,lanesB,lanesC,N,HOSTS:{c:[t('Host A · client','Host A · client'),'198.51.100.23 · browser'],s:[t('Host B · server','Host B · server'),'203.0.113.10 · '+t('server web','web server')],r:['Router','gateway']}};
+}
+D = build();
+const chipL = l => `<span class="chipL" style="--c:var(--l${l})">L${l} · ${D.LNAME[l]}</span>`;
+const chipH = s => `<span class="chipL host">${esc(s)}</span>`;
+
+/* ---------- Icone ---------- */
+const ICON = {
+  first:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg>',
+  prev:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 5v14L5 12z"/></svg>',
+  next:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',
+  play:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>',
+  pause:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>'
+};
+
+/* ---------- Lettore passo-passo ---------- */
+const players = [];
+let lastPlayer = null;
+function Player(mount, section, opts){
+  const self = this;
+  self.i = 0; self.playing = false; self.timer = null; self.section = section;
+  const ui = document.createElement('div'); ui.className = 'ctrl';
+  ui.innerHTML = `<button type="button" class="ib" data-a="first">${ICON.first}</button>
+    <button type="button" class="ib" data-a="prev">${ICON.prev}</button>
+    <button type="button" class="play" data-a="play"><span class="pi">${ICON.play}</span><span class="pl"></span></button>
+    <button type="button" class="ib" data-a="next">${ICON.next}</button>
+    <div class="prog" role="group"></div>
+    <span class="count"></span>
+    <label class="speed" for="${opts.id}-speed"><span class="sl"></span> <select id="${opts.id}-speed"><option value="0.6"></option><option value="1" selected></option><option value="1.6"></option></select></label>`;
+  mount.appendChild(ui);
+  const prog = ui.querySelector('.prog'), count = ui.querySelector('.count'), playBtn = ui.querySelector('.play'), sel = ui.querySelector('select');
+  self.speed = () => parseFloat(sel.value)||1;
+  self.count = () => opts.count();
+  self.relabel = function(){
+    const ib = ui.querySelectorAll('.ib');
+    ib[0].setAttribute('aria-label',t('Torna all\'inizio','Back to start')); ib[1].setAttribute('aria-label',t('Passo precedente','Previous step')); ib[2].setAttribute('aria-label',t('Passo successivo','Next step'));
+    prog.setAttribute('aria-label',t('Vai al passo','Go to step'));
+    ui.querySelector('.sl').textContent = t('Velocità','Speed');
+    const o = sel.options; o[0].textContent=t('lenta','slow'); o[1].textContent=t('normale','normal'); o[2].textContent=t('veloce','fast');
+    [...prog.children].forEach((b,k)=>b.setAttribute('aria-label',t('Passo ','Step ')+(k+1)));
+  };
+  self.buildProg = function(){
+    prog.innerHTML = '';
+    for(let k=0;k<self.count();k++){ const b=document.createElement('button'); b.type='button'; b.addEventListener('click',()=>{ lastPlayer=self; self.go(k,true); }); prog.appendChild(b); }
+    self.relabel();
+  };
+  self.paint = function(){
+    [...prog.children].forEach((b,k)=>{ b.className = k<self.i?'done':(k===self.i?'cur':''); });
+    count.textContent = t('Passo ','Step ')+(self.i+1)+t(' di ',' of ')+self.count();
+    playBtn.querySelector('.pi').innerHTML = self.playing?ICON.pause:ICON.play;
+    playBtn.querySelector('.pl').textContent = self.playing?t('Pausa','Pause'):(self.i>=self.count()-1?t('Rivedi','Replay'):t('Avvia','Play'));
+  };
+  self.go = function(k, animate){
+    k = Math.max(0, Math.min(self.count()-1, k));
+    self.i = k; opts.render(k, animate && !RM, self.speed());
+    self.paint();
+    if(self.playing) self.schedule();
+  };
+  self.schedule = function(){
+    clearTimeout(self.timer);
+    if(self.i >= self.count()-1){ self.playing=false; self.paint(); return; }
+    const d = (opts.dwell ? opts.dwell(self.i) : 4800) / self.speed();
+    self.timer = setTimeout(()=>{ self.go(self.i+1, true); }, d);
+  };
+  self.play = function(){ self.playing = true; if(self.i>=self.count()-1) self.go(0,true); else self.go(self.i+1,true); };
+  self.pause = function(){ self.playing=false; clearTimeout(self.timer); self.paint(); };
+  self.toggle = function(){ self.playing ? self.pause() : self.play(); };
+  self.reset = function(){ self.pause(); self.buildProg(); self.go(0,false); };
+  self.refresh = function(){ self.relabel(); self.go(self.i,false); };
+  ui.addEventListener('click', e=>{
+    const b = e.target.closest('[data-a]'); if(!b) return; lastPlayer = self;
+    const a = b.dataset.a;
+    if(a==='first'){ self.pause(); self.go(0,false); }
+    else if(a==='prev'){ self.go(self.i-1,false); }
+    else if(a==='next'){ self.go(self.i+1,true); }
+    else if(a==='play'){ self.toggle(); }
+  });
+  section.addEventListener('pointerdown', ()=>{ lastPlayer = self; });
+  self.buildProg(); self.go(0,false);
+  players.push(self);
+}
+
+/* ---------- Parte 2: palco OSI ---------- */
+const stage = document.getElementById('stage'), chip = document.getElementById('chip');
+let cells = {};
+function buildStage(){
+  [...stage.children].forEach(c=>{ if(c!==chip) c.remove(); });
+  cells = {};
+  const add = (html, col, row, cls, color) => { const d=document.createElement('div'); d.className=cls; d.style.gridColumn=col; d.style.gridRow=row; if(color) d.style.setProperty('--c',color); d.innerHTML=html; stage.appendChild(d); return d; };
+  const hh = (k,col,row,cls) => add(`<strong>${esc(D.HOSTS[k][0])}</strong><span>${esc(D.HOSTS[k][1])}</span>`,col,row,cls);
+  hh('c',1,1,'hosthead'); hh('s',5,1,'hosthead'); hh('r',3,5,'hosthead router');
+  const cell = (h,l,col) => { cells[h+l] = add(`<span class="n">${l}</span><span class="t">${D.LNAME[l]}</span><span class="p">${D.LPDU[l]}</span><span class="slot"></span>`, col, 9-l, 'cell', 'var(--l'+l+')'); };
+  for(let l=7;l>=1;l--){ cell('c',l,1); cell('s',l,5); }
+  for(let l=3;l>=1;l--){ cell('r',l,3); }
+  cells.link1 = add('',2,8,'cable'); cells.link2 = add('',4,8,'cable');
+}
+buildStage();
+const pduEl = document.getElementById('pdu'), pduName = document.getElementById('pdu-name'), wire = document.getElementById('wire'), expA = document.getElementById('explain-a');
+let playerA = null;
+function placeChip(){
+  const st = D.A[playerA ? playerA.i : 0]; const el = cells[st.at]; if(!el) return;
+  let x, y;
+  if(st.at.startsWith('link')){ x = el.offsetLeft + el.offsetWidth/2; y = el.offsetTop + el.offsetHeight/2 - 22; }
+  else { x = el.offsetLeft + el.offsetWidth - 58; y = el.offsetTop + el.offsetHeight/2; }
+  chip.style.left = x+'px'; chip.style.top = y+'px';
+}
+function renderA(i){
+  const st = D.A[i];
+  Object.values(cells).forEach(c=>c.classList.remove('on'));
+  cells[st.at].classList.add('on');
+  if(st.bits){ chip.className='chip bits'; chip.textContent = st.at.startsWith('link') ? '1010 1011 0011…' : '0101 1100…'; }
+  else { chip.className='chip'; chip.innerHTML = st.pdu.map(k=>{ const c=CHIP[k]; return `<i class="${c[0]}" style="--c:var(--l${c[1]})" title="${esc(D.BLK[k].t)}">${c[2]?t('DATI','DATA'):''}</i>`; }).join(''); }
+  placeChip();
+  pduEl.innerHTML = st.pdu.map(k=>{ const b=D.BLK[k]; const cls=['blk',b.cls||'']; if(st.add&&st.add.includes(k)) cls.push('new'); if(st.strip&&st.strip.includes(k)) cls.push('strip'); return `<div class="${cls.join(' ')}" style="--c:var(--l${b.l})"><h5>${esc(b.t)}</h5>${b.f.map(x=>`<div>${esc(x)}</div>`).join('')}</div>`; }).join('');
+  const top = st.pdu[0]; const lvl = st.bits?1:(st.strip&&st.strip.length? D.BLK[st.strip[0]].l : (top==='dataText'||top==='dataHex'?7:D.BLK[top].l));
+  pduName.textContent = 'PDU: '+(st.bits ? 'bit' : (lvl>=5?t('dati','data'):D.LPDU[lvl].toLowerCase()));
+  const total = st.pdu.reduce((s,k)=>s + SIZE[k],0);
+  wire.innerHTML = st.bits
+    ? t(`Sul mezzo: <b>preambolo 10101010 ×7 + 10101011</b>, poi ${total} byte = ${total*8} bit. I primi (MAC di destinazione): <b>${macBits(st.pdu[0]==='eth2'?MAC.s:MAC.rl)}</b> …`,
+        `On the medium: <b>preamble 10101010 ×7 + 10101011</b>, then ${total} bytes = ${total*8} bits. The first ones (destination MAC): <b>${macBits(st.pdu[0]==='eth2'?MAC.s:MAC.rl)}</b> …`)
+    : t(`Dimensione: <b>${total} byte</b>`,`Size: <b>${total} bytes</b>`)+(st.pdu.length>1?t(` (di cui ${N} di dati, il resto sono intestazioni)`,` (${N} of data, the rest are headers)`):'')+'.';
+  expA.innerHTML = `<div class="where">${chipH(st.host)}${st.l.map(chipL).join('')}</div><h3>${st.title}</h3><div class="body">${st.html}</div>`;
+}
+playerA = new Player(document.getElementById('ctrl-a'), document.getElementById('incapsulamento'), {id:'pa', count:()=>D.A.length, render:(i)=>renderA(i), dwell:i=>D.A[i].html.length>500?7000:5200});
+window.addEventListener('resize', placeChip);
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(placeChip);
+
+/* ---------- Diagrammi di sequenza ---------- */
+function sv(tag, attrs, parent){ const e=document.createElementNS(NS,tag); if(attrs) for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+function stx(parent,x,y,s,cls,anchor){ const e=sv('text',{x:x,y:y,'text-anchor':anchor||'middle',class:cls||''},parent); e.textContent=s; return e; }
+const wait = ms => new Promise(r=>setTimeout(r,ms));
+function SeqDiagram(svg){
+  const W=900, TOP=122, RH=52; let steps=[], lanes=[], gMsg, stateEls={}, token=0, H=300;
+  const X = id => lanes.find(l=>l.id===id).x;
+  const Y = r => TOP + r*RH + RH/2;
+  this.setup = function(s, ln){
+    steps = s; lanes = ln; token++; let r=0; steps.forEach(x=>(x.vis||[]).forEach(v=>{ v.row=r++; }));
+    H = TOP + Math.max(r,1)*RH + 16; svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.innerHTML=''; stateEls={};
+    lanes.forEach(l=>{
+      sv('line',{x1:l.x,y1:100,x2:l.x,y2:H-6,class:'life'},svg);
+      const g=sv('g',{class:'lane'+(l.bad?' lane-bad':'')},svg);
+      sv('rect',{x:l.x-96,y:10,width:192,height:62,rx:10,class:'lane-box'},g);
+      stx(g,l.x,37,l.title,'lane-t'); stx(g,l.x,58,l.sub,'lane-s');
+      stateEls[l.id]=stx(svg,l.x,92,'','lane-state');
+    });
+    gMsg = sv('g',{},svg);
+  };
+  function drawMsg(v, cls){
+    const y=Y(v.row), x1=X(v.from), x2=X(v.to), xa=v.via?X(v.via):null, dir=x2>x1?1:-1;
+    const g=sv('g',{class:'m '+cls},gMsg);
+    const c1='k-'+v.c, c2= v.tamper?'k-bad':c1;
+    const l1=sv('line',{x1:x1,y1:y,x2:x1,y2:y,class:c1},g);
+    let l2=null; if(xa!==null){ l2=sv('line',{x1:xa,y1:y,x2:xa,y2:y,class:c2},g); }
+    const head=sv('polygon',{points:`${x2},${y} ${x2-dir*11},${y-6} ${x2-dir*11},${y+6}`,class:c2},g);
+    const lx = xa!==null ? (x1+xa)/2 : (x1+x2)/2;
+    stx(g,lx,y-9,v.label,'ml '+c1);
+    let lab2=null; if(v.label2){ lab2=stx(g,(xa+x2)/2,y-9,v.label2,'ml '+c2); }
+    if(v.sub){ stx(g,lx,y+18,v.sub,'ms'); }
+    let tap=null; if(xa!==null){ tap=sv('circle',{cx:xa,cy:y,r:7,class:'tap'+((v.read||v.tamper)?' bad':'')},g); }
+    return {g,l1,l2,head,tap,x1,x2,xa,y,lab2};
+  }
+  function finish(p){ if(p.l2){ p.l1.setAttribute('x2',p.xa); p.l2.setAttribute('x2',p.x2); } else p.l1.setAttribute('x2',p.x2); p.head.style.opacity=1; if(p.lab2) p.lab2.style.opacity=1; }
+  function drawNote(v, cls){
+    const y=Y(v.row); const cx = v.at==='cs' ? (X(lanes[0].id)+X(lanes[lanes.length-1].id))/2 : X(v.at);
+    const g=sv('g',{class:'nt '+(v.tone||'info')+' '+cls},gMsg);
+    const r=sv('rect',{x:cx-100,y:y-16,width:200,height:32,rx:8},g);
+    const e=stx(g,cx,y+5,v.text,'');
+    let w=0; try{ w=e.getComputedTextLength(); }catch(err){}
+    if(!w) w=v.text.length*7.2;
+    w=w+28; r.setAttribute('x',cx-w/2); r.setAttribute('width',w);
+    return g;
+  }
+  function ease(q){ return q<.5?2*q*q:1-Math.pow(-2*q+2,2)/2; }
+  function animMsg(v, tk, speed){
+    return new Promise(res=>{
+      const p=drawMsg(v,'cur'); p.head.style.opacity=0; if(p.lab2) p.lab2.style.opacity=0;
+      const env=sv('g',{class:'env'},p.g); const er=sv('rect',{x:-38,y:-12,width:76,height:24,rx:5,class:'e-'+v.c},env); const et=stx(env,0,4.5,v.tag||v.label,'');
+      const dist=Math.abs(p.x2-p.x1), total=1150/speed, pause=p.xa!==null?520/speed:0;
+      const d1 = p.xa!==null ? total*Math.abs(p.xa-p.x1)/dist : total;
+      const t0=performance.now();
+      const bad = () => { if(v.tamper){ er.setAttribute('class','e-bad'); et.textContent=v.tag2||'?'; } };
+      function frame(now){
+        if(tk!==token){ return res(false); }
+        const el=now-t0; let x;
+        if(el<d1){ x=p.x1+((p.xa!==null?p.xa:p.x2)-p.x1)*ease(el/d1); p.l1.setAttribute('x2',x); }
+        else if(p.xa!==null && el<d1+pause){ x=p.xa; p.l1.setAttribute('x2',x); bad(); if(p.tap) p.tap.setAttribute('r', 7+4*Math.sin(Math.PI*(el-d1)/pause)); }
+        else if(p.xa!==null && el<total+pause){ x=p.xa+(p.x2-p.xa)*ease((el-d1-pause)/(total-d1)); p.l1.setAttribute('x2',p.xa); p.l2.setAttribute('x2',x); if(p.tap) p.tap.setAttribute('r',7); bad(); }
+        else { env.remove(); finish(p); return res(true); }
+        env.setAttribute('transform',`translate(${x},${p.y})`);
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+  }
+  this.render = function(i, animate, speed){
+    token++; const tk=token; gMsg.innerHTML='';
+    lanes.forEach(l=>{ let s=''; for(let k=0;k<=i;k++){ const ss=steps[k].states; if(ss && ss[l.id]!==undefined) s=ss[l.id]; } stateEls[l.id].textContent=s; });
+    for(let k=0;k<i;k++) (steps[k].vis||[]).forEach(v=>{ if(v.note) drawNote(v,'past'); else finish(drawMsg(v,'past')); });
+    const cur = steps[i].vis||[];
+    if(!animate){ cur.forEach(v=>{ if(v.note) drawNote(v,'cur'); else finish(drawMsg(v,'cur')); }); return; }
+    (async()=>{ for(const v of cur){ if(tk!==token) return; if(v.note){ const g=drawNote(v,'cur'); g.style.opacity=0; g.style.transition='opacity .4s'; requestAnimationFrame(()=>requestAnimationFrame(()=>{ g.style.opacity=1; })); await wait(350/speed); } else { await animMsg(v,tk,speed); } } })();
+  };
+}
+function detail(st){ return `<div class="where">${(st.hosts||[]).map(chipH).join('')}${(st.l||[]).map(chipL).join('')}</div><h3>${st.title}</h3><div class="body">${st.html}</div>`; }
+
+const seqB = new SeqDiagram(document.getElementById('seq-b'));
+seqB.setup(D.B, D.lanesB);
+const expB = document.getElementById('explain-b');
+const playerB = new Player(document.getElementById('ctrl-b'), document.getElementById('tcp-http'), {id:'pb', count:()=>D.B.length, render:(i,an,sp)=>{ seqB.render(i,an,sp); expB.innerHTML=detail(D.B[i]); }, dwell:i=>D.B[i].html.length>600?8000:5200});
+
+const seqC = new SeqDiagram(document.getElementById('seq-c'));
+let httpsOn = false;
+const curC = () => httpsOn ? D.C_HTTPS : D.C_HTTP;
+seqC.setup(curC(), D.lanesC);
+const expC = document.getElementById('explain-c');
+const playerC = new Player(document.getElementById('ctrl-c'), document.getElementById('https-mitm'), {id:'pc', count:()=>curC().length, render:(i,an,sp)=>{ seqC.render(i,an,sp); expC.innerHTML=detail(curC()[i]); }, dwell:i=>curC()[i].html.length>700?8500:5600});
+function scenario(https){
+  httpsOn = https;
+  document.getElementById('sc-http').setAttribute('aria-pressed', String(!https));
+  document.getElementById('sc-https').setAttribute('aria-pressed', String(https));
+  seqC.setup(curC(), D.lanesC); playerC.reset(); lastPlayer = playerC;
+}
+document.getElementById('sc-http').addEventListener('click',()=>scenario(false));
+document.getElementById('sc-https').addEventListener('click',()=>scenario(true));
+
+/* ---------- Tastiera e schermo intero ---------- */
+function activePlayer(){
+  const fe = document.fullscreenElement; if(fe){ const p=players.find(p=>p.section===fe); if(p) return p; }
+  const mid = innerHeight/2;
+  const inMid = players.find(p=>{ const r=p.section.getBoundingClientRect(); return r.top<=mid && r.bottom>=mid; });
+  return inMid || lastPlayer;
+}
+document.addEventListener('keydown', e=>{
+  if(e.altKey||e.ctrlKey||e.metaKey) return;
+  const tg = e.target; if(tg && (tg.tagName==='INPUT'||tg.tagName==='SELECT'||tg.tagName==='TEXTAREA')) return;
+  const p = activePlayer(); if(!p) return;
+  if(e.key==='ArrowRight'){ e.preventDefault(); p.go(p.i+1,true); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); p.go(p.i-1,false); }
+  else if(e.key==='p'||e.key==='P'){ e.preventDefault(); p.toggle(); }
+  else if(e.key==='Home' && tg===document.body){ e.preventDefault(); p.pause(); p.go(0,false); }
+});
+function fsLabels(){ document.querySelectorAll('.fs').forEach(b=>{ b.textContent = document.fullscreenElement && document.fullscreenElement.id===b.dataset.fs ? t('Esci da schermo intero','Exit full screen') : t('Schermo intero','Full screen'); }); }
+document.querySelectorAll('.fs').forEach(b=>{
+  if(!document.fullscreenEnabled){ b.hidden = true; return; }
+  b.addEventListener('click',()=>{
+    const sec = document.getElementById(b.dataset.fs);
+    if(document.fullscreenElement){ document.exitFullscreen().catch(()=>{}); }
+    else if(sec.requestFullscreen){ sec.requestFullscreen().catch(()=>{ b.hidden = true; }); }
+  });
+});
+document.addEventListener('fullscreenchange',()=>{ fsLabels(); setTimeout(placeChip, 60); });
+
+/* ---------- Parte 5: verifica ---------- */
+const quiz = document.getElementById('quiz'), scoreEl = document.getElementById('score');
+let score = 0;
+function buildQuiz(){
+  const Q = D.Q; score = 0; scoreEl.textContent = '0 / '+Q.length; quiz.innerHTML='';
+  Q.forEach((q,qi)=>{
+    const d=document.createElement('div'); d.className='q';
+    d.innerHTML = `<h3><span>${qi+1}.</span>${esc(q[0])}</h3><div class="opts">${q[1].map((o,oi)=>`<button type="button" id="q${qi}o${oi}" data-o="${oi}">${esc(o)}</button>`).join('')}</div><p class="why" hidden></p>`;
+    d.querySelector('.opts').addEventListener('click',e=>{
+      const b=e.target.closest('button'); if(!b||b.disabled) return;
+      const o=+b.dataset.o; const bs=d.querySelectorAll('.opts button');
+      bs.forEach(x=>x.disabled=true); bs[q[2]].classList.add('right');
+      if(o===q[2]){ score++; } else { b.classList.add('wrong'); }
+      const w=d.querySelector('.why'); w.hidden=false; w.textContent=(o===q[2]?t('Giusto. ','Correct. '):t('Non è così. ','Not quite. '))+q[3];
+      scoreEl.textContent = score+' / '+Q.length;
+    });
+    quiz.appendChild(d);
+  });
+}
+buildQuiz();
+document.getElementById('quiz-reset').addEventListener('click', buildQuiz);
+
+/* ---------- Cambio lingua (chiave condivisa con il sito) ---------- */
+function setLang(l){
+  LANG = l; try{ localStorage.setItem('emc-lang', l); }catch(e){}
+  D = build(); applyStatic(); fsLabels(); buildStage();
+  seqB.setup(D.B, D.lanesB); seqC.setup(curC(), D.lanesC);
+  [playerA, playerB, playerC].forEach(p=>p.refresh());
+  buildQuiz();
+}
+document.getElementById('langToggle').addEventListener('click',()=>setLang(LANG==='it'?'en':'it'));
+applyStatic(); fsLabels();
+if(LANG==='en'){ buildStage(); [playerA, playerB, playerC].forEach(p=>p.refresh()); }
+})();
+</script>
+</body>
+</html>
