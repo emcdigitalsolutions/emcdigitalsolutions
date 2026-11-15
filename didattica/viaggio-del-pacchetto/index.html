@@ -317,6 +317,13 @@ svg.seq{display:block;width:100%;min-width:620px;height:auto}
 .score b{font-family:var(--f-display);font-size:1.3rem}
 .btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 14px;cursor:pointer;font-weight:600}
 .btn:hover{border-color:var(--accent)}
+.gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px}
+.gl div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:.9rem;min-width:0}
+.gl b{font-family:var(--f-mono);color:var(--accent);margin-right:6px}
+.gl em{display:block;font-style:normal;color:var(--muted);font-size:.85rem}
+.dl{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:9px 16px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;font-size:.95rem}
+.dl:hover{filter:brightness(1.08)}
+.dl svg{width:18px;height:18px;fill:currentColor}
 .notes{padding-block:24px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
 footer.emcfoot{background:#0b1428;color:#aebee6;font-size:.85rem}
 footer.emcfoot .wrap{padding-block:22px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;align-items:center}
@@ -384,8 +391,10 @@ footer.emcfoot a{color:#fff}
     <a href="#tcp-http"><span>3</span><b data-i18n="toc.3" style="font-weight:500">TCP e HTTP</b></a>
     <a href="#https-mitm"><span>4</span><b data-i18n="toc.4" style="font-weight:500">HTTPS e man-in-the-middle</b></a>
     <a href="#verifica"><span>5</span><b data-i18n="toc.5" style="font-weight:500">Verifica</b></a>
+    <a href="#sigle"><span>6</span><b data-i18n="toc.6" style="font-weight:500">Le sigle in chiaro</b></a>
   </nav>
   <p class="keys" data-i18n-html="hero.keys">Comandi da tastiera sull'animazione visibile: <kbd>←</kbd> <kbd>→</kbd> passo indietro e avanti, <kbd>P</kbd> avvia o ferma, <kbd>Home</kbd> torna all'inizio.</p>
+  <a class="dl" href="il-viaggio-del-pacchetto-dispensa.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10l3.5-3.5 1.4 1.4L12 16.8 6.1 10.9l1.4-1.4L11 13zM5 19h14v2H5z"/></svg><span data-i18n="dl">Scarica la dispensa di studio (PDF, 16 pagine)</span></a>
 </header>
 
 <section class="lesson" id="pila">
@@ -488,6 +497,17 @@ footer.emcfoot a{color:#fff}
   <div class="score"><span data-i18n="score">Punteggio</span><b id="score">0 / 10</b><button type="button" class="btn" id="quiz-reset" data-i18n="again">Ricomincia</button></div>
 </section>
 
+<section class="lesson" id="sigle">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow" data-i18n="p6.ey">Parte 6</p>
+      <h2 data-i18n="p6.t">Le sigle in chiaro</h2>
+      <p class="intro" data-i18n="p6.i">Tutte le sigle usate nella lezione, con il nome per esteso e il significato.</p>
+    </div>
+  </div>
+  <div class="gl" id="gloss"></div>
+</section>
+
 <p class="notes" data-i18n="notes">Indirizzi IP e nomi di dominio dell'esempio sono riservati alla documentazione (RFC 5737 ed example.com): non appartengono a nessun host reale. I numeri di sequenza, le porte e le lunghezze in byte sono coerenti fra loro e calcolati dalla pagina.</p>
 </div>
 
@@ -520,6 +540,7 @@ const I18N = {
   'hero.eyebrow':'SIA · Business information systems','hero.title':'The journey of a packet',
   'hero.lead':'From the browser to the server and back. Follow a web request through the seven layers of the ISO/OSI stack, the TCP connection, the HTTP request and the TLS encryption that stops the man-in-the-middle attack.',
   'hero.a':'Host A · client','hero.a.t':'Student\'s browser','hero.port':'Port','hero.a.port':'52344 (ephemeral)','hero.b':'Host B · server','hero.ports':'Ports',
+  'toc.6':'Acronyms explained','dl':'Download the study notes (PDF in Italian, 16 pages)','p6.ey':'Part 6','p6.t':'Acronyms explained','p6.i':'Every acronym used in the lesson, with its full name and meaning.',
   'toc.1':'The ISO/OSI stack','toc.2':'Encapsulation','toc.3':'TCP and HTTP','toc.4':'HTTPS and man-in-the-middle','toc.5':'Quiz',
   'hero.keys':'Keyboard controls on the visible animation: <kbd>←</kbd> <kbd>→</kbd> step back and forward, <kbd>P</kbd> play or pause, <kbd>Home</kbd> back to the start.',
   'p1.ey':'Part 1','p1.t':'The ISO/OSI stack on one page','p1.i':'Seven layers, each with a precise job. Each layer talks to the same layer on the other host and uses the services of the layer below. On the right, how the same jobs are grouped in the TCP/IP model, the one the Internet really uses.',
@@ -771,9 +792,10 @@ function build(){
     ['Perché Mallory non riesce a fingersi www.example.com?',['Perché non conosce l\'IP del server','Perché non ha un certificato valido per quel dominio firmato da una CA fidata','Perché TCP glielo impedisce','Perché il Wi-Fi è lento'],1,'Il browser accetta solo certificati firmati da CA fidate e con il nome giusto. Senza la chiave privata del server la firma non si può falsificare.']
   ];
 
+  const G = [["ACK", "Acknowledgement", "conferma di ricezione in TCP", "TCP receipt confirmation"], ["AES", "Advanced Encryption Standard", "algoritmo di cifratura simmetrica usato da TLS", "symmetric encryption algorithm used by TLS"], ["ARP", "Address Resolution Protocol", "trova il MAC conoscendo l'IP", "finds the MAC address from the IP"], ["CA", "Certificate Authority", "autorità che firma i certificati digitali", "authority that signs digital certificates"], ["CRC", "Cyclic Redundancy Check", "calcolo per scoprire errori di trasmissione", "calculation to detect transmission errors"], ["DH", "Diffie-Hellman", "metodo per concordare una chiave segreta su un canale pubblico", "method to agree on a secret key over a public channel"], ["DNS", "Domain Name System", "traduce i nomi di dominio in indirizzi IP", "translates domain names into IP addresses"], ["ECDSA", "Elliptic Curve Digital Signature Algorithm", "firma digitale con curve ellittiche", "digital signature based on elliptic curves"], ["FCS", "Frame Check Sequence", "coda del frame con il codice di controllo", "frame trailer holding the check code"], ["FIN", "Finish", "flag TCP per chiudere la connessione", "TCP flag to close the connection"], ["FTP", "File Transfer Protocol", "protocollo per trasferire file", "protocol to transfer files"], ["GCM", "Galois/Counter Mode", "modalità che unisce cifratura e tag di integrità", "mode combining encryption and an integrity tag"], ["HSTS", "HTTP Strict Transport Security", "obbliga il browser a usare sempre HTTPS", "forces the browser to always use HTTPS"], ["HTTP", "HyperText Transfer Protocol", "protocollo del web, in chiaro", "the web protocol, in plain text"], ["HTTPS", "HTTP Secure", "HTTP dentro un canale cifrato TLS", "HTTP inside an encrypted TLS channel"], ["ICMP", "Internet Control Message Protocol", "messaggi di controllo e di errore (es. ping)", "control and error messages (e.g. ping)"], ["IP", "Internet Protocol", "indirizzi e instradamento dei pacchetti", "addressing and routing of packets"], ["ISO", "International Organization for Standardization", "ente internazionale per la normazione", "international standards body"], ["JPEG", "Joint Photographic Experts Group", "formato di compressione delle immagini", "image compression format"], ["LAN", "Local Area Network", "rete locale", "local network"], ["MAC", "Media Access Control", "indirizzo fisico della scheda di rete (in TLS «MAC» indica invece il codice di autenticazione del messaggio)", "physical address of the network card (in TLS \"MAC\" means Message Authentication Code)"], ["MITM", "Man In The Middle", "attacco dell'uomo nel mezzo", "man-in-the-middle attack"], ["NAT", "Network Address Translation", "traduzione fra indirizzi privati e pubblici", "translation between private and public addresses"], ["OSI", "Open Systems Interconnection", "modello di riferimento a sette livelli", "seven-layer reference model"], ["PDU", "Protocol Data Unit", "unità di dati di un livello", "data unit of a layer"], ["PSH", "Push", "flag TCP: consegna subito i dati all'applicazione", "TCP flag: deliver data to the application now"], ["RFC", "Request for Comments", "documenti ufficiali degli standard di Internet", "official Internet standards documents"], ["RPC", "Remote Procedure Call", "chiamata di una funzione su un altro computer", "calling a function on another computer"], ["SMTP", "Simple Mail Transfer Protocol", "protocollo per inviare la posta", "protocol to send e-mail"], ["SNI", "Server Name Indication", "nome del sito indicato nel ClientHello", "site name sent in the ClientHello"], ["SSL", "Secure Sockets Layer", "predecessore di TLS, oggi abbandonato", "predecessor of TLS, now abandoned"], ["SYN", "Synchronize", "flag TCP per aprire la connessione", "TCP flag to open the connection"], ["TCP", "Transmission Control Protocol", "trasporto affidabile e ordinato", "reliable, ordered transport"], ["TLS", "Transport Layer Security", "protocollo che cifra e autentica la comunicazione", "protocol that encrypts and authenticates communication"], ["TTL", "Time To Live", "contatore che limita la vita del pacchetto", "counter that limits the packet lifetime"], ["UDP", "User Datagram Protocol", "trasporto veloce senza garanzie", "fast transport without guarantees"], ["URL", "Uniform Resource Locator", "indirizzo completo di una risorsa web", "full address of a web resource"], ["UTF-8", "Unicode Transformation Format, 8 bit", "codifica dei caratteri in byte", "encoding of characters into bytes"], ["UTP", "Unshielded Twisted Pair", "cavo a doppini intrecciati non schermati", "unshielded twisted-pair cable"]];
   const lanesB = [{id:'c',x:150,title:'Browser',sub:'198.51.100.23:52344'},{id:'s',x:750,title:t('Server web','Web server'),sub:'203.0.113.10:80'}];
   const lanesC = [{id:'c',x:120,title:'Browser',sub:'198.51.100.23'},{id:'a',x:450,title:'Mallory',sub:t('attaccante nel mezzo','attacker in the middle'),bad:true},{id:'s',x:780,title:t('Server web','Web server'),sub:'www.example.com'}];
-  return {LNAME,LPDU,BLK,A,B,C_HTTP,C_HTTPS,Q,lanesB,lanesC,N,HOSTS:{c:[t('Host A · client','Host A · client'),'198.51.100.23 · browser'],s:[t('Host B · server','Host B · server'),'203.0.113.10 · '+t('server web','web server')],r:['Router','gateway']}};
+  return {G,LNAME,LPDU,BLK,A,B,C_HTTP,C_HTTPS,Q,lanesB,lanesC,N,HOSTS:{c:[t('Host A · client','Host A · client'),'198.51.100.23 · browser'],s:[t('Host B · server','Host B · server'),'203.0.113.10 · '+t('server web','web server')],r:['Router','gateway']}};
 }
 D = build();
 const chipL = l => `<span class="chipL" style="--c:var(--l${l})">L${l} · ${D.LNAME[l]}</span>`;
@@ -1045,6 +1067,8 @@ function buildQuiz(){
   });
 }
 buildQuiz();
+function buildGloss(){ document.getElementById('gloss').innerHTML = D.G.map(g=>`<div><b>${esc(g[0])}</b>${esc(g[1])}<em>${esc(t(g[2],g[3]))}</em></div>`).join(''); }
+buildGloss();
 document.getElementById('quiz-reset').addEventListener('click', buildQuiz);
 
 /* ---------- Cambio lingua (chiave condivisa con il sito) ---------- */
@@ -1053,7 +1077,7 @@ function setLang(l){
   D = build(); applyStatic(); fsLabels(); buildStage();
   seqB.setup(D.B, D.lanesB); seqC.setup(curC(), D.lanesC);
   [playerA, playerB, playerC].forEach(p=>p.refresh());
-  buildQuiz();
+  buildQuiz(); buildGloss();
 }
 document.getElementById('langToggle').addEventListener('click',()=>setLang(LANG==='it'?'en':'it'));
 applyStatic(); fsLabels();
