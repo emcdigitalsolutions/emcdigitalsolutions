@@ -57,7 +57,7 @@ const firma = `<!-- Firma EMC Digital Solutions -->
                 </td>
                 <td style="vertical-align:middle;padding:2px 0 2px 20px;border-left:1px solid #5a4a22;">
                   <div style="font-family:${SANS};font-size:24px;line-height:30px;font-weight:700;letter-spacing:-0.4px;color:#ffffff;white-space:nowrap;">Enrico Maria Caruso</div>
-                  <div style="padding-top:2px;font-family:${SERIF};font-style:italic;font-size:14px;line-height:20px;color:${P.oroChiaro};">Founder &amp; Software Developer</div>
+                  <div style="padding-top:2px;font-family:${SERIF};font-style:italic;font-size:14px;line-height:20px;color:${P.oroChiaro};">Founder &amp; CTO</div>
                   <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin:11px 0 9px 0;">
                     <tr><td width="34" height="2" bgcolor="${P.oro}" style="width:34px;height:2px;line-height:2px;font-size:0;background-color:${P.oro};background-image:linear-gradient(90deg,${P.oroChiaro},${P.oroScuro});border-radius:2px;">&nbsp;</td></tr>
                   </table>
