@@ -32,8 +32,8 @@
             --bg-primary: #0c1120;
             --bg-secondary: #131b2e;
             --bg-card: #172035;
-            --accent: #6b9ef7;
-            --accent-light: #93b8fc;
+            --accent: #e2be78;
+            --accent-light: #f0d6a0;
             --accent-vivid: #f5c542;
             --accent-vivid-hover: #ffd666;
             --text-primary: #e8e4dc;
@@ -44,7 +44,7 @@
             --radius: 12px;
             --radius-sm: 8px;
             --nav-height: 72px;
-            --theme-color: #6b9ef7;
+            --theme-color: #e2be78;
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
@@ -236,7 +236,7 @@
             right: -15%;
             width: 60%;
             height: 120%;
-            background: radial-gradient(circle, rgba(107, 158, 247, 0.1) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(226,190,120, 0.1) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -247,7 +247,7 @@
             left: -10%;
             width: 50%;
             height: 100%;
-            background: radial-gradient(circle, rgba(107, 158, 247, 0.05) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(226,190,120, 0.05) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -260,7 +260,7 @@
             font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #e8e4dc 0%, #6b9ef7 100%);
+            background: linear-gradient(135deg, #e8e4dc 0%, #e2be78 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -296,15 +296,15 @@
 
         .feature-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(107, 158, 247, 0.1);
-            border-color: rgba(107, 158, 247, 0.3);
+            box-shadow: 0 12px 40px rgba(226,190,120, 0.1);
+            border-color: rgba(226,190,120, 0.3);
         }
 
         .feature-icon {
             width: 52px;
             height: 52px;
             border-radius: var(--radius-sm);
-            background: rgba(107, 158, 247, 0.1);
+            background: rgba(226,190,120, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -383,7 +383,7 @@
         .cta-btn {
             display: inline-block;
             padding: 16px 40px;
-            background: linear-gradient(135deg, #6b9ef7, #3b6dd4);
+            background: linear-gradient(135deg, #e2be78, #e2be78);
             color: #fff;
             font-weight: 600;
             font-size: 1rem;
@@ -394,7 +394,7 @@
 
         .cta-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(107, 158, 247, 0.35);
+            box-shadow: 0 8px 30px rgba(226,190,120, 0.35);
         }
 
         /* ========== CASE STUDY CALLOUT ========== */
@@ -409,7 +409,7 @@
             overflow: hidden;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
-        .case-card:hover { border-color: rgba(107,158,247,0.3); box-shadow: 0 20px 50px var(--shadow-lg); }
+        .case-card:hover { border-color: rgba(226,190,120,0.3); box-shadow: 0 20px 50px var(--shadow-lg); }
         .case-media { position: relative; overflow: hidden; background: #0f1728; }
         .case-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
         .case-card:hover .case-media img { transform: scale(1.05); }
@@ -420,10 +420,10 @@
         .case-btn {
             display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
             padding: 14px 30px; border-radius: 50px; font-weight: 600; font-size: 0.98rem;
-            background: linear-gradient(135deg, #6b9ef7, #3b6dd4); color: #fff;
+            background: linear-gradient(135deg, #e2be78, #e2be78); color: #fff;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        .case-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(107,158,247,0.35); }
+        .case-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(226,190,120,0.35); }
         .case-btn svg { width: 17px; height: 17px; }
         @media (max-width: 768px) {
             .case-callout { padding: 60px 0; }
@@ -588,10 +588,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="128">
                     <defs>
                         <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#d4a017"/>
+                            <stop offset="0%" stop-color="#f3dca6"/><stop offset="100%" stop-color="#d4a017"/>
                         </linearGradient>
                         <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="45%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#0f172a"/>
+                            <stop offset="0%" stop-color="#f3dca6"/><stop offset="45%" stop-color="#e2be78"/><stop offset="100%" stop-color="#c19244"/>
                         </linearGradient>
                     </defs>
                     <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
@@ -740,10 +740,10 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
                             <defs>
                                 <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#d4a017"/>
+                                    <stop offset="0%" stop-color="#e2be78"/><stop offset="100%" stop-color="#d4a017"/>
                                 </linearGradient>
                                 <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#6b9ef7"/><stop offset="45%" stop-color="#93b8fc"/><stop offset="100%" stop-color="#ffffff"/>
+                                    <stop offset="0%" stop-color="#e2be78"/><stop offset="45%" stop-color="#f0d6a0"/><stop offset="100%" stop-color="#ffffff"/>
                                 </linearGradient>
                             </defs>
                             <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>

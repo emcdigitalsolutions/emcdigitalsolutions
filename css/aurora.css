@@ -4,27 +4,28 @@
    Gli sfondi ambientali (aurora/griglia/grana/barra scroll)
    vengono iniettati da js/aurora.js.
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap');
+/* 2026-11: palette Navy & Oro allineata alla nuova home e ai volantini */
 
 :root{
-  --bg-primary:#070a13;
-  --bg-secondary:#0b0f1c;
-  --bg-card:#0e1424;
-  --accent:#6b9ef7;
-  --accent-2:#8b6cf0;
-  --accent-light:#a9c4ff;
-  --accent-vivid:#f5c542;
-  --accent-vivid-hover:#ffd873;
-  --text-primary:#eef1f8;
-  --text-secondary:#9aa4bd;
-  --border:rgba(255,255,255,0.08);
-  --glass:rgba(255,255,255,0.035);
-  --glass-strong:rgba(255,255,255,0.06);
-  --glow-blue:rgba(107,158,247,0.35);
-  --glow-violet:rgba(139,108,240,0.32);
-  --glow-gold:rgba(245,197,66,0.30);
-  --grad-brand:linear-gradient(120deg,#6b9ef7 0%,#8b6cf0 42%,#f5c542 100%);
-  --font-display:'Space Grotesk','Inter',-apple-system,sans-serif;
+  --bg-primary:#050b1c;
+  --bg-secondary:#081430;
+  --bg-card:#0d1a3b;
+  --accent:#e2be78;
+  --accent-2:#c19244;
+  --accent-light:#f0d6a0;
+  --accent-vivid:#e2be78;
+  --accent-vivid-hover:#f3dca6;
+  --text-primary:#f5f1e8;
+  --text-secondary:#a3adc4;
+  --border:rgba(226,190,120,.14);
+  --glass:rgba(255,255,255,0.03);
+  --glass-strong:rgba(255,255,255,0.055);
+  --glow-blue:rgba(40,70,150,0.35);
+  --glow-violet:rgba(226,190,120,0.22);
+  --glow-gold:rgba(226,190,120,0.30);
+  --grad-brand:linear-gradient(120deg,#f3dca6 0%,#e2be78 38%,#c99a4c 70%,#e9cc8e 100%);
+  --font-display:'Fraunces',Georgia,serif;
 }
 
 body{ background:var(--bg-primary); }
@@ -43,14 +44,14 @@ body{ background:var(--bg-primary); }
 .aurora-blob{ position:absolute; border-radius:50%; filter:blur(90px); opacity:.55;
   will-change:transform; mix-blend-mode:screen; }
 .aurora-blob.b1{ width:52vw; height:52vw; top:-14vw; left:-10vw;
-  background:radial-gradient(circle at 30% 30%,#3f6fd6,transparent 68%);
+  background:radial-gradient(circle at 30% 30%,#203d82,transparent 68%);
   animation:auroraA 34s ease-in-out infinite; }
 .aurora-blob.b2{ width:46vw; height:46vw; top:18vh; right:-12vw;
-  background:radial-gradient(circle at 60% 40%,#7d5cf0,transparent 66%);
+  background:radial-gradient(circle at 60% 40%,#1c3166,transparent 66%);
   animation:auroraB 42s ease-in-out infinite; }
 .aurora-blob.b3{ width:40vw; height:40vw; bottom:-14vw; left:22vw;
   background:radial-gradient(circle at 50% 50%,#d9a53a,transparent 64%);
-  opacity:.38; animation:auroraC 38s ease-in-out infinite; }
+  opacity:.22; animation:auroraC 38s ease-in-out infinite; }
 @keyframes auroraA{ 0%,100%{transform:translate(0,0) scale(1);}
   50%{transform:translate(8vw,6vh) scale(1.18);} }
 @keyframes auroraB{ 0%,100%{transform:translate(0,0) scale(1.05);}
@@ -78,7 +79,7 @@ body{ background:var(--bg-primary); }
 /* ---------- TYPOGRAPHY ---------- */
 .section-title,.hero h1,.hero-stat .number,.term-title,
 .value-card h4,.service-card h3,.portfolio-card h3{
-  font-family:var(--font-display); letter-spacing:-.02em; }
+  font-family:var(--font-display); font-weight:500; letter-spacing:-.01em; }
 .section-title{ font-size:clamp(2rem,4vw,2.9rem); }
 .section-label{ background:var(--grad-brand); -webkit-background-clip:text;
   background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
@@ -149,7 +150,7 @@ section{ background:transparent!important; position:relative; }
 .service-card{ border-radius:18px; transition:transform .45s cubic-bezier(.25,.46,.45,.94),
   border-color .3s,box-shadow .4s; }
 .service-card:hover{ transform:translateY(-8px);
-  border-color:rgba(139,108,240,.45)!important;
+  border-color:rgba(226,190,120,.45)!important;
   box-shadow:0 30px 60px -26px rgba(0,0,0,.7),0 0 46px -14px var(--glow-blue); }
 .value-card{ border-radius:16px; transition:transform .3s,border-color .3s,box-shadow .4s; }
 .value-card:hover{ transform:translateY(-4px); border-color:rgba(245,197,66,.4)!important;
@@ -160,7 +161,7 @@ section{ background:transparent!important; position:relative; }
 .contact-info{ padding:36px; border-radius:18px; }
 @media (max-width:640px){ .contact-info{ padding:24px; } }
 .tech-badge{ border-radius:12px; transition:all .25s; }
-.tech-badge:hover{ transform:translateY(-3px); border-color:rgba(139,108,240,.5)!important;
+.tech-badge:hover{ transform:translateY(-3px); border-color:rgba(226,190,120,.5)!important;
   background:var(--glass-strong)!important; color:var(--accent-light)!important;
   box-shadow:0 0 24px -6px var(--glow-violet)!important; }
 
@@ -181,7 +182,7 @@ section{ background:transparent!important; position:relative; }
   transition:all .25s; }
 .btn-outline:hover{ border-color:transparent; color:var(--text-primary);
   background:var(--glass-strong); transform:translateY(-3px);
-  box-shadow:0 0 0 1px rgba(139,108,240,.4),0 12px 30px -12px var(--glow-blue); }
+  box-shadow:0 0 0 1px rgba(226,190,120,.4),0 12px 30px -12px var(--glow-blue); }
 
 /* magnetic ease */
 [data-magnetic]{ transition:transform .2s cubic-bezier(.2,.8,.3,1); }
@@ -227,7 +228,7 @@ section{ background:transparent!important; position:relative; }
   border-radius: 16px;
   transition: transform .35s cubic-bezier(.25,.46,.45,.94), border-color .3s, box-shadow .4s; }
 .feature-card:hover, .include-card:hover, .article-card:hover {
-  transform: translateY(-6px); border-color: rgba(139,108,240,.45) !important;
+  transform: translateY(-6px); border-color: rgba(226,190,120,.45) !important;
   box-shadow: 0 24px 50px -24px rgba(0,0,0,.7), 0 0 40px -14px var(--glow-blue); }
 .compare-card:hover {
   transform: translateY(-4px); border-color: rgba(245,197,66,.4) !important;
@@ -251,10 +252,19 @@ section{ background:transparent!important; position:relative; }
   transition: all .25s; }
 .cta-ghost:hover {
   color: var(--text-primary) !important; transform: translateY(-3px);
-  box-shadow: 0 0 0 1px rgba(139,108,240,.4), 0 12px 30px -12px var(--glow-blue); }
+  box-shadow: 0 0 0 1px rgba(226,190,120,.4), 0 12px 30px -12px var(--glow-blue); }
 .cta-section { background: transparent !important; }
 
 /* Prezzi con gradiente brand */
 .price-amount, .compare-price strong {
   background: var(--grad-brand); -webkit-background-clip: text;
   background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+
+/* ---------- Navy & Oro: titoli eleganti e logo dorato nelle pagine interne ---------- */
+.section-label{ letter-spacing:.28em; }
+.page-hero h1, .cs-hero h1{ font-weight:500; letter-spacing:-.01em; }
+.page-hero h1 .accent, .cs-hero h1 .accent, .hero h1 .accent{ font-style:italic; font-weight:400; }
+.nav-logo svg stop:first-child, .footer-logo svg stop:first-child{ stop-color:#f3dca6; }
+.nav-logo svg stop:last-child, .footer-logo svg stop:last-child{ stop-color:#c19244; }
+.nav-logo svg stop[offset="45%"], .footer-logo svg stop[offset="45%"]{ stop-color:#e2be78; }
+.btn-primary, .cta-btn{ border-radius:999px !important; color:#1a1408 !important; }

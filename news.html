@@ -43,8 +43,8 @@
             --bg-primary: #0c1120;
             --bg-secondary: #131b2e;
             --bg-card: #172035;
-            --accent: #6b9ef7;
-            --accent-light: #93b8fc;
+            --accent: #e2be78;
+            --accent-light: #f0d6a0;
             --accent-vivid: #f5c542;
             --accent-vivid-hover: #ffd666;
             --text-primary: #e8e4dc;
@@ -55,7 +55,7 @@
             --radius: 12px;
             --radius-sm: 8px;
             --nav-height: 72px;
-            --theme-color: #6b9ef7;
+            --theme-color: #e2be78;
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
@@ -238,7 +238,7 @@
             right: -15%;
             width: 60%;
             height: 120%;
-            background: radial-gradient(circle, rgba(107, 158, 247, 0.1) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(226,190,120, 0.1) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -259,7 +259,7 @@
             font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #e8e4dc 0%, #6b9ef7 100%);
+            background: linear-gradient(135deg, #e8e4dc 0%, #e2be78 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -296,8 +296,8 @@
 
         .article-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(107, 158, 247, 0.15);
-            border-color: rgba(107, 158, 247, 0.3);
+            box-shadow: 0 12px 40px rgba(226,190,120, 0.15);
+            border-color: rgba(226,190,120, 0.3);
         }
 
         .article-image {
@@ -404,7 +404,7 @@
         .cta-btn {
             display: inline-block;
             padding: 16px 40px;
-            background: linear-gradient(135deg, #6b9ef7, #3b6dd4);
+            background: linear-gradient(135deg, #e2be78, #e2be78);
             color: #fff;
             font-weight: 600;
             font-size: 1rem;
@@ -415,7 +415,7 @@
 
         .cta-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(107, 158, 247, 0.35);
+            box-shadow: 0 8px 30px rgba(226,190,120, 0.35);
         }
 
         /* ========== FOOTER ========== */
@@ -548,10 +548,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="128">
                     <defs>
                         <linearGradient id="navBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#d4a017"/>
+                            <stop offset="0%" stop-color="#f3dca6"/><stop offset="100%" stop-color="#d4a017"/>
                         </linearGradient>
                         <linearGradient id="navTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop offset="0%" stop-color="#1e3a8a"/><stop offset="45%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#0f172a"/>
+                            <stop offset="0%" stop-color="#f3dca6"/><stop offset="45%" stop-color="#e2be78"/><stop offset="100%" stop-color="#c19244"/>
                         </linearGradient>
                     </defs>
                     <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#navBarG)"/>
@@ -641,13 +641,13 @@
                                     <stop offset="100%" stop-color="#b8860b"/>
                                 </linearGradient>
                                 <linearGradient id="easterBar" x1="0" y1="0" x2="1" y2="1">
-                                    <stop offset="0%" stop-color="#1e3a8a"/>
-                                    <stop offset="100%" stop-color="#3b6dd4"/>
+                                    <stop offset="0%" stop-color="#f3dca6"/>
+                                    <stop offset="100%" stop-color="#e2be78"/>
                                 </linearGradient>
                                 <linearGradient id="easterTitle" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
-                                    <stop offset="0%" stop-color="#93b8fc"/>
+                                    <stop offset="0%" stop-color="#f0d6a0"/>
                                     <stop offset="50%" stop-color="#ffd666"/>
-                                    <stop offset="100%" stop-color="#93b8fc"/>
+                                    <stop offset="100%" stop-color="#f0d6a0"/>
                                 </linearGradient>
                                 <radialGradient id="eggShine" cx="0.35" cy="0.3" r="0.5">
                                     <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
@@ -655,9 +655,9 @@
                                     <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
                                 </radialGradient>
                                 <radialGradient id="bgGlow" cx="0.5" cy="0.5" r="0.5">
-                                    <stop offset="0%" stop-color="rgba(107,158,247,0.25)"/>
-                                    <stop offset="70%" stop-color="rgba(107,158,247,0.05)"/>
-                                    <stop offset="100%" stop-color="rgba(107,158,247,0)"/>
+                                    <stop offset="0%" stop-color="rgba(226,190,120,0.25)"/>
+                                    <stop offset="70%" stop-color="rgba(226,190,120,0.05)"/>
+                                    <stop offset="100%" stop-color="rgba(226,190,120,0)"/>
                                 </radialGradient>
                                 <filter id="eggShadow" x="-50%" y="-50%" width="200%" height="200%">
                                     <feGaussianBlur in="SourceAlpha" stdDeviation="12"/>
@@ -698,12 +698,12 @@
                                 <!-- Egg highlight -->
                                 <ellipse cx="600" cy="355" rx="140" ry="180" fill="url(#eggShine)"/>
                                 <!-- Decorative bands on egg -->
-                                <path d="M 465 320 Q 600 290, 735 320" stroke="#1e3a8a" stroke-width="4" fill="none" opacity="0.35"/>
-                                <path d="M 465 395 Q 600 420, 735 395" stroke="#1e3a8a" stroke-width="4" fill="none" opacity="0.35"/>
+                                <path d="M 465 320 Q 600 290, 735 320" stroke="#f3dca6" stroke-width="4" fill="none" opacity="0.35"/>
+                                <path d="M 465 395 Q 600 420, 735 395" stroke="#f3dca6" stroke-width="4" fill="none" opacity="0.35"/>
                                 <!-- Small dots on egg -->
-                                <circle cx="540" cy="355" r="4" fill="#1e3a8a" opacity="0.3"/>
-                                <circle cx="600" cy="355" r="4" fill="#1e3a8a" opacity="0.3"/>
-                                <circle cx="660" cy="355" r="4" fill="#1e3a8a" opacity="0.3"/>
+                                <circle cx="540" cy="355" r="4" fill="#f3dca6" opacity="0.3"/>
+                                <circle cx="600" cy="355" r="4" fill="#f3dca6" opacity="0.3"/>
+                                <circle cx="660" cy="355" r="4" fill="#f3dca6" opacity="0.3"/>
                             </g>
 
                             <!-- EMC 3-bar logo (positioned above egg) -->
@@ -755,10 +755,10 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" height="32">
                             <defs>
                                 <linearGradient id="ftBarG" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#3b6dd4"/><stop offset="100%" stop-color="#d4a017"/>
+                                    <stop offset="0%" stop-color="#e2be78"/><stop offset="100%" stop-color="#d4a017"/>
                                 </linearGradient>
                                 <linearGradient id="ftTxtG" x1="0" y1="0" x2="120" y2="40" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#6b9ef7"/><stop offset="45%" stop-color="#93b8fc"/><stop offset="100%" stop-color="#ffffff"/>
+                                    <stop offset="0%" stop-color="#e2be78"/><stop offset="45%" stop-color="#f0d6a0"/><stop offset="100%" stop-color="#ffffff"/>
                                 </linearGradient>
                             </defs>
                             <path d="M4,4 H24 L32,8 L24,12 H4 A4,4 0 0,1 4,4Z" fill="url(#ftBarG)"/>

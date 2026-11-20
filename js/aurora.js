@@ -85,7 +85,7 @@
           var q=pts[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.hypot(dx,dy);
           if(d<LINK){
             var a=(1-d/LINK)*0.5;
-            ctx.strokeStyle='rgba(120,150,240,'+a.toFixed(3)+')';
+            ctx.strokeStyle='rgba(226,190,120,'+a.toFixed(3)+')';
             ctx.lineWidth=0.7; ctx.beginPath();
             ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
           }
@@ -96,7 +96,7 @@
           ctx.lineWidth=0.8; ctx.beginPath();
           ctx.moveTo(p.x,p.y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke();
         }
-        ctx.fillStyle= dm<MOUSE ? 'rgba(245,197,66,0.9)' : 'rgba(169,196,255,0.75)';
+        ctx.fillStyle= dm<MOUSE ? 'rgba(245,197,66,0.9)' : 'rgba(240,214,160,0.7)';
         ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill();
       }
       requestAnimationFrame(frame);
